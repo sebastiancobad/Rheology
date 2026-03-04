@@ -11,22 +11,18 @@ import {
   Legend,
   ResponsiveContainer,
   ReferenceLine,
+  Area,
+  ComposedChart,
 } from "recharts";
 
-function generateFrequencySweepData(
-  crossoverFreq: number,
-  plateauModulus: number
-) {
+function generateFrequencySweepData(crossoverFreq: number, plateauModulus: number) {
   const data = [];
   for (let i = -2; i <= 2.5; i += 0.08) {
     const omega = Math.pow(10, i);
     const omegaRel = omega / crossoverFreq;
-
-    // Single Maxwell model: G' = G_N * (ωλ)^2 / (1 + (ωλ)^2), G'' = G_N * ωλ / (1 + (ωλ)^2)
     const wl = omegaRel;
     const wl2 = wl * wl;
     const denom = 1 + wl2;
-
     const gPrime = plateauModulus * wl2 / denom;
     const gDoublePrime = plateauModulus * wl / denom;
     const tanDelta = gDoublePrime / gPrime;
@@ -41,6 +37,22 @@ function generateFrequencySweepData(
   return data;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const CustomActiveDot = (props: any) => {
+  const { cx, cy, stroke } = props;
+  if (!cx || !cy) return null;
+  return (
+    <g>
+      <circle cx={cx} cy={cy} r="8" fill={stroke} opacity="0.12" />
+      <circle cx={cx} cy={cy} r="5" fill="white" stroke={stroke} strokeWidth="2" />
+      <circle cx={cx} cy={cy} r="2" fill={stroke} />
+    </g>
+  );
+};
+
+const sliderClass = (color: string) =>
+  `w-full h-2 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-[${color}] [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:cursor-pointer`;
+
 export default function FrequencySweepChart() {
   const [crossoverFreq, setCrossoverFreq] = useState(1.0);
   const [plateauModulus, setPlateauModulus] = useState(100000);
@@ -54,108 +66,70 @@ export default function FrequencySweepChart() {
   return (
     <div>
       <div className="flex flex-wrap gap-6 mb-6">
-        <div>
-          <label className="text-sm text-[#3d6285] block mb-1">
-            Crossover Frequency: {crossoverFreq.toFixed(1)} rad/s
+        <div className="flex-1 min-w-[180px]">
+          <label className="text-xs font-semibold text-[#134074] block mb-2 tracking-wide uppercase">
+            ω<sub>c</sub> = {crossoverFreq.toFixed(1)} rad/s
           </label>
-          <input
-            type="range"
-            min="0.1"
-            max="10"
-            step="0.1"
-            value={crossoverFreq}
+          <input type="range" min="0.1" max="10" step="0.1" value={crossoverFreq}
             onChange={(e) => setCrossoverFreq(parseFloat(e.target.value))}
-            className="w-48 accent-[#134074]"
-          />
+            className={`${sliderClass("#134074")} bg-gradient-to-r from-[#EEF4ED] to-[#134074]`} />
         </div>
-        <div>
-          <label className="text-sm text-[#3d6285] block mb-1">
-            Plateau Modulus G<sub>N</sub><sup>0</sup>:{" "}
-            {(plateauModulus / 1000).toFixed(0)} kPa
+        <div className="flex-1 min-w-[180px]">
+          <label className="text-xs font-semibold text-[#13315C] block mb-2 tracking-wide uppercase">
+            G<sub>N</sub><sup>0</sup> = {(plateauModulus / 1000).toFixed(0)} kPa
           </label>
-          <input
-            type="range"
-            min="10000"
-            max="500000"
-            step="10000"
-            value={plateauModulus}
+          <input type="range" min="10000" max="500000" step="10000" value={plateauModulus}
             onChange={(e) => setPlateauModulus(parseFloat(e.target.value))}
-            className="w-48 accent-[#13315C]"
-          />
+            className={`${sliderClass("#13315C")} bg-gradient-to-r from-[#EEF4ED] to-[#13315C]`} />
         </div>
-        <div className="flex items-end">
-          <label className="flex items-center gap-2 text-sm text-[#3d6285] cursor-pointer">
-            <input
-              type="checkbox"
-              checked={showTanDelta}
-              onChange={(e) => setShowTanDelta(e.target.checked)}
-              className="accent-[#8DA9C4]"
-            />
-            Show tan(δ)
+        <div className="flex items-end pb-1">
+          <label className="flex items-center gap-2 text-xs font-medium text-[#3d6285] cursor-pointer select-none">
+            <div className={`w-8 h-4 rounded-full transition-colors relative ${showTanDelta ? "bg-[#8DA9C4]" : "bg-[#c9d9e8]"}`}
+              onClick={() => setShowTanDelta(!showTanDelta)}>
+              <div className={`absolute top-0.5 w-3 h-3 rounded-full bg-white shadow-sm transition-transform ${showTanDelta ? "translate-x-4" : "translate-x-0.5"}`} />
+            </div>
+            tan(δ)
           </label>
         </div>
       </div>
 
-      <div className="text-xs text-[#3d6285] mb-2">
-        Single Maxwell Element: G&apos;(ω) = G<sub>N</sub><sup>0</sup> · (ωλ)² / [1 + (ωλ)²], &nbsp;
-        G&apos;&apos;(ω) = G<sub>N</sub><sup>0</sup> · ωλ / [1 + (ωλ)²]
+      <div className="text-xs text-[#3d6285] mb-3 bg-[#EEF4ED] rounded-lg px-3 py-2 inline-block">
+        Maxwell: <span className="font-semibold text-[#134074]">G&apos;(ω) = G<sub>N</sub><sup>0</sup>·(ωλ)²/[1+(ωλ)²]</span>,{" "}
+        <span className="font-semibold text-[#8DA9C4]">G&apos;&apos;(ω) = G<sub>N</sub><sup>0</sup>·ωλ/[1+(ωλ)²]</span>
       </div>
 
       <ResponsiveContainer width="100%" height={420}>
-        <LineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(19,64,116,0.08)" />
-          <XAxis
-            dataKey="omega"
-            scale="log"
-            domain={["dataMin", "dataMax"]}
-            type="number"
-            tick={{ fill: "#3d6285", fontSize: 11 }}
-            label={{
-              value: "Angular Frequency ω [rad/s]",
-              position: "insideBottom",
-              offset: -5,
-              fill: "#3d6285",
-            }}
-          />
-          <YAxis
-            yAxisId="modulus"
-            scale="log"
-            domain={[1, "auto"]}
-            type="number"
-            tick={{ fill: "#3d6285", fontSize: 11 }}
-            label={{
-              value: "G', G'' [Pa]",
-              angle: -90,
-              position: "insideLeft",
-              offset: 15,
-              fill: "#3d6285",
-            }}
-          />
+        <ComposedChart data={data}>
+          <defs>
+            <linearGradient id="gPrimeGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#134074" stopOpacity={0.12} />
+              <stop offset="100%" stopColor="#134074" stopOpacity={0.01} />
+            </linearGradient>
+            <linearGradient id="gDblGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#8DA9C4" stopOpacity={0.1} />
+              <stop offset="100%" stopColor="#8DA9C4" stopOpacity={0.01} />
+            </linearGradient>
+          </defs>
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(19,64,116,0.06)" />
+          <XAxis dataKey="omega" scale="log" domain={["dataMin", "dataMax"]} type="number"
+            tick={{ fill: "#3d6285", fontSize: 11, fontFamily: "Inter" }}
+            axisLine={{ stroke: "#c9d9e8" }} tickLine={{ stroke: "#c9d9e8" }}
+            label={{ value: "Angular Frequency ω [rad/s]", position: "insideBottom", offset: -5, fill: "#0B2545", fontSize: 12, fontWeight: 500 }} />
+          <YAxis yAxisId="modulus" scale="log" domain={[1, "auto"]} type="number"
+            tick={{ fill: "#3d6285", fontSize: 11, fontFamily: "Inter" }}
+            axisLine={{ stroke: "#c9d9e8" }} tickLine={{ stroke: "#c9d9e8" }}
+            label={{ value: "G', G'' [Pa]", angle: -90, position: "insideLeft", offset: 15, fill: "#0B2545", fontSize: 12, fontWeight: 500 }} />
           {showTanDelta && (
-            <YAxis
-              yAxisId="tanDelta"
-              orientation="right"
-              scale="log"
-              domain={[0.01, 100]}
-              type="number"
-              tick={{ fill: "#8DA9C4", fontSize: 12 }}
-              label={{
-                value: "tan(δ)",
-                angle: 90,
-                position: "insideRight",
-                offset: 10,
-                fill: "#8DA9C4",
-              }}
-            />
+            <YAxis yAxisId="tanDelta" orientation="right" scale="log" domain={[0.01, 100]} type="number"
+              tick={{ fill: "#8DA9C4", fontSize: 11 }}
+              axisLine={{ stroke: "#c9d9e8" }} tickLine={{ stroke: "#c9d9e8" }}
+              label={{ value: "tan(δ)", angle: 90, position: "insideRight", offset: 10, fill: "#8DA9C4", fontSize: 12 }} />
           )}
-          <Tooltip
-            contentStyle={{
-              backgroundColor: "rgba(255,255,255,0.95)",
-              border: "1px solid #c9d9e8",
-              borderRadius: "0.75rem",
-              color: "#0B2545",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
-            }}
+          <Tooltip contentStyle={{
+            backgroundColor: "rgba(255,255,255,0.97)", border: "1px solid #c9d9e8",
+            borderRadius: "0.75rem", color: "#0B2545", boxShadow: "0 8px 24px rgba(11,37,69,0.12)",
+            fontSize: 12, fontFamily: "Inter",
+          }}
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             formatter={(value: any, name: any) => {
               const v = Number(value);
@@ -163,83 +137,35 @@ export default function FrequencySweepChart() {
               return [`${v.toFixed(1)} Pa`, name];
             }}
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            labelFormatter={(label: any) =>
-              `ω = ${Number(label).toFixed(2)} rad/s`
-            }
-          />
-          <Legend wrapperStyle={{ color: "#3d6285", paddingTop: 16 }} />
-          <ReferenceLine
-            x={crossoverFreq}
-            yAxisId="modulus"
-            stroke="#8DA9C4"
-            strokeDasharray="5 5"
-            label={{
-              value: "Crossover",
-              fill: "#3d6285",
-              fontSize: 11,
-              position: "top",
-            }}
-          />
-          <Line
-            yAxisId="modulus"
-            type="monotone"
-            dataKey="gPrime"
-            stroke="#134074"
-            strokeWidth={2}
-            dot={false}
-            name="G' (Storage)"
-          />
-          <Line
-            yAxisId="modulus"
-            type="monotone"
-            dataKey="gDoublePrime"
-            stroke="#8DA9C4"
-            strokeWidth={2}
-            dot={false}
-            name="G'' (Loss)"
-          />
+            labelFormatter={(label: any) => `ω = ${Number(label).toFixed(2)} rad/s`} />
+          <Legend wrapperStyle={{ color: "#3d6285", paddingTop: 16, fontSize: 12 }} />
+          <ReferenceLine x={crossoverFreq} yAxisId="modulus" stroke="#0B2545" strokeDasharray="6 4" strokeWidth={1.5}
+            label={{ value: "ωc", fill: "#0B2545", fontSize: 12, fontWeight: 600, position: "top" }} />
+          <Area yAxisId="modulus" type="monotone" dataKey="gPrime" fill="url(#gPrimeGrad)" stroke="none" />
+          <Area yAxisId="modulus" type="monotone" dataKey="gDoublePrime" fill="url(#gDblGrad)" stroke="none" />
+          <Line yAxisId="modulus" type="monotone" dataKey="gPrime" stroke="#134074" strokeWidth={2.5}
+            dot={false} activeDot={<CustomActiveDot />} name="G' (Storage)" />
+          <Line yAxisId="modulus" type="monotone" dataKey="gDoublePrime" stroke="#8DA9C4" strokeWidth={2.5}
+            dot={false} activeDot={<CustomActiveDot />} name="G'' (Loss)" />
           {showTanDelta && (
-            <Line
-              yAxisId="tanDelta"
-              type="monotone"
-              dataKey="tanDelta"
-              stroke="#8DA9C4"
-              strokeWidth={2}
-              strokeDasharray="5 3"
-              dot={false}
-              name="tan(δ)"
-            />
+            <Line yAxisId="tanDelta" type="monotone" dataKey="tanDelta" stroke="#0B2545" strokeWidth={1.5}
+              strokeDasharray="5 3" dot={false} activeDot={<CustomActiveDot />} name="tan(δ)" />
           )}
-        </LineChart>
+        </ComposedChart>
       </ResponsiveContainer>
 
-      <div className="mt-4 grid sm:grid-cols-3 gap-4 text-sm">
-        <div className="bg-[#e4ede3] rounded-xl p-4 border border-[#c9d9e8]">
-          <div className="text-[#134074] font-semibold mb-1 text-xs">
-            ω &lt; ω<sub>c</sub> (Terminal zone)
-          </div>
-          <p className="text-[#8DA9C4] text-xs">
-            G&apos;&apos; &gt; G&apos;: Viscous (liquid-like) behavior dominates. Polymer
-            chains have time to relax fully.
-          </p>
+      <div className="mt-4 grid sm:grid-cols-3 gap-3 text-sm">
+        <div className="bg-[#EEF4ED] rounded-xl p-4 border border-[#c9d9e8]">
+          <div className="text-[#134074] font-semibold mb-1 text-xs">ω &lt; ω<sub>c</sub> — Terminal</div>
+          <p className="text-[#3d6285] text-xs">G&apos;&apos; &gt; G&apos;: Viscous behavior. Chains relax fully.</p>
         </div>
-        <div className="bg-[#e4ede3] rounded-xl p-4 border border-[#134074]/15">
-          <div className="text-[#0B2545] font-semibold mb-1 text-xs">
-            ω = ω<sub>c</sub> (Crossover)
-          </div>
-          <p className="text-[#8DA9C4] text-xs">
-            G&apos; = G&apos;&apos;, tan(δ) = 1. The relaxation time λ = 1/ω<sub>c</sub>. A
-            key indicator of molecular weight.
-          </p>
+        <div className="bg-white rounded-xl p-4 border-2 border-[#134074]/20">
+          <div className="text-[#0B2545] font-semibold mb-1 text-xs">ω = ω<sub>c</sub> — Crossover</div>
+          <p className="text-[#3d6285] text-xs">G&apos; = G&apos;&apos;, tan(δ)=1. λ = 1/ω<sub>c</sub>.</p>
         </div>
-        <div className="bg-[#e4ede3] rounded-xl p-4 border border-[#c9d9e8]">
-          <div className="text-[#134074] font-semibold mb-1 text-xs">
-            ω &gt; ω<sub>c</sub> (Plateau zone)
-          </div>
-          <p className="text-[#8DA9C4] text-xs">
-            G&apos; &gt; G&apos;&apos;: Elastic (solid-like) behavior dominates. Chains are
-            entangled and cannot relax within the deformation timescale.
-          </p>
+        <div className="bg-[#EEF4ED] rounded-xl p-4 border border-[#c9d9e8]">
+          <div className="text-[#134074] font-semibold mb-1 text-xs">ω &gt; ω<sub>c</sub> — Plateau</div>
+          <p className="text-[#3d6285] text-xs">G&apos; &gt; G&apos;&apos;: Elastic, entangled network.</p>
         </div>
       </div>
     </div>

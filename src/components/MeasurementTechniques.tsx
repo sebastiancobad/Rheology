@@ -126,19 +126,41 @@ export default function MeasurementTechniques() {
               Corrects entrance pressure drop. Plot ΔP vs L/D at constant γ̇,
               extrapolate to L/D = 0. For elastic melts, entrance effects can be 30–60% of total ΔP.
             </p>
-            <div className="mt-3 bg-[#EEF4ED] rounded-lg p-3">
-              <svg viewBox="0 0 200 100" className="w-full h-auto">
-                <line x1="30" y1="85" x2="180" y2="85" stroke="#c9d9e8" strokeWidth="1"/>
-                <line x1="30" y1="85" x2="30" y2="10" stroke="#c9d9e8" strokeWidth="1"/>
-                <text x="105" y="98" textAnchor="middle" fill="#3d6285" fontSize="7">L/D</text>
-                <text x="12" y="50" textAnchor="middle" fill="#3d6285" fontSize="7" transform="rotate(-90 12 50)">ΔP</text>
-                <line x1="15" y1="65" x2="170" y2="20" stroke="#134074" strokeWidth="2"/>
-                <circle cx="60" cy="52" r="3" fill="#134074"/>
-                <circle cx="90" cy="42" r="3" fill="#134074"/>
-                <circle cx="120" cy="32" r="3" fill="#134074"/>
-                <circle cx="150" cy="22" r="3" fill="#134074"/>
-                <line x1="15" y1="65" x2="30" y2="65" stroke="#8DA9C4" strokeWidth="1" strokeDasharray="3 2"/>
-                <text x="10" y="68" fill="#8DA9C4" fontSize="6">ΔP<tspan fontSize="4" dy="2">ent</tspan></text>
+            <div className="mt-3 bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] rounded-xl p-4 border border-[#c9d9e8]/50">
+              <svg viewBox="0 0 220 120" className="w-full h-auto">
+                <defs>
+                  <linearGradient id="bagley-fill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#134074" stopOpacity="0.08" />
+                    <stop offset="100%" stopColor="#134074" stopOpacity="0.02" />
+                  </linearGradient>
+                </defs>
+                {[20, 35, 50, 65, 80].map(y => (
+                  <line key={y} x1="40" y1={y} x2="195" y2={y} stroke="#c9d9e8" strokeWidth="0.5" strokeDasharray="2 3" />
+                ))}
+                {[70, 100, 130, 160].map(x => (
+                  <line key={x} x1={x} y1="14" x2={x} y2="90" stroke="#c9d9e8" strokeWidth="0.5" strokeDasharray="2 3" />
+                ))}
+                <line x1="40" y1="90" x2="200" y2="90" stroke="#0B2545" strokeWidth="1.2" />
+                <line x1="40" y1="90" x2="40" y2="10" stroke="#0B2545" strokeWidth="1.2" />
+                <polygon points="200,87 200,93 206,90" fill="#0B2545" />
+                <polygon points="37,10 43,10 40,4" fill="#0B2545" />
+                <text x="120" y="106" textAnchor="middle" fill="#3d6285" fontSize="8" fontFamily="Inter" fontWeight="500">L / D</text>
+                <text x="18" y="55" textAnchor="middle" fill="#3d6285" fontSize="8" fontFamily="Inter" fontWeight="500" transform="rotate(-90 18 55)">ΔP [MPa]</text>
+                <path d="M 40,62 L 190,18 L 190,90 L 40,90 Z" fill="url(#bagley-fill)" />
+                <line x1="55" y1="65" x2="185" y2="22" stroke="#134074" strokeWidth="2" />
+                {[
+                  { x: 70, y: 58 }, { x: 100, y: 47 }, { x: 130, y: 37 }, { x: 160, y: 27 },
+                ].map((pt, i) => (
+                  <g key={i}>
+                    <circle cx={pt.x} cy={pt.y} r="5" fill="#134074" opacity="0.08" />
+                    <circle cx={pt.x} cy={pt.y} r="3" fill="white" stroke="#134074" strokeWidth="1.5" />
+                  </g>
+                ))}
+                <line x1="22" y1="70" x2="55" y2="65" stroke="#8DA9C4" strokeWidth="1.5" strokeDasharray="3 2" />
+                <line x1="40" y1="65" x2="40" y2="90" stroke="#134074" strokeWidth="1" strokeDasharray="2 2" opacity="0.4" />
+                <text x="30" y="72" fill="#134074" fontSize="7" fontWeight="600">ΔP<tspan fontSize="5" dy="1.5">ent</tspan></text>
+                <circle cx="22" cy="70" r="2" fill="#8DA9C4" />
+                <text x="15" y="82" fill="#8DA9C4" fontSize="6" fontWeight="500">−e<tspan fontSize="5" dy="1">B</tspan></text>
               </svg>
             </div>
           </AnimatedCard>
@@ -153,17 +175,71 @@ export default function MeasurementTechniques() {
               Corrects for non-parabolic velocity profiles. For n&apos; ≈ 0.3 (typical polymer),
               the true wall shear rate is 58% higher than apparent.
             </p>
-            <div className="mt-3 bg-[#EEF4ED] rounded-lg p-3">
-              <svg viewBox="0 0 200 100" className="w-full h-auto">
+            <div className="mt-3 bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] rounded-xl p-4 border border-[#c9d9e8]/50">
+              <svg viewBox="0 0 260 140" className="w-full h-auto">
+                <defs>
+                  <linearGradient id="newt-fill" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="#8DA9C4" stopOpacity="0" />
+                    <stop offset="50%" stopColor="#8DA9C4" stopOpacity="0.08" />
+                    <stop offset="100%" stopColor="#8DA9C4" stopOpacity="0" />
+                  </linearGradient>
+                  <linearGradient id="shear-fill" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="#13315C" stopOpacity="0" />
+                    <stop offset="50%" stopColor="#13315C" stopOpacity="0.1" />
+                    <stop offset="100%" stopColor="#13315C" stopOpacity="0" />
+                  </linearGradient>
+                  <linearGradient id="pipe-wall" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#0B2545" />
+                    <stop offset="100%" stopColor="#13315C" />
+                  </linearGradient>
+                </defs>
+
                 {/* Pipe walls */}
-                <rect x="20" y="10" width="160" height="3" fill="#0B2545" rx="1"/>
-                <rect x="20" y="87" width="160" height="3" fill="#0B2545" rx="1"/>
-                {/* Newtonian profile */}
-                <path d="M 30,50 Q 100,15 170,50 Q 100,85 30,50" fill="none" stroke="#8DA9C4" strokeWidth="1.5" strokeDasharray="4 3"/>
-                {/* Shear-thinning profile */}
-                <path d="M 30,50 Q 100,22 170,50 Q 100,78 30,50" fill="none" stroke="#13315C" strokeWidth="2"/>
-                <text x="175" y="40" fill="#8DA9C4" fontSize="6">Newtonian</text>
-                <text x="175" y="55" fill="#13315C" fontSize="6">Shear-thin</text>
+                <rect x="25" y="14" width="180" height="6" rx="3" fill="url(#pipe-wall)" />
+                <rect x="25" y="20" width="180" height="1.5" fill="#0B2545" opacity="0.1" />
+                <rect x="25" y="110" width="180" height="6" rx="3" fill="url(#pipe-wall)" />
+                <rect x="25" y="108.5" width="180" height="1.5" fill="white" opacity="0.15" />
+
+                {/* Centerline */}
+                <line x1="30" y1="65" x2="200" y2="65" stroke="#c9d9e8" strokeWidth="0.5" strokeDasharray="3 4" />
+
+                {/* Newtonian profile — parabolic */}
+                <path d="M 35,65 Q 115,22 195,65 Q 115,108 35,65 Z" fill="url(#newt-fill)" />
+                <path d="M 35,65 Q 115,22 195,65" fill="none" stroke="#8DA9C4" strokeWidth="1.5" strokeDasharray="5 3" />
+                <path d="M 35,65 Q 115,108 195,65" fill="none" stroke="#8DA9C4" strokeWidth="1.5" strokeDasharray="5 3" />
+
+                {/* Shear-thinning profile — plug-like */}
+                <path d="M 35,65 Q 115,30 195,65 Q 115,100 35,65 Z" fill="url(#shear-fill)" />
+                <path d="M 35,65 Q 115,30 195,65" fill="none" stroke="#13315C" strokeWidth="2.5" />
+                <path d="M 35,65 Q 115,100 195,65" fill="none" stroke="#13315C" strokeWidth="2.5" />
+
+                {/* Velocity arrows */}
+                {[
+                  { y: 65, len: 80 }, { y: 55, len: 76 }, { y: 75, len: 76 },
+                  { y: 45, len: 60 }, { y: 85, len: 60 },
+                  { y: 35, len: 30 }, { y: 95, len: 30 },
+                  { y: 27, len: 8 }, { y: 103, len: 8 },
+                ].map((a, i) => (
+                  <g key={i}>
+                    <line x1="70" y1={a.y} x2={70 + a.len} y2={a.y} stroke="#13315C" strokeWidth="1" opacity="0.4" />
+                    <polygon points={`${70 + a.len},${a.y - 2} ${70 + a.len},${a.y + 2} ${70 + a.len + 4},${a.y}`} fill="#13315C" opacity="0.4" />
+                  </g>
+                ))}
+
+                {/* Wall labels */}
+                <text x="115" y="10" textAnchor="middle" fill="#0B2545" fontSize="7" fontFamily="Inter" fontWeight="600">wall</text>
+                <text x="115" y="126" textAnchor="middle" fill="#0B2545" fontSize="7" fontFamily="Inter" fontWeight="600">wall</text>
+
+                {/* Annotations */}
+                <text x="212" y="40" fill="#8DA9C4" fontSize="7.5" fontFamily="Inter" fontWeight="500">Newtonian</text>
+                <line x1="207" y1="38" x2="195" y2="42" stroke="#8DA9C4" strokeWidth="0.8" />
+                <text x="212" y="55" fill="#13315C" fontSize="7.5" fontFamily="Inter" fontWeight="600">Shear-thinning</text>
+                <line x1="207" y1="53" x2="195" y2="50" stroke="#13315C" strokeWidth="0.8" />
+
+                <g transform="translate(212, 75)">
+                  <text fill="#13315C" fontSize="6.5" fontFamily="Inter" fontWeight="500">γ̇<tspan fontSize="5" dy="1.5">w,true</tspan></text>
+                  <text y="10" fill="#13315C" fontSize="6" fontFamily="Inter">{'>'} γ̇<tspan fontSize="5" dy="1.5">apparent</tspan></text>
+                </g>
               </svg>
             </div>
           </AnimatedCard>
