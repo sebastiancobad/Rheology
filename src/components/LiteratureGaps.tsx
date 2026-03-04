@@ -1,336 +1,133 @@
 import SectionWrapper from "./SectionWrapper";
+import AnimatedSection, { AnimatedCard } from "./AnimatedSection";
+
+const researchAreas = [
+  {
+    title: "Recycled Polymer Rheology",
+    color: "#134074",
+    items: [
+      "No standardized rheological protocols beyond MFI",
+      "Multi-pass degradation modeling is purely empirical",
+      "Contaminant detection limits via rheology: ~1-2 vol%",
+      "Cox-Merz rule fails for most recycled systems",
+    ],
+  },
+  {
+    title: "Molecular Theory",
+    color: "#13315C",
+    items: [
+      "Branched polymer tube models still qualitative for LDPE",
+      "Polydisperse nonlinear properties (LAOS, extensional) poorly predicted",
+      "No unified thixotropy + viscoelasticity constitutive model",
+      "ML/AI rheology lacks standardized training datasets",
+    ],
+  },
+  {
+    title: "Processing Frontiers",
+    color: "#0B2545",
+    items: [
+      "Digital twins for recycled feedstock processing",
+      "Microplastics environmental rheology uncharacterized",
+      "PLA/recycled-PE blend rheology mapping incomplete",
+      "Inline extensional rheometry doesn't exist yet",
+    ],
+  },
+  {
+    title: "Measurement Innovation",
+    color: "#8DA9C4",
+    items: [
+      "High-throughput rheological screening (100+ samples/day)",
+      "Rheo-SAXS/SANS at synchrotron for structure-property links",
+      "AI-assisted Bayesian optimization for experiment design",
+      "Lab-scale rheo-microscopy for real-time morphology",
+    ],
+  },
+];
+
+const textbooks = [
+  { author: "Macosko", title: "Rheology: Principles, Measurements, and Applications", year: 1994 },
+  { author: "Ferry", title: "Viscoelastic Properties of Polymers", year: 1980 },
+  { author: "Doi & Edwards", title: "The Theory of Polymer Dynamics", year: 1986 },
+  { author: "Bird, Armstrong & Hassager", title: "Dynamics of Polymeric Liquids", year: 1987 },
+  { author: "Dealy & Larson", title: "Structure and Rheology of Molten Polymers", year: 2006 },
+  { author: "Larson", title: "The Structure and Rheology of Complex Fluids", year: 1999 },
+];
+
+const journals = [
+  "Journal of Rheology (SOR)",
+  "Rheologica Acta",
+  "J. Non-Newtonian Fluid Mech.",
+  "Macromolecules",
+  "Polymer",
+  "Polymer Eng. & Sci.",
+  "Prog. Polymer Sci.",
+  "J. Polymer Science",
+];
 
 export default function LiteratureGaps() {
   return (
     <SectionWrapper
       id="literature"
-      title="Literature & Open Research Questions"
-      subtitle="Section 5 — Current Frontiers"
+      title="Literature & Research Frontiers"
+      subtitle="Section 5 — Open Questions"
       accent="#134074"
     >
-      <p className="text-[#3d6285] mb-10 max-w-3xl">
-        Despite decades of research, polymer rheology remains a vibrant field with
-        significant open questions — particularly as the industry shifts toward
-        sustainability, recycled feedstocks, and advanced manufacturing. Below we
-        summarize key literature gaps and emerging frontiers.
-      </p>
-
-      {/* Open Research Questions */}
-      <h3 className="text-2xl font-bold text-[#0B2545] mb-6">
-        Open Research Questions &amp; Literature Gaps
-      </h3>
-
-      <div className="grid md:grid-cols-2 gap-6 mb-12">
-        <div className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-6">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#134074]" />
-            <h4 className="font-bold text-[#0B2545]">Recycled Polymer Rheology</h4>
-          </div>
-          <ul className="text-[#3d6285] text-sm space-y-3">
-            <li>
-              <strong className="text-[#0B2545]">Lack of standardized protocols:</strong>{" "}
-              No ISO/ASTM standard exists for comprehensive rheological characterization
-              of recycled polymers beyond MFI. Industry consortia (RecyClass, APR, PRE)
-              are developing guidelines, but harmonization is years away.
-            </li>
-            <li>
-              <strong className="text-[#0B2545]">Multi-pass degradation modeling:</strong>{" "}
-              While η₀ vs. number of recycling passes has been measured for common
-              polymers, predictive models linking degradation kinetics (chain scission,
-              crosslinking, branching) to rheological changes across N passes are
-              still empirical. A first-principles connection between mechanochemical
-              degradation and the resulting MWD → relaxation spectrum → processing
-              behavior is lacking (Vilaplana &amp; Karlsson, 2008).
-            </li>
-            <li>
-              <strong className="text-[#0B2545]">Contaminant detection limits:</strong>{" "}
-              What is the minimum detectable contamination level via rheological methods?
-              For immiscible polymer contaminants, the Palierne model suggests ~1–2 vol%
-              is the detection limit via G&apos;(ω) at low frequencies. For crosslinked
-              gel particles, the limit may be lower (~0.1%) using van Gurp-Palmen plots.
-              Systematic studies quantifying these detection limits are scarce.
-            </li>
-            <li>
-              <strong className="text-[#0B2545]">Cox-Merz rule failure:</strong>{" "}
-              The Cox-Merz rule fails for many recycled systems (degraded + filled +
-              blended). Understanding <em>why</em> it fails and developing corrections
-              specific to recycled polymer classes would enable better prediction of
-              processing behavior from oscillatory data alone.
-            </li>
-          </ul>
-        </div>
-
-        <div className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-6">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#13315C]" />
-            <h4 className="font-bold text-[#0B2545]">Molecular Rheology &amp; Theory</h4>
-          </div>
-          <ul className="text-[#3d6285] text-sm space-y-3">
-            <li>
-              <strong className="text-[#0B2545]">Branched polymer dynamics:</strong>{" "}
-              The tube model for linear polymers is mature, but quantitative prediction
-              of rheology for arbitrary branching topologies (combs, Cayley trees,
-              randomly branched LDPE) remains challenging. Hierarchical relaxation
-              models (e.g., branch-on-branch, Das et al., 2006) capture qualitative
-              features but quantitative agreement for commercial LDPE is still elusive.
-            </li>
-            <li>
-              <strong className="text-[#0B2545]">Polydispersity effects:</strong>{" "}
-              Real polymers have continuous MWD. While tube models + MWD integration
-              predict η₀ and G(t) well for narrow distributions, the quantitative
-              prediction of nonlinear properties (extensional viscosity, LAOS) for
-              polydisperse systems is an active area. Recent slip-link simulations
-              (Masubuchi, <em>Macromolecules</em>, 2023) show promise.
-            </li>
-            <li>
-              <strong className="text-[#0B2545]">Thixotropy constitutive modeling:</strong>{" "}
-              Despite decades of work, no single constitutive model adequately captures
-              thixotropy, yield stress, and viscoelasticity simultaneously. The
-              &quot;thixotropy problem&quot; (de Souza Mendes &amp; Thompson, 2019) remains open,
-              particularly relevant for recycled polymer compounds with complex
-              microstructures.
-            </li>
-            <li>
-              <strong className="text-[#0B2545]">Machine learning for rheology:</strong>{" "}
-              ML/AI approaches to predict rheological behavior from molecular
-              descriptors (MWD, branching, composition) are emerging but lack the
-              large, standardized datasets needed for reliable training
-              (Mahmoudabadbozchelou et al., <em>J. Rheol.</em>, 2021).
-            </li>
-          </ul>
-        </div>
-
-        <div className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-6">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#134074]" />
-            <h4 className="font-bold text-[#0B2545]">Processing &amp; Applications</h4>
-          </div>
-          <ul className="text-[#3d6285] text-sm space-y-3">
-            <li>
-              <strong className="text-[#0B2545]">Digital twins for recycled processing:</strong>{" "}
-              Real-time rheological monitoring + ML-driven process control could
-              compensate for batch-to-batch variability in recycled streams. Proof-of-concept
-              systems exist for virgin PE extrusion (Abeykoon, 2021) but have not been
-              validated for recycled feedstocks with variable contamination.
-            </li>
-            <li>
-              <strong className="text-[#0B2545]">Microplastics rheology:</strong>{" "}
-              The flow behavior of microplastic-laden environmental matrices (sediment,
-              wastewater sludge) is poorly characterized rheologically. Standard
-              suspension rheology models (Krieger-Dougherty) may not apply due to
-              non-spherical particle shapes and surface-active degradation products.
-            </li>
-            <li>
-              <strong className="text-[#0B2545]">Biopolymer blends with recycled polymers:</strong>{" "}
-              PLA/recycled-PE blends for transitional applications have complex rheology
-              (immiscible, degradation-sensitive, crystallization-dependent). Systematic
-              rheological studies mapping the composition–morphology–processability
-              space are limited.
-            </li>
-          </ul>
-        </div>
-
-        <div className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-6">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#0B2545]" />
-            <h4 className="font-bold text-[#0B2545]">Measurement &amp; Methods</h4>
-          </div>
-          <ul className="text-[#3d6285] text-sm space-y-3">
-            <li>
-              <strong className="text-[#0B2545]">High-throughput rheological screening:</strong>{" "}
-              Combinatorial/high-throughput approaches for screening recycled polymer
-              blends are virtually non-existent. Developing microfluidic rheometers or
-              rapid parallel plate methods for screening 100+ compositions/day would
-              accelerate formulation development for recycled compounds.
-            </li>
-            <li>
-              <strong className="text-[#0B2545]">Inline extensional rheometry:</strong>{" "}
-              While inline shear viscosity measurement is mature, inline extensional
-              viscosity measurement during processing remains a challenge. Converging
-              die methods (Cogswell) are approximate; true inline SER-type measurements
-              do not exist.
-            </li>
-            <li>
-              <strong className="text-[#0B2545]">Rheo-microscopy/Rheo-SAXS:</strong>{" "}
-              Simultaneous rheological measurement + structural characterization
-              (optical, X-ray, neutron scattering) provides unprecedented
-              structure–property links. Rheo-SANS/SAXS at synchrotron facilities is
-              expanding but still limited in accessibility. Recent lab-scale
-              rheo-microscopy with confocal/fluorescence enables real-time morphology
-              observation in polymer blends under shear.
-            </li>
-            <li>
-              <strong className="text-[#0B2545]">AI-assisted rheometry:</strong>{" "}
-              Automated experiment design (Bayesian optimization) for rheological
-              characterization could reduce measurement time by 50–80% while maintaining
-              data quality. Early demonstrations exist (Lennon et al.,{" "}
-              <em>J. Rheol.</em>, 2023) but adoption in industrial labs is nascent.
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Comprehensive Reference Library */}
-      <h3 className="text-2xl font-bold text-[#0B2545] mb-6">
-        Comprehensive Reference Library
-      </h3>
-
-      <div className="grid md:grid-cols-2 gap-6 mb-8">
-        <div className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-6">
-          <h4 className="font-bold text-[#134074] mb-4">Foundational Textbooks</h4>
-          <ul className="text-[#3d6285] text-sm space-y-2">
-            <li>
-              Macosko, C.W. (1994). <em>Rheology: Principles, Measurements, and
-              Applications.</em> Wiley-VCH.
-            </li>
-            <li>
-              Ferry, J.D. (1980). <em>Viscoelastic Properties of Polymers.</em>{" "}
-              3rd ed. Wiley.
-            </li>
-            <li>
-              Morrison, F.A. (2001). <em>Understanding Rheology.</em> Oxford University Press.
-            </li>
-            <li>
-              Bird, R.B., Armstrong, R.C. &amp; Hassager, O. (1987).{" "}
-              <em>Dynamics of Polymeric Liquids.</em> Vol. 1 &amp; 2. 2nd ed. Wiley.
-            </li>
-            <li>
-              Doi, M. &amp; Edwards, S.F. (1986). <em>The Theory of Polymer Dynamics.</em>{" "}
-              Oxford.
-            </li>
-            <li>
-              Larson, R.G. (1999). <em>The Structure and Rheology of Complex Fluids.</em>{" "}
-              Oxford.
-            </li>
-            <li>
-              Barnes, H.A., Hutton, J.F. &amp; Walters, K. (1989).{" "}
-              <em>An Introduction to Rheology.</em> Elsevier.
-            </li>
-          </ul>
-        </div>
-
-        <div className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-6">
-          <h4 className="font-bold text-[#13315C] mb-4">Modern &amp; Specialized</h4>
-          <ul className="text-[#3d6285] text-sm space-y-2">
-            <li>
-              Dealy, J.M. &amp; Larson, R.G. (2006). <em>Structure and Rheology of
-              Molten Polymers.</em> Hanser.
-            </li>
-            <li>
-              Münstedt, H. (2018). <em>Rheological Measurements with Commercial
-              Rheometers.</em> Hanser.
-            </li>
-            <li>
-              Mewis, J. &amp; Wagner, N.J. (2012). <em>Colloidal Suspension Rheology.</em>{" "}
-              Cambridge.
-            </li>
-            <li>
-              Tadmor, Z. &amp; Gogos, C.G. (2006). <em>Principles of Polymer
-              Processing.</em> 2nd ed. Wiley.
-            </li>
-            <li>
-              Osswald, T.A. &amp; Menges, G. (2012). <em>Materials Science of Polymers
-              for Engineers.</em> 3rd ed. Hanser.
-            </li>
-            <li>
-              La Mantia, F.P. (Ed.) (2009). <em>Handbook of Plastics Recycling.</em>{" "}
-              Rapra Technology.
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-6 mb-8">
-        <h4 className="font-bold text-[#0B2545] mb-4">Key Journal Articles (Selected)</h4>
-        <div className="grid md:grid-cols-2 gap-x-6 gap-y-2">
-          <ul className="text-[#3d6285] text-xs space-y-2">
-            <li>
-              de Gennes, P.G. (1971). Reptation of a polymer chain in the presence of
-              fixed obstacles. <em>J. Chem. Phys.</em>, 55, 572–579.
-            </li>
-            <li>
-              Doi, M. &amp; Edwards, S.F. (1978). Dynamics of concentrated polymer
-              systems. <em>J. Chem. Soc. Faraday Trans. 2</em>, 74, 1789–1801.
-            </li>
-            <li>
-              Likhtman, A.E. &amp; McLeish, T.C.B. (2002). Quantitative theory for
-              linear dynamics of linear entangled polymers. <em>Macromolecules</em>,
-              35(16), 6332–6343.
-            </li>
-            <li>
-              Palierne, J.F. (1990). Linear rheology of viscoelastic emulsions.{" "}
-              <em>Rheol. Acta</em>, 29, 204–214.
-            </li>
-            <li>
-              Trinkle, S. &amp; Friedrich, C. (2001). Van Gurp-Palmen-plot: a way to
-              characterize polydispersity of linear polymers. <em>Rheol. Acta</em>, 40,
-              322–328.
-            </li>
-            <li>
-              Hyun, K. et al. (2011). A review of nonlinear oscillatory shear tests.{" "}
-              <em>Prog. Polym. Sci.</em>, 36(12), 1697–1753.
-            </li>
-            <li>
-              Sentmanat, M.L. (2004). Miniature universal testing platform.{" "}
-              <em>Rheol. Acta</em>, 43, 657–669.
-            </li>
-          </ul>
-          <ul className="text-[#3d6285] text-xs space-y-2">
-            <li>
-              Hatzikiriakos, S.G. (2012). Wall slip of molten polymers.{" "}
-              <em>Prog. Polym. Sci.</em>, 37(4), 624–643.
-            </li>
-            <li>
-              Barnes, H.A. (1999). The yield stress — a review.{" "}
-              <em>J. Non-Newtonian Fluid Mech.</em>, 81(1–2), 133–178.
-            </li>
-            <li>
-              Groisman, A. &amp; Steinberg, V. (2000). Elastic turbulence in a polymer
-              solution flow. <em>Nature</em>, 405, 53–55.
-            </li>
-            <li>
-              Incarnato, L. et al. (2004). Structure and rheology of recycled PET
-              modified by reactive extrusion. <em>Polymer</em>, 45(10), 3873–3879.
-            </li>
-            <li>
-              Vilaplana, F. &amp; Karlsson, S. (2008). Quality concepts for recycled
-              polymeric materials. <em>Macromol. Mater. Eng.</em>, 293(4), 274–297.
-            </li>
-            <li>
-              Ragaert, K. et al. (2017). Mechanical and chemical recycling of solid
-              plastic waste. <em>Waste Management</em>, 69, 24–58.
-            </li>
-            <li>
-              Mackay, M.E. (2018). Rheological behavior in additive manufacturing.{" "}
-              <em>J. Rheol.</em>, 62(6), 1549–1561.
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Journals */}
-      <div className="bg-white border border-[#c9d9e8] rounded-2xl p-6">
-        <h4 className="font-bold text-[#0B2545] mb-3">Key Journals in Polymer Rheology</h4>
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
-          {[
-            "Journal of Rheology (SOR)",
-            "Rheologica Acta",
-            "Journal of Non-Newtonian Fluid Mechanics",
-            "Macromolecules",
-            "Polymer",
-            "Polymer Engineering & Science",
-            "Journal of Polymer Science",
-            "Progress in Polymer Science",
-          ].map((j) => (
-            <div
-              key={j}
-              className="bg-[#EEF4ED] rounded-lg px-3 py-2 text-[#3d6285] text-xs"
-            >
-              <em>{j}</em>
-            </div>
+      {/* Research Gaps */}
+      <AnimatedSection className="mb-16">
+        <h3 className="text-2xl font-bold text-[#0B2545] mb-6">Open Research Questions</h3>
+        <div className="grid md:grid-cols-2 gap-5">
+          {researchAreas.map((area, i) => (
+            <AnimatedCard key={i} delay={i * 0.08}
+              className="bg-white border border-[#c9d9e8] rounded-2xl p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-3 h-3 rounded-full" style={{ backgroundColor: area.color }} />
+                <h4 className="font-bold text-[#0B2545]">{area.title}</h4>
+              </div>
+              <ul className="space-y-2">
+                {area.items.map((item, j) => (
+                  <li key={j} className="flex items-start gap-2 text-[#3d6285] text-xs">
+                    <span className="w-1 h-1 rounded-full mt-1.5 shrink-0" style={{ backgroundColor: area.color }} />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </AnimatedCard>
           ))}
         </div>
-      </div>
+      </AnimatedSection>
+
+      {/* Reference Library */}
+      <AnimatedSection className="mb-8">
+        <h3 className="text-2xl font-bold text-[#0B2545] mb-6">Reference Library</h3>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 className="text-sm font-bold text-[#134074] mb-3 uppercase tracking-wide">Key Textbooks</h4>
+            <div className="space-y-2">
+              {textbooks.map((book, i) => (
+                <AnimatedCard key={i} delay={i * 0.04}
+                  className="bg-[#EEF4ED] rounded-xl px-4 py-2.5 flex items-center justify-between">
+                  <div>
+                    <span className="text-xs font-semibold text-[#0B2545]">{book.author}</span>
+                    <span className="text-xs text-[#3d6285] ml-1">— <em>{book.title}</em></span>
+                  </div>
+                  <span className="text-xs text-[#8DA9C4] shrink-0 ml-2">{book.year}</span>
+                </AnimatedCard>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h4 className="text-sm font-bold text-[#134074] mb-3 uppercase tracking-wide">Key Journals</h4>
+            <div className="grid grid-cols-2 gap-2">
+              {journals.map((j, i) => (
+                <AnimatedCard key={i} delay={i * 0.03}
+                  className="bg-white border border-[#c9d9e8] rounded-lg px-3 py-2 text-xs text-[#3d6285]">
+                  <em>{j}</em>
+                </AnimatedCard>
+              ))}
+            </div>
+          </div>
+        </div>
+      </AnimatedSection>
     </SectionWrapper>
   );
 }
