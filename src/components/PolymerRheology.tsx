@@ -12,7 +12,7 @@ function SubSection({
 }) {
   return (
     <div className="mb-16">
-      <h3 className="text-2xl font-bold text-[#fafafa] mb-6 tracking-tight" style={{ fontFamily: "var(--font-display)" }}>{title}</h3>
+      <h3 className="text-2xl font-bold text-[#18181b] mb-6 tracking-tight" style={{ fontFamily: "var(--font-display)" }}>{title}</h3>
       {children}
     </div>
   );
@@ -24,14 +24,14 @@ export default function PolymerRheology() {
       id="polymer-rheology"
       title="Deep Dive into Polymer Rheology"
       subtitle="Section 2 — Advanced Topics"
-      accent="#c084fc"
+      accent="#7c3aed"
     >
       {/* Molecular Origin */}
       <SubSection title="Molecular Origin of Polymer Viscoelasticity">
-        <div className="bg-[#0c0c12]/60 border border-white/[0.04] rounded-2xl backdrop-blur-sm p-6 mb-8">
-          <p className="text-[#a1a1aa] text-sm mb-4">
+        <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6 mb-8">
+          <p className="text-[#6b7280] text-sm mb-4">
             The unique rheological properties of polymers arise from their{" "}
-            <strong className="text-[#e4e4e7]">chain-like molecular architecture</strong>.
+            <strong className="text-[#18181b]">chain-like molecular architecture</strong>.
             Unlike small-molecule liquids, polymer chains with degree of polymerization
             N ≫ 1 can entangle, forming a temporary topological network that dominates
             the mechanical response. The critical molecular weight for entanglement
@@ -39,8 +39,8 @@ export default function PolymerRheology() {
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h4 className="font-semibold text-[#818cf8] mb-2">Rouse Model (Unentangled, M &lt; M<sub>c</sub>)</h4>
-              <p className="text-[#a1a1aa] text-xs mb-2">
+              <h4 className="font-semibold text-[#4f46e5] mb-2">Rouse Model (Unentangled, M &lt; M<sub>c</sub>)</h4>
+              <p className="text-[#6b7280] text-xs mb-2">
                 For unentangled chains, the Rouse model (1953) treats the polymer as a
                 series of N beads connected by harmonic springs (friction coefficient ζ):
               </p>
@@ -49,15 +49,15 @@ export default function PolymerRheology() {
                 τ<sub>R</sub> = ζN²b² / (6π²k<sub>B</sub>T) ∝ M²<br />
                 G(t) = (ρRT/M) Σ exp(−2t p²/τ<sub>R</sub>)
               </div>
-              <p className="text-[#a1a1aa] text-xs mt-2">
+              <p className="text-[#6b7280] text-xs mt-2">
                 Predicts η₀ ∝ M (linear dependence) and G&apos;(ω) ∝ ω² / G&apos;&apos;(ω) ∝ ω
                 in the terminal regime. The Rouse spectrum has a characteristic −1/2
                 slope in H(λ) vs. λ.
               </p>
             </div>
             <div>
-              <h4 className="font-semibold text-[#c084fc] mb-2">Reptation / Tube Model (Entangled, M &gt; M<sub>c</sub>)</h4>
-              <p className="text-[#a1a1aa] text-xs mb-2">
+              <h4 className="font-semibold text-[#7c3aed] mb-2">Reptation / Tube Model (Entangled, M &gt; M<sub>c</sub>)</h4>
+              <p className="text-[#6b7280] text-xs mb-2">
                 For entangled polymers, de Gennes (1971) and Doi-Edwards (1978) proposed
                 that chains are confined to a &quot;tube&quot; formed by surrounding chains and
                 relax by curvilinear diffusion (&quot;reptation&quot;):
@@ -67,7 +67,7 @@ export default function PolymerRheology() {
                 τ<sub>d</sub> = ζN³b² / (π²k<sub>B</sub>T · N<sub>e</sub>) ∝ M³<br />
                 G<sub>N</sub><sup>0</sup> = ρRT / M<sub>e</sub> (plateau modulus)
               </div>
-              <p className="text-[#a1a1aa] text-xs mt-2">
+              <p className="text-[#6b7280] text-xs mt-2">
                 The discrepancy (3.4 vs. 3.0) is attributed to contour length
                 fluctuations (CLF) and constraint release (CR). Modern extensions
                 (Likhtman-McLeish, 2002; Milner-McLeish, 1998) incorporate these
@@ -77,40 +77,40 @@ export default function PolymerRheology() {
           </div>
         </div>
 
-        <div className="bg-[#050507]/80 border border-white/[0.03] rounded-2xl p-6 mb-8">
-          <h4 className="font-bold text-[#fafafa] mb-3">
+        <div className="bg-white border border-[#e4e4e7] rounded-2xl p-6 mb-8">
+          <h4 className="font-bold text-[#18181b] mb-3">
             Entanglement Molecular Weight — Key Values
           </h4>
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left">
               <thead>
-                <tr className="border-b border-white/[0.06]">
-                  <th className="px-4 py-2 text-[#fafafa]">Polymer</th>
-                  <th className="px-4 py-2 text-[#fafafa]">M<sub>e</sub> (g/mol)</th>
-                  <th className="px-4 py-2 text-[#fafafa]">G<sub>N</sub><sup>0</sup> (MPa)</th>
-                  <th className="px-4 py-2 text-[#fafafa]">M<sub>c</sub> ≈ 2M<sub>e</sub></th>
+                <tr className="border-b border-[#e5e7eb]">
+                  <th className="px-4 py-2 text-[#18181b]">Polymer</th>
+                  <th className="px-4 py-2 text-[#18181b]">M<sub>e</sub> (g/mol)</th>
+                  <th className="px-4 py-2 text-[#18181b]">G<sub>N</sub><sup>0</sup> (MPa)</th>
+                  <th className="px-4 py-2 text-[#18181b]">M<sub>c</sub> ≈ 2M<sub>e</sub></th>
                 </tr>
               </thead>
-              <tbody className="text-[#a1a1aa]">
-                <tr className="border-b border-white/[0.06]/50">
+              <tbody className="text-[#6b7280]">
+                <tr className="border-b border-[#e5e7eb]">
                   <td className="px-4 py-2">Polyethylene (PE)</td>
                   <td className="px-4 py-2">~1,250</td>
                   <td className="px-4 py-2">2.6</td>
                   <td className="px-4 py-2">~2,500</td>
                 </tr>
-                <tr className="border-b border-white/[0.06]/50">
+                <tr className="border-b border-[#e5e7eb]">
                   <td className="px-4 py-2">Polypropylene (iPP)</td>
                   <td className="px-4 py-2">~5,500</td>
                   <td className="px-4 py-2">0.47</td>
                   <td className="px-4 py-2">~11,000</td>
                 </tr>
-                <tr className="border-b border-white/[0.06]/50">
+                <tr className="border-b border-[#e5e7eb]">
                   <td className="px-4 py-2">Polystyrene (PS)</td>
                   <td className="px-4 py-2">~13,300</td>
                   <td className="px-4 py-2">0.20</td>
                   <td className="px-4 py-2">~26,600</td>
                 </tr>
-                <tr className="border-b border-white/[0.06]/50">
+                <tr className="border-b border-[#e5e7eb]">
                   <td className="px-4 py-2">PMMA</td>
                   <td className="px-4 py-2">~10,000</td>
                   <td className="px-4 py-2">0.31</td>
@@ -125,7 +125,7 @@ export default function PolymerRheology() {
               </tbody>
             </table>
           </div>
-          <p className="text-[#a1a1aa] text-xs mt-3">
+          <p className="text-[#6b7280] text-xs mt-3">
             Values from Fetters, Lohse &amp; Colby (2007), <em>Physical Properties of Polymers Handbook</em>.
             M<sub>e</sub> is inversely related to chain stiffness and packing length.
           </p>
@@ -135,9 +135,9 @@ export default function PolymerRheology() {
       {/* Viscoelasticity */}
       <SubSection title="Viscoelastic Characterization Experiments">
         <div className="grid md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-[#0c0c12]/60 border border-white/[0.04] rounded-2xl backdrop-blur-sm p-6">
-            <h4 className="font-bold text-[#818cf8] mb-3">Creep &amp; Creep Recovery</h4>
-            <p className="text-[#a1a1aa] text-sm mb-3">
+          <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6">
+            <h4 className="font-bold text-[#4f46e5] mb-3">Creep &amp; Creep Recovery</h4>
+            <p className="text-[#6b7280] text-sm mb-3">
               A constant stress <span className="math">σ₀</span> is applied
               instantaneously, and the resulting strain{" "}
               <span className="math">γ(t)</span> is measured. The
@@ -148,13 +148,13 @@ export default function PolymerRheology() {
               <span className="math">γ</span>(<span className="math">t</span>) /{" "}
               <span className="math">σ₀</span> &nbsp; [Pa⁻¹]
             </div>
-            <p className="text-[#a1a1aa] text-xs mt-3 mb-2">
+            <p className="text-[#6b7280] text-xs mt-3 mb-2">
               For a viscoelastic liquid (Maxwell-type):
             </p>
             <div className="math-block text-xs">
               J(t) = J<sub>0</sub> + Σ J<sub>i</sub>(1 − e<sup>−t/τ<sub>i</sub></sup>) + t/η₀
             </div>
-            <p className="text-[#a1a1aa] text-xs mt-2">
+            <p className="text-[#6b7280] text-xs mt-2">
               The steady-state recoverable compliance J<sub>e</sub><sup>0</sup> ={" "}
               lim[J(t) − t/η₀] is extremely sensitive to the high-MW tail of the
               distribution — much more so than η₀. For recycled polymers, creep
@@ -163,9 +163,9 @@ export default function PolymerRheology() {
             </p>
           </div>
 
-          <div className="bg-[#0c0c12]/60 border border-white/[0.04] rounded-2xl backdrop-blur-sm p-6">
-            <h4 className="font-bold text-[#c084fc] mb-3">Stress Relaxation</h4>
-            <p className="text-[#a1a1aa] text-sm mb-3">
+          <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6">
+            <h4 className="font-bold text-[#7c3aed] mb-3">Stress Relaxation</h4>
+            <p className="text-[#6b7280] text-sm mb-3">
               A step strain <span className="math">γ₀</span> is applied, and
               the decaying stress <span className="math">σ(t)</span> is monitored.
               The relaxation modulus:
@@ -175,15 +175,15 @@ export default function PolymerRheology() {
               <span className="math">σ</span>(<span className="math">t</span>) /{" "}
               <span className="math">γ₀</span> &nbsp; [Pa]
             </div>
-            <p className="text-[#a1a1aa] text-xs mt-3 mb-2">
-              For the <strong className="text-[#e4e4e7]">Generalized Maxwell model</strong>{" "}
+            <p className="text-[#6b7280] text-xs mt-3 mb-2">
+              For the <strong className="text-[#18181b]">Generalized Maxwell model</strong>{" "}
               (discrete relaxation spectrum):
             </p>
             <div className="math-block text-xs">
               G(t) = Σ<sub>i=1</sub><sup>N</sup> G<sub>i</sub> · exp(−t/λ<sub>i</sub>)
             </div>
-            <p className="text-[#a1a1aa] text-xs mt-2">
-              The <strong className="text-[#e4e4e7]">relaxation time spectrum H(λ)</strong>{" "}
+            <p className="text-[#6b7280] text-xs mt-2">
+              The <strong className="text-[#18181b]">relaxation time spectrum H(λ)</strong>{" "}
               is the continuous analog, obtained by regularization methods (e.g.,
               Tikhonov regularization, NLREG software). The spectrum provides direct
               molecular information: its shape, breadth, and terminal time correlate
@@ -191,24 +191,24 @@ export default function PolymerRheology() {
             </p>
           </div>
 
-          <div className="bg-[#0c0c12]/60 border border-white/[0.04] rounded-2xl backdrop-blur-sm p-6">
-            <h4 className="font-bold text-[#2dd4bf] mb-3">Oscillatory Shear (SAOS)</h4>
-            <p className="text-[#a1a1aa] text-sm mb-3">
+          <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6">
+            <h4 className="font-bold text-[#0d9488] mb-3">Oscillatory Shear (SAOS)</h4>
+            <p className="text-[#6b7280] text-sm mb-3">
               Small-Amplitude Oscillatory Shear applies:
             </p>
             <div className="math-block text-sm">
               <span className="math">γ</span>(<span className="math">t</span>) ={" "}
               <span className="math">γ₀</span> sin(<span className="math">ωt</span>)
             </div>
-            <p className="text-[#a1a1aa] text-sm mt-3 mb-2">
+            <p className="text-[#6b7280] text-sm mt-3 mb-2">
               The stress response within the Linear Viscoelastic Region (LVR):
             </p>
             <div className="math-block text-sm">
               <span className="math">σ</span>(<span className="math">t</span>) ={" "}
               <span className="math">γ₀</span>[G&apos; sin(<span className="math">ωt</span>) + G&apos;&apos; cos(<span className="math">ωt</span>)]
             </div>
-            <p className="text-[#a1a1aa] text-xs mt-3">
-              <strong className="text-[#e4e4e7]">Critical prerequisite:</strong> Strain
+            <p className="text-[#6b7280] text-xs mt-3">
+              <strong className="text-[#18181b]">Critical prerequisite:</strong> Strain
               sweep must be performed first to identify the LVR (where G&apos;, G&apos;&apos; are
               independent of γ₀). Typical LVR limits: γ₀ &lt; 1% for entangled melts,
               γ₀ &lt; 0.1% for filled systems or gels, γ₀ &lt; 0.01% for highly
@@ -218,16 +218,16 @@ export default function PolymerRheology() {
         </div>
 
         {/* LAOS */}
-        <div className="bg-[#0c0c12]/60 border border-white/[0.04] rounded-2xl backdrop-blur-sm p-6 mb-8">
+        <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6 mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <h4 className="font-bold text-[#fafafa]">
+            <h4 className="font-bold text-[#18181b]">
               Large-Amplitude Oscillatory Shear (LAOS)
             </h4>
-            <span className="px-2 py-0.5 rounded bg-[#f0abfc]/10 text-[#f0abfc] text-xs font-semibold">
+            <span className="px-2 py-0.5 rounded bg-[#9333ea]/8 text-[#9333ea] text-xs font-semibold">
               Advanced Topic
             </span>
           </div>
-          <p className="text-[#a1a1aa] text-sm mb-4">
+          <p className="text-[#6b7280] text-sm mb-4">
             When γ₀ exceeds the LVR, the stress response becomes nonlinear and contains
             higher harmonics. LAOS analysis (Hyun et al., <em>Prog. Polym. Sci.</em>, 2011)
             provides rich information about nonlinear viscoelasticity:
@@ -237,22 +237,22 @@ export default function PolymerRheology() {
               <div className="math-block text-sm">
                 σ(t) = γ₀ Σ<sub>n=odd</sub> [G&apos;<sub>n</sub> sin(nωt) + G&apos;&apos;<sub>n</sub> cos(nωt)]
               </div>
-              <p className="text-[#a1a1aa] text-xs mt-3">
+              <p className="text-[#6b7280] text-xs mt-3">
                 The ratio I<sub>3/1</sub> = |G*<sub>3</sub>|/|G*<sub>1</sub>| quantifies
                 nonlinearity. FT-rheology (Wilhelm, <em>Macromol. Mater. Eng.</em>, 2002)
                 uses Fourier transform to analyze the harmonic content.
               </p>
             </div>
             <div>
-              <h5 className="text-[#f0abfc] font-semibold text-sm mb-2">
+              <h5 className="text-[#9333ea] font-semibold text-sm mb-2">
                 Sequence of Physical Processes (SPP)
               </h5>
-              <p className="text-[#a1a1aa] text-xs">
+              <p className="text-[#6b7280] text-xs">
                 Rogers (2012) introduced the SPP framework, which decomposes LAOS into
                 a sequence of instantaneous elastic and viscous moduli throughout the
                 oscillation cycle. This provides physical insight unavailable from
                 harmonic decomposition alone. LAOS is particularly useful for
-                characterizing <strong className="text-[#e4e4e7]">recycled polymer blends</strong>{" "}
+                characterizing <strong className="text-[#18181b]">recycled polymer blends</strong>{" "}
                 where interfacial slip and droplet deformation create complex nonlinear
                 signatures (Salehiyan &amp; Hyun, <em>Macromolecules</em>, 2013).
               </p>
@@ -261,14 +261,14 @@ export default function PolymerRheology() {
         </div>
 
         {/* Mechanical Models */}
-        <div className="bg-[#0c0c12]/60 border border-white/[0.04] rounded-2xl backdrop-blur-sm p-6 mb-8">
-          <h4 className="font-bold text-[#fafafa] mb-4">
+        <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6 mb-8">
+          <h4 className="font-bold text-[#18181b] mb-4">
             Linear Viscoelastic Models
           </h4>
           <div className="grid sm:grid-cols-3 gap-6 mb-6">
             <div>
-              <h5 className="text-[#818cf8] font-semibold mb-2">Maxwell Model</h5>
-              <p className="text-[#a1a1aa] text-sm mb-2">
+              <h5 className="text-[#4f46e5] font-semibold mb-2">Maxwell Model</h5>
+              <p className="text-[#6b7280] text-sm mb-2">
                 Spring (G) and dashpot (η) in <em>series</em>. Describes stress
                 relaxation well, but predicts unrealistic creep behavior.
               </p>
@@ -278,8 +278,8 @@ export default function PolymerRheology() {
               </div>
             </div>
             <div>
-              <h5 className="text-[#c084fc] font-semibold mb-2">Kelvin-Voigt Model</h5>
-              <p className="text-[#a1a1aa] text-sm mb-2">
+              <h5 className="text-[#7c3aed] font-semibold mb-2">Kelvin-Voigt Model</h5>
+              <p className="text-[#6b7280] text-sm mb-2">
                 Spring and dashpot in <em>parallel</em>. Describes creep retardation
                 well, but cannot relax stress.
               </p>
@@ -289,8 +289,8 @@ export default function PolymerRheology() {
               </div>
             </div>
             <div>
-              <h5 className="text-[#2dd4bf] font-semibold mb-2">Generalized Maxwell</h5>
-              <p className="text-[#a1a1aa] text-sm mb-2">
+              <h5 className="text-[#0d9488] font-semibold mb-2">Generalized Maxwell</h5>
+              <p className="text-[#6b7280] text-sm mb-2">
                 N Maxwell elements in parallel — the standard model used in FEM
                 simulation software:
               </p>
@@ -300,20 +300,20 @@ export default function PolymerRheology() {
               </div>
             </div>
           </div>
-          <div className="bg-[#050507]/60 rounded-xl border border-white/[0.02] p-4">
-            <h5 className="text-[#fbbf24] font-semibold text-sm mb-2">
+          <div className="bg-white rounded-xl border border-[#f0f0f2] p-4">
+            <h5 className="text-[#d97706] font-semibold text-sm mb-2">
               Nonlinear Constitutive Models (Beyond LVE)
             </h5>
-            <p className="text-[#a1a1aa] text-xs">
+            <p className="text-[#6b7280] text-xs">
               For polymer processing where large deformations occur:{" "}
-              <strong className="text-[#e4e4e7]">Wagner integral model</strong> (strain
+              <strong className="text-[#18181b]">Wagner integral model</strong> (strain
               damping function h(γ)),{" "}
-              <strong className="text-[#e4e4e7]">Pom-Pom model</strong> (for branched
+              <strong className="text-[#18181b]">Pom-Pom model</strong> (for branched
               polymers, McLeish &amp; Larson, 1998),{" "}
-              <strong className="text-[#e4e4e7]">Rolie-Poly</strong> (Likhtman &amp; Graham, 2003)
+              <strong className="text-[#18181b]">Rolie-Poly</strong> (Likhtman &amp; Graham, 2003)
               for linear polymers. The{" "}
-              <strong className="text-[#e4e4e7]">Giesekus model</strong> (1982) and{" "}
-              <strong className="text-[#e4e4e7]">PTT model</strong> (Phan-Thien &amp; Tanner, 1977)
+              <strong className="text-[#18181b]">Giesekus model</strong> (1982) and{" "}
+              <strong className="text-[#18181b]">PTT model</strong> (Phan-Thien &amp; Tanner, 1977)
               remain workhorses in commercial CFD software (Polyflow, ANSYS Fluent, OpenFOAM).
             </p>
           </div>
@@ -323,18 +323,18 @@ export default function PolymerRheology() {
       {/* Dynamic Moduli & Frequency Sweep */}
       <SubSection title="Dynamic Moduli — Storage &amp; Loss Modulus">
         <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-[#0c0c12]/60 border border-white/[0.04] rounded-2xl backdrop-blur-sm p-6">
-            <h4 className="font-bold text-[#818cf8] mb-3">
+          <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6">
+            <h4 className="font-bold text-[#4f46e5] mb-3">
               Storage Modulus G&apos; (Elastic Component)
             </h4>
-            <p className="text-[#a1a1aa] text-sm mb-3">
+            <p className="text-[#6b7280] text-sm mb-3">
               G&apos; represents the energy <em>stored</em> elastically per cycle
               of deformation:
             </p>
             <div className="math-block text-sm">
               G&apos; = (σ₀/γ₀) cos(δ) = |G*| cos(δ)
             </div>
-            <p className="text-[#a1a1aa] text-xs mt-3">
+            <p className="text-[#6b7280] text-xs mt-3">
               In the terminal zone (ω → 0): G&apos; ∝ ω² for entangled linear polymers.
               Deviation from this scaling indicates long-chain branching
               (G&apos; ∝ ω<sup>n</sup>, n &lt; 2), or the presence of a gel network
@@ -343,20 +343,20 @@ export default function PolymerRheology() {
               ultra-high MW material or crosslinked gel in recycled polymers.
             </p>
           </div>
-          <div className="bg-[#0c0c12]/60 border border-white/[0.04] rounded-2xl backdrop-blur-sm p-6">
-            <h4 className="font-bold text-[#f0abfc] mb-3">
+          <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6">
+            <h4 className="font-bold text-[#9333ea] mb-3">
               Loss Modulus G&apos;&apos; (Viscous Component)
             </h4>
-            <p className="text-[#a1a1aa] text-sm mb-3">
+            <p className="text-[#6b7280] text-sm mb-3">
               G&apos;&apos; represents the energy <em>dissipated</em> as heat per
               cycle:
             </p>
             <div className="math-block text-sm">
               G&apos;&apos; = (σ₀/γ₀) sin(δ) = |G*| sin(δ)
             </div>
-            <p className="text-[#a1a1aa] text-xs mt-3">
+            <p className="text-[#6b7280] text-xs mt-3">
               In the terminal zone: G&apos;&apos; ∝ ω for entangled linear polymers.
-              The <strong className="text-[#e4e4e7]">van Gurp-Palmen plot</strong>{" "}
+              The <strong className="text-[#18181b]">van Gurp-Palmen plot</strong>{" "}
               (δ vs. |G*|) eliminates the frequency variable and is particularly
               sensitive to branching and polydispersity — widely used for quality
               control of recycled resins (Trinkle &amp; Friedrich,{" "}
@@ -365,40 +365,40 @@ export default function PolymerRheology() {
           </div>
         </div>
 
-        <div className="bg-[#0c0c12]/60 border border-white/[0.04] rounded-2xl backdrop-blur-sm p-6 mb-8">
+        <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6 mb-8">
           <div className="flex items-center gap-3 mb-2">
-            <h4 className="font-bold text-[#fafafa]">Damping Factor &amp; Cole-Cole Analysis</h4>
-            <span className="px-2 py-0.5 rounded bg-[#fbbf24]/10 text-[#fbbf24] text-xs font-semibold">
+            <h4 className="font-bold text-[#18181b]">Damping Factor &amp; Cole-Cole Analysis</h4>
+            <span className="px-2 py-0.5 rounded bg-[#d97706]/8 text-[#d97706] text-xs font-semibold">
               tan(δ)
             </span>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <p className="text-[#a1a1aa] text-sm mb-3">
+              <p className="text-[#6b7280] text-sm mb-3">
                 The ratio of energy dissipated to energy stored per cycle:
               </p>
               <div className="math-block">
                 tan(δ) = G&apos;&apos; / G&apos;
               </div>
-              <p className="text-[#a1a1aa] text-sm mt-3">
+              <p className="text-[#6b7280] text-sm mt-3">
                 At the crossover point, tan(δ) = 1. The crossover frequency
                 ω<sub>c</sub> gives the terminal relaxation time λ = 1/ω<sub>c</sub>,
                 which scales with M<sub>w</sub><sup>3.4</sup>.
               </p>
             </div>
             <div>
-              <h5 className="text-[#c084fc] font-semibold text-sm mb-2">Cole-Cole Plot</h5>
-              <p className="text-[#a1a1aa] text-xs mb-2">
-                The <strong className="text-[#e4e4e7]">Cole-Cole plot</strong> (η&apos;&apos; vs. η&apos;)
+              <h5 className="text-[#7c3aed] font-semibold text-sm mb-2">Cole-Cole Plot</h5>
+              <p className="text-[#6b7280] text-xs mb-2">
+                The <strong className="text-[#18181b]">Cole-Cole plot</strong> (η&apos;&apos; vs. η&apos;)
                 reveals structural information:
               </p>
-              <ul className="text-[#a1a1aa] text-xs list-disc list-inside space-y-1">
+              <ul className="text-[#6b7280] text-xs list-disc list-inside space-y-1">
                 <li>A semicircle → single relaxation time (Maxwell)</li>
                 <li>A skewed arc → distribution of relaxation times</li>
                 <li>A &quot;tail&quot; at low η&apos; → long-chain branching or gel</li>
                 <li>T-independent Cole-Cole → thermorheological simplicity</li>
               </ul>
-              <p className="text-[#a1a1aa] text-xs mt-2">
+              <p className="text-[#6b7280] text-xs mt-2">
                 For recycled blends, a second arc detects immiscibility even when
                 morphological analysis is inconclusive (Pötschke &amp; Paul, 2003).
               </p>
@@ -407,11 +407,11 @@ export default function PolymerRheology() {
         </div>
 
         {/* Interactive Frequency Sweep Chart */}
-        <div className="bg-[#0c0c12]/60 border border-white/[0.04] rounded-2xl backdrop-blur-sm p-6 mb-8">
-          <h4 className="text-xl font-bold text-[#fafafa] mb-2">
+        <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6 mb-8">
+          <h4 className="text-xl font-bold text-[#18181b] mb-2">
             Interactive Frequency Sweep — G&apos; and G&apos;&apos; Crossover
           </h4>
-          <p className="text-[#a1a1aa] text-sm mb-6">
+          <p className="text-[#6b7280] text-sm mb-6">
             Adjust the crossover frequency and plateau modulus to see how the
             dynamic moduli evolve. The crossover point (G&apos; = G&apos;&apos;)
             shifts along the frequency axis and is directly related to the
@@ -423,31 +423,31 @@ export default function PolymerRheology() {
         </div>
 
         {/* Molecular Weight Diagnostics */}
-        <div className="bg-[#050507]/80 border border-white/[0.03] rounded-2xl p-6 mb-8">
-          <h4 className="font-bold text-[#fafafa] mb-3">
+        <div className="bg-white border border-[#e4e4e7] rounded-2xl p-6 mb-8">
+          <h4 className="font-bold text-[#18181b] mb-3">
             Rheological Diagnostics from Dynamic Data
           </h4>
           <div className="grid md:grid-cols-3 gap-4">
-            <div className="bg-white/[0.02] rounded-xl p-4">
-              <h5 className="text-[#818cf8] font-semibold text-sm mb-2">Molecular Weight</h5>
-              <p className="text-[#a1a1aa] text-xs">
+            <div className="bg-[#f4f4f5] rounded-xl p-4">
+              <h5 className="text-[#4f46e5] font-semibold text-sm mb-2">Molecular Weight</h5>
+              <p className="text-[#6b7280] text-xs">
                 η₀ ∝ M<sub>w</sub><sup>3.4</sup> (above M<sub>c</sub>). The crossover
                 modulus G<sub>c</sub> is inversely related to polydispersity (PDI). Higher
                 G<sub>c</sub> → narrower MWD. Routinely used in PE resin QC.
               </p>
             </div>
-            <div className="bg-white/[0.02] rounded-xl p-4">
-              <h5 className="text-[#c084fc] font-semibold text-sm mb-2">Long-Chain Branching</h5>
-              <p className="text-[#a1a1aa] text-xs">
+            <div className="bg-[#f4f4f5] rounded-xl p-4">
+              <h5 className="text-[#7c3aed] font-semibold text-sm mb-2">Long-Chain Branching</h5>
+              <p className="text-[#6b7280] text-xs">
                 LCB increases η₀ at a given M<sub>w</sub>. It suppresses terminal G&apos; ∝ ω² scaling,
                 widens the crossover, and creates thermorheological complexity
                 (TTS failure). Enhancement of η<sub>E</sub> (strain hardening) is the most
                 definitive signature.
               </p>
             </div>
-            <div className="bg-white/[0.02] rounded-xl p-4">
-              <h5 className="text-[#2dd4bf] font-semibold text-sm mb-2">Degradation Detection</h5>
-              <p className="text-[#a1a1aa] text-xs">
+            <div className="bg-[#f4f4f5] rounded-xl p-4">
+              <h5 className="text-[#0d9488] font-semibold text-sm mb-2">Degradation Detection</h5>
+              <p className="text-[#6b7280] text-xs">
                 Chain scission shifts ω<sub>c</sub> to higher frequencies. Crosslinking causes
                 G&apos; &gt; G&apos;&apos; across all frequencies (no crossover). Partial degradation
                 broadens MWD, lowering G<sub>c</sub>. Monitoring η₀ and G<sub>c</sub> over
@@ -460,28 +460,28 @@ export default function PolymerRheology() {
 
       {/* TTS & Temperature Effects */}
       <SubSection title="Temperature Effects — Time-Temperature Superposition">
-        <div className="bg-[#0c0c12]/60 border border-white/[0.04] rounded-2xl backdrop-blur-sm p-6 mb-8">
-          <p className="text-[#a1a1aa] mb-4">
-            <strong className="text-[#e4e4e7]">TTS</strong> states that changing
+        <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6 mb-8">
+          <p className="text-[#6b7280] mb-4">
+            <strong className="text-[#18181b]">TTS</strong> states that changing
             temperature is equivalent to shifting the frequency scale by a<sub>T</sub>.
-            This constructs <strong className="text-[#e4e4e7]">master curves</strong>{" "}
+            This constructs <strong className="text-[#18181b]">master curves</strong>{" "}
             spanning many decades from limited experimental windows.
           </p>
           <div className="math-block">
             G&apos;(ω, T) = (b<sub>T</sub>) · G&apos;(ω · a<sub>T</sub>, T<sub>ref</sub>)
           </div>
-          <p className="text-[#a1a1aa] text-sm mt-3">
+          <p className="text-[#6b7280] text-sm mt-3">
             where b<sub>T</sub> = ρT / (ρ<sub>ref</sub>T<sub>ref</sub>) is the
             vertical shift factor. TTS requires{" "}
-            <strong className="text-[#e4e4e7]">thermorheological simplicity</strong> —
+            <strong className="text-[#18181b]">thermorheological simplicity</strong> —
             all relaxation mechanisms must have the same T dependence.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-[#0c0c12]/60 border border-white/[0.04] rounded-2xl backdrop-blur-sm p-6">
-            <h4 className="font-bold text-[#818cf8] mb-3">WLF Equation</h4>
-            <p className="text-[#a1a1aa] text-sm mb-3">
+          <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6">
+            <h4 className="font-bold text-[#4f46e5] mb-3">WLF Equation</h4>
+            <p className="text-[#6b7280] text-sm mb-3">
               Valid near T<sub>g</sub>. From free-volume theory:
             </p>
             <div className="math-block text-sm">
@@ -490,17 +490,17 @@ export default function PolymerRheology() {
             <div className="overflow-x-auto mt-3">
               <table className="w-full text-xs">
                 <thead>
-                  <tr className="border-b border-white/[0.06]">
-                    <th className="px-2 py-1 text-left text-[#fafafa]">Polymer</th>
-                    <th className="px-2 py-1 text-left text-[#fafafa]">C₁</th>
-                    <th className="px-2 py-1 text-left text-[#fafafa]">C₂ (K)</th>
+                  <tr className="border-b border-[#e5e7eb]">
+                    <th className="px-2 py-1 text-left text-[#18181b]">Polymer</th>
+                    <th className="px-2 py-1 text-left text-[#18181b]">C₁</th>
+                    <th className="px-2 py-1 text-left text-[#18181b]">C₂ (K)</th>
                   </tr>
                 </thead>
-                <tbody className="text-[#a1a1aa]">
-                  <tr className="border-b border-white/[0.06]/30">
+                <tbody className="text-[#6b7280]">
+                  <tr className="border-b border-[#e5e7eb]/30">
                     <td className="px-2 py-1">PS</td><td className="px-2 py-1">13.7</td><td className="px-2 py-1">50.0</td>
                   </tr>
-                  <tr className="border-b border-white/[0.06]/30">
+                  <tr className="border-b border-[#e5e7eb]/30">
                     <td className="px-2 py-1">PMMA</td><td className="px-2 py-1">17.4</td><td className="px-2 py-1">65.5</td>
                   </tr>
                   <tr>
@@ -511,9 +511,9 @@ export default function PolymerRheology() {
             </div>
           </div>
 
-          <div className="bg-[#0c0c12]/60 border border-white/[0.04] rounded-2xl backdrop-blur-sm p-6">
-            <h4 className="font-bold text-[#c084fc] mb-3">Arrhenius Equation</h4>
-            <p className="text-[#a1a1aa] text-sm mb-3">
+          <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6">
+            <h4 className="font-bold text-[#7c3aed] mb-3">Arrhenius Equation</h4>
+            <p className="text-[#6b7280] text-sm mb-3">
               Valid well above T<sub>g</sub> (T &gt; T<sub>g</sub> + 100 K):
             </p>
             <div className="math-block text-sm">
@@ -522,19 +522,19 @@ export default function PolymerRheology() {
             <div className="overflow-x-auto mt-3">
               <table className="w-full text-xs">
                 <thead>
-                  <tr className="border-b border-white/[0.06]">
-                    <th className="px-2 py-1 text-left text-[#fafafa]">Polymer</th>
-                    <th className="px-2 py-1 text-left text-[#fafafa]">E<sub>a</sub> (kJ/mol)</th>
+                  <tr className="border-b border-[#e5e7eb]">
+                    <th className="px-2 py-1 text-left text-[#18181b]">Polymer</th>
+                    <th className="px-2 py-1 text-left text-[#18181b]">E<sub>a</sub> (kJ/mol)</th>
                   </tr>
                 </thead>
-                <tbody className="text-[#a1a1aa]">
-                  <tr className="border-b border-white/[0.06]/30">
+                <tbody className="text-[#6b7280]">
+                  <tr className="border-b border-[#e5e7eb]/30">
                     <td className="px-2 py-1">HDPE</td><td className="px-2 py-1">25–28</td>
                   </tr>
-                  <tr className="border-b border-white/[0.06]/30">
+                  <tr className="border-b border-[#e5e7eb]/30">
                     <td className="px-2 py-1">LDPE</td><td className="px-2 py-1">50–60 (higher due to LCB)</td>
                   </tr>
-                  <tr className="border-b border-white/[0.06]/30">
+                  <tr className="border-b border-[#e5e7eb]/30">
                     <td className="px-2 py-1">iPP</td><td className="px-2 py-1">40–45</td>
                   </tr>
                   <tr>
@@ -547,34 +547,34 @@ export default function PolymerRheology() {
         </div>
 
         {/* TTS Failure */}
-        <div className="bg-[#0c0c12]/40 border border-[#c084fc]/10 backdrop-blur-sm rounded-2xl p-6">
-          <h4 className="font-bold text-[#fafafa] mb-3">
+        <div className="bg-[#f8f8fa] border border-[#7c3aed]/10 rounded-2xl p-6">
+          <h4 className="font-bold text-[#18181b] mb-3">
             When TTS Fails — Thermorheological Complexity
           </h4>
-          <p className="text-[#a1a1aa] text-sm mb-3">
+          <p className="text-[#6b7280] text-sm mb-3">
             TTS fails when different relaxation mechanisms have different T dependencies:
           </p>
-          <ul className="text-[#a1a1aa] text-sm list-disc list-inside space-y-2">
+          <ul className="text-[#6b7280] text-sm list-disc list-inside space-y-2">
             <li>
-              <strong className="text-[#e4e4e7]">Long-chain branched polymers</strong> — branch
+              <strong className="text-[#18181b]">Long-chain branched polymers</strong> — branch
               retraction and backbone reptation have different activation energies.
             </li>
             <li>
-              <strong className="text-[#e4e4e7]">Immiscible polymer blends</strong> — each
+              <strong className="text-[#18181b]">Immiscible polymer blends</strong> — each
               phase has its own a<sub>T</sub>(T), plus interfacial relaxation.
               Critical for recycled streams with contaminants.
             </li>
             <li>
-              <strong className="text-[#e4e4e7]">Semi-crystalline polymers near T<sub>m</sub></strong>{" "}
+              <strong className="text-[#18181b]">Semi-crystalline polymers near T<sub>m</sub></strong>{" "}
               — crystallization kinetics violate TTS.
             </li>
             <li>
-              <strong className="text-[#e4e4e7]">Block copolymers</strong> — microphase
+              <strong className="text-[#18181b]">Block copolymers</strong> — microphase
               separation creates distinct thermal responses.
             </li>
           </ul>
-          <p className="text-[#a1a1aa] text-xs mt-3">
-            <strong className="text-[#fbbf24]">Literature gap:</strong> TTS applicability for
+          <p className="text-[#6b7280] text-xs mt-3">
+            <strong className="text-[#d97706]">Literature gap:</strong> TTS applicability for
             multi-component recycled streams remains poorly characterized. Even &lt;2%
             crosslinked gel in recycled PE can cause apparent TTS failure
             (Auhl et al., <em>Macromolecules</em>, 2019).
@@ -585,43 +585,43 @@ export default function PolymerRheology() {
       {/* Extensional Rheology */}
       <SubSection title="Extensional Rheology">
         <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-[#0c0c12]/60 border border-white/[0.04] rounded-2xl backdrop-blur-sm p-6">
-            <h4 className="font-bold text-[#2dd4bf] mb-3">
+          <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6">
+            <h4 className="font-bold text-[#0d9488] mb-3">
               Extensional (Elongational) Viscosity
             </h4>
-            <p className="text-[#a1a1aa] text-sm mb-3">
+            <p className="text-[#6b7280] text-sm mb-3">
               Transient extensional viscosity at constant Hencky strain rate:
             </p>
             <div className="math-block text-sm">
               η<sub>E</sub><sup>+</sup>(t, ε̇) = [σ<sub>11</sub>(t) − σ<sub>22</sub>(t)] / ε̇
             </div>
-            <p className="text-[#a1a1aa] text-sm mt-3 mb-2">
-              <strong className="text-[#e4e4e7]">Trouton&apos;s ratios</strong> (Newtonian):
+            <p className="text-[#6b7280] text-sm mt-3 mb-2">
+              <strong className="text-[#18181b]">Trouton&apos;s ratios</strong> (Newtonian):
             </p>
             <div className="math-block text-sm">
               Tr = η<sub>E</sub>/η = 3 (uniaxial) &nbsp;| 6 (equibiaxial) &nbsp;| 4 (planar)
             </div>
-            <p className="text-[#a1a1aa] text-xs mt-3">
+            <p className="text-[#6b7280] text-xs mt-3">
               For polymer melts, Tr(t) initially follows the LVE prediction (3η<sup>+</sup>(t)),
               then deviates at a critical strain. Strain hardening (Tr &gt; 3) or
               softening (Tr &lt; 3) carries molecular topology information.
             </p>
           </div>
 
-          <div className="bg-[#0c0c12]/60 border border-white/[0.04] rounded-2xl backdrop-blur-sm p-6">
-            <h4 className="font-bold text-[#f0abfc] mb-3">
+          <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6">
+            <h4 className="font-bold text-[#9333ea] mb-3">
               Melt Strength &amp; Strain Hardening
             </h4>
-            <p className="text-[#a1a1aa] text-sm mb-3">
-              <strong className="text-[#e4e4e7]">Strain hardening factor</strong>:
+            <p className="text-[#6b7280] text-sm mb-3">
+              <strong className="text-[#18181b]">Strain hardening factor</strong>:
             </p>
             <div className="math-block text-sm">
               SHF(ε̇, t) = η<sub>E</sub><sup>+</sup>(t, ε̇) / 3η<sup>+</sup>(t)
             </div>
-            <p className="text-[#a1a1aa] text-sm mt-3 mb-2">
+            <p className="text-[#6b7280] text-sm mt-3 mb-2">
               Architectures exhibiting strain hardening:
             </p>
-            <ul className="text-[#a1a1aa] text-sm list-disc list-inside space-y-1">
+            <ul className="text-[#6b7280] text-sm list-disc list-inside space-y-1">
               <li>Long-chain branched polymers (LDPE: SHF up to 10–30)</li>
               <li>Sparsely branched metallocene PE (H-shaped, pom-pom)</li>
               <li>Broad MWD polymers (high-MW tail effect)</li>
@@ -630,14 +630,14 @@ export default function PolymerRheology() {
           </div>
         </div>
 
-        <div className="bg-[#0c0c12]/60 border border-white/[0.04] rounded-2xl backdrop-blur-sm p-6 mb-8">
-          <h4 className="font-bold text-[#fafafa] mb-4">
+        <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6 mb-8">
+          <h4 className="font-bold text-[#18181b] mb-4">
             Advanced Extensional Techniques
           </h4>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h5 className="text-[#818cf8] font-semibold text-sm mb-2">SER Fixture</h5>
-              <p className="text-[#a1a1aa] text-xs">
+              <h5 className="text-[#4f46e5] font-semibold text-sm mb-2">SER Fixture</h5>
+              <p className="text-[#6b7280] text-xs">
                 The Sentmanat Extensional Rheometer (2004) uses counter-rotating drums
                 for true uniaxial extension on thin films. Attaches to any rotational
                 rheometer. ε̇ range: 0.001–30 s⁻¹, max ε<sub>H</sub> ≈ 4. Democratized
@@ -645,8 +645,8 @@ export default function PolymerRheology() {
               </p>
             </div>
             <div>
-              <h5 className="text-[#c084fc] font-semibold text-sm mb-2">CaBER &amp; FiSER</h5>
-              <p className="text-[#a1a1aa] text-xs">
+              <h5 className="text-[#7c3aed] font-semibold text-sm mb-2">CaBER &amp; FiSER</h5>
+              <p className="text-[#6b7280] text-xs">
                 For solutions: CaBER monitors self-thinning filament to extract
                 extensional relaxation time λ<sub>E</sub>. FiSER imposes constant ε̇.
                 DoS (Dripping-on-Substrate) extends to ultra-low viscosity fluids
@@ -657,34 +657,34 @@ export default function PolymerRheology() {
         </div>
 
         {/* Recycled Polymers & Extensional */}
-        <div className="bg-[#0c0c12]/40 border border-[#818cf8]/10 backdrop-blur-sm rounded-2xl p-6">
+        <div className="bg-[#f8f8fa] border border-[#4f46e5]/10 rounded-2xl p-6">
           <div className="flex items-center gap-3 mb-4">
-            <span className="px-3 py-1 rounded-full bg-[#2dd4bf]/10 text-[#2dd4bf] text-xs font-semibold">
+            <span className="px-3 py-1 rounded-full bg-[#0d9488]/8 text-[#0d9488] text-xs font-semibold">
               SPECIAL CASE
             </span>
-            <h4 className="font-bold text-[#fafafa]">
+            <h4 className="font-bold text-[#18181b]">
               Extensional Rheology of Recycled Polymers
             </h4>
           </div>
-          <p className="text-[#a1a1aa] text-sm mb-3">
-            Recycled polymers typically show <strong className="text-[#e4e4e7]">reduced melt
+          <p className="text-[#6b7280] text-sm mb-3">
+            Recycled polymers typically show <strong className="text-[#18181b]">reduced melt
             strength</strong> due to chain scission, LCB loss, and MWD narrowing.
           </p>
-          <p className="text-[#a1a1aa] text-sm mb-2">
-            <strong className="text-[#e4e4e7]">Remediation strategies:</strong>
+          <p className="text-[#6b7280] text-sm mb-2">
+            <strong className="text-[#18181b]">Remediation strategies:</strong>
           </p>
-          <ul className="text-[#a1a1aa] text-sm list-disc list-inside space-y-1">
+          <ul className="text-[#6b7280] text-sm list-disc list-inside space-y-1">
             <li>
-              <strong className="text-[#e4e4e7]">Chain extenders for PET:</strong> Joncryl
+              <strong className="text-[#18181b]">Chain extenders for PET:</strong> Joncryl
               increases IV from 0.60 to 0.80+ dL/g (Awaja &amp; Pavel, 2005)
             </li>
             <li>
-              <strong className="text-[#e4e4e7]">Peroxide-induced LCB for PP:</strong> 0.01–0.1
+              <strong className="text-[#18181b]">Peroxide-induced LCB for PP:</strong> 0.01–0.1
               wt% organic peroxide creates LCB during reactive extrusion
               (Lagendijk et al., 2001)
             </li>
             <li>
-              <strong className="text-[#e4e4e7]">Blending:</strong> 20% LDPE in rPE restores
+              <strong className="text-[#18181b]">Blending:</strong> 20% LDPE in rPE restores
               film-blowing processability
             </li>
           </ul>
@@ -692,9 +692,9 @@ export default function PolymerRheology() {
       </SubSection>
 
       {/* Key References */}
-      <div className="bg-[#050507]/80 border border-white/[0.03] rounded-2xl p-6">
-        <h4 className="font-bold text-[#fafafa] mb-3">Key References — Polymer Rheology</h4>
-        <ul className="text-[#a1a1aa] text-sm space-y-2">
+      <div className="bg-white border border-[#e4e4e7] rounded-2xl p-6">
+        <h4 className="font-bold text-[#18181b] mb-3">Key References — Polymer Rheology</h4>
+        <ul className="text-[#6b7280] text-sm space-y-2">
           <li>Ferry, J.D. (1980). <em>Viscoelastic Properties of Polymers</em>, 3rd ed. Wiley.</li>
           <li>Doi, M. &amp; Edwards, S.F. (1986). <em>The Theory of Polymer Dynamics.</em> Oxford.</li>
           <li>Dealy, J.M. &amp; Larson, R.G. (2006). <em>Structure and Rheology of Molten Polymers.</em> Hanser.</li>
