@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0f172a;
+  --foreground: #e2e8f0;
+  --card-bg: #1e293b;
+  --card-border: #334155;
+  --accent: #38bdf8;
+  --accent-secondary: #a78bfa;
+  --accent-tertiary: #34d399;
+  --heading: #f1f5f9;
+  --muted: #94a3b8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --color-accent: var(--accent);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-tertiary: var(--accent-tertiary);
+  --color-heading: var(--heading);
+  --color-muted: var(--muted);
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--card-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* Math notation styling */
+.math {
+  font-family: "Times New Roman", "STIX Two Math", serif;
+  font-style: italic;
+}
+
+.math-block {
+  font-family: "Times New Roman", "STIX Two Math", serif;
+  font-size: 1.1rem;
+  padding: 1rem 1.5rem;
+  background: rgba(56, 189, 248, 0.05);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 0.5rem 0.5rem 0;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+/* Section transitions */
+section {
+  opacity: 1;
+}
