@@ -14,52 +14,48 @@ export default function Footer() {
             </div>
             <p className="text-[#94a3b8] text-sm">
               An interactive educational platform for engineers and scientists
-              studying the flow and deformation of polymeric materials.
+              studying the flow and deformation of polymeric materials. Includes
+              advanced topics on recycled polymer rheology and current research gaps.
             </p>
           </div>
           <div>
             <h4 className="font-semibold text-[#f1f5f9] mb-3">Sections</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a
-                  href="#fundamentals"
-                  className="text-[#94a3b8] hover:text-[#38bdf8] transition-colors"
-                >
+                <a href="#fundamentals" className="text-[#94a3b8] hover:text-[#38bdf8] transition-colors">
                   Fundamentals of Rheology
                 </a>
               </li>
               <li>
-                <a
-                  href="#polymer-rheology"
-                  className="text-[#94a3b8] hover:text-[#38bdf8] transition-colors"
-                >
+                <a href="#polymer-rheology" className="text-[#94a3b8] hover:text-[#38bdf8] transition-colors">
                   Deep Dive: Polymer Rheology
                 </a>
               </li>
               <li>
-                <a
-                  href="#measurement"
-                  className="text-[#94a3b8] hover:text-[#38bdf8] transition-colors"
-                >
+                <a href="#measurement" className="text-[#94a3b8] hover:text-[#38bdf8] transition-colors">
                   Measurement Techniques
                 </a>
               </li>
               <li>
-                <a
-                  href="#applications"
-                  className="text-[#94a3b8] hover:text-[#38bdf8] transition-colors"
-                >
+                <a href="#applications" className="text-[#94a3b8] hover:text-[#38bdf8] transition-colors">
                   Industrial Applications
+                </a>
+              </li>
+              <li>
+                <a href="#literature" className="text-[#94a3b8] hover:text-[#38bdf8] transition-colors">
+                  Literature &amp; Research Gaps
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold text-[#f1f5f9] mb-3">References</h4>
+            <h4 className="font-semibold text-[#f1f5f9] mb-3">Core References</h4>
             <ul className="space-y-2 text-sm text-[#94a3b8]">
-              <li>Macosko, C.W. — <em>Rheology: Principles, Measurements, and Applications</em></li>
-              <li>Ferry, J.D. — <em>Viscoelastic Properties of Polymers</em></li>
-              <li>Morrison, F.A. — <em>Understanding Rheology</em></li>
+              <li>Macosko, C.W. — <em>Rheology: Principles, Measurements, and Applications</em> (1994)</li>
+              <li>Ferry, J.D. — <em>Viscoelastic Properties of Polymers</em> (1980)</li>
+              <li>Doi &amp; Edwards — <em>The Theory of Polymer Dynamics</em> (1986)</li>
+              <li>Dealy &amp; Larson — <em>Structure and Rheology of Molten Polymers</em> (2006)</li>
+              <li>Morrison, F.A. — <em>Understanding Rheology</em> (2001)</li>
             </ul>
           </div>
         </div>

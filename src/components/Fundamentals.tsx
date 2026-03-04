@@ -26,73 +26,159 @@ export default function Fundamentals() {
       subtitle="Section 1 — Didactic Introduction"
       accent="#38bdf8"
     >
+      {/* Historical Context */}
+      <div className="bg-[#0f172a] border border-[#334155] rounded-2xl p-6 mb-12">
+        <h3 className="text-lg font-bold text-[#f1f5f9] mb-3">Historical Context</h3>
+        <p className="text-[#94a3b8] text-sm mb-3">
+          The term <strong className="text-[#e2e8f0]">rheology</strong> (from Greek{" "}
+          <em>rheos</em>, &quot;flow&quot;) was coined by Eugene Bingham in 1929 to describe
+          the science of deformation and flow of matter. Heraclitus&apos;s aphorism{" "}
+          <em>&quot;πάντα ῥεῖ&quot;</em> (&quot;everything flows&quot;) became the motto of the
+          Society of Rheology. The field bridges continuum mechanics, polymer physics,
+          and chemical engineering, providing the mathematical and experimental framework
+          to quantify material behavior that is neither purely elastic (Hookean solid)
+          nor purely viscous (Newtonian fluid).
+        </p>
+        <p className="text-[#94a3b8] text-sm">
+          The <strong className="text-[#e2e8f0]">Deborah number</strong>{" "}
+          (<span className="math">De</span> = <span className="math">λ</span>/<span className="math">t</span>
+          <sub>obs</sub>), introduced by Reiner (1964), captures this duality: when the
+          relaxation time <span className="math">λ</span> of the material is much larger
+          than the observation time <span className="math">t</span><sub>obs</sub>,
+          the material appears solid-like; when <span className="math">λ</span> ≪{" "}
+          <span className="math">t</span><sub>obs</sub>, it appears liquid-like.
+          All real materials occupy a spectrum between these extremes.
+        </p>
+      </div>
+
       {/* Core Definitions */}
       <div className="grid md:grid-cols-2 gap-6 mb-12">
-        <Card title="Stress (σ, τ)">
+        <Card title="Stress Tensor (σᵢⱼ)">
           <p className="text-[#94a3b8] mb-3">
-            Stress is defined as force per unit area applied to a material.
-            In shear deformation, the{" "}
-            <strong className="text-[#e2e8f0]">shear stress</strong> is:
+            In the general three-dimensional case, stress is described by a{" "}
+            <strong className="text-[#e2e8f0]">second-order symmetric tensor</strong>{" "}
+            with 6 independent components. For simple shear (1-2 plane), the
+            relevant components are:
           </p>
-          <div className="math-block">
+          <div className="math-block text-sm">
+            <span className="math">σ</span><sub>12</sub> ={" "}
             <span className="math">τ</span> = <span className="math">F</span> /{" "}
-            <span className="math">A</span> &nbsp;&nbsp;[Pa]
+            <span className="math">A</span> &nbsp;&nbsp;[Pa] (shear stress)
           </div>
-          <p className="text-[#94a3b8] text-sm mt-3">
-            where <span className="math">F</span> is the tangential force and{" "}
-            <span className="math">A</span> is the area over which it acts.
-            For normal stress, we use <span className="math">σ</span>.
+          <p className="text-[#94a3b8] text-sm mt-3 mb-2">
+            The <strong className="text-[#e2e8f0]">normal stress differences</strong>{" "}
+            are critical for understanding elastic effects in polymer flows:
+          </p>
+          <div className="math-block text-sm">
+            N₁ = <span className="math">σ</span><sub>11</sub> −{" "}
+            <span className="math">σ</span><sub>22</sub> &nbsp;(first normal stress difference)
+            <br />
+            N₂ = <span className="math">σ</span><sub>22</sub> −{" "}
+            <span className="math">σ</span><sub>33</sub> &nbsp;(second normal stress difference)
+          </div>
+          <p className="text-[#94a3b8] text-xs mt-3">
+            N₁ is always positive for polymer melts and is responsible for the{" "}
+            <em>Weissenberg rod-climbing effect</em> and <em>die swell</em>. N₂ is
+            typically negative and much smaller (|N₂| ≈ 0.1–0.3 |N₁|). The ratio
+            −N₂/N₁ is sensitive to molecular architecture and branching
+            (Schweizer et al., <em>J. Rheol.</em>, 2004).
           </p>
         </Card>
 
         <Card title="Strain (γ) & Shear Rate (γ̇)">
           <p className="text-[#94a3b8] mb-3">
-            <strong className="text-[#e2e8f0]">Strain</strong> is the
-            dimensionless measure of deformation:
+            <strong className="text-[#e2e8f0]">Shear strain</strong> is the
+            dimensionless measure of deformation in simple shear:
           </p>
           <div className="math-block">
             <span className="math">γ</span> = Δ<span className="math">x</span>{" "}
-            / <span className="math">h</span> &nbsp;&nbsp;[—]
+            / <span className="math">h</span> = tan(<span className="math">θ</span>) &nbsp;&nbsp;[—]
           </div>
           <p className="text-[#94a3b8] mb-3 mt-3">
-            The <strong className="text-[#e2e8f0]">shear rate</strong> is the
-            time derivative of strain:
+            The <strong className="text-[#e2e8f0]">shear rate</strong> (rate of
+            deformation tensor component) is:
           </p>
           <div className="math-block">
             <span className="math">γ̇</span> = d<span className="math">γ</span>{" "}
             / d<span className="math">t</span> = <span className="math">v</span>{" "}
             / <span className="math">h</span> &nbsp;&nbsp;[s⁻¹]
           </div>
+          <p className="text-[#94a3b8] text-sm mt-3">
+            For extensional deformation, the <strong className="text-[#e2e8f0]">Hencky strain</strong>{" "}
+            is used instead:
+          </p>
+          <div className="math-block text-sm">
+            <span className="math">ε</span><sub>H</sub> = ln(L/L₀)
+          </div>
+          <p className="text-[#94a3b8] text-xs mt-2">
+            The Hencky measure is preferred for large strains because it is additive
+            and frame-invariant. In polymer processing, Hencky strains of 1–7 are
+            typical (e.g., ε<sub>H</sub> ≈ 2–4 in blow molding).
+          </p>
         </Card>
 
-        <Card title="Viscosity (η)">
+        <Card title="Viscosity (η) — Detailed Treatment">
           <p className="text-[#94a3b8] mb-3">
-            Viscosity quantifies a fluid&apos;s resistance to flow. It relates
+            <strong className="text-[#e2e8f0]">Dynamic viscosity</strong> relates
             shear stress to shear rate:
           </p>
           <div className="math-block">
             <span className="math">η</span> = <span className="math">τ</span> /{" "}
             <span className="math">γ̇</span> &nbsp;&nbsp;[Pa·s]
           </div>
-          <p className="text-[#94a3b8] text-sm mt-3">
-            For a Newtonian fluid, <span className="math">η</span> is constant
-            regardless of shear rate. For polymeric fluids, viscosity is
-            typically shear-rate dependent.
+          <p className="text-[#94a3b8] text-sm mt-3 mb-2">
+            The <strong className="text-[#e2e8f0]">complex viscosity</strong> from
+            oscillatory measurements:
+          </p>
+          <div className="math-block text-sm">
+            <span className="math">η</span>* = G*/ω = √(G&apos;² + G&apos;&apos;²) / ω
+          </div>
+          <p className="text-[#94a3b8] text-sm mt-3 mb-2">
+            The <strong className="text-[#e2e8f0]">Cox-Merz rule</strong> (empirical)
+            states:
+          </p>
+          <div className="math-block text-sm">
+            η(γ̇) ≈ |η*(ω)| &nbsp;when γ̇ = ω
+          </div>
+          <p className="text-[#94a3b8] text-xs mt-3">
+            This rule holds well for linear, unfilled polymers and is enormously
+            useful because oscillatory measurements (which are non-destructive to
+            structure) can predict steady shear behavior. However, the Cox-Merz rule
+            fails for branched polymers, filled systems, associating polymers, and
+            recycled blends — this is an active area of research
+            (Snijkers &amp; Vlassopoulos, <em>J. Rheol.</em>, 2014).
           </p>
         </Card>
 
-        <Card title="Newton's Law of Viscosity">
+        <Card title="Constitutive Equations Overview">
           <p className="text-[#94a3b8] mb-3">
-            The constitutive equation for a Newtonian fluid is simply:
+            <strong className="text-[#e2e8f0]">Newton&apos;s law</strong> for a
+            Newtonian fluid:
           </p>
-          <div className="math-block">
+          <div className="math-block text-sm">
             <span className="math">τ</span> = <span className="math">η</span> ·{" "}
             <span className="math">γ̇</span>
           </div>
-          <p className="text-[#94a3b8] text-sm mt-3">
-            This linear relationship defines the baseline against which all
-            non-Newtonian behavior is measured. Water, simple solvents, and
-            light oils are classic Newtonian fluids.
+          <p className="text-[#94a3b8] text-sm mt-3 mb-2">
+            <strong className="text-[#e2e8f0]">Hooke&apos;s law</strong> for an
+            ideal elastic solid:
+          </p>
+          <div className="math-block text-sm">
+            <span className="math">τ</span> = <span className="math">G</span> ·{" "}
+            <span className="math">γ</span>
+          </div>
+          <p className="text-[#94a3b8] text-sm mt-3 mb-2">
+            The <strong className="text-[#e2e8f0]">Weissenberg number</strong> characterizes
+            elastic effects relative to viscous effects:
+          </p>
+          <div className="math-block text-sm">
+            Wi = <span className="math">λ</span> · <span className="math">γ̇</span> = N₁ / (2<span className="math">τ</span>)
+          </div>
+          <p className="text-[#94a3b8] text-xs mt-3">
+            When Wi ≫ 1, elastic instabilities can arise (e.g., purely elastic
+            turbulence discovered by Groisman &amp; Steinberg, <em>Nature</em>, 2000).
+            This has renewed significance in microfluidics and 3D printing of
+            polymer solutions.
           </p>
         </Card>
       </div>
@@ -102,7 +188,7 @@ export default function Fundamentals() {
         Newtonian vs. Non-Newtonian Fluids
       </h3>
 
-      <div className="grid lg:grid-cols-3 gap-6 mb-12">
+      <div className="grid lg:grid-cols-3 gap-6 mb-8">
         <div className="bg-[#1e293b] border border-[#334155] rounded-2xl p-6">
           <div className="w-10 h-10 rounded-lg bg-[#38bdf8]/10 flex items-center justify-center mb-4">
             <svg className="w-5 h-5 text-[#38bdf8]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -113,19 +199,24 @@ export default function Fundamentals() {
             Pseudoplastic (Shear-Thinning)
           </h4>
           <p className="text-[#94a3b8] text-sm mb-3">
-            Viscosity <em>decreases</em> with increasing shear rate. Most
-            polymer melts and solutions exhibit this behavior due to chain
-            disentanglement and alignment under flow.
+            Viscosity <em>decreases</em> with increasing shear rate. This is the most
+            common behavior for polymer melts and concentrated solutions. The molecular
+            origin involves: (1) disentanglement of polymer chains, (2) orientation
+            and alignment of chain segments in the flow direction, and (3) deformation
+            of the coil from a random-walk configuration to an elongated shape.
           </p>
           <div className="math-block text-sm">
-            <span className="math">η</span>(<span className="math">γ̇</span>) ={" "}
+            Power-law: <span className="math">η</span>(<span className="math">γ̇</span>) ={" "}
             <span className="math">K</span> ·{" "}
             <span className="math">γ̇</span>
             <sup>(<span className="math">n</span>−1)</sup>, &nbsp;
             <span className="math">n</span> &lt; 1
           </div>
           <p className="text-[#94a3b8] text-xs mt-2">
-            Examples: polymer melts, paints, blood, ketchup
+            Typical <span className="math">n</span> values: polyethylene 0.3–0.6,
+            polypropylene 0.3–0.5, polystyrene 0.2–0.4, PVC 0.2–0.5.
+            The power-law fails at very low (η₀ plateau) and very high shear rates
+            (η∞ plateau).
           </p>
         </div>
 
@@ -139,9 +230,11 @@ export default function Fundamentals() {
             Dilatant (Shear-Thickening)
           </h4>
           <p className="text-[#94a3b8] text-sm mb-3">
-            Viscosity <em>increases</em> with shear rate. Occurs when densely
-            packed particles jam under stress, forming transient
-            hydroclusters.
+            Viscosity <em>increases</em> with shear rate. Two mechanisms are recognized:
+            (1) <strong className="text-[#e2e8f0]">order-disorder transition</strong> at moderate
+            volume fractions, and (2) <strong className="text-[#e2e8f0]">hydrocluster formation</strong>{" "}
+            at high concentrations where lubrication forces between particles cannot
+            prevent direct contact (Wagner &amp; Brady, <em>Phys. Fluids</em>, 2009).
           </p>
           <div className="math-block text-sm">
             <span className="math">η</span>(<span className="math">γ̇</span>) ={" "}
@@ -151,7 +244,10 @@ export default function Fundamentals() {
             <span className="math">n</span> &gt; 1
           </div>
           <p className="text-[#94a3b8] text-xs mt-2">
-            Examples: cornstarch suspensions, wet sand
+            Can be catastrophic (discontinuous shear thickening, DST) or gradual
+            (continuous shear thickening, CST). DST can cause equipment failure
+            in processing. Recent work on nano-silica filled polymer melts
+            shows shear thickening at high loadings.
           </p>
         </div>
 
@@ -161,23 +257,81 @@ export default function Fundamentals() {
               <path d="M9 12h6m-3-3v6m-7 4h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
           </div>
-          <h4 className="font-bold text-[#f1f5f9] mb-2">Bingham Plastic</h4>
+          <h4 className="font-bold text-[#f1f5f9] mb-2">Bingham Plastic &amp; Herschel-Bulkley</h4>
           <p className="text-[#94a3b8] text-sm mb-3">
-            Exhibits a <strong className="text-[#e2e8f0]">yield stress</strong>{" "}
-            (<span className="math">τ₀</span>). Below the yield stress, the
-            material behaves as a solid; above it, it flows like a viscous
-            fluid.
+            Materials with a <strong className="text-[#e2e8f0]">yield stress</strong>{" "}
+            (<span className="math">τ₀</span>). The more general Herschel-Bulkley model
+            combines yield stress with power-law flow:
           </p>
           <div className="math-block text-sm">
-            <span className="math">τ</span> = <span className="math">τ₀</span>{" "}
-            + <span className="math">η</span>
-            <sub>p</sub> · <span className="math">γ̇</span>, &nbsp; for{" "}
-            <span className="math">τ</span> &gt;{" "}
-            <span className="math">τ₀</span>
+            Bingham: <span className="math">τ</span> = <span className="math">τ₀</span>{" "}
+            + <span className="math">η</span><sub>p</sub> · <span className="math">γ̇</span>
+            <br />
+            H-B: <span className="math">τ</span> = <span className="math">τ₀</span>{" "}
+            + K · <span className="math">γ̇</span><sup>n</sup>
           </div>
           <p className="text-[#94a3b8] text-xs mt-2">
-            Examples: toothpaste, mayonnaise, drilling mud
+            Yield stress measurement is debated — the &quot;true&quot; yield stress vs.
+            apparent yield stress depends on observation timescale
+            (Barnes, <em>J. Non-Newtonian Fluid Mech.</em>, 1999). Modern creep
+            tests at very low stresses are preferred for accurate τ₀ determination.
           </p>
+        </div>
+      </div>
+
+      {/* Advanced Viscosity Models */}
+      <div className="bg-[#1e293b] border border-[#334155] rounded-2xl p-6 mb-12">
+        <h3 className="text-xl font-bold text-[#f1f5f9] mb-4">
+          Advanced Viscosity Models
+        </h3>
+        <p className="text-[#94a3b8] text-sm mb-6">
+          The power-law model is useful for its simplicity but diverges at low and
+          high shear rates. More complete models capture the full flow curve with
+          Newtonian plateaus:
+        </p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div>
+            <h4 className="font-semibold text-[#38bdf8] mb-2">Carreau-Yasuda Model</h4>
+            <div className="math-block text-sm">
+              (<span className="math">η</span> − <span className="math">η</span><sub>∞</sub>)
+              / (<span className="math">η</span><sub>0</sub> − <span className="math">η</span><sub>∞</sub>)
+              = [1 + (<span className="math">λγ̇</span>)<sup>a</sup>]<sup>(n−1)/a</sup>
+            </div>
+            <p className="text-[#94a3b8] text-xs mt-2">
+              Five parameters: η₀ (zero-shear viscosity), η∞ (infinite-shear viscosity,
+              usually ≈ 0), λ (characteristic time), n (power-law index), a (Yasuda
+              parameter controlling transition width). When a = 2, reduces to the
+              Carreau model. Widely used in polymer processing simulation (Moldflow,
+              Polyflow) because it captures both Newtonian plateaus.
+            </p>
+          </div>
+          <div>
+            <h4 className="font-semibold text-[#a78bfa] mb-2">Cross Model</h4>
+            <div className="math-block text-sm">
+              (<span className="math">η</span> − <span className="math">η</span><sub>∞</sub>)
+              / (<span className="math">η</span><sub>0</sub> − <span className="math">η</span><sub>∞</sub>)
+              = 1 / [1 + (<span className="math">Kγ̇</span>)<sup>m</sup>]
+            </div>
+            <p className="text-[#94a3b8] text-xs mt-2">
+              Where m = 1 − n (power-law index equivalent). The Cross model is
+              mathematically simpler than Carreau-Yasuda and often preferred for
+              numerical stability in FEM simulations. It is the default model in many
+              injection molding simulation packages.
+            </p>
+          </div>
+          <div>
+            <h4 className="font-semibold text-[#34d399] mb-2">Casson Model</h4>
+            <div className="math-block text-sm">
+              √<span className="math">τ</span> = √<span className="math">τ₀</span>{" "}
+              + √(<span className="math">η</span><sub>∞</sub> · <span className="math">γ̇</span>)
+            </div>
+            <p className="text-[#94a3b8] text-xs mt-2">
+              Originally developed for printing inks, now used extensively for
+              chocolate, blood, and other yield-stress fluids. It provides a better
+              fit than Bingham for materials with a gradual yield transition. Often
+              used in the food polymer industry.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -188,7 +342,9 @@ export default function Fundamentals() {
         </h3>
         <p className="text-[#94a3b8] text-sm mb-6">
           Compare how different fluid types respond to increasing shear rate.
-          Toggle each fluid type on/off by clicking on the legend.
+          Toggle each fluid type on/off by clicking on the legend. Adjust the
+          power-law exponent <span className="math">n</span> to see how molecular
+          architecture (MW, MWD, branching) affects the degree of shear thinning.
         </p>
         <FlowCurveChart />
       </div>
@@ -197,14 +353,15 @@ export default function Fundamentals() {
       <h3 className="text-2xl font-bold text-[#f1f5f9] mb-6">
         Time-Dependent Flow Behavior
       </h3>
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-6 mb-8">
         <div className="bg-[#1e293b] border border-[#334155] rounded-2xl p-6">
           <h4 className="font-bold text-[#38bdf8] mb-3">Thixotropy</h4>
           <p className="text-[#94a3b8] text-sm mb-3">
             A thixotropic material shows a <em>decrease</em> in viscosity over
-            time at constant shear rate. When shearing stops, the structure
-            rebuilds gradually. This is caused by the progressive breakdown
-            of internal structure (e.g., particle networks, entanglements).
+            time at constant shear rate and a gradual structural recovery when
+            shearing stops. The classic experimental signature is a{" "}
+            <strong className="text-[#e2e8f0]">hysteresis loop</strong> in a
+            shear rate ramp-up/ramp-down cycle (area = thixotropic energy).
           </p>
           <div className="math-block text-sm">
             <span className="math">η</span>(<span className="math">t</span>) ={" "}
@@ -213,8 +370,18 @@ export default function Fundamentals() {
             <sub>0</sub> − <span className="math">η</span>
             <sub>∞</sub>) · e<sup>−<span className="math">t</span>/<span className="math">λ</span></sup>
           </div>
+          <p className="text-[#94a3b8] text-xs mt-3 mb-2">
+            <strong className="text-[#e2e8f0]">Structural kinetics approach</strong>{" "}
+            (Mewis &amp; Wagner, <em>Adv. Colloid Interface Sci.</em>, 2009):
+          </p>
+          <div className="math-block text-sm">
+            dξ/dt = (1/λ<sub>r</sub>)(1 − ξ) − (1/λ<sub>b</sub>)ξ · γ̇<sup>m</sup>
+          </div>
           <p className="text-[#94a3b8] text-xs mt-2">
-            Examples: yogurt, many paints, drilling muds
+            where ξ ∈ [0,1] is the structure parameter, λ<sub>r</sub> is recovery
+            time, λ<sub>b</sub> is breakdown time, and m controls shear sensitivity.
+            Examples: yogurt, paints, drilling muds, recycled polymer blends with
+            phase-separated morphologies.
           </p>
         </div>
 
@@ -223,7 +390,8 @@ export default function Fundamentals() {
           <p className="text-[#94a3b8] text-sm mb-3">
             The opposite of thixotropy: viscosity <em>increases</em> over time
             under constant shear. Shearing induces structure formation
-            (e.g., shear-induced crystallization or association).
+            (e.g., shear-induced crystallization, physical gelation, or
+            flow-induced association of supramolecular polymers).
           </p>
           <div className="math-block text-sm">
             <span className="math">η</span>(<span className="math">t</span>) ={" "}
@@ -232,10 +400,99 @@ export default function Fundamentals() {
             <sub>∞</sub> − <span className="math">η</span>
             <sub>0</sub>) · (1 − e<sup>−<span className="math">t</span>/<span className="math">λ</span></sup>)
           </div>
+          <p className="text-[#94a3b8] text-xs mt-3">
+            Much rarer than thixotropy. Can occur in semi-crystalline polymers during
+            flow near the crystallization temperature — shear accelerates nucleation
+            and crystal growth (flow-induced crystallization, FIC). This is a critical
+            phenomenon in injection molding of iPP and PET.
+          </p>
           <p className="text-[#94a3b8] text-xs mt-2">
-            Examples: gypsum paste, some printer inks, certain lubricants
+            Examples: gypsum paste, some printer inks, PET under shear near T<sub>c</sub>,
+            certain supramolecular hydrogen-bonded polymer networks.
           </p>
         </div>
+      </div>
+
+      {/* Recycled Plastics Special Case */}
+      <div className="bg-gradient-to-r from-[#38bdf8]/5 to-[#34d399]/5 border border-[#38bdf8]/20 rounded-2xl p-6 mb-8">
+        <div className="flex items-center gap-3 mb-4">
+          <span className="px-3 py-1 rounded-full bg-[#34d399]/10 text-[#34d399] text-xs font-semibold">
+            SPECIAL CASE
+          </span>
+          <h3 className="text-xl font-bold text-[#f1f5f9]">
+            Rheology of Recycled Polymers — Fundamentals
+          </h3>
+        </div>
+        <p className="text-[#94a3b8] text-sm mb-4">
+          Recycled polymers present unique rheological challenges that are absent in
+          virgin materials. Understanding these fundamentals is essential for the
+          circular economy:
+        </p>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="bg-[#1e293b] rounded-xl p-4">
+            <h5 className="text-[#38bdf8] font-semibold text-sm mb-2">
+              Chain Degradation Effects
+            </h5>
+            <p className="text-[#94a3b8] text-xs mb-2">
+              Mechanical recycling subjects polymers to thermo-mechanical degradation
+              (chain scission and/or crosslinking). For condensation polymers
+              (PET, PA), hydrolysis reduces M<sub>w</sub>, lowering η₀ following:
+            </p>
+            <div className="math-block text-xs">
+              η₀ = K · M<sub>w</sub><sup>3.4</sup> (above M<sub>c</sub>)
+            </div>
+            <p className="text-[#94a3b8] text-xs mt-2">
+              A 20% reduction in M<sub>w</sub> can cause a ~50% drop in η₀.
+              For polyolefins, chain scission (PP) and crosslinking (PE) compete,
+              making viscosity changes unpredictable
+              (Incarnato et al., <em>Polymer</em>, 2004).
+            </p>
+          </div>
+          <div className="bg-[#1e293b] rounded-xl p-4">
+            <h5 className="text-[#a78bfa] font-semibold text-sm mb-2">
+              Contamination &amp; Blending Effects
+            </h5>
+            <p className="text-[#94a3b8] text-xs mb-2">
+              Post-consumer recycled (PCR) streams are rarely pure. Even 1–5% of an
+              immiscible contaminant (e.g., PE in PP, PVC in PET) can:
+            </p>
+            <ul className="text-[#94a3b8] text-xs list-disc list-inside space-y-1">
+              <li>Create dispersed phase droplets that affect viscosity via Taylor&apos;s theory</li>
+              <li>Cause unexpected yield stresses at &gt;10% dispersed phase (percolation)</li>
+              <li>Introduce thixotropy from morphology rearrangement under flow</li>
+              <li>Catalyze degradation (PVC → HCl → PET chain scission)</li>
+            </ul>
+            <p className="text-[#94a3b8] text-xs mt-2">
+              The Palierne model is commonly used to predict G&apos;, G&apos;&apos; of immiscible
+              polymer blends from component properties and interfacial tension
+              (Palierne, <em>Rheol. Acta</em>, 1990).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Key References */}
+      <div className="bg-[#0f172a] border border-[#334155] rounded-2xl p-6">
+        <h4 className="font-bold text-[#f1f5f9] mb-3">Key References — Fundamentals</h4>
+        <ul className="text-[#94a3b8] text-sm space-y-2">
+          <li>
+            Macosko, C.W. (1994). <em>Rheology: Principles, Measurements, and Applications.</em>{" "}
+            Wiley-VCH. — The standard graduate-level textbook covering all fundamental concepts.
+          </li>
+          <li>
+            Morrison, F.A. (2001). <em>Understanding Rheology.</em> Oxford University Press. —
+            Excellent for tensor notation and constitutive equation derivations.
+          </li>
+          <li>
+            Barnes, H.A., Hutton, J.F., Walters, K. (1989). <em>An Introduction to Rheology.</em>{" "}
+            Elsevier. — Accessible introduction with industrial examples.
+          </li>
+          <li>
+            Mewis, J. &amp; Wagner, N.J. (2012). <em>Colloidal Suspension Rheology.</em>{" "}
+            Cambridge University Press. — Essential for filled polymer systems and recycled
+            compound rheology.
+          </li>
+        </ul>
       </div>
     </SectionWrapper>
   );

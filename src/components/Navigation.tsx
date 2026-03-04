@@ -8,6 +8,7 @@ const sections = [
   { id: "polymer-rheology", label: "Polymer Rheology" },
   { id: "measurement", label: "Rheometry" },
   { id: "applications", label: "Applications" },
+  { id: "literature", label: "Literature" },
 ];
 
 export default function Navigation() {
