@@ -295,6 +295,174 @@ export default function Applications() {
         </div>
       </AnimatedSection>
 
+      {/* Additional Processes */}
+      <AnimatedSection className="mb-16">
+        <h3 className="text-2xl font-bold text-[#0B2545] mb-4">Additional Processing Methods</h3>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[
+            {
+              name: "Thermoforming",
+              shearRate: "10⁻¹–10¹ s⁻¹",
+              flow: "Biaxial extension",
+              key: "η_E(T), sag resistance, strain hardening for uniform wall thickness",
+              color: "#134074",
+            },
+            {
+              name: "Compression Molding",
+              shearRate: "10⁻¹–10¹ s⁻¹",
+              flow: "Squeeze flow",
+              key: "η₀, yield stress for BMC/SMC, fiber orientation during squeeze",
+              color: "#13315C",
+            },
+            {
+              name: "Rotational Molding",
+              shearRate: "10⁻²–10⁰ s⁻¹",
+              flow: "Zero-shear coalescence",
+              key: "η₀ near zero-shear, sintering time, bubble removal, MFI = 3–8",
+              color: "#0B2545",
+            },
+            {
+              name: "Calendering",
+              shearRate: "10¹–10³ s⁻¹",
+              flow: "Drag + pressure flow",
+              key: "η(γ̇) + N₁ for sheet quality, roll separating force from N₁",
+              color: "#134074",
+            },
+            {
+              name: "Foam Processing",
+              shearRate: "10¹–10³ s⁻¹",
+              flow: "Biaxial extension of cell walls",
+              key: "Strain hardening prevents cell coalescence, η_E critical, G' at low ω for cell stability",
+              color: "#13315C",
+            },
+            {
+              name: "Wire & Cable Coating",
+              shearRate: "10²–10⁴ s⁻¹",
+              flow: "Annular die + drawdown",
+              key: "Die swell ratio, η(γ̇) for coating uniformity, adhesion to conductor",
+              color: "#0B2545",
+            },
+            {
+              name: "Coatings & Adhesives",
+              shearRate: "10⁻¹–10⁴ s⁻¹",
+              flow: "Shear + extension",
+              key: "Thixotropy for application, yield stress for sag resistance, leveling time",
+              color: "#134074",
+            },
+            {
+              name: "Powder Bed Fusion (SLS)",
+              shearRate: "10⁻¹–10¹ s⁻¹",
+              flow: "Viscous sintering",
+              key: "η₀ controls coalescence rate, surface tension/η₀ = sintering speed",
+              color: "#13315C",
+            },
+            {
+              name: "Pipe Extrusion",
+              shearRate: "10¹–10² s⁻¹",
+              flow: "Annular die flow",
+              key: "Die swell uniformity, sagging of parison, η_E for haul-off stability",
+              color: "#0B2545",
+            },
+          ].map((proc, i) => (
+            <AnimatedCard key={i} delay={i * 0.05}
+              className="bg-white border border-[#c9d9e8] rounded-2xl p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: proc.color }} />
+                <h4 className="font-bold text-[#0B2545] text-sm">{proc.name}</h4>
+                <span className="text-[10px] text-[#8DA9C4] ml-auto">{proc.shearRate}</span>
+              </div>
+              <div className="text-xs text-[#3d6285] space-y-1">
+                <div><strong className="text-[#134074]">Flow type:</strong> {proc.flow}</div>
+                <div><strong className="text-[#13315C]">Key rheology:</strong> {proc.key}</div>
+              </div>
+            </AnimatedCard>
+          ))}
+        </div>
+      </AnimatedSection>
+
+      {/* Simulation & CFD */}
+      <AnimatedSection className="mb-16">
+        <h3 className="text-2xl font-bold text-[#0B2545] mb-4">Rheology in Simulation & CFD</h3>
+        <div className="grid md:grid-cols-2 gap-5">
+          <AnimatedCard className="bg-white border border-[#c9d9e8] rounded-2xl p-5">
+            <h4 className="font-bold text-[#0B2545] mb-3">Flow Simulation Software</h4>
+            <div className="space-y-2 text-xs text-[#3d6285]">
+              {[
+                { sw: "Moldflow (Autodesk)", use: "Injection molding: fill, pack, warp analysis. Cross-WLF model." },
+                { sw: "Moldex3D", use: "Injection, compression, blow molding. True 3D mesh solver." },
+                { sw: "Polyflow (Ansys)", use: "Extrusion die design, blow molding, fiber spinning. Viscoelastic models." },
+                { sw: "COMSOL", use: "General-purpose FEM. Arbitrary constitutive models via PDE interface." },
+                { sw: "OpenFOAM", use: "Open-source CFD. viscoelasticFluidFoam solver for Oldroyd-B, PTT, etc." },
+                { sw: "Sigmasoft", use: "Injection/compression. Integrates pvT and crystallization kinetics." },
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />
+                  <span><strong className="text-[#0B2545]">{item.sw}:</strong> {item.use}</span>
+                </div>
+              ))}
+            </div>
+          </AnimatedCard>
+          <AnimatedCard delay={0.1} className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-5">
+            <h4 className="font-bold text-[#0B2545] mb-3">Rheological Input Data Required</h4>
+            <div className="space-y-2 text-xs text-[#3d6285]">
+              {[
+                "Viscosity model parameters (Cross-WLF, Carreau-Yasuda, power-law n, K)",
+                "pvT data (specific volume vs pressure and temperature)",
+                "Thermal conductivity k(T) and specific heat c_p(T)",
+                "Crystallization kinetics (Nakamura model for semi-crystalline)",
+                "Extensional viscosity data (for fiber/film simulations)",
+                "Normal stress data N₁(γ̇) for die swell prediction",
+                "Relaxation spectrum H(λ) for viscoelastic simulations",
+                "Wall slip parameters (Navier slip length) if applicable",
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0B2545] mt-1.5 shrink-0" />
+                  {item}
+                </div>
+              ))}
+            </div>
+          </AnimatedCard>
+        </div>
+      </AnimatedSection>
+
+      {/* Troubleshooting Guide */}
+      <AnimatedSection className="mb-16">
+        <h3 className="text-2xl font-bold text-[#0B2545] mb-4">Rheological Troubleshooting Guide</h3>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm text-left">
+            <thead>
+              <tr className="border-b-2 border-[#134074]/20">
+                <th className="px-3 py-2 text-[#0B2545] font-semibold text-xs">Processing Problem</th>
+                <th className="px-3 py-2 text-[#134074] font-semibold text-xs">Rheological Cause</th>
+                <th className="px-3 py-2 text-[#13315C] font-semibold text-xs">Measurement to Diagnose</th>
+                <th className="px-3 py-2 text-[#0B2545] font-semibold text-xs">Potential Solution</th>
+              </tr>
+            </thead>
+            <tbody className="text-[#3d6285] text-xs">
+              {[
+                ["Short shots (injection)", "η too high at fill γ̇", "Flow curve at process T", "↑ T, ↑ injection speed, lower Mw grade"],
+                ["Warpage / sink marks", "Uneven shrinkage from crystallization", "pvT + DSC + G' vs T", "Optimize cooling rate, gate location"],
+                ["Die lip buildup", "Low-Mw fraction + volatile migration", "GPC + TGA + η(t) at die T", "Improve venting, change stabilizer"],
+                ["Sharkskin / melt fracture", "τ_w > critical wall stress", "Capillary at high γ̇, stress overshoot", "Use PPA (fluoropolymer), ↓ output, ↑ die T"],
+                ["Excessive die swell", "High N₁ / elastic memory", "N₁(γ̇), creep recovery J_e⁰", "↑ L/D ratio, ↓ γ̇, lower Mw or LCB"],
+                ["Poor weld lines", "Insufficient chain re-entanglement", "Creep recovery, G' at low ω", "↑ T, ↑ packing pressure, ↑ Mw"],
+                ["Gel particles / fish eyes", "Crosslinked/degraded particles", "Capillary pressure instabilities, filtration test", "Improve screening, adjust stabilization"],
+                ["Film thickness variation", "Draw resonance instability", "η_E (strain hardening test)", "Use LCB polymer, adjust draw ratio"],
+                ["Foaming cell collapse", "Insufficient melt strength", "Rheotens, η_E(ε̇)", "↑ Mw, add LCB, use chain extender"],
+                ["Batch-to-batch variability", "MWD / degradation differences", "Full frequency sweep + η₀ comparison", "Inline rheometry for QC, blend batches"],
+              ].map((row, i) => (
+                <tr key={i} className="border-b border-[#c9d9e8]/50 hover:bg-[#EEF4ED]/50 transition-colors">
+                  <td className="px-3 py-2 font-semibold text-[#0B2545]">{row[0]}</td>
+                  <td className="px-3 py-2">{row[1]}</td>
+                  <td className="px-3 py-2">{row[2]}</td>
+                  <td className="px-3 py-2">{row[3]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </AnimatedSection>
+
       {/* Instabilities */}
       <AnimatedSection>
         <h3 className="text-2xl font-bold text-[#0B2545] mb-4">Processing Instabilities</h3>

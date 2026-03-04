@@ -246,7 +246,203 @@ export default function MeasurementTechniques() {
         </div>
       </AnimatedSection>
 
-      {/* MFI vs DMA — Comparison */}
+      {/* Extensional Rheometers */}
+      <AnimatedSection className="mb-16">
+        <h3 className="text-2xl font-bold text-[#0B2545] mb-4">Extensional Rheometers</h3>
+        <div className="grid md:grid-cols-2 gap-5">
+          {[
+            {
+              title: "SER (Sentmanat Extension Rheometer)",
+              desc: "Two counter-rotating drums on a rotational rheometer. Film or fiber sample wound around drums. Uniaxial extension.",
+              specs: [
+                "ε̇ range: 0.001–30 s⁻¹",
+                "Hencky strain: up to ~7",
+                "Sample: ~18×10 mm rectangular film",
+                "Measures: η_E⁺(t, ε̇) transient extensional viscosity",
+                "Strengths: compact, fits on standard rheometer",
+              ],
+              color: "#134074",
+            },
+            {
+              title: "CaBER (Capillary Breakup Extensional Rheometer)",
+              desc: "A liquid bridge is formed between two plates that are rapidly separated. Filament thins under capillary pressure.",
+              specs: [
+                "Self-selected ε̇ from capillary pressure",
+                "Best for: low-viscosity solutions, inks, biofluids",
+                "Measures: filament diameter D(t) → η_E",
+                "Breakup time correlates with relaxation time λ",
+                "Cannot impose constant ε̇",
+              ],
+              color: "#13315C",
+            },
+            {
+              title: "FiSER (Filament Stretching Extensional Rheometer)",
+              desc: "Controlled separation of endplates with feedback to maintain constant ε̇. Research-grade instrument.",
+              specs: [
+                "True constant ε̇ via feedback control",
+                "ε̇ range: 0.01–10 s⁻¹",
+                "Measures: force + diameter → σ_E and η_E",
+                "Best for: concentrated solutions, soft materials",
+                "High-precision, lab-scale only",
+              ],
+              color: "#0B2545",
+            },
+            {
+              title: "Rheotens (Melt Strength)",
+              desc: "Extruded strand is drawn by counter-rotating wheels with increasing speed. Measures force at break.",
+              specs: [
+                "Melt strength [cN] at draw ratio at break",
+                "Drawability: max. draw ratio before break",
+                "Industrial relevance: film, blow molding QC",
+                "Detects LCB vs linear (LDPE vs HDPE)",
+                "Standardized test, good reproducibility",
+              ],
+              color: "#134074",
+            },
+          ].map((inst, i) => (
+            <AnimatedCard key={i} delay={i * 0.08}
+              className="bg-white border border-[#c9d9e8] rounded-2xl p-5">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style={{ backgroundColor: inst.color }}>
+                  {inst.title.split(' ')[0][0]}
+                </div>
+                <h4 className="font-bold text-[#0B2545] text-sm">{inst.title}</h4>
+              </div>
+              <p className="text-[#3d6285] text-xs mb-3">{inst.desc}</p>
+              <ul className="space-y-1 text-xs text-[#3d6285]">
+                {inst.specs.map((s, j) => (
+                  <li key={j} className="flex items-start gap-2">
+                    <span className="w-1 h-1 rounded-full mt-1.5 shrink-0" style={{ backgroundColor: inst.color }} />
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            </AnimatedCard>
+          ))}
+        </div>
+      </AnimatedSection>
+
+      {/* Standard Test Protocols */}
+      <AnimatedSection className="mb-16">
+        <h3 className="text-2xl font-bold text-[#0B2545] mb-4">Standard Rheological Test Protocols</h3>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[
+            {
+              test: "Amplitude Sweep",
+              purpose: "Find LVR, determine yield stress",
+              params: "Fixed ω, vary γ₀ from 0.01% to 100%",
+              result: "G' constant → LVR; G'=G'' crossover → τ_y",
+              color: "#134074",
+            },
+            {
+              test: "Frequency Sweep",
+              purpose: "Viscoelastic spectrum, relaxation time",
+              params: "Fixed γ₀ (in LVR), ω = 0.01–628 rad/s",
+              result: "G', G'' vs ω, crossover → λ, plateau → G_N⁰",
+              color: "#13315C",
+            },
+            {
+              test: "Temperature Sweep",
+              purpose: "Tg, Tm, thermal transitions",
+              params: "Fixed ω, γ₀; ramp T at 2–5°C/min",
+              result: "G' drop at Tg, tan δ peak, crystallization onset",
+              color: "#0B2545",
+            },
+            {
+              test: "Steady Shear (Flow Curve)",
+              purpose: "Viscosity vs shear rate",
+              params: "γ̇ ramp 0.01–1000 s⁻¹, wait for steady state",
+              result: "η(γ̇) curve, power-law fit, yield stress",
+              color: "#134074",
+            },
+            {
+              test: "Creep & Recovery",
+              purpose: "Compliance J(t), zero-shear viscosity",
+              params: "Apply constant τ₀ (in LVR) → remove → monitor",
+              result: "J(t) → η₀ from slope, J_e⁰ from recovery",
+              color: "#13315C",
+            },
+            {
+              test: "Step Strain Relaxation",
+              purpose: "Relaxation modulus G(t), spectrum",
+              params: "Apply instantaneous γ₀ (in LVR), monitor σ(t)",
+              result: "G(t) = σ(t)/γ₀ → H(λ) relaxation spectrum",
+              color: "#0B2545",
+            },
+            {
+              test: "Start-up of Steady Shear",
+              purpose: "Transient viscosity, stress overshoot",
+              params: "Apply constant γ̇, monitor σ(t) and N₁(t)",
+              result: "Stress overshoot → chain orientation time, N₁ overshoot",
+              color: "#134074",
+            },
+            {
+              test: "LAOS (Large Amplitude)",
+              purpose: "Nonlinear fingerprint",
+              params: "Large γ₀ beyond LVR, analyze harmonics",
+              result: "Lissajous plots, I₃/I₁ ratio, strain stiffening/softening",
+              color: "#13315C",
+            },
+            {
+              test: "3ITT (Three Interval Test)",
+              purpose: "Thixotropy / structural recovery",
+              params: "Low γ̇ → high γ̇ → low γ̇, or SAOS-LAOS-SAOS",
+              result: "Recovery %, recovery time, structure breakdown",
+              color: "#0B2545",
+            },
+          ].map((test, i) => (
+            <AnimatedCard key={i} delay={i * 0.05}
+              className="bg-white border border-[#c9d9e8] rounded-2xl p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: test.color }} />
+                <h4 className="font-bold text-[#0B2545] text-sm">{test.test}</h4>
+              </div>
+              <div className="text-xs text-[#3d6285] space-y-1">
+                <div><strong className="text-[#134074]">Purpose:</strong> {test.purpose}</div>
+                <div><strong className="text-[#13315C]">Parameters:</strong> {test.params}</div>
+                <div><strong className="text-[#0B2545]">Key result:</strong> {test.result}</div>
+              </div>
+            </AnimatedCard>
+          ))}
+        </div>
+      </AnimatedSection>
+
+      {/* Slit Die & Online Rheometry */}
+      <AnimatedSection className="mb-16">
+        <h3 className="text-2xl font-bold text-[#0B2545] mb-4">Slit Die & Online Rheometry</h3>
+        <div className="grid md:grid-cols-2 gap-5">
+          <AnimatedCard className="bg-white border border-[#c9d9e8] rounded-2xl p-5">
+            <h4 className="font-bold text-[#0B2545] mb-2">Slit Die Rheometer</h4>
+            <div className="math-block !text-sm !py-1.5 !px-3 !my-2">τ<sub>w</sub> = (h/2) · (dP/dz)</div>
+            <div className="space-y-2 text-xs text-[#3d6285]">
+              <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />Pressure transducers flush-mounted along slit length</div>
+              <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />No entrance effects if sensors away from entry/exit</div>
+              <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />γ̇ range: 10¹–10⁴ s⁻¹ (processing-relevant)</div>
+              <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />Can measure N₁ via hole-pressure difference (Han slit)</div>
+              <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />Ideal for online/inline process monitoring</div>
+            </div>
+          </AnimatedCard>
+          <AnimatedCard delay={0.1} className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-5">
+            <h4 className="font-bold text-[#0B2545] mb-2">Online Process Rheometry</h4>
+            <div className="space-y-2 text-xs text-[#3d6285]">
+              {[
+                { type: "Inline", desc: "Sensor directly in melt flow (slit die, nozzle sensor). No sample bypass." },
+                { type: "Online", desc: "Side-stream diverted from process. Full shear rate range possible." },
+                { type: "At-line", desc: "Lab instrument near process. Sample taken manually, fastest feedback." },
+                { type: "Göttfert bypass", desc: "Online capillary with automatic sample and purge. Industrial standard." },
+                { type: "Ultrasonic", desc: "Non-invasive. Wave attenuation → η. Limited to Newtonian-like regime." },
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0B2545] mt-1.5 shrink-0" />
+                  <span><strong className="text-[#0B2545]">{item.type}:</strong> {item.desc}</span>
+                </div>
+              ))}
+            </div>
+          </AnimatedCard>
+        </div>
+      </AnimatedSection>
+
+      {/* MFI vs Full Characterization — Comparison */}
       <AnimatedSection>
         <h3 className="text-2xl font-bold text-[#0B2545] mb-4">MFI vs Full Rheological Characterization</h3>
         <div className="grid md:grid-cols-2 gap-6">
