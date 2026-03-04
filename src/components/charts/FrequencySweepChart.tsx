@@ -55,7 +55,7 @@ export default function FrequencySweepChart() {
     <div>
       <div className="flex flex-wrap gap-6 mb-6">
         <div>
-          <label className="text-sm text-[#94a3b8] block mb-1">
+          <label className="text-sm text-[#a1a1aa] block mb-1">
             Crossover Frequency: {crossoverFreq.toFixed(1)} rad/s
           </label>
           <input
@@ -65,11 +65,11 @@ export default function FrequencySweepChart() {
             step="0.1"
             value={crossoverFreq}
             onChange={(e) => setCrossoverFreq(parseFloat(e.target.value))}
-            className="w-48 accent-[#38bdf8]"
+            className="w-48 accent-[#818cf8]"
           />
         </div>
         <div>
-          <label className="text-sm text-[#94a3b8] block mb-1">
+          <label className="text-sm text-[#a1a1aa] block mb-1">
             Plateau Modulus G<sub>N</sub><sup>0</sup>:{" "}
             {(plateauModulus / 1000).toFixed(0)} kPa
           </label>
@@ -80,41 +80,41 @@ export default function FrequencySweepChart() {
             step="10000"
             value={plateauModulus}
             onChange={(e) => setPlateauModulus(parseFloat(e.target.value))}
-            className="w-48 accent-[#a78bfa]"
+            className="w-48 accent-[#c084fc]"
           />
         </div>
         <div className="flex items-end">
-          <label className="flex items-center gap-2 text-sm text-[#94a3b8] cursor-pointer">
+          <label className="flex items-center gap-2 text-sm text-[#a1a1aa] cursor-pointer">
             <input
               type="checkbox"
               checked={showTanDelta}
               onChange={(e) => setShowTanDelta(e.target.checked)}
-              className="accent-[#f59e0b]"
+              className="accent-[#fbbf24]"
             />
             Show tan(δ)
           </label>
         </div>
       </div>
 
-      <div className="text-xs text-[#94a3b8] mb-2">
+      <div className="text-xs text-[#a1a1aa] mb-2">
         Single Maxwell Element: G&apos;(ω) = G<sub>N</sub><sup>0</sup> · (ωλ)² / [1 + (ωλ)²], &nbsp;
         G&apos;&apos;(ω) = G<sub>N</sub><sup>0</sup> · ωλ / [1 + (ωλ)²]
       </div>
 
       <ResponsiveContainer width="100%" height={420}>
         <LineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
           <XAxis
             dataKey="omega"
             scale="log"
             domain={["dataMin", "dataMax"]}
             type="number"
-            tick={{ fill: "#94a3b8", fontSize: 12 }}
+            tick={{ fill: "#71717a", fontSize: 11 }}
             label={{
               value: "Angular Frequency ω [rad/s]",
               position: "insideBottom",
               offset: -5,
-              fill: "#94a3b8",
+              fill: "#71717a",
             }}
           />
           <YAxis
@@ -122,13 +122,13 @@ export default function FrequencySweepChart() {
             scale="log"
             domain={[1, "auto"]}
             type="number"
-            tick={{ fill: "#94a3b8", fontSize: 12 }}
+            tick={{ fill: "#71717a", fontSize: 11 }}
             label={{
               value: "G', G'' [Pa]",
               angle: -90,
               position: "insideLeft",
               offset: 15,
-              fill: "#94a3b8",
+              fill: "#71717a",
             }}
           />
           {showTanDelta && (
@@ -138,22 +138,23 @@ export default function FrequencySweepChart() {
               scale="log"
               domain={[0.01, 100]}
               type="number"
-              tick={{ fill: "#f59e0b", fontSize: 12 }}
+              tick={{ fill: "#fbbf24", fontSize: 12 }}
               label={{
                 value: "tan(δ)",
                 angle: 90,
                 position: "insideRight",
                 offset: 10,
-                fill: "#f59e0b",
+                fill: "#fbbf24",
               }}
             />
           )}
           <Tooltip
             contentStyle={{
-              backgroundColor: "#1e293b",
-              border: "1px solid #334155",
+              backgroundColor: "rgba(12,12,18,0.9)",
+              border: "1px solid rgba(255,255,255,0.06)",
               borderRadius: "0.75rem",
-              color: "#e2e8f0",
+              color: "#e4e4e7",
+              backdropFilter: "blur(12px)",
             }}
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             formatter={(value: any, name: any) => {
@@ -166,15 +167,15 @@ export default function FrequencySweepChart() {
               `ω = ${Number(label).toFixed(2)} rad/s`
             }
           />
-          <Legend wrapperStyle={{ color: "#94a3b8", paddingTop: 16 }} />
+          <Legend wrapperStyle={{ color: "#a1a1aa", paddingTop: 16 }} />
           <ReferenceLine
             x={crossoverFreq}
             yAxisId="modulus"
-            stroke="#64748b"
+            stroke="#71717a"
             strokeDasharray="5 5"
             label={{
               value: "Crossover",
-              fill: "#64748b",
+              fill: "#71717a",
               fontSize: 11,
               position: "top",
             }}
@@ -183,8 +184,8 @@ export default function FrequencySweepChart() {
             yAxisId="modulus"
             type="monotone"
             dataKey="gPrime"
-            stroke="#38bdf8"
-            strokeWidth={2.5}
+            stroke="#818cf8"
+            strokeWidth={2}
             dot={false}
             name="G' (Storage)"
           />
@@ -192,8 +193,8 @@ export default function FrequencySweepChart() {
             yAxisId="modulus"
             type="monotone"
             dataKey="gDoublePrime"
-            stroke="#f472b6"
-            strokeWidth={2.5}
+            stroke="#f0abfc"
+            strokeWidth={2}
             dot={false}
             name="G'' (Loss)"
           />
@@ -202,7 +203,7 @@ export default function FrequencySweepChart() {
               yAxisId="tanDelta"
               type="monotone"
               dataKey="tanDelta"
-              stroke="#f59e0b"
+              stroke="#fbbf24"
               strokeWidth={2}
               strokeDasharray="5 3"
               dot={false}
@@ -213,29 +214,29 @@ export default function FrequencySweepChart() {
       </ResponsiveContainer>
 
       <div className="mt-4 grid sm:grid-cols-3 gap-4 text-sm">
-        <div className="bg-[#0f172a] rounded-xl p-4 border border-[#334155]">
-          <div className="text-[#38bdf8] font-semibold mb-1">
+        <div className="bg-white/[0.02] rounded-xl p-4 border border-white/[0.03]">
+          <div className="text-[#818cf8] font-semibold mb-1 text-xs">
             ω &lt; ω<sub>c</sub> (Terminal zone)
           </div>
-          <p className="text-[#94a3b8] text-xs">
+          <p className="text-[#71717a] text-xs">
             G&apos;&apos; &gt; G&apos;: Viscous (liquid-like) behavior dominates. Polymer
             chains have time to relax fully.
           </p>
         </div>
-        <div className="bg-[#0f172a] rounded-xl p-4 border border-[#38bdf8]/30">
-          <div className="text-[#f1f5f9] font-semibold mb-1">
+        <div className="bg-white/[0.02] rounded-xl p-4 border border-[#818cf8]/15">
+          <div className="text-[#fafafa] font-semibold mb-1 text-xs">
             ω = ω<sub>c</sub> (Crossover)
           </div>
-          <p className="text-[#94a3b8] text-xs">
+          <p className="text-[#71717a] text-xs">
             G&apos; = G&apos;&apos;, tan(δ) = 1. The relaxation time λ = 1/ω<sub>c</sub>. A
             key indicator of molecular weight.
           </p>
         </div>
-        <div className="bg-[#0f172a] rounded-xl p-4 border border-[#334155]">
-          <div className="text-[#f472b6] font-semibold mb-1">
+        <div className="bg-white/[0.02] rounded-xl p-4 border border-white/[0.03]">
+          <div className="text-[#f0abfc] font-semibold mb-1 text-xs">
             ω &gt; ω<sub>c</sub> (Plateau zone)
           </div>
-          <p className="text-[#94a3b8] text-xs">
+          <p className="text-[#71717a] text-xs">
             G&apos; &gt; G&apos;&apos;: Elastic (solid-like) behavior dominates. Chains are
             entangled and cannot relax within the deformation timescale.
           </p>

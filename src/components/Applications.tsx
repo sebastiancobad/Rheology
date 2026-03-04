@@ -6,9 +6,9 @@ export default function Applications() {
       id="applications"
       title="Industrial Applications"
       subtitle="Section 4 — Polymer Processing"
-      accent="#f59e0b"
+      accent="#fbbf24"
     >
-      <p className="text-[#94a3b8] mb-10 max-w-3xl">
+      <p className="text-[#a1a1aa] mb-10 max-w-3xl">
         Understanding polymer rheology is essential to optimizing processing
         conditions. Each manufacturing technique imposes specific flow fields
         (shear, extension, or combined) at particular rates and temperatures.
@@ -18,48 +18,48 @@ export default function Applications() {
 
       <div className="grid lg:grid-cols-3 gap-6 mb-12">
         {/* Extrusion */}
-        <div className="bg-[#1e293b] border border-[#334155] rounded-2xl p-6 flex flex-col">
-          <div className="w-12 h-12 rounded-xl bg-[#38bdf8]/10 flex items-center justify-center mb-4">
-            <svg className="w-6 h-6 text-[#38bdf8]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <div className="bg-[#0c0c12]/60 border border-white/[0.04] rounded-2xl backdrop-blur-sm p-6 flex flex-col">
+          <div className="w-12 h-12 rounded-xl bg-[#818cf8]/10 flex items-center justify-center mb-4">
+            <svg className="w-6 h-6 text-[#818cf8]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path d="M13 5l7 7-7 7M5 5l7 7-7 7" />
             </svg>
           </div>
-          <h4 className="font-bold text-[#f1f5f9] text-lg mb-3">Extrusion</h4>
-          <p className="text-[#94a3b8] text-sm mb-4 flex-grow">
+          <h4 className="font-bold text-[#fafafa] text-lg mb-3">Extrusion</h4>
+          <p className="text-[#a1a1aa] text-sm mb-4 flex-grow">
             Polymer is melted, homogenized by a rotating screw, and forced
             through a die. Involves predominantly{" "}
-            <strong className="text-[#e2e8f0]">shear flow</strong> inside the
+            <strong className="text-[#e4e4e7]">shear flow</strong> inside the
             barrel and combined shear + extension at the die exit. Twin-screw
             extruders add distributive and dispersive mixing — essential for
             recycled polymer compounding with compatibilizers and fillers.
           </p>
           <div className="space-y-3">
-            <div className="bg-[#0f172a] rounded-xl p-3">
-              <h5 className="text-[#38bdf8] text-xs font-semibold mb-1">
+            <div className="bg-[#050507]/60 rounded-xl border border-white/[0.02] p-3">
+              <h5 className="text-[#818cf8] text-xs font-semibold mb-1">
                 Key Rheological Parameters
               </h5>
-              <ul className="text-[#94a3b8] text-xs space-y-1 list-disc list-inside">
+              <ul className="text-[#a1a1aa] text-xs space-y-1 list-disc list-inside">
                 <li>η(γ̇) at 10²–10³ s⁻¹ (Carreau-Yasuda or Cross model)</li>
                 <li>Die swell (B = D<sub>ext</sub>/D<sub>die</sub>), related to N₁</li>
                 <li>Melt fracture onset: sharkskin (~0.1 MPa) and gross (~0.3 MPa)</li>
                 <li>Specific mechanical energy (SME) for twin-screw compounding</li>
               </ul>
             </div>
-            <div className="bg-[#0f172a] rounded-xl p-3">
-              <h5 className="text-[#38bdf8] text-xs font-semibold mb-1">
+            <div className="bg-[#050507]/60 rounded-xl border border-white/[0.02] p-3">
+              <h5 className="text-[#818cf8] text-xs font-semibold mb-1">
                 Defects &amp; Root Causes
               </h5>
-              <ul className="text-[#94a3b8] text-xs space-y-1 list-disc list-inside">
+              <ul className="text-[#a1a1aa] text-xs space-y-1 list-disc list-inside">
                 <li>
-                  <strong className="text-[#e2e8f0]">Sharkskin:</strong> Extensional stress
+                  <strong className="text-[#e4e4e7]">Sharkskin:</strong> Extensional stress
                   at die exit. Remediation: slip agents, die coating (Hatzikiriakos, 2012)
                 </li>
                 <li>
-                  <strong className="text-[#e2e8f0]">Die swell:</strong> B = 1.1–1.5 for HDPE,
+                  <strong className="text-[#e4e4e7]">Die swell:</strong> B = 1.1–1.5 for HDPE,
                   up to 2.0+ for LDPE
                 </li>
                 <li>
-                  <strong className="text-[#e2e8f0]">Melt fracture:</strong> Gross distortion
+                  <strong className="text-[#e4e4e7]">Melt fracture:</strong> Gross distortion
                   above critical τ<sub>w</sub>
                 </li>
               </ul>
@@ -68,35 +68,35 @@ export default function Applications() {
         </div>
 
         {/* Injection Molding */}
-        <div className="bg-[#1e293b] border border-[#334155] rounded-2xl p-6 flex flex-col">
-          <div className="w-12 h-12 rounded-xl bg-[#a78bfa]/10 flex items-center justify-center mb-4">
-            <svg className="w-6 h-6 text-[#a78bfa]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <div className="bg-[#0c0c12]/60 border border-white/[0.04] rounded-2xl backdrop-blur-sm p-6 flex flex-col">
+          <div className="w-12 h-12 rounded-xl bg-[#c084fc]/10 flex items-center justify-center mb-4">
+            <svg className="w-6 h-6 text-[#c084fc]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
             </svg>
           </div>
-          <h4 className="font-bold text-[#f1f5f9] text-lg mb-3">Injection Molding</h4>
-          <p className="text-[#94a3b8] text-sm mb-4 flex-grow">
+          <h4 className="font-bold text-[#fafafa] text-lg mb-3">Injection Molding</h4>
+          <p className="text-[#a1a1aa] text-sm mb-4 flex-grow">
             Molten polymer is injected at high pressure (50–200 MPa) into a closed
             mold. Extremely high shear rates (10³–10⁵ s⁻¹) during filling, followed
             by packing and cooling. Fountain flow creates skin-core morphology.
           </p>
           <div className="space-y-3">
-            <div className="bg-[#0f172a] rounded-xl p-3">
-              <h5 className="text-[#a78bfa] text-xs font-semibold mb-1">
+            <div className="bg-[#050507]/60 rounded-xl border border-white/[0.02] p-3">
+              <h5 className="text-[#c084fc] text-xs font-semibold mb-1">
                 Key Rheological Parameters
               </h5>
-              <ul className="text-[#94a3b8] text-xs space-y-1 list-disc list-inside">
+              <ul className="text-[#a1a1aa] text-xs space-y-1 list-disc list-inside">
                 <li>η(γ̇, T, P) — Cross-WLF model for Moldflow/Sigmasoft</li>
                 <li>pvT data (specific volume vs. pressure &amp; temperature)</li>
                 <li>Flow-induced crystallization kinetics for iPP, PET</li>
                 <li>No-flow temperature for gate freeze prediction</li>
               </ul>
             </div>
-            <div className="bg-[#0f172a] rounded-xl p-3">
-              <h5 className="text-[#a78bfa] text-xs font-semibold mb-1">
+            <div className="bg-[#050507]/60 rounded-xl border border-white/[0.02] p-3">
+              <h5 className="text-[#c084fc] text-xs font-semibold mb-1">
                 Simulation Requirements
               </h5>
-              <ul className="text-[#94a3b8] text-xs space-y-1 list-disc list-inside">
+              <ul className="text-[#a1a1aa] text-xs space-y-1 list-disc list-inside">
                 <li>Cross-WLF: η = η₀(T)/[1 + (η₀γ̇/τ*)^(1−n)]</li>
                 <li>Warpage requires viscoelastic constitutive models</li>
                 <li>For recycled: update material DB with batch-specific data</li>
@@ -106,37 +106,37 @@ export default function Applications() {
         </div>
 
         {/* Blow Molding */}
-        <div className="bg-[#1e293b] border border-[#334155] rounded-2xl p-6 flex flex-col">
-          <div className="w-12 h-12 rounded-xl bg-[#34d399]/10 flex items-center justify-center mb-4">
-            <svg className="w-6 h-6 text-[#34d399]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <div className="bg-[#0c0c12]/60 border border-white/[0.04] rounded-2xl backdrop-blur-sm p-6 flex flex-col">
+          <div className="w-12 h-12 rounded-xl bg-[#2dd4bf]/10 flex items-center justify-center mb-4">
+            <svg className="w-6 h-6 text-[#2dd4bf]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path d="M12 2a10 10 0 0110 10c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z" />
               <path d="M12 6v6l4 2" />
             </svg>
           </div>
-          <h4 className="font-bold text-[#f1f5f9] text-lg mb-3">Blow Molding</h4>
-          <p className="text-[#94a3b8] text-sm mb-4 flex-grow">
+          <h4 className="font-bold text-[#fafafa] text-lg mb-3">Blow Molding</h4>
+          <p className="text-[#a1a1aa] text-sm mb-4 flex-grow">
             A parison is extruded and inflated. Subjected to{" "}
-            <strong className="text-[#e2e8f0]">biaxial extension</strong> during inflation.
+            <strong className="text-[#e4e4e7]">biaxial extension</strong> during inflation.
             For stretch blow molding (PET), the preform is biaxially stretched above
             T<sub>g</sub>, inducing strain-induced crystallization.
           </p>
           <div className="space-y-3">
-            <div className="bg-[#0f172a] rounded-xl p-3">
-              <h5 className="text-[#34d399] text-xs font-semibold mb-1">
+            <div className="bg-[#050507]/60 rounded-xl border border-white/[0.02] p-3">
+              <h5 className="text-[#2dd4bf] text-xs font-semibold mb-1">
                 Key Rheological Parameters
               </h5>
-              <ul className="text-[#94a3b8] text-xs space-y-1 list-disc list-inside">
+              <ul className="text-[#a1a1aa] text-xs space-y-1 list-disc list-inside">
                 <li>η<sub>E</sub>(ε̇) — extensional viscosity (SER, Rheotens)</li>
                 <li>Melt strength (cN) and break stretch ratio</li>
                 <li>Parison sag time</li>
                 <li>Die swell for parison diameter prediction</li>
               </ul>
             </div>
-            <div className="bg-[#0f172a] rounded-xl p-3">
-              <h5 className="text-[#34d399] text-xs font-semibold mb-1">
+            <div className="bg-[#050507]/60 rounded-xl border border-white/[0.02] p-3">
+              <h5 className="text-[#2dd4bf] text-xs font-semibold mb-1">
                 Strain Hardening Importance
               </h5>
-              <p className="text-[#94a3b8] text-xs">
+              <p className="text-[#a1a1aa] text-xs">
                 Creates <em>self-leveling</em>: thinner regions stiffen more.
                 LDPE (LCB) achieves this naturally. Linear polymers need:
                 peroxide modification, branched blending, or HMS-PP grades
@@ -148,58 +148,58 @@ export default function Applications() {
       </div>
 
       {/* Processing Window Summary */}
-      <div className="bg-[#1e293b] border border-[#334155] rounded-2xl p-6 mb-12">
-        <h4 className="font-bold text-[#f1f5f9] mb-4">
+      <div className="bg-[#0c0c12]/60 border border-white/[0.04] rounded-2xl backdrop-blur-sm p-6 mb-12">
+        <h4 className="font-bold text-[#fafafa] mb-4">
           Typical Shear Rate Ranges in Polymer Processing
         </h4>
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-left">
             <thead>
-              <tr className="border-b border-[#334155]">
-                <th className="px-4 py-2 text-[#f1f5f9] font-semibold">Process</th>
-                <th className="px-4 py-2 text-[#f1f5f9] font-semibold">γ̇ (s⁻¹)</th>
-                <th className="px-4 py-2 text-[#f1f5f9] font-semibold">Primary Flow</th>
-                <th className="px-4 py-2 text-[#f1f5f9] font-semibold">Instrument</th>
-                <th className="px-4 py-2 text-[#f1f5f9] font-semibold">Key Parameter</th>
+              <tr className="border-b border-white/[0.06]">
+                <th className="px-4 py-2 text-[#fafafa] font-semibold">Process</th>
+                <th className="px-4 py-2 text-[#fafafa] font-semibold">γ̇ (s⁻¹)</th>
+                <th className="px-4 py-2 text-[#fafafa] font-semibold">Primary Flow</th>
+                <th className="px-4 py-2 text-[#fafafa] font-semibold">Instrument</th>
+                <th className="px-4 py-2 text-[#fafafa] font-semibold">Key Parameter</th>
               </tr>
             </thead>
-            <tbody className="text-[#94a3b8]">
-              <tr className="border-b border-[#334155]/50">
+            <tbody className="text-[#a1a1aa]">
+              <tr className="border-b border-white/[0.06]/50">
                 <td className="px-4 py-2">Compression Molding</td>
                 <td className="px-4 py-2">1 – 10</td>
                 <td className="px-4 py-2">Squeezing</td>
                 <td className="px-4 py-2">Rotational</td>
                 <td className="px-4 py-2">η₀, creep compliance</td>
               </tr>
-              <tr className="border-b border-[#334155]/50">
+              <tr className="border-b border-white/[0.06]/50">
                 <td className="px-4 py-2">Extrusion</td>
                 <td className="px-4 py-2">10² – 10³</td>
                 <td className="px-4 py-2">Shear + Extension</td>
                 <td className="px-4 py-2">Capillary</td>
                 <td className="px-4 py-2">η(γ̇), die swell, N₁</td>
               </tr>
-              <tr className="border-b border-[#334155]/50">
+              <tr className="border-b border-white/[0.06]/50">
                 <td className="px-4 py-2">Injection Molding</td>
                 <td className="px-4 py-2">10³ – 10⁵</td>
                 <td className="px-4 py-2">Shear (dominant)</td>
                 <td className="px-4 py-2">HP Capillary</td>
                 <td className="px-4 py-2">η(γ̇,T,P), pvT</td>
               </tr>
-              <tr className="border-b border-[#334155]/50">
+              <tr className="border-b border-white/[0.06]/50">
                 <td className="px-4 py-2">Blow Molding</td>
                 <td className="px-4 py-2">10¹ – 10²</td>
                 <td className="px-4 py-2">Biaxial extension</td>
                 <td className="px-4 py-2">SER, Rheotens</td>
                 <td className="px-4 py-2">η<sub>E</sub>, melt strength</td>
               </tr>
-              <tr className="border-b border-[#334155]/50">
+              <tr className="border-b border-white/[0.06]/50">
                 <td className="px-4 py-2">Fiber Spinning</td>
                 <td className="px-4 py-2">10² – 10⁴</td>
                 <td className="px-4 py-2">Uniaxial extension</td>
                 <td className="px-4 py-2">CaBER, FiSER</td>
                 <td className="px-4 py-2">η<sub>E</sub>, spinnability</td>
               </tr>
-              <tr className="border-b border-[#334155]/50">
+              <tr className="border-b border-white/[0.06]/50">
                 <td className="px-4 py-2">3D Printing (FDM)</td>
                 <td className="px-4 py-2">10² – 10⁴</td>
                 <td className="px-4 py-2">Shear + Extension</td>
@@ -219,44 +219,44 @@ export default function Applications() {
       </div>
 
       {/* Recycled Plastics in Processing */}
-      <h3 className="text-2xl font-bold text-[#f1f5f9] mb-6">
+      <h3 className="text-2xl font-bold text-[#fafafa] mb-6">
         Processing Recycled Polymers — Rheological Challenges
       </h3>
 
-      <div className="bg-gradient-to-r from-[#34d399]/5 to-[#f59e0b]/5 border border-[#34d399]/20 rounded-2xl p-6 mb-8">
-        <p className="text-[#94a3b8] text-sm mb-6">
+      <div className="bg-[#0c0c12]/40 border border-[#2dd4bf]/10 backdrop-blur-sm rounded-2xl p-6 mb-8">
+        <p className="text-[#a1a1aa] text-sm mb-6">
           Recycled polymers present unique processing challenges from batch-to-batch
           variability, degradation history, and contamination:
         </p>
 
         <div className="grid md:grid-cols-2 gap-6 mb-6">
-          <div className="bg-[#1e293b] rounded-xl p-4">
-            <h5 className="text-[#34d399] font-semibold text-sm mb-2">
+          <div className="bg-white/[0.02] rounded-xl p-4">
+            <h5 className="text-[#2dd4bf] font-semibold text-sm mb-2">
               Post-Consumer rPET (Bottle-to-Bottle)
             </h5>
-            <p className="text-[#94a3b8] text-xs mb-2">
+            <p className="text-[#a1a1aa] text-xs mb-2">
               IV drops from 0.80 to 0.60–0.65 dL/g per pass (~30% M<sub>w</sub>{" "}
               reduction, ~60% η₀ reduction).
             </p>
-            <p className="text-[#94a3b8] text-xs">
-              <strong className="text-[#e2e8f0]">Solutions:</strong> SSP at 200–220°C
+            <p className="text-[#a1a1aa] text-xs">
+              <strong className="text-[#e4e4e7]">Solutions:</strong> SSP at 200–220°C
               recovers IV. Chain extenders (Joncryl, 0.3–0.5 wt%) restore IV during
               reactive extrusion but introduce branching. Co-injection with virgin PET
               is standard in beverage industry (Awaja &amp; Pavel, 2005).
             </p>
           </div>
 
-          <div className="bg-[#1e293b] rounded-xl p-4">
-            <h5 className="text-[#38bdf8] font-semibold text-sm mb-2">
+          <div className="bg-white/[0.02] rounded-xl p-4">
+            <h5 className="text-[#818cf8] font-semibold text-sm mb-2">
               Mixed Polyolefin Waste (rPE/rPP)
             </h5>
-            <p className="text-[#94a3b8] text-xs mb-2">
+            <p className="text-[#a1a1aa] text-xs mb-2">
               Even 5% PE in PP creates immiscible blends with interfacial relaxation
               visible as a shoulder in G&apos; at low ω. Variable MFI batch-to-batch
               (σ up to ±30%).
             </p>
-            <p className="text-[#94a3b8] text-xs">
-              <strong className="text-[#e2e8f0]">Solutions:</strong> SEBS or EPR
+            <p className="text-[#a1a1aa] text-xs">
+              <strong className="text-[#e4e4e7]">Solutions:</strong> SEBS or EPR
               compatibilizers at 3–8 wt%. Rheological monitoring of G&apos;(ω) at
               ω &lt; 1 rad/s gives rapid morphology feedback without EM
               (Utracki &amp; Wilkie, 2014).
@@ -265,11 +265,11 @@ export default function Applications() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-[#1e293b] rounded-xl p-4">
-            <h5 className="text-[#a78bfa] font-semibold text-sm mb-2">
+          <div className="bg-white/[0.02] rounded-xl p-4">
+            <h5 className="text-[#c084fc] font-semibold text-sm mb-2">
               Recycled PA6/PA66 (Automotive)
             </h5>
-            <p className="text-[#94a3b8] text-xs">
+            <p className="text-[#a1a1aa] text-xs">
               GF-reinforced PA from automotive shredder: fiber attrition
               (L<sub>avg</sub> 300→100 μm in 3 passes), hydrolysis-induced η₀ reduction,
               thixotropy from fiber networks at &gt;20 wt% GF. Pre-drying to &lt;0.1%
@@ -277,15 +277,15 @@ export default function Applications() {
             </p>
           </div>
 
-          <div className="bg-[#1e293b] rounded-xl p-4">
-            <h5 className="text-[#f472b6] font-semibold text-sm mb-2">
+          <div className="bg-white/[0.02] rounded-xl p-4">
+            <h5 className="text-[#f0abfc] font-semibold text-sm mb-2">
               Chemical Recycling (Pyrolysis Waxes)
             </h5>
-            <p className="text-[#94a3b8] text-xs">
+            <p className="text-[#a1a1aa] text-xs">
               Pyrolysis of mixed plastic waste produces waxes (broad MWD, PDI = 5–20)
               that act as plasticizers. Heteroatom contamination (N, S, Cl) catalyzes
               further degradation.{" "}
-              <strong className="text-[#f59e0b]">Literature gap:</strong> Rheological
+              <strong className="text-[#fbbf24]">Literature gap:</strong> Rheological
               characterization of wax–polymer blends is sparse (Ragaert et al., 2017).
             </p>
           </div>
@@ -293,34 +293,34 @@ export default function Applications() {
       </div>
 
       {/* 3D Printing */}
-      <div className="bg-[#1e293b] border border-[#334155] rounded-2xl p-6 mb-8">
-        <h4 className="font-bold text-[#f1f5f9] mb-4">
+      <div className="bg-[#0c0c12]/60 border border-white/[0.04] rounded-2xl backdrop-blur-sm p-6 mb-8">
+        <h4 className="font-bold text-[#fafafa] mb-4">
           Emerging: 3D Printing &amp; Additive Manufacturing
         </h4>
-        <p className="text-[#94a3b8] text-sm mb-4">
+        <p className="text-[#a1a1aa] text-sm mb-4">
           FDM/FFF is a shear + extension process where rheology governs printability.
           Filament is sheared through a nozzle (γ̇ ≈ 10²–10⁴ s⁻¹), then deposited
           as a bead that must fuse via reptation-driven welding:
         </p>
         <div className="grid md:grid-cols-3 gap-4">
-          <div className="bg-[#0f172a] rounded-xl p-3">
-            <h5 className="text-[#38bdf8] text-xs font-semibold mb-1">Printability Window</h5>
-            <p className="text-[#94a3b8] text-xs">
+          <div className="bg-[#050507]/60 rounded-xl border border-white/[0.02] p-3">
+            <h5 className="text-[#818cf8] text-xs font-semibold mb-1">Printability Window</h5>
+            <p className="text-[#a1a1aa] text-xs">
               η(γ̇<sub>nozzle</sub>) &lt; 10³ Pa·s for extrusion, but η₀ high
               enough for shape retention. High tan(δ) → poor shape retention.
             </p>
           </div>
-          <div className="bg-[#0f172a] rounded-xl p-3">
-            <h5 className="text-[#a78bfa] text-xs font-semibold mb-1">Layer Welding</h5>
-            <p className="text-[#94a3b8] text-xs">
+          <div className="bg-[#050507]/60 rounded-xl border border-white/[0.02] p-3">
+            <h5 className="text-[#c084fc] text-xs font-semibold mb-1">Layer Welding</h5>
+            <p className="text-[#a1a1aa] text-xs">
               Interlayer bond depends on reptation across the interface at T &gt; T<sub>g</sub>.
               Welding time t<sub>w</sub> ∝ η₀ · T — higher MW → stronger welds
               but slower welding (Mackay, <em>J. Rheol.</em>, 2018).
             </p>
           </div>
-          <div className="bg-[#0f172a] rounded-xl p-3">
-            <h5 className="text-[#34d399] text-xs font-semibold mb-1">Recycled Filaments</h5>
-            <p className="text-[#94a3b8] text-xs">
+          <div className="bg-[#050507]/60 rounded-xl border border-white/[0.02] p-3">
+            <h5 className="text-[#2dd4bf] text-xs font-semibold mb-1">Recycled Filaments</h5>
+            <p className="text-[#a1a1aa] text-xs">
               rPET, rPLA, rABS, rPP filaments available commercially. Lower η₀ →
               poor shape retention; faster crystallization → warping. Rheological QC
               essential for consistent print quality.
@@ -330,9 +330,9 @@ export default function Applications() {
       </div>
 
       {/* References */}
-      <div className="bg-[#0f172a] border border-[#334155] rounded-2xl p-6">
-        <h4 className="font-bold text-[#f1f5f9] mb-3">Key References — Processing</h4>
-        <ul className="text-[#94a3b8] text-sm space-y-2">
+      <div className="bg-[#050507]/80 border border-white/[0.03] rounded-2xl p-6">
+        <h4 className="font-bold text-[#fafafa] mb-3">Key References — Processing</h4>
+        <ul className="text-[#a1a1aa] text-sm space-y-2">
           <li>Tadmor, Z. &amp; Gogos, C.G. (2006). <em>Principles of Polymer Processing.</em> 2nd ed. Wiley.</li>
           <li>Osswald, T.A. &amp; Hernandez-Ortiz, J.P. (2006). <em>Polymer Processing: Modeling and Simulation.</em> Hanser.</li>
           <li>Hatzikiriakos, S.G. (2012). Wall slip of molten polymers. <em>Prog. Polym. Sci.</em>, 37(4), 624–643.</li>

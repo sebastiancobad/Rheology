@@ -48,7 +48,7 @@ export default function FlowCurveChart() {
     <div>
       <div className="flex flex-wrap gap-6 mb-6">
         <div>
-          <label className="text-sm text-[#94a3b8] block mb-1">
+          <label className="text-sm text-[#a1a1aa] block mb-1">
             Pseudoplastic <span className="math">n</span> = {nPseudo.toFixed(2)}
           </label>
           <input
@@ -58,11 +58,11 @@ export default function FlowCurveChart() {
             step="0.05"
             value={nPseudo}
             onChange={(e) => setNPseudo(parseFloat(e.target.value))}
-            className="w-48 accent-[#38bdf8]"
+            className="w-48 accent-[#818cf8]"
           />
         </div>
         <div>
-          <label className="text-sm text-[#94a3b8] block mb-1">
+          <label className="text-sm text-[#a1a1aa] block mb-1">
             Dilatant <span className="math">n</span> = {nDilatant.toFixed(2)}
           </label>
           <input
@@ -72,12 +72,12 @@ export default function FlowCurveChart() {
             step="0.05"
             value={nDilatant}
             onChange={(e) => setNDilatant(parseFloat(e.target.value))}
-            className="w-48 accent-[#a78bfa]"
+            className="w-48 accent-[#c084fc]"
           />
         </div>
       </div>
 
-      <div className="text-xs text-[#94a3b8] mb-2">
+      <div className="text-xs text-[#a1a1aa] mb-2">
         Power-law model: <span className="math">η = K · γ̇</span>
         <sup>(<span className="math">n</span>−1)</sup>, K = 1000 Pa·s
         <sup>n</sup>
@@ -85,39 +85,40 @@ export default function FlowCurveChart() {
 
       <ResponsiveContainer width="100%" height={400}>
         <LineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
           <XAxis
             dataKey="shearRate"
             scale="log"
             domain={["dataMin", "dataMax"]}
             type="number"
-            tick={{ fill: "#94a3b8", fontSize: 12 }}
+            tick={{ fill: "#71717a", fontSize: 11 }}
             label={{
               value: "Shear Rate γ̇ [s⁻¹]",
               position: "insideBottom",
               offset: -5,
-              fill: "#94a3b8",
+              fill: "#71717a",
             }}
           />
           <YAxis
             scale="log"
             domain={["auto", "auto"]}
             type="number"
-            tick={{ fill: "#94a3b8", fontSize: 12 }}
+            tick={{ fill: "#71717a", fontSize: 11 }}
             label={{
               value: "Viscosity η [Pa·s]",
               angle: -90,
               position: "insideLeft",
               offset: 15,
-              fill: "#94a3b8",
+              fill: "#71717a",
             }}
           />
           <Tooltip
             contentStyle={{
-              backgroundColor: "#1e293b",
-              border: "1px solid #334155",
+              backgroundColor: "rgba(12,12,18,0.9)",
+              border: "1px solid rgba(255,255,255,0.06)",
               borderRadius: "0.75rem",
-              color: "#e2e8f0",
+              color: "#e4e4e7",
+              backdropFilter: "blur(12px)",
             }}
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             formatter={(value: any) => [
@@ -129,29 +130,29 @@ export default function FlowCurveChart() {
             }
           />
           <Legend
-            wrapperStyle={{ color: "#94a3b8", paddingTop: 16 }}
+            wrapperStyle={{ color: "#a1a1aa", paddingTop: 16 }}
           />
           <Line
             type="monotone"
             dataKey="pseudoplastic"
-            stroke="#38bdf8"
-            strokeWidth={2.5}
+            stroke="#818cf8"
+            strokeWidth={2}
             dot={false}
             name={`Pseudoplastic (n=${nPseudo.toFixed(2)})`}
           />
           <Line
             type="monotone"
             dataKey="newtonian"
-            stroke="#34d399"
-            strokeWidth={2.5}
+            stroke="#2dd4bf"
+            strokeWidth={2}
             dot={false}
             name="Newtonian (n=1.00)"
           />
           <Line
             type="monotone"
             dataKey="dilatant"
-            stroke="#a78bfa"
-            strokeWidth={2.5}
+            stroke="#c084fc"
+            strokeWidth={2}
             dot={false}
             name={`Dilatant (n=${nDilatant.toFixed(2)})`}
           />

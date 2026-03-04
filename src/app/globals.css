@@ -1,15 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #0f172a;
-  --foreground: #e2e8f0;
-  --card-bg: #1e293b;
-  --card-border: #334155;
-  --accent: #38bdf8;
-  --accent-secondary: #a78bfa;
-  --accent-tertiary: #34d399;
-  --heading: #f1f5f9;
-  --muted: #94a3b8;
+  --background: #050507;
+  --background-secondary: #08080c;
+  --foreground: #e4e4e7;
+  --card-bg: #0c0c12;
+  --card-border: #1e1e2a;
+  --accent: #818cf8;
+  --accent-secondary: #c084fc;
+  --accent-tertiary: #2dd4bf;
+  --heading: #fafafa;
+  --muted: #a1a1aa;
+  --muted-dark: #71717a;
 }
 
 @theme inline {
@@ -22,8 +25,9 @@
   --color-accent-tertiary: var(--accent-tertiary);
   --color-heading: var(--heading);
   --color-muted: var(--muted);
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'SF Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 body {
@@ -36,19 +40,32 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Grain texture overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
   background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--card-border);
-  border-radius: 4px;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--muted);
+  background: var(--muted-dark);
 }
 
 /* Math notation styling */
@@ -61,8 +78,8 @@ html {
   font-family: "Times New Roman", "STIX Two Math", serif;
   font-size: 1.1rem;
   padding: 1rem 1.5rem;
-  background: rgba(56, 189, 248, 0.05);
-  border-left: 3px solid var(--accent);
+  background: rgba(129, 140, 248, 0.04);
+  border-left: 2px solid rgba(129, 140, 248, 0.3);
   border-radius: 0 0.5rem 0.5rem 0;
   margin: 1rem 0;
   overflow-x: auto;
@@ -71,4 +88,70 @@ html {
 /* Section transitions */
 section {
   opacity: 1;
+}
+
+/* Neotech glow utility */
+.neotech-glow {
+  box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.1),
+              0 4px 24px -4px rgba(129, 140, 248, 0.08);
+}
+
+/* Glass card effect */
+.glass-card {
+  background: rgba(12, 12, 18, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Subtle hover lift */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px -8px rgba(129, 140, 248, 0.1);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #818cf8, #c084fc, #2dd4bf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animated gradient border */
+@keyframes border-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Smooth fade-in */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Line decoration */
+.line-decoration::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(129, 140, 248, 0.3), transparent);
 }
