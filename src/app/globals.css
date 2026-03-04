@@ -1,18 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
+/*
+  Palette — coolors.co/134074-13315c-0b2545-8da9c4-eef4ed
+  #134074  — Primary blue
+  #13315C  — Deep navy
+  #0B2545  — Darkest navy (headings)
+  #8DA9C4  — Steel blue (muted / decorative)
+  #EEF4ED  — Mint white (background accent)
+*/
+
 :root {
   --background: #ffffff;
-  --background-secondary: #f8f8fa;
-  --foreground: #3f3f46;
+  --background-secondary: #EEF4ED;
+  --foreground: #13315C;
   --card-bg: #ffffff;
-  --card-border: #e4e4e7;
-  --accent: #4f46e5;
-  --accent-secondary: #7c3aed;
-  --accent-tertiary: #0d9488;
-  --heading: #18181b;
-  --muted: #71717a;
-  --muted-dark: #a1a1aa;
+  --card-border: #c9d9e8;
+  --accent: #134074;
+  --accent-secondary: #13315C;
+  --accent-tertiary: #0B2545;
+  --heading: #0B2545;
+  --muted: #8DA9C4;
+  --muted-dark: #5a7fa3;
 }
 
 @theme inline {
@@ -45,14 +54,14 @@ html {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f4f4f5;
+  background: #EEF4ED;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d4d4d8;
+  background: #8DA9C4;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1aa;
+  background: #134074;
 }
 
 /* Math notation styling */
@@ -65,12 +74,12 @@ html {
   font-family: "Times New Roman", "STIX Two Math", serif;
   font-size: 1.1rem;
   padding: 1rem 1.5rem;
-  background: #f8f7ff;
-  border-left: 2px solid rgba(79, 70, 229, 0.4);
+  background: #EEF4ED;
+  border-left: 2px solid rgba(19, 64, 116, 0.4);
   border-radius: 0 0.5rem 0.5rem 0;
   margin: 1rem 0;
   overflow-x: auto;
-  color: #3f3f46;
+  color: #13315C;
 }
 
 /* Section transitions */
@@ -87,7 +96,7 @@ section {
 /* Card effect */
 .glass-card {
   background: #ffffff;
-  border: 1px solid #e4e4e7;
+  border: 1px solid #c9d9e8;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
@@ -104,7 +113,7 @@ section {
 
 /* Gradient text utility */
 .gradient-text {
-  background: linear-gradient(135deg, #4f46e5, #7c3aed, #0d9488);
+  background: linear-gradient(135deg, #134074, #0B2545, #8DA9C4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -140,5 +149,5 @@ section {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(79, 70, 229, 0.15), transparent);
+  background: linear-gradient(90deg, transparent, rgba(19, 64, 116, 0.15), transparent);
 }

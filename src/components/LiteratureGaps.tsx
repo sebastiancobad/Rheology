@@ -6,9 +6,9 @@ export default function LiteratureGaps() {
       id="literature"
       title="Literature & Open Research Questions"
       subtitle="Section 5 — Current Frontiers"
-      accent="#9333ea"
+      accent="#134074"
     >
-      <p className="text-[#6b7280] mb-10 max-w-3xl">
+      <p className="text-[#3d6285] mb-10 max-w-3xl">
         Despite decades of research, polymer rheology remains a vibrant field with
         significant open questions — particularly as the industry shifts toward
         sustainability, recycled feedstocks, and advanced manufacturing. Below we
@@ -16,25 +16,25 @@ export default function LiteratureGaps() {
       </p>
 
       {/* Open Research Questions */}
-      <h3 className="text-2xl font-bold text-[#18181b] mb-6">
+      <h3 className="text-2xl font-bold text-[#0B2545] mb-6">
         Open Research Questions &amp; Literature Gaps
       </h3>
 
       <div className="grid md:grid-cols-2 gap-6 mb-12">
-        <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6">
+        <div className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-6">
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#9333ea]" />
-            <h4 className="font-bold text-[#18181b]">Recycled Polymer Rheology</h4>
+            <span className="w-2 h-2 rounded-full bg-[#134074]" />
+            <h4 className="font-bold text-[#0B2545]">Recycled Polymer Rheology</h4>
           </div>
-          <ul className="text-[#6b7280] text-sm space-y-3">
+          <ul className="text-[#3d6285] text-sm space-y-3">
             <li>
-              <strong className="text-[#18181b]">Lack of standardized protocols:</strong>{" "}
+              <strong className="text-[#0B2545]">Lack of standardized protocols:</strong>{" "}
               No ISO/ASTM standard exists for comprehensive rheological characterization
               of recycled polymers beyond MFI. Industry consortia (RecyClass, APR, PRE)
               are developing guidelines, but harmonization is years away.
             </li>
             <li>
-              <strong className="text-[#18181b]">Multi-pass degradation modeling:</strong>{" "}
+              <strong className="text-[#0B2545]">Multi-pass degradation modeling:</strong>{" "}
               While η₀ vs. number of recycling passes has been measured for common
               polymers, predictive models linking degradation kinetics (chain scission,
               crosslinking, branching) to rheological changes across N passes are
@@ -43,7 +43,7 @@ export default function LiteratureGaps() {
               behavior is lacking (Vilaplana &amp; Karlsson, 2008).
             </li>
             <li>
-              <strong className="text-[#18181b]">Contaminant detection limits:</strong>{" "}
+              <strong className="text-[#0B2545]">Contaminant detection limits:</strong>{" "}
               What is the minimum detectable contamination level via rheological methods?
               For immiscible polymer contaminants, the Palierne model suggests ~1–2 vol%
               is the detection limit via G&apos;(ω) at low frequencies. For crosslinked
@@ -51,7 +51,7 @@ export default function LiteratureGaps() {
               Systematic studies quantifying these detection limits are scarce.
             </li>
             <li>
-              <strong className="text-[#18181b]">Cox-Merz rule failure:</strong>{" "}
+              <strong className="text-[#0B2545]">Cox-Merz rule failure:</strong>{" "}
               The Cox-Merz rule fails for many recycled systems (degraded + filled +
               blended). Understanding <em>why</em> it fails and developing corrections
               specific to recycled polymer classes would enable better prediction of
@@ -60,14 +60,14 @@ export default function LiteratureGaps() {
           </ul>
         </div>
 
-        <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6">
+        <div className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-6">
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#7c3aed]" />
-            <h4 className="font-bold text-[#18181b]">Molecular Rheology &amp; Theory</h4>
+            <span className="w-2 h-2 rounded-full bg-[#13315C]" />
+            <h4 className="font-bold text-[#0B2545]">Molecular Rheology &amp; Theory</h4>
           </div>
-          <ul className="text-[#6b7280] text-sm space-y-3">
+          <ul className="text-[#3d6285] text-sm space-y-3">
             <li>
-              <strong className="text-[#18181b]">Branched polymer dynamics:</strong>{" "}
+              <strong className="text-[#0B2545]">Branched polymer dynamics:</strong>{" "}
               The tube model for linear polymers is mature, but quantitative prediction
               of rheology for arbitrary branching topologies (combs, Cayley trees,
               randomly branched LDPE) remains challenging. Hierarchical relaxation
@@ -75,7 +75,7 @@ export default function LiteratureGaps() {
               features but quantitative agreement for commercial LDPE is still elusive.
             </li>
             <li>
-              <strong className="text-[#18181b]">Polydispersity effects:</strong>{" "}
+              <strong className="text-[#0B2545]">Polydispersity effects:</strong>{" "}
               Real polymers have continuous MWD. While tube models + MWD integration
               predict η₀ and G(t) well for narrow distributions, the quantitative
               prediction of nonlinear properties (extensional viscosity, LAOS) for
@@ -83,7 +83,7 @@ export default function LiteratureGaps() {
               (Masubuchi, <em>Macromolecules</em>, 2023) show promise.
             </li>
             <li>
-              <strong className="text-[#18181b]">Thixotropy constitutive modeling:</strong>{" "}
+              <strong className="text-[#0B2545]">Thixotropy constitutive modeling:</strong>{" "}
               Despite decades of work, no single constitutive model adequately captures
               thixotropy, yield stress, and viscoelasticity simultaneously. The
               &quot;thixotropy problem&quot; (de Souza Mendes &amp; Thompson, 2019) remains open,
@@ -91,7 +91,7 @@ export default function LiteratureGaps() {
               microstructures.
             </li>
             <li>
-              <strong className="text-[#18181b]">Machine learning for rheology:</strong>{" "}
+              <strong className="text-[#0B2545]">Machine learning for rheology:</strong>{" "}
               ML/AI approaches to predict rheological behavior from molecular
               descriptors (MWD, branching, composition) are emerging but lack the
               large, standardized datasets needed for reliable training
@@ -100,28 +100,28 @@ export default function LiteratureGaps() {
           </ul>
         </div>
 
-        <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6">
+        <div className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-6">
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#4f46e5]" />
-            <h4 className="font-bold text-[#18181b]">Processing &amp; Applications</h4>
+            <span className="w-2 h-2 rounded-full bg-[#134074]" />
+            <h4 className="font-bold text-[#0B2545]">Processing &amp; Applications</h4>
           </div>
-          <ul className="text-[#6b7280] text-sm space-y-3">
+          <ul className="text-[#3d6285] text-sm space-y-3">
             <li>
-              <strong className="text-[#18181b]">Digital twins for recycled processing:</strong>{" "}
+              <strong className="text-[#0B2545]">Digital twins for recycled processing:</strong>{" "}
               Real-time rheological monitoring + ML-driven process control could
               compensate for batch-to-batch variability in recycled streams. Proof-of-concept
               systems exist for virgin PE extrusion (Abeykoon, 2021) but have not been
               validated for recycled feedstocks with variable contamination.
             </li>
             <li>
-              <strong className="text-[#18181b]">Microplastics rheology:</strong>{" "}
+              <strong className="text-[#0B2545]">Microplastics rheology:</strong>{" "}
               The flow behavior of microplastic-laden environmental matrices (sediment,
               wastewater sludge) is poorly characterized rheologically. Standard
               suspension rheology models (Krieger-Dougherty) may not apply due to
               non-spherical particle shapes and surface-active degradation products.
             </li>
             <li>
-              <strong className="text-[#18181b]">Biopolymer blends with recycled polymers:</strong>{" "}
+              <strong className="text-[#0B2545]">Biopolymer blends with recycled polymers:</strong>{" "}
               PLA/recycled-PE blends for transitional applications have complex rheology
               (immiscible, degradation-sensitive, crystallization-dependent). Systematic
               rheological studies mapping the composition–morphology–processability
@@ -130,28 +130,28 @@ export default function LiteratureGaps() {
           </ul>
         </div>
 
-        <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6">
+        <div className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-6">
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#0d9488]" />
-            <h4 className="font-bold text-[#18181b]">Measurement &amp; Methods</h4>
+            <span className="w-2 h-2 rounded-full bg-[#0B2545]" />
+            <h4 className="font-bold text-[#0B2545]">Measurement &amp; Methods</h4>
           </div>
-          <ul className="text-[#6b7280] text-sm space-y-3">
+          <ul className="text-[#3d6285] text-sm space-y-3">
             <li>
-              <strong className="text-[#18181b]">High-throughput rheological screening:</strong>{" "}
+              <strong className="text-[#0B2545]">High-throughput rheological screening:</strong>{" "}
               Combinatorial/high-throughput approaches for screening recycled polymer
               blends are virtually non-existent. Developing microfluidic rheometers or
               rapid parallel plate methods for screening 100+ compositions/day would
               accelerate formulation development for recycled compounds.
             </li>
             <li>
-              <strong className="text-[#18181b]">Inline extensional rheometry:</strong>{" "}
+              <strong className="text-[#0B2545]">Inline extensional rheometry:</strong>{" "}
               While inline shear viscosity measurement is mature, inline extensional
               viscosity measurement during processing remains a challenge. Converging
               die methods (Cogswell) are approximate; true inline SER-type measurements
               do not exist.
             </li>
             <li>
-              <strong className="text-[#18181b]">Rheo-microscopy/Rheo-SAXS:</strong>{" "}
+              <strong className="text-[#0B2545]">Rheo-microscopy/Rheo-SAXS:</strong>{" "}
               Simultaneous rheological measurement + structural characterization
               (optical, X-ray, neutron scattering) provides unprecedented
               structure–property links. Rheo-SANS/SAXS at synchrotron facilities is
@@ -160,7 +160,7 @@ export default function LiteratureGaps() {
               observation in polymer blends under shear.
             </li>
             <li>
-              <strong className="text-[#18181b]">AI-assisted rheometry:</strong>{" "}
+              <strong className="text-[#0B2545]">AI-assisted rheometry:</strong>{" "}
               Automated experiment design (Bayesian optimization) for rheological
               characterization could reduce measurement time by 50–80% while maintaining
               data quality. Early demonstrations exist (Lennon et al.,{" "}
@@ -171,14 +171,14 @@ export default function LiteratureGaps() {
       </div>
 
       {/* Comprehensive Reference Library */}
-      <h3 className="text-2xl font-bold text-[#18181b] mb-6">
+      <h3 className="text-2xl font-bold text-[#0B2545] mb-6">
         Comprehensive Reference Library
       </h3>
 
       <div className="grid md:grid-cols-2 gap-6 mb-8">
-        <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6">
-          <h4 className="font-bold text-[#4f46e5] mb-4">Foundational Textbooks</h4>
-          <ul className="text-[#6b7280] text-sm space-y-2">
+        <div className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-6">
+          <h4 className="font-bold text-[#134074] mb-4">Foundational Textbooks</h4>
+          <ul className="text-[#3d6285] text-sm space-y-2">
             <li>
               Macosko, C.W. (1994). <em>Rheology: Principles, Measurements, and
               Applications.</em> Wiley-VCH.
@@ -209,9 +209,9 @@ export default function LiteratureGaps() {
           </ul>
         </div>
 
-        <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6">
-          <h4 className="font-bold text-[#7c3aed] mb-4">Modern &amp; Specialized</h4>
-          <ul className="text-[#6b7280] text-sm space-y-2">
+        <div className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-6">
+          <h4 className="font-bold text-[#13315C] mb-4">Modern &amp; Specialized</h4>
+          <ul className="text-[#3d6285] text-sm space-y-2">
             <li>
               Dealy, J.M. &amp; Larson, R.G. (2006). <em>Structure and Rheology of
               Molten Polymers.</em> Hanser.
@@ -240,10 +240,10 @@ export default function LiteratureGaps() {
         </div>
       </div>
 
-      <div className="bg-[#f8f8fa] border border-[#e4e4e7] rounded-2xl p-6 mb-8">
-        <h4 className="font-bold text-[#0d9488] mb-4">Key Journal Articles (Selected)</h4>
+      <div className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-6 mb-8">
+        <h4 className="font-bold text-[#0B2545] mb-4">Key Journal Articles (Selected)</h4>
         <div className="grid md:grid-cols-2 gap-x-6 gap-y-2">
-          <ul className="text-[#6b7280] text-xs space-y-2">
+          <ul className="text-[#3d6285] text-xs space-y-2">
             <li>
               de Gennes, P.G. (1971). Reptation of a polymer chain in the presence of
               fixed obstacles. <em>J. Chem. Phys.</em>, 55, 572–579.
@@ -275,7 +275,7 @@ export default function LiteratureGaps() {
               <em>Rheol. Acta</em>, 43, 657–669.
             </li>
           </ul>
-          <ul className="text-[#6b7280] text-xs space-y-2">
+          <ul className="text-[#3d6285] text-xs space-y-2">
             <li>
               Hatzikiriakos, S.G. (2012). Wall slip of molten polymers.{" "}
               <em>Prog. Polym. Sci.</em>, 37(4), 624–643.
@@ -309,8 +309,8 @@ export default function LiteratureGaps() {
       </div>
 
       {/* Journals */}
-      <div className="bg-white border border-[#e4e4e7] rounded-2xl p-6">
-        <h4 className="font-bold text-[#18181b] mb-3">Key Journals in Polymer Rheology</h4>
+      <div className="bg-white border border-[#c9d9e8] rounded-2xl p-6">
+        <h4 className="font-bold text-[#0B2545] mb-3">Key Journals in Polymer Rheology</h4>
         <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
           {[
             "Journal of Rheology (SOR)",
@@ -324,7 +324,7 @@ export default function LiteratureGaps() {
           ].map((j) => (
             <div
               key={j}
-              className="bg-[#f8f8fa] rounded-lg px-3 py-2 text-[#6b7280] text-xs"
+              className="bg-[#EEF4ED] rounded-lg px-3 py-2 text-[#3d6285] text-xs"
             >
               <em>{j}</em>
             </div>
