@@ -792,31 +792,393 @@ export default function Fundamentals() {
       </AnimatedSection>
 
       {/* Advanced Constitutive Models */}
-      <AnimatedSection>
-        <h3 className="text-2xl font-bold text-[#0B2545] mb-4">Advanced Constitutive Models</h3>
-        <p className="text-[#2c4a6e] text-sm mb-6">
-          Beyond the basic models, these equations capture nonlinear and molecular-level behavior of polymer melts.
+      <AnimatedSection className="mb-16">
+        <h3 className="text-2xl font-bold text-[#0B2545] mb-2">Advanced Constitutive Models</h3>
+        <p className="text-[#2c4a6e] text-sm mb-6 leading-[1.8]">
+          A constitutive equation is the mathematical relationship between stress and deformation history that closes the
+          equations of motion. Choosing the right model is critical — too simple and predictions fail; too complex and
+          simulations become intractable. The models below span from phenomenological to molecularly-derived.
         </p>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        {/* Classification overview */}
+        <div className="grid lg:grid-cols-3 gap-5 mb-8">
+          <AnimatedCard className="bg-white border border-[#d0dde8] rounded-2xl p-5">
+            <div className="w-8 h-8 rounded-full bg-[#8DA9C4] text-white flex items-center justify-center text-xs font-bold mb-3">D</div>
+            <h4 className="font-bold text-[#0B2545] text-sm mb-2">Differential Models</h4>
+            <p className="text-[#2c4a6e] text-xs leading-relaxed mb-3">
+              Express stress as an ODE/PDE — the stress at time t depends on the
+              <strong className="text-[#0B2545]"> instantaneous</strong> rate of deformation and the stress itself.
+              Naturally suited for FEM/FVM solvers. Include upper-convected derivative ∇τ to
+              ensure frame invariance.
+            </p>
+            <div className="space-y-1 text-[10px] text-[#8DA9C4]">
+              <div>Pros: Easy to implement in CFD, local computation</div>
+              <div>Cons: Limited memory effects, multi-mode needed for spectra</div>
+            </div>
+          </AnimatedCard>
+
+          <AnimatedCard delay={0.08} className="bg-white border border-[#d0dde8] rounded-2xl p-5">
+            <div className="w-8 h-8 rounded-full bg-[#134074] text-white flex items-center justify-center text-xs font-bold mb-3">I</div>
+            <h4 className="font-bold text-[#0B2545] text-sm mb-2">Integral Models</h4>
+            <p className="text-[#2c4a6e] text-xs leading-relaxed mb-3">
+              Stress depends on the <strong className="text-[#0B2545]">entire deformation history</strong> via
+              a memory integral. Naturally capture fading memory, multi-step flows, and nonlinear
+              strain measures. Based on the Boltzmann superposition principle generalized to large strains.
+            </p>
+            <div className="space-y-1 text-[10px] text-[#8DA9C4]">
+              <div>Pros: Full memory, accurate for complex flow histories</div>
+              <div>Cons: Computationally expensive (particle tracking), harder to implement</div>
+            </div>
+          </AnimatedCard>
+
+          <AnimatedCard delay={0.16} className="bg-[#EEF4ED] border border-[#d0dde8] rounded-2xl p-5">
+            <div className="w-8 h-8 rounded-full bg-[#0B2545] text-white flex items-center justify-center text-xs font-bold mb-3">M</div>
+            <h4 className="font-bold text-[#0B2545] text-sm mb-2">Molecular Models</h4>
+            <p className="text-[#2c4a6e] text-xs leading-relaxed mb-3">
+              Derived from <strong className="text-[#0B2545]">molecular physics</strong>: tube theory (Doi-Edwards),
+              reptation, contour-length fluctuations, constraint release.
+              Parameters map directly to molecular structure (Mw, Me, Z).
+              Can predict rheology from molecular architecture.
+            </p>
+            <div className="space-y-1 text-[10px] text-[#8DA9C4]">
+              <div>Pros: Predictive, connect structure to properties</div>
+              <div>Cons: Computationally intensive, many-mode, branching difficult</div>
+            </div>
+          </AnimatedCard>
+        </div>
+
+        {/* Detailed model cards */}
+        <h4 className="text-lg font-bold text-[#0B2545] mb-4">Differential Constitutive Models</h4>
+        <div className="grid md:grid-cols-2 gap-5 mb-8">
           {[
-            { name: "Oldroyd-B", eq: "τ + λ₁·∇τ = η₀(γ̇ + λ₂·∇γ̇)", type: "Dilute solutions, constant η_E", color: "#134074" },
-            { name: "Giesekus", eq: "τ + λ·∇τ + αλ(τ·τ)/η₀ = η₀γ̇", type: "Shear thinning + bounded η_E", color: "#13315C" },
-            { name: "PTT (Phan-Thien-Tanner)", eq: "f(tr τ)·τ + λ·∇τ = η₀γ̇", type: "Strain softening, polymer melts", color: "#0B2545" },
-            { name: "FENE-P", eq: "Finitely extensible dumbbells", type: "Bounded extensibility, dilute solutions", color: "#134074" },
-            { name: "K-BKZ (Integral)", eq: "τ(t) = ∫ m(t−t') h(I₁,I₂) C⁻¹ dt'", type: "Full nonlinear memory, general flows", color: "#13315C" },
-            { name: "Rolie-Poly", eq: "Reptation + chain stretch + CCR", type: "Molecular, entangled linear chains", color: "#0B2545" },
+            {
+              name: "Oldroyd-B",
+              eq: "τ + λ₁·∇τ = η₀(γ̇ + λ₂·∇γ̇)",
+              color: "#134074",
+              physics: "Two-constant model: relaxation time λ₁ and retardation time λ₂. Equivalent to a dilute suspension of Hookean dumbbells in a Newtonian solvent.",
+              predictions: [
+                "Constant shear viscosity (no shear thinning)",
+                "First normal stress difference N₁ ∝ γ̇²",
+                "Extensional viscosity diverges at ε̇ = 1/(2λ₁) — unphysical!",
+                "Accurate for Boger fluids (dilute polymer solutions)",
+              ],
+              limitations: "Cannot predict shear thinning. Extensional singularity makes it unsuitable for flows with strong extension. Poor for polymer melts.",
+              params: "η₀, λ₁, λ₂ (or ηs, ηp, λ)",
+            },
+            {
+              name: "Giesekus",
+              eq: "τ + λ·∇τ + α·λ/(η₀)·(τ·τ) = η₀·γ̇",
+              color: "#13315C",
+              physics: "Adds an anisotropic drag term (mobility factor α ∈ [0, 1]) to the upper-convected Maxwell model. Physically represents anisotropic Brownian motion of dumbbells in a concentrated solution.",
+              predictions: [
+                "Shear thinning: η ∝ γ̇⁻⁰·⁵ at high rates (for α = 0.5)",
+                "Bounded extensional viscosity (no singularity)",
+                "N₁ and N₂ both predicted (N₂/N₁ = −α/2)",
+                "α → 0: recovers Oldroyd-B; α → 1: maximum anisotropy",
+              ],
+              limitations: "Fixed power-law slope in shear thinning. Cannot independently fit shear and extensional data. Only one relaxation mode per element.",
+              params: "η₀, λ, α (mobility factor)",
+            },
+            {
+              name: "PTT (Phan-Thien–Tanner)",
+              eq: "f(tr τ)·τ + λ·∇τ = η₀·γ̇",
+              color: "#0B2545",
+              physics: "Introduces a stress-dependent function f(tr τ) that limits chain extensibility. Two forms: linear f = 1 + (ελ/η₀)tr(τ) and exponential f = exp[(ελ/η₀)tr(τ)]. Derived from network theory with junction creation/destruction.",
+              predictions: [
+                "Shear thinning with adjustable slope via ε parameter",
+                "Strain softening in extension (η_E passes through maximum)",
+                "ξ parameter controls N₂ (Gordon-Schowalter derivative)",
+                "Exponential PTT preferred — avoids negative f for large stresses",
+              ],
+              limitations: "Cannot predict strain hardening (LDPE-type). No molecular connection — ε and ξ are purely empirical.",
+              params: "η₀, λ, ε (extensibility), ξ (slip parameter)",
+            },
+            {
+              name: "FENE-P",
+              eq: "f(R)·⟨RR⟩ − δ = (λ/η₀)·τ",
+              color: "#134074",
+              physics: "Finitely Extensible Nonlinear Elastic dumbbell with Peterlin closure approximation. The spring force diverges as chain extension R approaches the maximum extensibility L: f(R) = 1/(1 − R²/L²). Models finite chain extensibility.",
+              predictions: [
+                "Shear thinning from finite extensibility",
+                "Bounded extensional viscosity (η_E → η₀·L² at high ε̇)",
+                "Stress overshoot on startup of steady shear",
+                "Captures dilute solution behavior more accurately than Oldroyd-B",
+              ],
+              limitations: "Peterlin closure is an approximation. Single relaxation time. Best for dilute solutions, not entangled melts.",
+              params: "η₀ (or ηs, ηp), λ, L² (extensibility parameter)",
+            },
+          ].map((model, i) => (
+            <AnimatedCard key={i} delay={i * 0.06}
+              className="bg-white border border-[#d0dde8] rounded-2xl p-5">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0"
+                  style={{ backgroundColor: model.color }}>
+                  {model.name[0]}
+                </div>
+                <h5 className="font-bold text-[#0B2545] text-sm">{model.name}</h5>
+              </div>
+              <div className="math-block !text-xs !py-1.5 !px-3 !my-2">{model.eq}</div>
+              <p className="text-[#2c4a6e] text-xs leading-relaxed mb-3">{model.physics}</p>
+              <div className="mb-3">
+                <div className="text-[10px] font-semibold text-[#134074] uppercase tracking-wide mb-1">Predictions</div>
+                <div className="space-y-1">
+                  {model.predictions.map((pred, j) => (
+                    <div key={j} className="flex items-start gap-1.5 text-[11px] text-[#2c4a6e]">
+                      <span className="w-1 h-1 rounded-full bg-[#134074] mt-1.5 shrink-0" />
+                      <span>{pred}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-[#EEF4ED] rounded-lg p-2.5 mb-2">
+                <div className="text-[10px] font-semibold text-[#0B2545] mb-0.5">Limitations</div>
+                <p className="text-[10px] text-[#2c4a6e]">{model.limitations}</p>
+              </div>
+              <div className="text-[10px] text-[#8DA9C4]">
+                <strong>Parameters:</strong> {model.params}
+              </div>
+            </AnimatedCard>
+          ))}
+        </div>
+
+        {/* Integral Models */}
+        <h4 className="text-lg font-bold text-[#0B2545] mb-4">Integral Constitutive Models</h4>
+        <div className="grid md:grid-cols-2 gap-5 mb-8">
+          {[
+            {
+              name: "K-BKZ (Kaye–Bernstein–Kearsley–Zapas)",
+              eq: "τ(t) = ∫₋∞ᵗ m(t−t&apos;) · h(I₁,I₂) · C⁻¹(t&apos;) dt&apos;",
+              color: "#13315C",
+              physics: "General nonlinear integral model. The memory function m(t) = Σ gᵢ/λᵢ·exp(−t/λᵢ) encodes the relaxation spectrum. The damping function h(I₁,I₂) captures nonlinear strain softening — the fact that large deformations are less efficiently \"remembered\" than small ones.",
+              predictions: [
+                "Full deformation history memory with fading",
+                "Shear thinning from damping function h(γ)",
+                "Strain softening in extension",
+                "Time-strain separability: G(t,γ) = G(t)·h(γ)",
+                "Accurate for step-strain, startup, and cessation flows",
+              ],
+              limitations: "Cannot predict strain hardening without modifications (e.g., Wagner irreversible formulation). Requires particle tracking in complex flows. Computationally expensive for 3D FEM.",
+              params: "gᵢ, λᵢ (relaxation spectrum), h(I₁,I₂) (damping function: Wagner, PSM, etc.)",
+            },
+            {
+              name: "Wagner Model",
+              eq: "τ(t) = ∫₋∞ᵗ m(t−t&apos;) · h(I₁,I₂) · B(t,t&apos;) dt&apos;",
+              color: "#0B2545",
+              physics: "Modification of K-BKZ that uses the Finger tensor B (instead of C⁻¹) and introduces an irreversibility condition: the damping function only decreases — once structure is destroyed by deformation, it cannot reform. This enables prediction of strain hardening in extension.",
+              predictions: [
+                "Strain hardening in uniaxial extension (LDPE, branched polymers)",
+                "Accurate step-strain response in shear and extension",
+                "Irreversibility captures flow-induced structural breakdown",
+                "Multi-mode for accurate relaxation spectrum",
+              ],
+              limitations: "Irreversibility assumption is empirical. Still requires numerical particle tracking. Damping function parameters need careful fitting from step-strain data.",
+              params: "gᵢ, λᵢ (spectrum), damping function parameters (e.g., Wagner exponential: h = exp(−n·√(β·I₁ + (1−β)·I₂ − 3))",
+            },
+          ].map((model, i) => (
+            <AnimatedCard key={i} delay={i * 0.06}
+              className="bg-white border border-[#d0dde8] rounded-2xl p-5">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0"
+                  style={{ backgroundColor: model.color }}>
+                  {model.name[0]}
+                </div>
+                <h5 className="font-bold text-[#0B2545] text-sm">{model.name}</h5>
+              </div>
+              <div className="math-block !text-xs !py-1.5 !px-3 !my-2">{model.eq}</div>
+              <p className="text-[#2c4a6e] text-xs leading-relaxed mb-3">{model.physics}</p>
+              <div className="mb-3">
+                <div className="text-[10px] font-semibold text-[#134074] uppercase tracking-wide mb-1">Predictions</div>
+                <div className="space-y-1">
+                  {model.predictions.map((pred, j) => (
+                    <div key={j} className="flex items-start gap-1.5 text-[11px] text-[#2c4a6e]">
+                      <span className="w-1 h-1 rounded-full bg-[#134074] mt-1.5 shrink-0" />
+                      <span>{pred}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-[#EEF4ED] rounded-lg p-2.5 mb-2">
+                <div className="text-[10px] font-semibold text-[#0B2545] mb-0.5">Limitations</div>
+                <p className="text-[10px] text-[#2c4a6e]">{model.limitations}</p>
+              </div>
+              <div className="text-[10px] text-[#8DA9C4]">
+                <strong>Parameters:</strong> {model.params}
+              </div>
+            </AnimatedCard>
+          ))}
+        </div>
+
+        {/* Molecular Models */}
+        <h4 className="text-lg font-bold text-[#0B2545] mb-4">Molecular Constitutive Models</h4>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+          {[
+            {
+              name: "Doi-Edwards",
+              eq: "τ(t) = (G_N⁰/π²) Σ (1/p²)·exp(−p²t/λ_d)·S(E)",
+              color: "#134074",
+              physics: "The foundational tube model. Entangled chains are confined in a tube of diameter a formed by surrounding chains. Stress relaxation occurs by reptation: the chain diffuses curvilinearly out of its tube. The orientation tensor S(E) captures the nonlinear response to deformation.",
+              keyFeatures: ["Reptation time λ_d = Z³·τ_e", "Independent alignment approximation (IAA)", "Only parameter: Z = Mw/Me"],
+              limitation: "Predicts η₀ ∝ M³ (experiment: M³·⁴). No chain stretch, no CLF, no constraint release.",
+            },
+            {
+              name: "Rolie-Poly",
+              eq: "∂τ/∂t = κ·τ + τ·κᵀ − (1/λ_d)(τ − I) − ...",
+              color: "#0B2545",
+              physics: "ROuse LInear Entangled POLYmers. A single-mode differential approximation of the full Doi-Edwards theory including reptation, chain stretch, and convective constraint release (CCR). Designed for computational rheology of entangled linear polymers.",
+              keyFeatures: ["Reptation + stretch + CCR in one equation", "Suitable for complex flow FEM", "Parameters from molecular data: Z, τ_e"],
+              limitation: "Single-mode approximation. Cannot capture full spectrum without multi-mode extension. Linear chains only.",
+            },
+            {
+              name: "Pom-Pom / XPP",
+              eq: "Backbone orientation + arm retraction dynamics",
+              color: "#13315C",
+              physics: "Designed for long-chain branched polymers (LDPE). Molecule modeled as a backbone with q arms at each end. Backbone orients under flow; arms retract. Captures the physics of strain hardening in extension. XPP (eXtended Pom-Pom) is the differential version used in FEM.",
+              keyFeatures: ["Predicts strain hardening via arm retraction", "q (number of arms) controls extensional behavior", "Multi-mode XPP for real LDPE fitting"],
+              limitation: "Simplified branching topology. Real LDPE has random branching, not symmetric pom-pom. Requires many modes for quantitative fits.",
+            },
+            {
+              name: "GLaMM",
+              eq: "Contour variable s-dependent tube model",
+              color: "#134074",
+              physics: "Graham, Likhtman, McLeish, Milner model. The most complete molecular theory for linear entangled polymers. Includes reptation, contour-length fluctuations (CLF), thermal constraint release (CR), and convective constraint release (CCR) along the tube contour s.",
+              keyFeatures: ["Predicts η₀ ∝ M³·⁴ (matches experiment)", "Full nonlinear transient predictions", "Parameters: Z, τ_e only (truly predictive)"],
+              limitation: "Computationally expensive (PDE in s and t). Not practical for 3D flow simulation directly — use Rolie-Poly as simplification.",
+            },
+            {
+              name: "Tube Model + Branch-on-Branch",
+              eq: "Hierarchical relaxation of branched architectures",
+              color: "#0B2545",
+              physics: "For branched polymers (stars, H-polymers, combs, randomly branched). Inner segments cannot reptate until outer arms retract — hierarchical relaxation from the outside in. Predicts dramatic increase in terminal relaxation time with branching complexity.",
+              keyFeatures: ["Star polymers: arm retraction ~ exp(−ν·M_arm/Me)", "Comb polymers: backbone dilated tube", "Connects topology to rheology quantitatively"],
+              limitation: "Requires known branching architecture. Computational for random branching (Monte Carlo needed). Sensitive to polydispersity.",
+            },
+            {
+              name: "Slip-Link / Stochastic",
+              eq: "Brownian dynamics of chains + entanglement events",
+              color: "#13315C",
+              physics: "Instead of a mean-field tube, entanglements are modeled as discrete slip-links that constrain the chain but can be created and destroyed. Simulates individual chain trajectories. Can naturally handle branching, polydispersity, and nonlinear flows.",
+              keyFeatures: ["Masubuchi, Likhtman, Schieber variants", "No closure approximations needed", "Can handle arbitrary architectures"],
+              limitation: "Stochastic — requires many realizations for statistics. Expensive. Not directly usable in continuum FEM (need micro-macro coupling).",
+            },
           ].map((model, i) => (
             <AnimatedCard key={i} delay={i * 0.06}
               className="bg-white border border-[#d0dde8] rounded-2xl p-4">
-              <div className="w-8 h-8 rounded-full mb-2 flex items-center justify-center text-white text-xs font-bold"
-                style={{ backgroundColor: model.color }}>
-                {model.name[0]}
+              <div className="flex items-center gap-2.5 mb-2.5">
+                <div className="w-7 h-7 rounded-full flex items-center justify-center text-white text-[10px] font-bold shrink-0"
+                  style={{ backgroundColor: model.color }}>
+                  {model.name[0]}
+                </div>
+                <h5 className="font-bold text-[#0B2545] text-sm leading-tight">{model.name}</h5>
               </div>
-              <h4 className="font-bold text-[#0B2545] text-sm mb-1">{model.name}</h4>
-              <div className="math-block !text-xs !py-1 !px-2 !my-1.5">{model.eq}</div>
-              <p className="text-[#8DA9C4] text-xs">{model.type}</p>
+              <div className="math-block !text-[10px] !py-1 !px-2 !my-1.5">{model.eq}</div>
+              <p className="text-[#2c4a6e] text-[11px] leading-relaxed mb-2">{model.physics}</p>
+              <div className="space-y-1 mb-2">
+                {model.keyFeatures.map((f, j) => (
+                  <div key={j} className="flex items-start gap-1.5 text-[10px] text-[#2c4a6e]">
+                    <span className="w-1 h-1 rounded-full bg-[#134074] mt-1.5 shrink-0" />
+                    <span>{f}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="bg-[#EEF4ED] rounded-lg p-2">
+                <p className="text-[10px] text-[#2c4a6e]"><strong className="text-[#0B2545]">Limitation:</strong> {model.limitation}</p>
+              </div>
             </AnimatedCard>
           ))}
+        </div>
+
+        {/* Model Selection Guide */}
+        <AnimatedCard delay={0.1} className="bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] border border-[#d0dde8] rounded-2xl p-6 mb-8">
+          <h4 className="text-lg font-bold text-[#0B2545] mb-4">Model Selection Guide</h4>
+          <p className="text-[#2c4a6e] text-xs mb-4 leading-relaxed">
+            Choosing the right constitutive model depends on the material, the flow type, the available data, and the computational budget.
+            Here is a practical decision framework:
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-[11px] text-[#2c4a6e] border-collapse">
+              <thead>
+                <tr className="border-b-2 border-[#134074]/20">
+                  <th className="text-left py-2 pr-3 font-bold text-[#0B2545]">Material</th>
+                  <th className="text-left py-2 pr-3 font-bold text-[#0B2545]">Flow Type</th>
+                  <th className="text-left py-2 pr-3 font-bold text-[#0B2545]">Recommended</th>
+                  <th className="text-left py-2 font-bold text-[#0B2545]">Why</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { material: "Linear PE, PP, PS", flow: "Shear-dominated", model: "Multi-mode Giesekus or PTT", why: "Good shear-thinning fit, fast computation, bounded η_E" },
+                  { material: "Linear PE, PP, PS", flow: "Mixed shear + extension", model: "Rolie-Poly (multi-mode)", why: "Molecular basis, captures both shear and extension from Z, τ_e" },
+                  { material: "LDPE (branched)", flow: "Film blowing, blow molding", model: "XPP (multi-mode) or Wagner", why: "Only these predict strain hardening in extension" },
+                  { material: "Boger fluid (dilute)", flow: "Contraction, die entry", model: "Oldroyd-B or FENE-P", why: "Constant viscosity + elasticity. FENE-P avoids η_E singularity" },
+                  { material: "Complex history", flow: "Multi-step, step-strain", model: "K-BKZ / Wagner integral", why: "Full memory captures multi-step deformation history accurately" },
+                  { material: "New/unknown polymer", flow: "Predictive (no rheology data)", model: "GLaMM → Rolie-Poly", why: "Only need Mw, MWD, and Me — truly predictive from molecular data" },
+                  { material: "Filled/nanocomposite", flow: "Any", model: "Modified Giesekus + yield stress", why: "Add yield term (τ_y) to base model for structured fluids" },
+                ].map((row, i) => (
+                  <tr key={i} className="border-b border-[#d0dde8]/40">
+                    <td className="py-2 pr-3 font-medium text-[#0B2545]">{row.material}</td>
+                    <td className="py-2 pr-3">{row.flow}</td>
+                    <td className="py-2 pr-3 font-semibold text-[#134074]">{row.model}</td>
+                    <td className="py-2">{row.why}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </AnimatedCard>
+
+        {/* Upper Convected Derivative explanation */}
+        <div className="grid md:grid-cols-2 gap-5">
+          <AnimatedCard className="bg-white border border-[#d0dde8] rounded-2xl p-5">
+            <h4 className="font-bold text-[#0B2545] text-sm mb-3">The Upper-Convected Derivative</h4>
+            <p className="text-[#2c4a6e] text-xs leading-relaxed mb-3">
+              A key mathematical concept in all differential models. The ordinary time derivative ∂τ/∂t is not
+              frame-invariant — it gives different results for the same physical deformation viewed from different
+              reference frames. The <strong className="text-[#0B2545]">upper-convected (Oldroyd) derivative</strong> fixes this:
+            </p>
+            <div className="math-block !text-xs !py-2 !px-3 !my-2">∇τ = ∂τ/∂t + v·∇τ − (∇v)ᵀ·τ − τ·(∇v)</div>
+            <div className="space-y-1.5 text-[11px] text-[#2c4a6e]">
+              <div className="flex items-start gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-[#134074] mt-1.5 shrink-0" />
+                <span>v·∇τ: convection — stress carried by the flow</span>
+              </div>
+              <div className="flex items-start gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-[#134074] mt-1.5 shrink-0" />
+                <span>(∇v)ᵀ·τ + τ·(∇v): deformation — stress rotated and stretched with the material</span>
+              </div>
+              <div className="flex items-start gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-[#8DA9C4] mt-1.5 shrink-0" />
+                <span>Gordon-Schowalter: adds slip parameter ξ to allow non-affine motion → predicts N₂</span>
+              </div>
+            </div>
+          </AnimatedCard>
+
+          <AnimatedCard delay={0.1} className="bg-[#EEF4ED] border border-[#d0dde8] rounded-2xl p-5">
+            <h4 className="font-bold text-[#0B2545] text-sm mb-3">Multi-Mode Approach</h4>
+            <p className="text-[#2c4a6e] text-xs leading-relaxed mb-3">
+              Real polymers have a <strong className="text-[#0B2545]">spectrum of relaxation times</strong>.
+              A single-mode model cannot capture the full frequency-dependent behavior. The solution is to use N
+              modes in parallel, each with its own relaxation time and modulus:
+            </p>
+            <div className="math-block !text-xs !py-2 !px-3 !my-2">τ_total = Σᵢ₌₁ᴺ τᵢ &nbsp;&nbsp; where each τᵢ satisfies its own constitutive equation with (gᵢ, λᵢ)</div>
+            <div className="space-y-1.5 text-[11px] text-[#2c4a6e]">
+              <div className="flex items-start gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-[#0B2545] mt-1.5 shrink-0" />
+                <span>Typically 5–8 modes for polymer melts (fit from G&apos;, G&apos;&apos; master curve)</span>
+              </div>
+              <div className="flex items-start gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-[#0B2545] mt-1.5 shrink-0" />
+                <span>Each mode can have different nonlinear parameters (αᵢ for Giesekus, εᵢ for PTT)</span>
+              </div>
+              <div className="flex items-start gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-[#0B2545] mt-1.5 shrink-0" />
+                <span>Parsimonious fitting: start with linear spectrum, then fit nonlinear parameters to η(γ̇) and η_E(ε̇)</span>
+              </div>
+              <div className="flex items-start gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-[#0B2545] mt-1.5 shrink-0" />
+                <span>Computational cost scales linearly with N (each mode is independent)</span>
+              </div>
+            </div>
+          </AnimatedCard>
         </div>
       </AnimatedSection>
     </SectionWrapper>
