@@ -25,6 +25,335 @@ export default function Fundamentals() {
       accent="#134074"
       number="01"
     >
+      {/* Introduction — What is Rheology? */}
+      <AnimatedSection className="mb-16">
+        <div className="bg-white border border-[#d0dde8] rounded-2xl p-8">
+          <h3 className="text-2xl font-bold text-[#0B2545] mb-4" style={{ fontFamily: "var(--font-display)" }}>
+            What is Rheology?
+          </h3>
+          <div className="grid lg:grid-cols-2 gap-8">
+            <div className="space-y-4 text-sm text-[#2c4a6e] leading-[1.8]">
+              <p>
+                <strong className="text-[#0B2545]">Rheology</strong> (from the Greek <em>rheos</em> = flow) is the science
+                of deformation and flow of matter. Coined by Eugene Bingham in 1929, the field studies how materials
+                respond to applied forces — bridging the gap between classical fluid mechanics (Newtonian liquids) and
+                solid mechanics (Hookean elasticity).
+              </p>
+              <p>
+                Most real materials are neither perfectly viscous nor perfectly elastic. Polymer melts, biological fluids,
+                food products, paints, and concrete all exhibit <strong className="text-[#0B2545]">viscoelastic behavior</strong> —
+                they store energy like a solid and dissipate it like a liquid, with the balance depending on the timescale
+                of observation. This duality is captured by the <strong className="text-[#134074]">Deborah number</strong>:
+                De = λ/t<sub>obs</sub>, where λ is the material&apos;s relaxation time and t<sub>obs</sub> is the observation time.
+                When De ≫ 1, the material appears solid-like; when De ≪ 1, it flows like a liquid.
+              </p>
+              <p>
+                The field rests on the <strong className="text-[#0B2545]">continuum hypothesis</strong>: matter is treated
+                as a continuous medium rather than discrete molecules, valid when the length scale of interest is much
+                larger than molecular dimensions. This allows us to define field quantities — stress, strain, and
+                velocity — at every point in space, and to write constitutive equations that relate them.
+              </p>
+            </div>
+            <div className="space-y-4">
+              {/* Material Spectrum */}
+              <div className="bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] rounded-xl p-5 border border-[#d0dde8]/50">
+                <h5 className="text-xs font-bold text-[#0B2545] mb-3 uppercase tracking-wide">The Material Response Spectrum</h5>
+                <svg viewBox="0 0 280 100" className="w-full h-auto mb-3">
+                  {/* Gradient bar */}
+                  <defs>
+                    <linearGradient id="spectrum-grad" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0%" stopColor="#8DA9C4" />
+                      <stop offset="50%" stopColor="#134074" />
+                      <stop offset="100%" stopColor="#0B2545" />
+                    </linearGradient>
+                  </defs>
+                  <rect x="30" y="30" width="220" height="12" rx="6" fill="url(#spectrum-grad)" opacity="0.2" />
+                  <rect x="30" y="30" width="220" height="12" rx="6" stroke="url(#spectrum-grad)" strokeWidth="1.5" fill="none" />
+                  {/* Labels */}
+                  <text x="40" y="25" fill="#8DA9C4" fontSize="8" fontFamily="Inter" fontWeight="600">Viscous</text>
+                  <text x="120" y="25" fill="#134074" fontSize="8" fontFamily="Inter" fontWeight="600" textAnchor="middle">Viscoelastic</text>
+                  <text x="240" y="25" fill="#0B2545" fontSize="8" fontFamily="Inter" fontWeight="600" textAnchor="end">Elastic</text>
+                  {/* Tick marks and examples */}
+                  <line x1="50" y1="42" x2="50" y2="52" stroke="#8DA9C4" strokeWidth="1" />
+                  <text x="50" y="62" fill="#8DA9C4" fontSize="6.5" fontFamily="Inter" textAnchor="middle">Water</text>
+                  <text x="50" y="72" fill="#8DA9C4" fontSize="6" fontFamily="Inter" textAnchor="middle">De → 0</text>
+                  <line x1="110" y1="42" x2="110" y2="52" stroke="#134074" strokeWidth="1" />
+                  <text x="110" y="62" fill="#134074" fontSize="6.5" fontFamily="Inter" textAnchor="middle">Polymer melt</text>
+                  <text x="110" y="72" fill="#134074" fontSize="6" fontFamily="Inter" textAnchor="middle">De ~ 1</text>
+                  <line x1="170" y1="42" x2="170" y2="52" stroke="#13315C" strokeWidth="1" />
+                  <text x="170" y="62" fill="#13315C" fontSize="6.5" fontFamily="Inter" textAnchor="middle">Rubber</text>
+                  <text x="170" y="72" fill="#13315C" fontSize="6" fontFamily="Inter" textAnchor="middle">De ~ 10²</text>
+                  <line x1="230" y1="42" x2="230" y2="52" stroke="#0B2545" strokeWidth="1" />
+                  <text x="230" y="62" fill="#0B2545" fontSize="6.5" fontFamily="Inter" textAnchor="middle">Glass / Steel</text>
+                  <text x="230" y="72" fill="#0B2545" fontSize="6" fontFamily="Inter" textAnchor="middle">De → ∞</text>
+                  {/* Arrow */}
+                  <text x="140" y="90" fill="#2c4a6e" fontSize="7" fontFamily="Inter" textAnchor="middle">← Increasing Deborah Number (De = λ / t) →</text>
+                </svg>
+              </div>
+
+              {/* Why it matters */}
+              <div className="bg-[#EEF4ED] rounded-xl p-5 border border-[#d0dde8]/50">
+                <h5 className="text-xs font-bold text-[#134074] mb-3 uppercase tracking-wide">Why Rheology Matters</h5>
+                <div className="space-y-2 text-xs text-[#2c4a6e]">
+                  {[
+                    "Predicting how a polymer fills a mold, stretches into a film, or extrudes through a die",
+                    "Quality control: detecting molecular weight changes, contamination, or degradation",
+                    "Designing formulations: paints that don't drip, foods with the right 'mouthfeel', adhesives that hold",
+                    "Connecting molecular structure (Mw, MWD, branching) to processing behavior",
+                    "Enabling simulation: every CFD polymer flow solver requires rheological constitutive models",
+                    "Troubleshooting: melt fracture, die swell, warpage all have rheological root causes",
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </AnimatedSection>
+
+      {/* The Two Fundamental Modes of Deformation */}
+      <AnimatedSection className="mb-16">
+        <h3 className="text-2xl font-bold text-[#0B2545] mb-2" style={{ fontFamily: "var(--font-display)" }}>
+          The Two Fundamental Modes of Deformation
+        </h3>
+        <p className="text-[#2c4a6e] text-sm mb-6 leading-[1.8]">
+          Every deformation a material can undergo is composed of two fundamental modes: <strong className="text-[#0B2545]">shear</strong> (shape change at constant volume) and <strong className="text-[#0B2545]">extension</strong> (volume element stretching). In polymer processing, both are always present — shear dominates in channel flow, while extension dominates at contractions, expansions, and free surfaces.
+        </p>
+        <div className="grid md:grid-cols-2 gap-5">
+          <AnimatedCard className="bg-white border border-[#d0dde8] rounded-2xl p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-full bg-[#134074] text-white flex items-center justify-center font-bold text-sm">S</div>
+              <h4 className="font-bold text-[#0B2545]">Simple Shear</h4>
+            </div>
+            <svg viewBox="0 0 220 100" className="w-full h-auto mb-4">
+              {/* Fixed bottom plate */}
+              <rect x="30" y="70" width="160" height="8" rx="2" fill="#0B2545" opacity="0.15" />
+              <text x="110" y="90" textAnchor="middle" fill="#8DA9C4" fontSize="7" fontFamily="Inter">Fixed plate</text>
+              {/* Deformed element */}
+              <path d="M 60,30 L 100,30 L 90,70 L 50,70 Z" fill="#134074" opacity="0.08" stroke="#134074" strokeWidth="1.5" />
+              {/* Original element (dashed) */}
+              <rect x="50" y="30" width="40" height="40" fill="none" stroke="#8DA9C4" strokeWidth="1" strokeDasharray="4 3" />
+              {/* Moving top plate */}
+              <rect x="40" y="22" width="160" height="8" rx="2" fill="#134074" opacity="0.2" />
+              <text x="120" y="18" textAnchor="middle" fill="#134074" fontSize="7" fontFamily="Inter">Moving plate (velocity v)</text>
+              {/* Arrow for velocity */}
+              <line x1="140" y1="26" x2="190" y2="26" stroke="#134074" strokeWidth="1.5" />
+              <polygon points="190,23 190,29 196,26" fill="#134074" />
+              {/* Height label */}
+              <line x1="42" y1="30" x2="42" y2="70" stroke="#2c4a6e" strokeWidth="0.8" />
+              <text x="38" y="53" fill="#2c4a6e" fontSize="7" fontFamily="Inter" textAnchor="end">h</text>
+              {/* Angle gamma */}
+              <path d="M 50,70 L 50,55 L 55,55" fill="none" stroke="#134074" strokeWidth="1" />
+              <text x="58" y="60" fill="#134074" fontSize="7" fontFamily="Inter" fontWeight="600">γ</text>
+            </svg>
+            <div className="space-y-2 text-xs text-[#2c4a6e]">
+              <div className="math-block !text-sm !py-1.5 !px-3 !my-1">γ̇ = dγ/dt = v/h &nbsp;&nbsp;[s⁻¹]</div>
+              <p>
+                Material layers slide over each other. The velocity profile is linear for Newtonian fluids between parallel plates.
+                The <strong className="text-[#0B2545]">shear stress</strong> τ is the force per unit area required to maintain this deformation.
+                For a Newtonian fluid, τ = η·γ̇ where η is the viscosity (constant). For polymers, η decreases with γ̇ (shear thinning)
+                because entangled chains align and disentangle under flow.
+              </p>
+            </div>
+          </AnimatedCard>
+
+          <AnimatedCard delay={0.1} className="bg-[#EEF4ED] border border-[#d0dde8] rounded-2xl p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-full bg-[#0B2545] text-white flex items-center justify-center font-bold text-sm">E</div>
+              <h4 className="font-bold text-[#0B2545]">Uniaxial Extension</h4>
+            </div>
+            <svg viewBox="0 0 220 100" className="w-full h-auto mb-4">
+              {/* Original element (dashed) */}
+              <rect x="70" y="30" width="80" height="40" fill="none" stroke="#8DA9C4" strokeWidth="1" strokeDasharray="4 3" rx="3" />
+              {/* Stretched element */}
+              <rect x="40" y="38" width="140" height="24" fill="#0B2545" opacity="0.08" stroke="#0B2545" strokeWidth="1.5" rx="3" />
+              {/* Arrows stretching */}
+              <line x1="40" y1="50" x2="15" y2="50" stroke="#0B2545" strokeWidth="1.5" />
+              <polygon points="15,47 15,53 9,50" fill="#0B2545" />
+              <line x1="180" y1="50" x2="205" y2="50" stroke="#0B2545" strokeWidth="1.5" />
+              <polygon points="205,47 205,53 211,50" fill="#0B2545" />
+              {/* Labels */}
+              <text x="110" y="25" textAnchor="middle" fill="#8DA9C4" fontSize="7" fontFamily="Inter">Original</text>
+              <text x="110" y="78" textAnchor="middle" fill="#0B2545" fontSize="7" fontFamily="Inter" fontWeight="600">Stretched</text>
+              {/* Strain labels */}
+              <text x="110" y="92" textAnchor="middle" fill="#2c4a6e" fontSize="7" fontFamily="Inter">ε̇ = dε/dt &nbsp; [s⁻¹]</text>
+            </svg>
+            <div className="space-y-2 text-xs text-[#2c4a6e]">
+              <div className="math-block !text-sm !py-1.5 !px-3 !my-1">η<sub>E</sub> = σ<sub>E</sub> / ε̇ &nbsp;&nbsp;[Pa·s]</div>
+              <p>
+                Material is pulled apart along one axis while contracting in the perpendicular directions.
+                For a Newtonian fluid, the <strong className="text-[#0B2545]">Trouton ratio</strong> η<sub>E</sub>/η₀ = 3 exactly.
+                Branched polymers (e.g., LDPE) show <strong className="text-[#134074]">strain hardening</strong>:
+                η<sub>E</sub> rises far above 3η₀ at high Hencky strains, a critical property for blow molding,
+                film blowing, and foam stabilization. Linear polymers (HDPE, PP) typically do not strain harden.
+              </p>
+            </div>
+          </AnimatedCard>
+        </div>
+      </AnimatedSection>
+
+      {/* Viscoelasticity Explained */}
+      <AnimatedSection className="mb-16">
+        <h3 className="text-2xl font-bold text-[#0B2545] mb-2" style={{ fontFamily: "var(--font-display)" }}>
+          Understanding Viscoelasticity
+        </h3>
+        <p className="text-[#2c4a6e] text-sm mb-6 leading-[1.8]">
+          Polymers are the quintessential viscoelastic materials. Their long-chain molecular architecture gives rise
+          to a spectrum of relaxation times — from fast segmental motions (nanoseconds) to slow reptation of entire
+          chains (seconds to minutes). This section explains the physical origins and practical consequences.
+        </p>
+        <div className="grid lg:grid-cols-3 gap-5">
+          <AnimatedCard className="bg-white border border-[#d0dde8] rounded-2xl p-5">
+            <div className="w-8 h-8 rounded-full bg-[#8DA9C4] text-white flex items-center justify-center text-xs font-bold mb-3">1</div>
+            <h4 className="font-bold text-[#0B2545] text-sm mb-2">Elastic Response (Energy Storage)</h4>
+            <p className="text-[#2c4a6e] text-xs leading-relaxed mb-3">
+              When a polymer is deformed, chain segments are displaced from their equilibrium conformations.
+              The resulting <strong className="text-[#0B2545]">entropic restoring force</strong> drives recovery
+              once the stress is removed — like a spring. This is quantified by the <strong className="text-[#134074]">storage modulus G&apos;</strong>,
+              which measures the in-phase (elastic) component of the stress response to oscillatory deformation.
+            </p>
+            <div className="math-block !text-xs !py-1.5 !px-2 !my-1">G&apos; = (τ₀/γ₀) · cos δ</div>
+            <p className="text-[#8DA9C4] text-xs mt-2">
+              Molecular origin: chain stretching, entanglement network deformation, crosslinks.
+            </p>
+          </AnimatedCard>
+
+          <AnimatedCard delay={0.08} className="bg-white border border-[#d0dde8] rounded-2xl p-5">
+            <div className="w-8 h-8 rounded-full bg-[#134074] text-white flex items-center justify-center text-xs font-bold mb-3">2</div>
+            <h4 className="font-bold text-[#0B2545] text-sm mb-2">Viscous Response (Energy Dissipation)</h4>
+            <p className="text-[#2c4a6e] text-xs leading-relaxed mb-3">
+              Simultaneously, chain segments undergo <strong className="text-[#0B2545]">irreversible rearrangements</strong> —
+              reptation along the tube, constraint release, and segmental friction. Energy is converted to heat.
+              This is quantified by the <strong className="text-[#134074]">loss modulus G&apos;&apos;</strong>,
+              the out-of-phase (viscous) component.
+            </p>
+            <div className="math-block !text-xs !py-1.5 !px-2 !my-1">G&apos;&apos; = (τ₀/γ₀) · sin δ</div>
+            <p className="text-[#8DA9C4] text-xs mt-2">
+              Molecular origin: chain reptation, Rouse modes, monomeric friction, disentanglement.
+            </p>
+          </AnimatedCard>
+
+          <AnimatedCard delay={0.16} className="bg-[#EEF4ED] border border-[#d0dde8] rounded-2xl p-5">
+            <div className="w-8 h-8 rounded-full bg-[#0B2545] text-white flex items-center justify-center text-xs font-bold mb-3">3</div>
+            <h4 className="font-bold text-[#0B2545] text-sm mb-2">The Phase Angle δ</h4>
+            <p className="text-[#2c4a6e] text-xs leading-relaxed mb-3">
+              The <strong className="text-[#0B2545]">loss tangent</strong> tan δ = G&apos;&apos;/G&apos; captures the balance.
+              A perfectly elastic solid has δ = 0° (G&apos;&apos; = 0); a Newtonian liquid has δ = 90° (G&apos; = 0).
+              Polymers lie between these extremes, with δ depending on frequency, temperature, and molecular architecture.
+            </p>
+            <div className="space-y-1.5 text-xs text-[#2c4a6e]">
+              <div className="flex justify-between border-b border-[#d0dde8]/50 pb-1"><span>tan δ &lt; 1</span><span className="text-[#134074] font-semibold">Solid-like (G&apos; &gt; G&apos;&apos;)</span></div>
+              <div className="flex justify-between border-b border-[#d0dde8]/50 pb-1"><span>tan δ = 1</span><span className="text-[#134074] font-semibold">Gel point / crossover</span></div>
+              <div className="flex justify-between"><span>tan δ &gt; 1</span><span className="text-[#134074] font-semibold">Liquid-like (G&apos;&apos; &gt; G&apos;)</span></div>
+            </div>
+            <div className="math-block !text-xs !py-1.5 !px-2 !my-2">η* = |G*|/ω = √(G&apos;² + G&apos;&apos;²) / ω</div>
+            <p className="text-[#8DA9C4] text-xs">
+              The complex viscosity η* is the oscillatory analog of steady shear viscosity. The Cox-Merz rule
+              states η*(ω) ≈ η(γ̇) at ω = γ̇ — valid for most linear polymers.
+            </p>
+          </AnimatedCard>
+        </div>
+      </AnimatedSection>
+
+      {/* Molecular Origins of Polymer Rheology */}
+      <AnimatedSection className="mb-16">
+        <h3 className="text-2xl font-bold text-[#0B2545] mb-2" style={{ fontFamily: "var(--font-display)" }}>
+          Molecular Origins of Polymer Rheology
+        </h3>
+        <p className="text-[#2c4a6e] text-sm mb-6 leading-[1.8]">
+          A polymer&apos;s rheological behavior is dictated by its molecular structure. Understanding these connections is
+          central to material selection, quality control, and formulation design.
+        </p>
+        <div className="grid md:grid-cols-2 gap-5">
+          <div className="bg-white border border-[#d0dde8] rounded-2xl p-6">
+            <h4 className="font-bold text-[#0B2545] mb-4">Structure → Property Relationships</h4>
+            <div className="space-y-3 text-xs text-[#2c4a6e]">
+              {[
+                {
+                  param: "Molecular Weight (Mw)",
+                  effect: "η₀ ∝ Mw³·⁴ above Mc (critical entanglement Mw). Doubling Mw increases η₀ by ~10×. Higher Mw → longer relaxation times, more elastic behavior.",
+                },
+                {
+                  param: "MWD (Polydispersity)",
+                  effect: "Broad MWD → broader relaxation spectrum. High-Mw tail dominates elasticity (G', N₁, die swell). Low-Mw tail acts as plasticizer. MWD controls shear-thinning onset.",
+                },
+                {
+                  param: "Long-Chain Branching (LCB)",
+                  effect: "Branches suppress reptation → higher η₀ relative to linear polymer of same Mw. LCB causes strain hardening in extension. Detectable via van Gurp-Palmen plot, thermorheological complexity.",
+                },
+                {
+                  param: "Chain Stiffness / Backbone",
+                  effect: "Stiff backbones (e.g., PC, PET, LCP) give shorter entanglement spacing, higher plateau modulus G_N⁰. Flexible chains (PE, PDMS) have lower G_N⁰ but higher entanglement density.",
+                },
+                {
+                  param: "Entanglements",
+                  effect: "Above Me (entanglement Mw), chains form a transient network. The entanglement plateau G_N⁰ = ρRT/Me is a fundamental material constant. More entanglements = more elastic.",
+                },
+              ].map((item, i) => (
+                <div key={i} className="border-b border-[#d0dde8]/30 pb-2 last:border-0">
+                  <div className="font-semibold text-[#134074] mb-0.5">{item.param}</div>
+                  <p>{item.effect}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="space-y-5">
+            <AnimatedCard delay={0.1} className="bg-[#EEF4ED] border border-[#d0dde8] rounded-2xl p-6">
+              <h4 className="font-bold text-[#0B2545] mb-3">The Entanglement Concept</h4>
+              <p className="text-xs text-[#2c4a6e] leading-relaxed mb-3">
+                Above a critical molecular weight M<sub>c</sub> ≈ 2M<sub>e</sub>, polymer chains become topologically
+                constrained by their neighbors. These <strong className="text-[#0B2545]">entanglements</strong> act like
+                temporary crosslinks: they resist deformation on short timescales (giving elasticity) but relax
+                on long timescales (allowing flow). The number of entanglements per chain Z = M<sub>w</sub>/M<sub>e</sub>
+                controls the relaxation time spectrum.
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="bg-white rounded-lg p-3 border border-[#d0dde8]/50">
+                  <div className="text-xs font-semibold text-[#134074] mb-1">Below M<sub>c</sub></div>
+                  <div className="math-block !text-xs !py-1 !px-2 !my-1">η₀ ∝ Mw¹·⁰</div>
+                  <p className="text-[#8DA9C4] text-[10px]">Rouse dynamics, no plateau</p>
+                </div>
+                <div className="bg-white rounded-lg p-3 border border-[#d0dde8]/50">
+                  <div className="text-xs font-semibold text-[#0B2545] mb-1">Above M<sub>c</sub></div>
+                  <div className="math-block !text-xs !py-1 !px-2 !my-1">η₀ ∝ Mw³·⁴</div>
+                  <p className="text-[#8DA9C4] text-[10px]">Reptation, entanglement plateau</p>
+                </div>
+              </div>
+            </AnimatedCard>
+
+            <AnimatedCard delay={0.2} className="bg-white border border-[#d0dde8] rounded-2xl p-6">
+              <h4 className="font-bold text-[#0B2545] mb-3">Relaxation Time Spectrum</h4>
+              <p className="text-xs text-[#2c4a6e] leading-relaxed mb-3">
+                Real polymers have a <strong className="text-[#0B2545]">distribution of relaxation times</strong>,
+                not a single λ. The spectrum H(λ) encodes the full dynamics:
+              </p>
+              <div className="space-y-2 text-xs text-[#2c4a6e]">
+                <div className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#8DA9C4] mt-1.5 shrink-0" />
+                  <span><strong className="text-[#0B2545]">Fast modes</strong> (λ ~ 10⁻⁸–10⁻⁴ s): segmental motions, local Rouse modes</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />
+                  <span><strong className="text-[#0B2545]">Intermediate</strong> (λ ~ 10⁻⁴–10⁰ s): Rouse within tube, contour length fluctuations</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0B2545] mt-1.5 shrink-0" />
+                  <span><strong className="text-[#0B2545]">Slow modes</strong> (λ ~ 10⁰–10³ s): reptation, constraint release, arm retraction (branched)</span>
+                </div>
+              </div>
+              <div className="math-block !text-xs !py-1.5 !px-2 !my-2">G(t) = ∫₀^∞ H(λ)/λ · e^(−t/λ) dλ</div>
+              <p className="text-[#8DA9C4] text-[10px]">
+                The discrete analog: G(t) = Σ gᵢ · exp(−t/λᵢ) — the generalized Maxwell model.
+              </p>
+            </AnimatedCard>
+          </div>
+        </div>
+      </AnimatedSection>
+
       {/* Hero visual: 3D Stress Tensor + Key Equations */}
       <AnimatedSection className="grid lg:grid-cols-2 gap-8 mb-16">
         <div>
