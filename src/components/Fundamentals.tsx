@@ -379,7 +379,7 @@ export default function Fundamentals() {
                 className="bg-white border border-[#d0dde8] rounded-xl p-3 flex items-start gap-3">
                 <div className="shrink-0 w-24 text-xs font-semibold text-[#134074]">{item.label}</div>
                 <div className="flex-1">
-                  <div className="math-block text-sm !py-1.5 !px-3 !my-0 !text-sm">{item.eq}</div>
+                  <div className="math-block !text-sm !py-1.5 !px-3 !my-0">{item.eq}</div>
                   <p className="text-[#8DA9C4] text-xs mt-1">{item.desc}</p>
                 </div>
               </AnimatedCard>
@@ -396,10 +396,10 @@ export default function Fundamentals() {
           This is the molecular origin of <strong className="text-[#0B2545]">shear-thinning</strong> behavior.
         </p>
         <div className="flex items-center gap-4 mb-4">
-          <label className="text-sm text-[#2c4a6e]">
+          <label htmlFor="shear-rate-slider" className="text-sm text-[#2c4a6e]">
             Shear Rate: <strong className="text-[#134074]">{shearRate.toFixed(1)}</strong>
           </label>
-          <input type="range" min="0" max="5" step="0.1" value={shearRate}
+          <input id="shear-rate-slider" type="range" min="0" max="5" step="0.1" value={shearRate}
             onChange={(e) => setShearRate(parseFloat(e.target.value))}
             className="w-64 accent-[#134074]" />
           <span className="text-xs text-[#8DA9C4]">
@@ -441,13 +441,14 @@ export default function Fundamentals() {
         </p>
 
         {/* Tab buttons */}
-        <div className="flex gap-2 mb-6">
+        <div className="flex flex-wrap gap-2 mb-6" role="tablist" aria-label="Interactive charts">
           {[
             { key: "flow" as const, label: "Flow Curve" },
             { key: "models" as const, label: "Viscosity Models" },
             { key: "creep" as const, label: "Creep & Recovery" },
           ].map((tab) => (
-            <button key={tab.key} onClick={() => setActiveTab(tab.key)}
+            <button key={tab.key} type="button" role="tab" aria-selected={activeTab === tab.key}
+              onClick={() => setActiveTab(tab.key)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 activeTab === tab.key
                   ? "bg-[#134074] text-white shadow-md"
@@ -459,7 +460,7 @@ export default function Fundamentals() {
         </div>
 
         {/* Chart area */}
-        <div className="bg-white border border-[#d0dde8] rounded-2xl p-6">
+        <div className="bg-white border border-[#d0dde8] rounded-2xl p-6" role="tabpanel">
           {activeTab === "flow" && (
             <div>
               <h4 className="text-lg font-bold text-[#0B2545] mb-1">Power-Law Flow Curve</h4>
@@ -499,13 +500,14 @@ export default function Fundamentals() {
           Real processing involves more than shear — extensional flows, yield stresses, and time-dependent effects are critical.
         </p>
 
-        <div className="flex gap-2 mb-6">
+        <div className="flex flex-wrap gap-2 mb-6" role="tablist" aria-label="Advanced rheology topics">
           {[
             { key: "extensional" as const, label: "Extensional Rheology" },
             { key: "yield" as const, label: "Yield Stress Fluids" },
             { key: "thixotropy" as const, label: "Time-Dependent Behavior" },
           ].map((tab) => (
-            <button key={tab.key} onClick={() => setActiveAdvTab(tab.key)}
+            <button key={tab.key} type="button" role="tab" aria-selected={activeAdvTab === tab.key}
+              onClick={() => setActiveAdvTab(tab.key)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 activeAdvTab === tab.key
                   ? "bg-[#134074] text-white shadow-md"
@@ -516,7 +518,7 @@ export default function Fundamentals() {
           ))}
         </div>
 
-        <div className="bg-white border border-[#d0dde8] rounded-2xl p-6">
+        <div className="bg-white border border-[#d0dde8] rounded-2xl p-6" role="tabpanel">
           {activeAdvTab === "extensional" && (
             <div>
               <h4 className="text-lg font-bold text-[#0B2545] mb-1">Extensional (Elongational) Viscosity</h4>
@@ -543,12 +545,6 @@ export default function Fundamentals() {
                   <div className="bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] rounded-xl p-4 border border-[#d0dde8]/50">
                     <h5 className="text-xs font-bold text-[#0B2545] mb-2 uppercase tracking-wide">Strain Hardening</h5>
                     <svg viewBox="0 0 200 120" className="w-full h-auto">
-                      <defs>
-                        <linearGradient id="sh-fill" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor="#134074" stopOpacity="0.08" />
-                          <stop offset="100%" stopColor="#134074" stopOpacity="0.01" />
-                        </linearGradient>
-                      </defs>
                       {[30, 50, 70, 90].map(y => (
                         <line key={y} x1="30" y1={y} x2="180" y2={y} stroke="#d0dde8" strokeWidth="0.5" strokeDasharray="2 3" />
                       ))}
@@ -685,9 +681,9 @@ export default function Fundamentals() {
                     <div className="bg-[#EEF4ED] rounded-xl p-4">
                       <h5 className="text-xs font-bold text-[#134074] mb-2 uppercase tracking-wide">Key Measurements</h5>
                       <div className="space-y-1.5 text-xs text-[#2c4a6e]">
-                        <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">Hysteresis loop:</strong> Ramp up then down in γ̇, area = thixotropy index</div>
-                        <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">Step-rate test:</strong> Apply γ̇, monitor η(t) decay + recovery at rest</div>
-                        <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">3ITT (3-Interval):</strong> Rest → shear → rest. Standard protocol for quantifying recovery</div>
+                        <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><span><strong className="text-[#0B2545]">Hysteresis loop:</strong> Ramp up then down in γ̇, area = thixotropy index</span></div>
+                        <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><span><strong className="text-[#0B2545]">Step-rate test:</strong> Apply γ̇, monitor η(t) decay + recovery at rest</span></div>
+                        <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><span><strong className="text-[#0B2545]">3ITT (3-Interval):</strong> Rest → shear → rest. Standard protocol for quantifying recovery</span></div>
                       </div>
                     </div>
                   </div>
@@ -804,7 +800,7 @@ export default function Fundamentals() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {[
             { name: "Oldroyd-B", eq: "τ + λ₁·∇τ = η₀(γ̇ + λ₂·∇γ̇)", type: "Dilute solutions, constant η_E", color: "#134074" },
-            { name: "Giesekus", eq: "+ α·(τ·τ)/(η₀/λ)", type: "Shear thinning + bounded η_E", color: "#13315C" },
+            { name: "Giesekus", eq: "τ + λ·∇τ + αλ(τ·τ)/η₀ = η₀γ̇", type: "Shear thinning + bounded η_E", color: "#13315C" },
             { name: "PTT (Phan-Thien-Tanner)", eq: "f(tr τ)·τ + λ·∇τ = η₀γ̇", type: "Strain softening, polymer melts", color: "#0B2545" },
             { name: "FENE-P", eq: "Finitely extensible dumbbells", type: "Bounded extensibility, dilute solutions", color: "#134074" },
             { name: "K-BKZ (Integral)", eq: "τ(t) = ∫ m(t−t') h(I₁,I₂) C⁻¹ dt'", type: "Full nonlinear memory, general flows", color: "#13315C" },
