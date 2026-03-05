@@ -101,18 +101,18 @@ export default function CreepRecoveryChart() {
           <ReferenceLine x={10} stroke="#0B2545" strokeDasharray="6 4" strokeWidth={1.5}
             label={{ value: "τ₀ removed", fill: "#0B2545", fontSize: 11, fontWeight: 600, position: "top" }} />
           <XAxis dataKey="time" type="number"
-            tick={{ fill: "#3d6285", fontSize: 11, fontFamily: "Inter" }}
-            axisLine={{ stroke: "#c9d9e8" }} tickLine={{ stroke: "#c9d9e8" }}
+            tick={{ fill: "#2c4a6e", fontSize: 11, fontFamily: "Inter" }}
+            axisLine={{ stroke: "#d0dde8" }} tickLine={{ stroke: "#d0dde8" }}
             label={{ value: "Time [s]", position: "insideBottom", offset: -5, fill: "#0B2545", fontSize: 12, fontWeight: 500 }} />
-          <YAxis tick={{ fill: "#3d6285", fontSize: 11, fontFamily: "Inter" }}
-            axisLine={{ stroke: "#c9d9e8" }} tickLine={{ stroke: "#c9d9e8" }}
+          <YAxis tick={{ fill: "#2c4a6e", fontSize: 11, fontFamily: "Inter" }}
+            axisLine={{ stroke: "#d0dde8" }} tickLine={{ stroke: "#d0dde8" }}
             label={{ value: "Strain γ", angle: -90, position: "insideLeft", offset: 15, fill: "#0B2545", fontSize: 12, fontWeight: 500 }} />
           <Tooltip contentStyle={{
-            backgroundColor: "rgba(255,255,255,0.97)", border: "1px solid #c9d9e8",
+            backgroundColor: "rgba(255,255,255,0.97)", border: "1px solid #d0dde8",
             borderRadius: "0.75rem", color: "#0B2545", boxShadow: "0 8px 24px rgba(11,37,69,0.12)",
             fontSize: 12, fontFamily: "Inter",
           }} />
-          <Legend wrapperStyle={{ color: "#3d6285", paddingTop: 16, fontSize: 12 }} />
+          <Legend wrapperStyle={{ color: "#2c4a6e", paddingTop: 16, fontSize: 12 }} />
           <Area type="monotone" dataKey="strain" fill="url(#creepGrad)" stroke="none" />
           <Line type="monotone" dataKey="strain" stroke="#134074" strokeWidth={2.5}
             dot={false} activeDot={<CustomActiveDot />} name="Strain γ(t)" />
@@ -120,17 +120,17 @@ export default function CreepRecoveryChart() {
       </ResponsiveContainer>
 
       <div className="mt-3 grid grid-cols-3 gap-3 text-xs">
-        <div className="bg-[#EEF4ED] rounded-xl p-3 text-center border border-[#c9d9e8]">
+        <div className="bg-[#EEF4ED] rounded-xl p-3 text-center border border-[#d0dde8]">
           <div className="font-semibold text-[#134074]">λ = η/G</div>
           <div className="text-[#0B2545] font-bold text-sm mt-0.5">{(eta / G).toFixed(1)} s</div>
         </div>
-        <div className="bg-[#EEF4ED] rounded-xl p-3 text-center border border-[#c9d9e8]">
+        <div className="bg-[#EEF4ED] rounded-xl p-3 text-center border border-[#d0dde8]">
           <div className="font-semibold text-[#13315C]">J₀ = 1/G</div>
           <div className="text-[#0B2545] font-bold text-sm mt-0.5">{(1 / G * 1000).toFixed(2)} × 10⁻³ Pa⁻¹</div>
         </div>
-        <div className="bg-[#EEF4ED] rounded-xl p-3 text-center border border-[#c9d9e8]">
+        <div className="bg-[#EEF4ED] rounded-xl p-3 text-center border border-[#d0dde8]">
           <div className="font-semibold text-[#0B2545]">Maxwell Model</div>
-          <div className="text-[#3d6285] mt-0.5">Spring + Dashpot in series</div>
+          <div className="text-[#2c4a6e] mt-0.5">Spring + Dashpot in series</div>
         </div>
       </div>
     </div>

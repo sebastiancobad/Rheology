@@ -93,16 +93,16 @@ export default function TemperatureChart() {
           <CartesianGrid strokeDasharray="3 3" stroke="rgba(19,64,116,0.06)" />
           <ReferenceLine x={Tref} stroke="#0B2545" strokeDasharray="6 4" strokeWidth={1.5}
             label={{ value: "Tref", fill: "#0B2545", fontSize: 11, fontWeight: 600, position: "top" }} />
-          <ReferenceLine y={0} stroke="#c9d9e8" strokeWidth={1} />
+          <ReferenceLine y={0} stroke="#d0dde8" strokeWidth={1} />
           <XAxis dataKey="temperature" type="number"
-            tick={{ fill: "#3d6285", fontSize: 11, fontFamily: "Inter" }}
-            axisLine={{ stroke: "#c9d9e8" }} tickLine={{ stroke: "#c9d9e8" }}
+            tick={{ fill: "#2c4a6e", fontSize: 11, fontFamily: "Inter" }}
+            axisLine={{ stroke: "#d0dde8" }} tickLine={{ stroke: "#d0dde8" }}
             label={{ value: "Temperature [°C]", position: "insideBottom", offset: -5, fill: "#0B2545", fontSize: 12, fontWeight: 500 }} />
-          <YAxis tick={{ fill: "#3d6285", fontSize: 11, fontFamily: "Inter" }}
-            axisLine={{ stroke: "#c9d9e8" }} tickLine={{ stroke: "#c9d9e8" }}
+          <YAxis tick={{ fill: "#2c4a6e", fontSize: 11, fontFamily: "Inter" }}
+            axisLine={{ stroke: "#d0dde8" }} tickLine={{ stroke: "#d0dde8" }}
             label={{ value: "log(aT)", angle: -90, position: "insideLeft", offset: 15, fill: "#0B2545", fontSize: 12, fontWeight: 500 }} />
           <Tooltip contentStyle={{
-            backgroundColor: "rgba(255,255,255,0.97)", border: "1px solid #c9d9e8",
+            backgroundColor: "rgba(255,255,255,0.97)", border: "1px solid #d0dde8",
             borderRadius: "0.75rem", color: "#0B2545", boxShadow: "0 8px 24px rgba(11,37,69,0.12)",
             fontSize: 12, fontFamily: "Inter",
           }}
@@ -110,7 +110,7 @@ export default function TemperatureChart() {
             formatter={(value: any, name: any) => [`${Number(value).toFixed(3)}`, name]}
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             labelFormatter={(label: any) => `T = ${Number(label).toFixed(0)}°C`} />
-          <Legend wrapperStyle={{ color: "#3d6285", paddingTop: 16, fontSize: 12 }} />
+          <Legend wrapperStyle={{ color: "#2c4a6e", paddingTop: 16, fontSize: 12 }} />
           <Area type="monotone" dataKey="wlf" fill="url(#wlfGrad)" stroke="none" />
           <Line type="monotone" dataKey="wlf" stroke="#134074" strokeWidth={2.5}
             dot={false} activeDot={<CustomActiveDot />} name="WLF" />

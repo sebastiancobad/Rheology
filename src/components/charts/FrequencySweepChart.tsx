@@ -83,8 +83,8 @@ export default function FrequencySweepChart() {
             className={`${sliderClass("#13315C")} bg-gradient-to-r from-[#EEF4ED] to-[#13315C]`} />
         </div>
         <div className="flex items-end pb-1">
-          <label className="flex items-center gap-2 text-xs font-medium text-[#3d6285] cursor-pointer select-none">
-            <div className={`w-8 h-4 rounded-full transition-colors relative ${showTanDelta ? "bg-[#8DA9C4]" : "bg-[#c9d9e8]"}`}
+          <label className="flex items-center gap-2 text-xs font-medium text-[#2c4a6e] cursor-pointer select-none">
+            <div className={`w-8 h-4 rounded-full transition-colors relative ${showTanDelta ? "bg-[#8DA9C4]" : "bg-[#d0dde8]"}`}
               onClick={() => setShowTanDelta(!showTanDelta)}>
               <div className={`absolute top-0.5 w-3 h-3 rounded-full bg-white shadow-sm transition-transform ${showTanDelta ? "translate-x-4" : "translate-x-0.5"}`} />
             </div>
@@ -93,7 +93,7 @@ export default function FrequencySweepChart() {
         </div>
       </div>
 
-      <div className="text-xs text-[#3d6285] mb-3 bg-[#EEF4ED] rounded-lg px-3 py-2 inline-block">
+      <div className="text-xs text-[#2c4a6e] mb-3 bg-[#EEF4ED] rounded-lg px-3 py-2 inline-block">
         Maxwell: <span className="font-semibold text-[#134074]">G&apos;(ω) = G<sub>N</sub><sup>0</sup>·(ωλ)²/[1+(ωλ)²]</span>,{" "}
         <span className="font-semibold text-[#8DA9C4]">G&apos;&apos;(ω) = G<sub>N</sub><sup>0</sup>·ωλ/[1+(ωλ)²]</span>
       </div>
@@ -112,21 +112,21 @@ export default function FrequencySweepChart() {
           </defs>
           <CartesianGrid strokeDasharray="3 3" stroke="rgba(19,64,116,0.06)" />
           <XAxis dataKey="omega" scale="log" domain={["dataMin", "dataMax"]} type="number"
-            tick={{ fill: "#3d6285", fontSize: 11, fontFamily: "Inter" }}
-            axisLine={{ stroke: "#c9d9e8" }} tickLine={{ stroke: "#c9d9e8" }}
+            tick={{ fill: "#2c4a6e", fontSize: 11, fontFamily: "Inter" }}
+            axisLine={{ stroke: "#d0dde8" }} tickLine={{ stroke: "#d0dde8" }}
             label={{ value: "Angular Frequency ω [rad/s]", position: "insideBottom", offset: -5, fill: "#0B2545", fontSize: 12, fontWeight: 500 }} />
           <YAxis yAxisId="modulus" scale="log" domain={[1, "auto"]} type="number"
-            tick={{ fill: "#3d6285", fontSize: 11, fontFamily: "Inter" }}
-            axisLine={{ stroke: "#c9d9e8" }} tickLine={{ stroke: "#c9d9e8" }}
+            tick={{ fill: "#2c4a6e", fontSize: 11, fontFamily: "Inter" }}
+            axisLine={{ stroke: "#d0dde8" }} tickLine={{ stroke: "#d0dde8" }}
             label={{ value: "G', G'' [Pa]", angle: -90, position: "insideLeft", offset: 15, fill: "#0B2545", fontSize: 12, fontWeight: 500 }} />
           {showTanDelta && (
             <YAxis yAxisId="tanDelta" orientation="right" scale="log" domain={[0.01, 100]} type="number"
               tick={{ fill: "#8DA9C4", fontSize: 11 }}
-              axisLine={{ stroke: "#c9d9e8" }} tickLine={{ stroke: "#c9d9e8" }}
+              axisLine={{ stroke: "#d0dde8" }} tickLine={{ stroke: "#d0dde8" }}
               label={{ value: "tan(δ)", angle: 90, position: "insideRight", offset: 10, fill: "#8DA9C4", fontSize: 12 }} />
           )}
           <Tooltip contentStyle={{
-            backgroundColor: "rgba(255,255,255,0.97)", border: "1px solid #c9d9e8",
+            backgroundColor: "rgba(255,255,255,0.97)", border: "1px solid #d0dde8",
             borderRadius: "0.75rem", color: "#0B2545", boxShadow: "0 8px 24px rgba(11,37,69,0.12)",
             fontSize: 12, fontFamily: "Inter",
           }}
@@ -138,7 +138,7 @@ export default function FrequencySweepChart() {
             }}
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             labelFormatter={(label: any) => `ω = ${Number(label).toFixed(2)} rad/s`} />
-          <Legend wrapperStyle={{ color: "#3d6285", paddingTop: 16, fontSize: 12 }} />
+          <Legend wrapperStyle={{ color: "#2c4a6e", paddingTop: 16, fontSize: 12 }} />
           <ReferenceLine x={crossoverFreq} yAxisId="modulus" stroke="#0B2545" strokeDasharray="6 4" strokeWidth={1.5}
             label={{ value: "ωc", fill: "#0B2545", fontSize: 12, fontWeight: 600, position: "top" }} />
           <Area yAxisId="modulus" type="monotone" dataKey="gPrime" fill="url(#gPrimeGrad)" stroke="none" />
@@ -155,17 +155,17 @@ export default function FrequencySweepChart() {
       </ResponsiveContainer>
 
       <div className="mt-4 grid sm:grid-cols-3 gap-3 text-sm">
-        <div className="bg-[#EEF4ED] rounded-xl p-4 border border-[#c9d9e8]">
+        <div className="bg-[#EEF4ED] rounded-xl p-4 border border-[#d0dde8]">
           <div className="text-[#134074] font-semibold mb-1 text-xs">ω &lt; ω<sub>c</sub> — Terminal</div>
-          <p className="text-[#3d6285] text-xs">G&apos;&apos; &gt; G&apos;: Viscous behavior. Chains relax fully.</p>
+          <p className="text-[#2c4a6e] text-xs">G&apos;&apos; &gt; G&apos;: Viscous behavior. Chains relax fully.</p>
         </div>
         <div className="bg-white rounded-xl p-4 border-2 border-[#134074]/20">
           <div className="text-[#0B2545] font-semibold mb-1 text-xs">ω = ω<sub>c</sub> — Crossover</div>
-          <p className="text-[#3d6285] text-xs">G&apos; = G&apos;&apos;, tan(δ)=1. λ = 1/ω<sub>c</sub>.</p>
+          <p className="text-[#2c4a6e] text-xs">G&apos; = G&apos;&apos;, tan(δ)=1. λ = 1/ω<sub>c</sub>.</p>
         </div>
-        <div className="bg-[#EEF4ED] rounded-xl p-4 border border-[#c9d9e8]">
+        <div className="bg-[#EEF4ED] rounded-xl p-4 border border-[#d0dde8]">
           <div className="text-[#134074] font-semibold mb-1 text-xs">ω &gt; ω<sub>c</sub> — Plateau</div>
-          <p className="text-[#3d6285] text-xs">G&apos; &gt; G&apos;&apos;: Elastic, entangled network.</p>
+          <p className="text-[#2c4a6e] text-xs">G&apos; &gt; G&apos;&apos;: Elastic, entangled network.</p>
         </div>
       </div>
     </div>

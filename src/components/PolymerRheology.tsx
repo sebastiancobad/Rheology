@@ -15,6 +15,8 @@ export default function PolymerRheology() {
       title="Deep Dive into Polymer Rheology"
       subtitle="Section 2 — Advanced Topics"
       accent="#13315C"
+      number="02"
+      alternate
     >
       {/* Molecular Weight & Architecture */}
       <AnimatedSection className="mb-16">
@@ -71,13 +73,13 @@ export default function PolymerRheology() {
             },
           ].map((item, i) => (
             <AnimatedCard key={i} delay={i * 0.06}
-              className="bg-white border border-[#c9d9e8] rounded-2xl p-5">
+              className="bg-white border border-[#d0dde8] rounded-2xl p-5">
               <div className="flex items-start gap-3 mb-2">
                 {item.icon}
                 <h4 className="font-bold text-[#0B2545] text-sm">{item.title}</h4>
               </div>
               <div className="math-block !text-sm !py-1.5 !px-3 !my-2">{item.eq}</div>
-              <p className="text-[#3d6285] text-xs">{item.desc}</p>
+              <p className="text-[#2c4a6e] text-xs">{item.desc}</p>
             </AnimatedCard>
           ))}
         </div>
@@ -86,7 +88,7 @@ export default function PolymerRheology() {
       {/* Interactive Charts — Tabbed */}
       <AnimatedSection className="mb-16">
         <h3 className="text-2xl font-bold text-[#0B2545] mb-2">Interactive Viscoelastic Analysis</h3>
-        <p className="text-[#3d6285] text-sm mb-6">
+        <p className="text-[#2c4a6e] text-sm mb-6">
           Explore frequency-dependent viscoelasticity and temperature dependence interactively.
         </p>
 
@@ -99,17 +101,17 @@ export default function PolymerRheology() {
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 activeChart === tab.key
                   ? "bg-[#13315C] text-white shadow-md"
-                  : "bg-[#EEF4ED] text-[#3d6285] border border-[#c9d9e8] hover:bg-white"
+                  : "bg-[#EEF4ED] text-[#2c4a6e] border border-[#d0dde8] hover:bg-white"
               }`}>
               {tab.label}
             </button>
           ))}
         </div>
 
-        <div className="bg-white border border-[#c9d9e8] rounded-2xl p-6">
+        <div className="bg-white border border-[#d0dde8] rounded-2xl p-6">
           {activeChart === "frequency" && (
             <div>
-              <p className="text-[#3d6285] text-xs mb-4">
+              <p className="text-[#2c4a6e] text-xs mb-4">
                 Single Maxwell model: adjust crossover frequency (ω<sub>c</sub> = 1/λ) and plateau modulus.
                 G&apos; &gt; G&apos;&apos; = elastic; G&apos;&apos; &gt; G&apos; = viscous.
               </p>
@@ -118,7 +120,7 @@ export default function PolymerRheology() {
           )}
           {activeChart === "temperature" && (
             <div>
-              <p className="text-[#3d6285] text-xs mb-4">
+              <p className="text-[#2c4a6e] text-xs mb-4">
                 Compare WLF and Arrhenius models for the temperature shift factor a<sub>T</sub>.
                 WLF applies near T<sub>g</sub>, Arrhenius far above T<sub>g</sub>.
               </p>
@@ -143,7 +145,7 @@ export default function PolymerRheology() {
                 <th className="px-3 py-2 text-[#134074] font-semibold">Key feature</th>
               </tr>
             </thead>
-            <tbody className="text-[#3d6285]">
+            <tbody className="text-[#2c4a6e]">
               {[
                 ["HDPE", "10³–10⁵", "0.3–0.6", "2.6", "1,250", "Linear, high crystallinity"],
                 ["LDPE", "10³–10⁵", "0.3–0.5", "2.6", "1,250", "LCB → strain hardening"],
@@ -158,7 +160,7 @@ export default function PolymerRheology() {
                 ["PLA", "10²–10⁴", "0.3–0.5", "—", "8,000", "Biodegradable, low melt strength"],
                 ["PEEK", "10²–10³", "0.4–0.6", "4.5", "1,600", "Semi-cryst., Tg=143°C, Tm=343°C"],
               ].map((row, i) => (
-                <tr key={i} className="border-b border-[#c9d9e8]/50 hover:bg-[#EEF4ED]/50 transition-colors">
+                <tr key={i} className="border-b border-[#d0dde8]/50 hover:bg-[#EEF4ED]/50 transition-colors">
                   <td className="px-3 py-2 font-semibold text-[#0B2545]">{row[0]}</td>
                   <td className="px-3 py-2">{row[1]}</td>
                   <td className="px-3 py-2">{row[2]}</td>
@@ -175,22 +177,22 @@ export default function PolymerRheology() {
       {/* Time-Temperature Superposition */}
       <AnimatedSection className="mb-16">
         <h3 className="text-2xl font-bold text-[#0B2545] mb-2">Time-Temperature Superposition (TTS)</h3>
-        <p className="text-[#3d6285] text-sm mb-6">
+        <p className="text-[#2c4a6e] text-sm mb-6">
           Thermorheologically simple polymers allow data at different temperatures to be shifted onto a master curve.
         </p>
         <div className="grid md:grid-cols-2 gap-5">
-          <AnimatedCard className="bg-white border border-[#c9d9e8] rounded-2xl p-5">
+          <AnimatedCard className="bg-white border border-[#d0dde8] rounded-2xl p-5">
             <h4 className="font-bold text-[#0B2545] mb-2">Master Curve Construction</h4>
-            <div className="space-y-2 text-xs text-[#3d6285]">
+            <div className="space-y-2 text-xs text-[#2c4a6e]">
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">Principle:</strong> G&apos;(ω, T) = G&apos;(ω·a<sub>T</sub>, T<sub>ref</sub>) — shift frequency axis by a<sub>T</sub></div>
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">Vertical shift b<sub>T</sub>:</strong> b<sub>T</sub> = ρ<sub>ref</sub>T<sub>ref</sub> / ρT ≈ 1 for small ΔT</div>
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">Extends data:</strong> 3-4 decades per T → 10+ decades on master curve</div>
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">Validation:</strong> All T data must overlap smoothly — failure means TTS invalid</div>
             </div>
           </AnimatedCard>
-          <AnimatedCard delay={0.1} className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-5">
+          <AnimatedCard delay={0.1} className="bg-[#EEF4ED] border border-[#d0dde8] rounded-2xl p-5">
             <h4 className="font-bold text-[#0B2545] mb-2">When TTS Fails</h4>
-            <div className="space-y-2 text-xs text-[#3d6285]">
+            <div className="space-y-2 text-xs text-[#2c4a6e]">
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#0B2545] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">LCB polymers:</strong> Different relaxation modes shift differently</div>
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#0B2545] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">Blends near phase separation:</strong> Morphology changes with T</div>
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#0B2545] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">Semi-crystalline near T<sub>m</sub>:</strong> Crystal fraction changes</div>
@@ -204,7 +206,7 @@ export default function PolymerRheology() {
       {/* Polymer Blends Rheology */}
       <AnimatedSection className="mb-16">
         <h3 className="text-2xl font-bold text-[#0B2545] mb-2">Polymer Blends Rheology</h3>
-        <p className="text-[#3d6285] text-sm mb-6">
+        <p className="text-[#2c4a6e] text-sm mb-6">
           Blending affects viscosity, elasticity, and morphology in ways that depend on composition, compatibility, and processing history.
         </p>
         <div className="grid md:grid-cols-3 gap-4">
@@ -241,12 +243,12 @@ export default function PolymerRheology() {
             },
           ].map((card, i) => (
             <AnimatedCard key={i} delay={i * 0.08}
-              className="bg-white border border-[#c9d9e8] rounded-2xl p-5">
+              className="bg-white border border-[#d0dde8] rounded-2xl p-5">
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-3 h-3 rounded-full" style={{ backgroundColor: card.color }} />
                 <h4 className="font-bold text-[#0B2545] text-sm">{card.title}</h4>
               </div>
-              <ul className="space-y-1.5 text-xs text-[#3d6285]">
+              <ul className="space-y-1.5 text-xs text-[#2c4a6e]">
                 {card.items.map((item, j) => (
                   <li key={j} className="flex items-start gap-2">
                     <span className="w-1 h-1 rounded-full mt-1.5 shrink-0" style={{ backgroundColor: card.color }} />
@@ -257,8 +259,8 @@ export default function PolymerRheology() {
             </AnimatedCard>
           ))}
         </div>
-        <div className="mt-4 bg-[#EEF4ED] rounded-xl p-4 border border-[#c9d9e8]/50">
-          <div className="grid md:grid-cols-2 gap-4 text-xs text-[#3d6285]">
+        <div className="mt-4 bg-[#EEF4ED] rounded-xl p-4 border border-[#d0dde8]/50">
+          <div className="grid md:grid-cols-2 gap-4 text-xs text-[#2c4a6e]">
             <div>
               <h5 className="font-bold text-[#0B2545] mb-2">Key Equations</h5>
               <div className="space-y-1.5">
@@ -282,11 +284,11 @@ export default function PolymerRheology() {
       {/* Filled Systems */}
       <AnimatedSection className="mb-16">
         <h3 className="text-2xl font-bold text-[#0B2545] mb-2">Filled & Composite Systems</h3>
-        <p className="text-[#3d6285] text-sm mb-6">
+        <p className="text-[#2c4a6e] text-sm mb-6">
           Fillers, fibers, and nanoparticles profoundly change polymer rheology, often introducing yield stress and altered flow behavior.
         </p>
         <div className="grid md:grid-cols-2 gap-5">
-          <AnimatedCard className="bg-white border border-[#c9d9e8] rounded-2xl p-5">
+          <AnimatedCard className="bg-white border border-[#d0dde8] rounded-2xl p-5">
             <h4 className="font-bold text-[#0B2545] mb-3">Concentration Effects</h4>
             <div className="space-y-2">
               {[
@@ -301,9 +303,9 @@ export default function PolymerRheology() {
               ))}
             </div>
           </AnimatedCard>
-          <AnimatedCard delay={0.1} className="bg-white border border-[#c9d9e8] rounded-2xl p-5">
+          <AnimatedCard delay={0.1} className="bg-white border border-[#d0dde8] rounded-2xl p-5">
             <h4 className="font-bold text-[#0B2545] mb-3">Filler Effects on Rheology</h4>
-            <div className="space-y-2 text-xs text-[#3d6285]">
+            <div className="space-y-2 text-xs text-[#2c4a6e]">
               {[
                 { filler: "Carbon Black", effect: "Filler network → yield stress, Payne effect (G' drop with γ₀)" },
                 { filler: "Glass Fibers", effect: "Anisotropic η, fiber orientation during flow, ↑ η at low γ̇" },
@@ -325,7 +327,7 @@ export default function PolymerRheology() {
       {/* Flow-Induced Crystallization */}
       <AnimatedSection className="mb-16">
         <h3 className="text-2xl font-bold text-[#0B2545] mb-2">Flow-Induced Crystallization</h3>
-        <p className="text-[#3d6285] text-sm mb-6">
+        <p className="text-[#2c4a6e] text-sm mb-6">
           Shear and extensional flow can dramatically accelerate crystallization and alter morphology in semi-crystalline polymers.
         </p>
         <div className="grid md:grid-cols-3 gap-4">
@@ -362,12 +364,12 @@ export default function PolymerRheology() {
             },
           ].map((card, i) => (
             <AnimatedCard key={i} delay={i * 0.08}
-              className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-5">
+              className="bg-[#EEF4ED] border border-[#d0dde8] rounded-2xl p-5">
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-3 h-3 rounded-full" style={{ backgroundColor: card.color }} />
                 <h4 className="font-bold text-[#0B2545] text-sm">{card.title}</h4>
               </div>
-              <ul className="space-y-1.5 text-xs text-[#3d6285]">
+              <ul className="space-y-1.5 text-xs text-[#2c4a6e]">
                 {card.items.map((item, j) => (
                   <li key={j} className="flex items-start gap-2">
                     <span className="w-1 h-1 rounded-full mt-1.5 shrink-0" style={{ backgroundColor: card.color }} />
@@ -383,7 +385,7 @@ export default function PolymerRheology() {
       {/* Recycled Polymers — Visual Cards */}
       <AnimatedSection>
         <h3 className="text-2xl font-bold text-[#0B2545] mb-2">Recycled Polymer Rheology</h3>
-        <p className="text-[#3d6285] text-sm mb-6">
+        <p className="text-[#2c4a6e] text-sm mb-6">
           Recycled feedstocks introduce unique challenges absent in virgin materials.
         </p>
         <div className="grid md:grid-cols-3 gap-5">
@@ -393,10 +395,10 @@ export default function PolymerRheology() {
             { title: "Processing Impact", icon: "🏭", items: ["Batch-to-batch variability high", "MFI alone insufficient for QC", "Gel particles affect flow stability", "Inline rheometry recommended"] },
           ].map((card, i) => (
             <AnimatedCard key={i} delay={i * 0.1}
-              className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-5">
+              className="bg-[#EEF4ED] border border-[#d0dde8] rounded-2xl p-5">
               <div className="text-2xl mb-2">{card.icon}</div>
               <h4 className="font-bold text-[#0B2545] mb-3">{card.title}</h4>
-              <ul className="text-[#3d6285] text-xs space-y-1.5">
+              <ul className="text-[#2c4a6e] text-xs space-y-1.5">
                 {card.items.map((item, j) => (
                   <li key={j} className="flex items-start gap-2">
                     <span className="w-1 h-1 rounded-full bg-[#134074] mt-1.5 shrink-0" />

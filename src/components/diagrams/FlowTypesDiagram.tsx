@@ -48,7 +48,7 @@ function VelocityProfile({ type, color, label, sublabel }: { type: "thinning" | 
   }
 
   return (
-    <div className="bg-white border border-[#c9d9e8] rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-white border border-[#d0dde8] rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow">
       <div className="flex items-center gap-2 mb-1">
         <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: color }} />
         <h4 className="text-sm font-bold text-[#0B2545]">{label}</h4>

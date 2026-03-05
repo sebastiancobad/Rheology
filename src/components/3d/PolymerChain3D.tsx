@@ -100,7 +100,7 @@ function Scene({ shearRate }: { shearRate: number }) {
 
 export default function PolymerChain3D({ shearRate = 0 }: { shearRate?: number }) {
   return (
-    <div className="w-full h-[420px] rounded-2xl overflow-hidden border border-[#c9d9e8] bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] shadow-sm">
+    <div className="w-full h-[420px] rounded-2xl overflow-hidden border border-[#d0dde8] bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] shadow-sm">
       <Canvas camera={{ position: [5, 3.5, 5], fov: 42 }} shadows>
         <Scene shearRate={shearRate} />
       </Canvas>

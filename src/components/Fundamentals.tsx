@@ -23,12 +23,13 @@ export default function Fundamentals() {
       title="Fundamentals of Rheology"
       subtitle="Section 1 — Didactic Introduction"
       accent="#134074"
+      number="01"
     >
       {/* Hero visual: 3D Stress Tensor + Key Equations */}
       <AnimatedSection className="grid lg:grid-cols-2 gap-8 mb-16">
         <div>
           <h3 className="text-xl font-bold text-[#0B2545] mb-3">Stress Tensor Visualization</h3>
-          <p className="text-[#3d6285] text-sm mb-4">
+          <p className="text-[#2c4a6e] text-sm mb-4">
             Interact with the 3D stress element. Normal stresses (σ₁₁, σ₂₂, σ₃₃)
             and shear stresses (τ₁₂) act on each face. Drag to rotate.
           </p>
@@ -46,7 +47,7 @@ export default function Fundamentals() {
               { label: "Weissenberg Number", eq: "Wi = λ · γ̇", desc: "Elastic vs viscous effects ratio" },
             ].map((item, i) => (
               <AnimatedCard key={i} delay={i * 0.05}
-                className="bg-white border border-[#c9d9e8] rounded-xl p-3 flex items-start gap-3">
+                className="bg-white border border-[#d0dde8] rounded-xl p-3 flex items-start gap-3">
                 <div className="shrink-0 w-24 text-xs font-semibold text-[#134074]">{item.label}</div>
                 <div className="flex-1">
                   <div className="math-block text-sm !py-1.5 !px-3 !my-0 !text-sm">{item.eq}</div>
@@ -61,12 +62,12 @@ export default function Fundamentals() {
       {/* Interactive Polymer Chain 3D */}
       <AnimatedSection className="mb-16">
         <h3 className="text-2xl font-bold text-[#0B2545] mb-3">3D Polymer Chain Under Shear</h3>
-        <p className="text-[#3d6285] text-sm mb-4">
+        <p className="text-[#2c4a6e] text-sm mb-4">
           Adjust the shear rate to see how polymer chains deform, orient, and disentangle.
           This is the molecular origin of <strong className="text-[#0B2545]">shear-thinning</strong> behavior.
         </p>
         <div className="flex items-center gap-4 mb-4">
-          <label className="text-sm text-[#3d6285]">
+          <label className="text-sm text-[#2c4a6e]">
             Shear Rate: <strong className="text-[#134074]">{shearRate.toFixed(1)}</strong>
           </label>
           <input type="range" min="0" max="5" step="0.1" value={shearRate}
@@ -82,7 +83,7 @@ export default function Fundamentals() {
       {/* Flow Types — Animated Diagrams */}
       <AnimatedSection className="mb-16">
         <h3 className="text-2xl font-bold text-[#0B2545] mb-2">Velocity Profiles by Fluid Type</h3>
-        <p className="text-[#3d6285] text-sm mb-6">
+        <p className="text-[#2c4a6e] text-sm mb-6">
           Compare how different rheological behaviors produce distinct velocity profiles
           in pressure-driven pipe flow.
         </p>
@@ -94,7 +95,7 @@ export default function Fundamentals() {
             { type: "Dilatant", n: "n > 1", color: "#13315C", examples: "Cornstarch suspensions, wet sand" },
           ].map((item, i) => (
             <AnimatedCard key={i} delay={i * 0.1}
-              className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-xl p-4 text-center">
+              className="bg-[#EEF4ED] border border-[#d0dde8] rounded-xl p-4 text-center">
               <div className="text-sm font-bold mb-1" style={{ color: item.color }}>{item.type}</div>
               <div className="math-block !py-1 !px-2 !my-1 !text-sm inline-block">{item.n}</div>
               <p className="text-[#8DA9C4] text-xs mt-1">{item.examples}</p>
@@ -106,7 +107,7 @@ export default function Fundamentals() {
       {/* Tabbed Interactive Charts */}
       <AnimatedSection className="mb-16">
         <h3 className="text-2xl font-bold text-[#0B2545] mb-2">Interactive Charts</h3>
-        <p className="text-[#3d6285] text-sm mb-6">
+        <p className="text-[#2c4a6e] text-sm mb-6">
           Explore rheological models interactively — adjust parameters and see real-time changes.
         </p>
 
@@ -121,7 +122,7 @@ export default function Fundamentals() {
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 activeTab === tab.key
                   ? "bg-[#134074] text-white shadow-md"
-                  : "bg-[#EEF4ED] text-[#3d6285] border border-[#c9d9e8] hover:bg-white"
+                  : "bg-[#EEF4ED] text-[#2c4a6e] border border-[#d0dde8] hover:bg-white"
               }`}>
               {tab.label}
             </button>
@@ -129,11 +130,11 @@ export default function Fundamentals() {
         </div>
 
         {/* Chart area */}
-        <div className="bg-white border border-[#c9d9e8] rounded-2xl p-6">
+        <div className="bg-white border border-[#d0dde8] rounded-2xl p-6">
           {activeTab === "flow" && (
             <div>
               <h4 className="text-lg font-bold text-[#0B2545] mb-1">Power-Law Flow Curve</h4>
-              <p className="text-[#3d6285] text-xs mb-4">
+              <p className="text-[#2c4a6e] text-xs mb-4">
                 η = K · γ̇<sup>(n−1)</sup> — Adjust n to see shear-thinning vs thickening.
                 Click legend items to toggle.
               </p>
@@ -143,7 +144,7 @@ export default function Fundamentals() {
           {activeTab === "models" && (
             <div>
               <h4 className="text-lg font-bold text-[#0B2545] mb-1">Carreau-Yasuda vs Cross vs Power-Law</h4>
-              <p className="text-[#3d6285] text-xs mb-4">
+              <p className="text-[#2c4a6e] text-xs mb-4">
                 Compare how different models capture the full flow curve including Newtonian plateaus.
               </p>
               <ViscosityModelsChart />
@@ -152,7 +153,7 @@ export default function Fundamentals() {
           {activeTab === "creep" && (
             <div>
               <h4 className="text-lg font-bold text-[#0B2545] mb-1">Creep & Recovery (Maxwell Model)</h4>
-              <p className="text-[#3d6285] text-xs mb-4">
+              <p className="text-[#2c4a6e] text-xs mb-4">
                 Apply constant stress, then remove it. Observe viscoelastic response:
                 instantaneous + delayed elasticity + viscous flow → partial recovery.
               </p>
@@ -165,7 +166,7 @@ export default function Fundamentals() {
       {/* Extensional Rheology, Yield Stress, Thixotropy */}
       <AnimatedSection className="mb-16">
         <h3 className="text-2xl font-bold text-[#0B2545] mb-2">Beyond Simple Shear</h3>
-        <p className="text-[#3d6285] text-sm mb-6">
+        <p className="text-[#2c4a6e] text-sm mb-6">
           Real processing involves more than shear — extensional flows, yield stresses, and time-dependent effects are critical.
         </p>
 
@@ -179,18 +180,18 @@ export default function Fundamentals() {
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 activeAdvTab === tab.key
                   ? "bg-[#134074] text-white shadow-md"
-                  : "bg-[#EEF4ED] text-[#3d6285] border border-[#c9d9e8] hover:bg-white"
+                  : "bg-[#EEF4ED] text-[#2c4a6e] border border-[#d0dde8] hover:bg-white"
               }`}>
               {tab.label}
             </button>
           ))}
         </div>
 
-        <div className="bg-white border border-[#c9d9e8] rounded-2xl p-6">
+        <div className="bg-white border border-[#d0dde8] rounded-2xl p-6">
           {activeAdvTab === "extensional" && (
             <div>
               <h4 className="text-lg font-bold text-[#0B2545] mb-1">Extensional (Elongational) Viscosity</h4>
-              <p className="text-[#3d6285] text-xs mb-4">
+              <p className="text-[#2c4a6e] text-xs mb-4">
                 In extension, material is stretched rather than sheared. Critical for fiber spinning, blow molding, and film processes.
               </p>
               <div className="grid md:grid-cols-2 gap-4 mb-4">
@@ -210,7 +211,7 @@ export default function Fundamentals() {
                   ))}
                 </div>
                 <div className="space-y-3">
-                  <div className="bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] rounded-xl p-4 border border-[#c9d9e8]/50">
+                  <div className="bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] rounded-xl p-4 border border-[#d0dde8]/50">
                     <h5 className="text-xs font-bold text-[#0B2545] mb-2 uppercase tracking-wide">Strain Hardening</h5>
                     <svg viewBox="0 0 200 120" className="w-full h-auto">
                       <defs>
@@ -220,14 +221,14 @@ export default function Fundamentals() {
                         </linearGradient>
                       </defs>
                       {[30, 50, 70, 90].map(y => (
-                        <line key={y} x1="30" y1={y} x2="180" y2={y} stroke="#c9d9e8" strokeWidth="0.5" strokeDasharray="2 3" />
+                        <line key={y} x1="30" y1={y} x2="180" y2={y} stroke="#d0dde8" strokeWidth="0.5" strokeDasharray="2 3" />
                       ))}
                       <line x1="30" y1="100" x2="185" y2="100" stroke="#0B2545" strokeWidth="1" />
                       <line x1="30" y1="100" x2="30" y2="15" stroke="#0B2545" strokeWidth="1" />
                       <polygon points="185,97 185,103 190,100" fill="#0B2545" />
                       <polygon points="27,15 33,15 30,10" fill="#0B2545" />
-                      <text x="110" y="113" textAnchor="middle" fill="#3d6285" fontSize="7" fontFamily="Inter">Hencky strain ε</text>
-                      <text x="12" y="55" textAnchor="middle" fill="#3d6285" fontSize="7" fontFamily="Inter" transform="rotate(-90 12 55)">η_E⁺(t)</text>
+                      <text x="110" y="113" textAnchor="middle" fill="#2c4a6e" fontSize="7" fontFamily="Inter">Hencky strain ε</text>
+                      <text x="12" y="55" textAnchor="middle" fill="#2c4a6e" fontSize="7" fontFamily="Inter" transform="rotate(-90 12 55)">η_E⁺(t)</text>
                       {/* Linear (3η₀ line) */}
                       <line x1="35" y1="65" x2="175" y2="65" stroke="#8DA9C4" strokeWidth="1.5" strokeDasharray="5 3" />
                       <text x="178" y="63" fill="#8DA9C4" fontSize="6" fontFamily="Inter">3η₀</text>
@@ -238,14 +239,14 @@ export default function Fundamentals() {
                       <path d="M 35,75 Q 80,70 120,68 Q 160,67 175,67" fill="none" stroke="#0B2545" strokeWidth="1.5" strokeDasharray="4 3" />
                       <text x="178" y="70" fill="#0B2545" fontSize="6" fontFamily="Inter">HDPE</text>
                     </svg>
-                    <p className="text-[#3d6285] text-xs mt-2">
+                    <p className="text-[#2c4a6e] text-xs mt-2">
                       LDPE (branched) shows strain hardening — η_E rises above 3η₀.
                       HDPE (linear) follows the linear envelope. Critical for blow molding and film stability.
                     </p>
                   </div>
-                  <div className="bg-[#EEF4ED] rounded-xl p-4 border border-[#c9d9e8]/50">
+                  <div className="bg-[#EEF4ED] rounded-xl p-4 border border-[#d0dde8]/50">
                     <h5 className="text-xs font-bold text-[#0B2545] mb-2 uppercase tracking-wide">Extensional Measurement Methods</h5>
-                    <div className="space-y-1.5 text-xs text-[#3d6285]">
+                    <div className="space-y-1.5 text-xs text-[#2c4a6e]">
                       {[
                         { method: "SER (Sentmanat)", range: "0.001–30 s⁻¹", note: "Melts, film-like samples" },
                         { method: "CaBER", range: "Capillary breakup", note: "Solutions, inks, low-η" },
@@ -269,7 +270,7 @@ export default function Fundamentals() {
           {activeAdvTab === "yield" && (
             <div>
               <h4 className="text-lg font-bold text-[#0B2545] mb-1">Yield Stress Fluids</h4>
-              <p className="text-[#3d6285] text-xs mb-4">
+              <p className="text-[#2c4a6e] text-xs mb-4">
                 Materials that behave as solids below a critical stress and flow above it. Common in filled polymers, adhesives, and structured fluids.
               </p>
               <div className="grid md:grid-cols-2 gap-4">
@@ -282,20 +283,20 @@ export default function Fundamentals() {
                     <div key={i} className="bg-[#EEF4ED] rounded-xl p-4">
                       <h5 className="text-sm font-bold text-[#0B2545] mb-1">{model.name}</h5>
                       <div className="math-block !text-sm !py-1.5 !px-3 !my-2">{model.eq}</div>
-                      <p className="text-[#3d6285] text-xs">{model.desc}</p>
+                      <p className="text-[#2c4a6e] text-xs">{model.desc}</p>
                     </div>
                   ))}
                 </div>
                 <div className="space-y-3">
-                  <div className="bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] rounded-xl p-4 border border-[#c9d9e8]/50">
+                  <div className="bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] rounded-xl p-4 border border-[#d0dde8]/50">
                     <h5 className="text-xs font-bold text-[#0B2545] mb-2 uppercase tracking-wide">Flow Curve Comparison</h5>
                     <svg viewBox="0 0 200 130" className="w-full h-auto">
                       <line x1="30" y1="110" x2="185" y2="110" stroke="#0B2545" strokeWidth="1" />
                       <line x1="30" y1="110" x2="30" y2="10" stroke="#0B2545" strokeWidth="1" />
                       <polygon points="185,107 185,113 190,110" fill="#0B2545" />
                       <polygon points="27,10 33,10 30,5" fill="#0B2545" />
-                      <text x="110" y="125" textAnchor="middle" fill="#3d6285" fontSize="7" fontFamily="Inter">Shear Rate γ̇</text>
-                      <text x="12" y="60" textAnchor="middle" fill="#3d6285" fontSize="7" fontFamily="Inter" transform="rotate(-90 12 60)">Shear Stress τ</text>
+                      <text x="110" y="125" textAnchor="middle" fill="#2c4a6e" fontSize="7" fontFamily="Inter">Shear Rate γ̇</text>
+                      <text x="12" y="60" textAnchor="middle" fill="#2c4a6e" fontSize="7" fontFamily="Inter" transform="rotate(-90 12 60)">Shear Stress τ</text>
                       {/* Yield stress line */}
                       <line x1="30" y1="80" x2="185" y2="80" stroke="#8DA9C4" strokeWidth="0.8" strokeDasharray="3 3" />
                       <text x="188" y="78" fill="#8DA9C4" fontSize="6" fontFamily="Inter">τ_y</text>
@@ -315,7 +316,7 @@ export default function Fundamentals() {
                   </div>
                   <div className="bg-[#EEF4ED] rounded-xl p-4">
                     <h5 className="text-xs font-bold text-[#134074] mb-2 uppercase tracking-wide">Yield Stress Measurement</h5>
-                    <div className="space-y-1.5 text-xs text-[#3d6285]">
+                    <div className="space-y-1.5 text-xs text-[#2c4a6e]">
                       <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><span><strong className="text-[#0B2545]">Stress ramp:</strong> Apply increasing τ, observe sudden γ̇ onset</span></div>
                       <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><span><strong className="text-[#0B2545]">Oscillatory (G&apos; crossover):</strong> Amplitude sweep, τ_y ≈ τ at G&apos;=G&apos;&apos;</span></div>
                       <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><span><strong className="text-[#0B2545]">Creep:</strong> Step stress below/above τ_y, monitor compliance</span></div>
@@ -330,7 +331,7 @@ export default function Fundamentals() {
           {activeAdvTab === "thixotropy" && (
             <div>
               <h4 className="text-lg font-bold text-[#0B2545] mb-1">Time-Dependent Rheological Behavior</h4>
-              <p className="text-[#3d6285] text-xs mb-4">
+              <p className="text-[#2c4a6e] text-xs mb-4">
                 Viscosity changes with time at constant shear rate due to structural buildup or breakdown.
               </p>
               <div className="grid md:grid-cols-2 gap-4">
@@ -338,15 +339,15 @@ export default function Fundamentals() {
                   <div className="space-y-3">
                     <div className="bg-[#EEF4ED] rounded-xl p-4 border-l-4 border-[#134074]">
                       <h5 className="text-sm font-bold text-[#0B2545] mb-1">Thixotropy</h5>
-                      <p className="text-[#3d6285] text-xs mb-2">
+                      <p className="text-[#2c4a6e] text-xs mb-2">
                         Viscosity <strong>decreases</strong> with time under shear and <strong>recovers</strong> at rest.
                         Structure is broken down by flow and rebuilt over time.
                       </p>
                       <div className="text-xs text-[#8DA9C4]">Examples: paints, ketchup, drilling muds, yogurt, filled polymer melts</div>
                     </div>
-                    <div className="bg-white border border-[#c9d9e8] rounded-xl p-4 border-l-4 border-[#8DA9C4]">
+                    <div className="bg-white border border-[#d0dde8] rounded-xl p-4 border-l-4 border-[#8DA9C4]">
                       <h5 className="text-sm font-bold text-[#0B2545] mb-1">Rheopexy (Anti-thixotropy)</h5>
-                      <p className="text-[#3d6285] text-xs mb-2">
+                      <p className="text-[#2c4a6e] text-xs mb-2">
                         Viscosity <strong>increases</strong> with time under shear. Rare but occurs in some
                         colloidal systems and shear-induced gelation.
                       </p>
@@ -354,7 +355,7 @@ export default function Fundamentals() {
                     </div>
                     <div className="bg-[#EEF4ED] rounded-xl p-4">
                       <h5 className="text-xs font-bold text-[#134074] mb-2 uppercase tracking-wide">Key Measurements</h5>
-                      <div className="space-y-1.5 text-xs text-[#3d6285]">
+                      <div className="space-y-1.5 text-xs text-[#2c4a6e]">
                         <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">Hysteresis loop:</strong> Ramp up then down in γ̇, area = thixotropy index</div>
                         <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">Step-rate test:</strong> Apply γ̇, monitor η(t) decay + recovery at rest</div>
                         <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">3ITT (3-Interval):</strong> Rest → shear → rest. Standard protocol for quantifying recovery</div>
@@ -362,7 +363,7 @@ export default function Fundamentals() {
                     </div>
                   </div>
                 </div>
-                <div className="bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] rounded-xl p-4 border border-[#c9d9e8]/50">
+                <div className="bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] rounded-xl p-4 border border-[#d0dde8]/50">
                   <h5 className="text-xs font-bold text-[#0B2545] mb-2 uppercase tracking-wide">Thixotropic Hysteresis Loop</h5>
                   <svg viewBox="0 0 200 140" className="w-full h-auto mb-3">
                     <defs>
@@ -376,8 +377,8 @@ export default function Fundamentals() {
                     <line x1="30" y1="120" x2="30" y2="10" stroke="#0B2545" strokeWidth="1" />
                     <polygon points="185,117 185,123 190,120" fill="#0B2545" />
                     <polygon points="27,10 33,10 30,5" fill="#0B2545" />
-                    <text x="110" y="135" textAnchor="middle" fill="#3d6285" fontSize="7" fontFamily="Inter">Shear Rate γ̇</text>
-                    <text x="12" y="65" textAnchor="middle" fill="#3d6285" fontSize="7" fontFamily="Inter" transform="rotate(-90 12 65)">Shear Stress τ</text>
+                    <text x="110" y="135" textAnchor="middle" fill="#2c4a6e" fontSize="7" fontFamily="Inter">Shear Rate γ̇</text>
+                    <text x="12" y="65" textAnchor="middle" fill="#2c4a6e" fontSize="7" fontFamily="Inter" transform="rotate(-90 12 65)">Shear Stress τ</text>
                     {/* Hysteresis area */}
                     <path d="M 35,115 Q 100,70 175,30 Q 120,70 35,115 Z" fill="url(#hyst-fill)" />
                     {/* Up curve */}
@@ -392,9 +393,9 @@ export default function Fundamentals() {
                     <text x="115" y="95" fill="#8DA9C4" fontSize="7" fontFamily="Inter" fontWeight="500">Ramp down</text>
                     <text x="100" y="82" fill="#134074" fontSize="6" fontFamily="Inter" opacity="0.6">thixotropic area</text>
                   </svg>
-                  <div className="bg-white rounded-lg p-3 border border-[#c9d9e8]/50">
+                  <div className="bg-white rounded-lg p-3 border border-[#d0dde8]/50">
                     <h5 className="text-xs font-bold text-[#0B2545] mb-1">Structural Kinetic Models</h5>
-                    <div className="space-y-1 text-xs text-[#3d6285]">
+                    <div className="space-y-1 text-xs text-[#2c4a6e]">
                       <div className="math-block !text-xs !py-1 !px-2 !my-1">dλ/dt = k₁(1−λ) − k₂·λ·γ̇ⁿ</div>
                       <p>λ = structure parameter (0→1), k₁ = buildup rate, k₂ = breakdown rate</p>
                     </div>
@@ -410,12 +411,12 @@ export default function Fundamentals() {
       <AnimatedSection className="mb-16">
         <h3 className="text-2xl font-bold text-[#0B2545] mb-4">Linear vs Nonlinear Viscoelasticity</h3>
         <div className="grid md:grid-cols-2 gap-5">
-          <AnimatedCard className="bg-white border border-[#c9d9e8] rounded-2xl p-5">
+          <AnimatedCard className="bg-white border border-[#d0dde8] rounded-2xl p-5">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#134074]/10 text-[#134074] text-xs font-bold mb-3">
               SAOS — Small Amplitude
             </div>
             <h4 className="font-bold text-[#0B2545] mb-2">Linear Viscoelastic Region (LVR)</h4>
-            <div className="space-y-2 text-xs text-[#3d6285]">
+            <div className="space-y-2 text-xs text-[#2c4a6e]">
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />G&apos;, G&apos;&apos; independent of strain amplitude γ₀</div>
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />Stress response is sinusoidal (only fundamental harmonic)</div>
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />Boltzmann superposition principle applies</div>
@@ -429,7 +430,7 @@ export default function Fundamentals() {
               LAOS — Large Amplitude
             </div>
             <h4 className="font-bold text-[#0B2545] mb-2">Nonlinear Regime</h4>
-            <div className="space-y-2 text-xs text-[#3d6285]">
+            <div className="space-y-2 text-xs text-[#2c4a6e]">
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#0B2545] mt-1.5 shrink-0" />G&apos;, G&apos;&apos; become amplitude-dependent (strain softening/hardening)</div>
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#0B2545] mt-1.5 shrink-0" />Stress waveform distorted — higher harmonics (I₃/I₁, I₅/I₁)</div>
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#0B2545] mt-1.5 shrink-0" />FT-Rheology: Fourier analysis of stress signal for nonlinear fingerprint</div>
@@ -452,7 +453,7 @@ export default function Fundamentals() {
             { name: "Kelvin-Voigt", eq: "τ = G·γ + η·γ̇", type: "Viscoelastic solid", color: "#0B2545" },
           ].map((law, i) => (
             <AnimatedCard key={i} delay={i * 0.08}
-              className="bg-white border border-[#c9d9e8] rounded-2xl p-5 text-center">
+              className="bg-white border border-[#d0dde8] rounded-2xl p-5 text-center">
               <div className="w-10 h-10 rounded-full mx-auto mb-3 flex items-center justify-center text-white text-sm font-bold"
                 style={{ backgroundColor: law.color }}>
                 {law.name[0]}
@@ -468,7 +469,7 @@ export default function Fundamentals() {
       {/* Advanced Constitutive Models */}
       <AnimatedSection>
         <h3 className="text-2xl font-bold text-[#0B2545] mb-4">Advanced Constitutive Models</h3>
-        <p className="text-[#3d6285] text-sm mb-6">
+        <p className="text-[#2c4a6e] text-sm mb-6">
           Beyond the basic models, these equations capture nonlinear and molecular-level behavior of polymer melts.
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -481,7 +482,7 @@ export default function Fundamentals() {
             { name: "Rolie-Poly", eq: "Reptation + chain stretch + CCR", type: "Molecular, entangled linear chains", color: "#0B2545" },
           ].map((model, i) => (
             <AnimatedCard key={i} delay={i * 0.06}
-              className="bg-white border border-[#c9d9e8] rounded-2xl p-4">
+              className="bg-white border border-[#d0dde8] rounded-2xl p-4">
               <div className="w-8 h-8 rounded-full mb-2 flex items-center justify-center text-white text-xs font-bold"
                 style={{ backgroundColor: model.color }}>
                 {model.name[0]}

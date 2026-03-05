@@ -100,7 +100,7 @@ function Cube() {
 
 export default function StressTensor3D() {
   return (
-    <div className="w-full h-[380px] rounded-2xl overflow-hidden border border-[#c9d9e8] bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] shadow-sm">
+    <div className="w-full h-[380px] rounded-2xl overflow-hidden border border-[#d0dde8] bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] shadow-sm">
       <Canvas camera={{ position: [3.2, 2.5, 3.2], fov: 40 }} shadows>
         <ambientLight intensity={0.35} />
         <directionalLight position={[6, 8, 5]} intensity={0.9} castShadow />

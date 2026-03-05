@@ -87,7 +87,7 @@ export default function FlowCurveChart() {
         </div>
       </div>
 
-      <div className="text-xs text-[#3d6285] mb-3 bg-[#EEF4ED] rounded-lg px-3 py-2 inline-block">
+      <div className="text-xs text-[#2c4a6e] mb-3 bg-[#EEF4ED] rounded-lg px-3 py-2 inline-block">
         Power-law model: <span className="font-semibold text-[#134074]">η = K · γ̇<sup>(n−1)</sup></span>, K = 1000 Pa·s<sup>n</sup>
       </div>
 
@@ -102,21 +102,21 @@ export default function FlowCurveChart() {
           <CartesianGrid strokeDasharray="3 3" stroke="rgba(19,64,116,0.06)" />
           <XAxis
             dataKey="shearRate" scale="log" domain={["dataMin", "dataMax"]} type="number"
-            tick={{ fill: "#3d6285", fontSize: 11, fontFamily: "Inter" }}
-            axisLine={{ stroke: "#c9d9e8" }}
-            tickLine={{ stroke: "#c9d9e8" }}
+            tick={{ fill: "#2c4a6e", fontSize: 11, fontFamily: "Inter" }}
+            axisLine={{ stroke: "#d0dde8" }}
+            tickLine={{ stroke: "#d0dde8" }}
             label={{ value: "Shear Rate γ̇ [s⁻¹]", position: "insideBottom", offset: -5, fill: "#0B2545", fontSize: 12, fontWeight: 500 }}
           />
           <YAxis
             scale="log" domain={["auto", "auto"]} type="number"
-            tick={{ fill: "#3d6285", fontSize: 11, fontFamily: "Inter" }}
-            axisLine={{ stroke: "#c9d9e8" }}
-            tickLine={{ stroke: "#c9d9e8" }}
+            tick={{ fill: "#2c4a6e", fontSize: 11, fontFamily: "Inter" }}
+            axisLine={{ stroke: "#d0dde8" }}
+            tickLine={{ stroke: "#d0dde8" }}
             label={{ value: "Viscosity η [Pa·s]", angle: -90, position: "insideLeft", offset: 15, fill: "#0B2545", fontSize: 12, fontWeight: 500 }}
           />
           <Tooltip
             contentStyle={{
-              backgroundColor: "rgba(255,255,255,0.97)", border: "1px solid #c9d9e8",
+              backgroundColor: "rgba(255,255,255,0.97)", border: "1px solid #d0dde8",
               borderRadius: "0.75rem", color: "#0B2545", boxShadow: "0 8px 24px rgba(11,37,69,0.12)",
               fontSize: 12, fontFamily: "Inter",
             }}
@@ -125,7 +125,7 @@ export default function FlowCurveChart() {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             labelFormatter={(label: any) => `γ̇ = ${Number(label).toFixed(2)} s⁻¹`}
           />
-          <Legend wrapperStyle={{ color: "#3d6285", paddingTop: 16, fontSize: 12 }} />
+          <Legend wrapperStyle={{ color: "#2c4a6e", paddingTop: 16, fontSize: 12 }} />
           <Area type="monotone" dataKey="pseudoplastic" fill="url(#flowPseudoGrad)" stroke="none" />
           <Line type="monotone" dataKey="pseudoplastic" stroke="#134074" strokeWidth={2.5}
             dot={false} activeDot={<CustomActiveDot />} name={`Pseudoplastic (n=${nPseudo.toFixed(2)})`} />

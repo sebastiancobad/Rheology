@@ -92,15 +92,15 @@ export default function ViscosityModelsChart() {
           <ReferenceLine y={eta0} stroke="#134074" strokeDasharray="4 4" strokeWidth={1}
             label={{ value: "η₀", fill: "#134074", fontSize: 11, fontWeight: 600, position: "left" }} />
           <XAxis dataKey="shearRate" scale="log" domain={["dataMin", "dataMax"]} type="number"
-            tick={{ fill: "#3d6285", fontSize: 11, fontFamily: "Inter" }}
-            axisLine={{ stroke: "#c9d9e8" }} tickLine={{ stroke: "#c9d9e8" }}
+            tick={{ fill: "#2c4a6e", fontSize: 11, fontFamily: "Inter" }}
+            axisLine={{ stroke: "#d0dde8" }} tickLine={{ stroke: "#d0dde8" }}
             label={{ value: "Shear Rate γ̇ [s⁻¹]", position: "insideBottom", offset: -5, fill: "#0B2545", fontSize: 12, fontWeight: 500 }} />
           <YAxis scale="log" domain={["auto", "auto"]} type="number"
-            tick={{ fill: "#3d6285", fontSize: 11, fontFamily: "Inter" }}
-            axisLine={{ stroke: "#c9d9e8" }} tickLine={{ stroke: "#c9d9e8" }}
+            tick={{ fill: "#2c4a6e", fontSize: 11, fontFamily: "Inter" }}
+            axisLine={{ stroke: "#d0dde8" }} tickLine={{ stroke: "#d0dde8" }}
             label={{ value: "Viscosity η [Pa·s]", angle: -90, position: "insideLeft", offset: 15, fill: "#0B2545", fontSize: 12, fontWeight: 500 }} />
           <Tooltip contentStyle={{
-            backgroundColor: "rgba(255,255,255,0.97)", border: "1px solid #c9d9e8",
+            backgroundColor: "rgba(255,255,255,0.97)", border: "1px solid #d0dde8",
             borderRadius: "0.75rem", color: "#0B2545", boxShadow: "0 8px 24px rgba(11,37,69,0.12)",
             fontSize: 12, fontFamily: "Inter",
           }}
@@ -108,7 +108,7 @@ export default function ViscosityModelsChart() {
             formatter={(value: any) => [`${Number(value).toFixed(2)} Pa·s`]}
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             labelFormatter={(label: any) => `γ̇ = ${Number(label).toFixed(2)} s⁻¹`} />
-          <Legend wrapperStyle={{ color: "#3d6285", paddingTop: 16, fontSize: 12 }} />
+          <Legend wrapperStyle={{ color: "#2c4a6e", paddingTop: 16, fontSize: 12 }} />
           <Area type="monotone" dataKey="carreauYasuda" fill="url(#cyGrad)" stroke="none" />
           <Line type="monotone" dataKey="powerLaw" stroke="#8DA9C4" strokeWidth={2} strokeDasharray="6 4"
             dot={false} activeDot={<CustomActiveDot />} name="Power-Law" />

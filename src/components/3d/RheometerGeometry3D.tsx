@@ -147,7 +147,7 @@ function Couette({ rpm }: { rpm: number }) {
 
 export default function RheometerGeometry3D({ geometry = "cone-plate", rpm = 1 }: { geometry?: string; rpm?: number }) {
   return (
-    <div className="w-full h-[380px] rounded-2xl overflow-hidden border border-[#c9d9e8] bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] shadow-sm">
+    <div className="w-full h-[380px] rounded-2xl overflow-hidden border border-[#d0dde8] bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] shadow-sm">
       <Canvas camera={{ position: [4, 3.5, 4], fov: 40 }} shadows>
         <ambientLight intensity={0.3} />
         <directionalLight position={[6, 10, 5]} intensity={1} castShadow shadow-mapSize={1024} />

@@ -39,31 +39,34 @@ export default function Navigation() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white backdrop-blur-xl border-b border-[#c9d9e8] shadow-sm"
+          ? "bg-white/80 backdrop-blur-xl border-b border-[#d0dde8]/60 shadow-[0_1px_3px_rgba(11,37,69,0.04)]"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <a href="#hero" className="flex items-center gap-3 group">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#134074] to-[#13315C] flex items-center justify-center text-white font-bold text-sm shadow-sm">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#0B2545] to-[#134074] flex items-center justify-center text-white font-bold text-xs tracking-wider shadow-[0_2px_8px_rgba(11,37,69,0.2)]">
               PR
             </div>
-            <span className="font-semibold text-[#0B2545] group-hover:text-[#134074] transition-colors duration-300 hidden sm:inline tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
+            <span
+              className="font-semibold text-[#0B2545] group-hover:text-[#134074] transition-colors duration-300 hidden sm:inline tracking-tight text-[15px]"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
               Polymer Rheology
             </span>
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-0.5">
+          <div className="hidden md:flex items-center gap-1">
             {sections.map((s) => (
               <a
                 key={s.id}
                 href={`#${s.id}`}
                 className={`px-3.5 py-1.5 rounded-full text-[13px] font-medium transition-all duration-300 ${
                   active === s.id
-                    ? "text-[#134074] bg-[#134074]/[0.06] shadow-[inset_0_0_0_1px_rgba(19,64,116,0.15)]"
-                    : "text-[#3d6285] hover:text-[#0B2545] hover:bg-[#e4ede3]"
+                    ? "text-[#0B2545] bg-[#0B2545]/[0.07] shadow-[inset_0_0_0_1px_rgba(11,37,69,0.12)]"
+                    : "text-[#5a7a9a] hover:text-[#0B2545] hover:bg-[#0B2545]/[0.04]"
                 }`}
               >
                 {s.label}
@@ -73,7 +76,7 @@ export default function Navigation() {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2 rounded-lg text-[#3d6285] hover:text-[#0B2545] hover:bg-[#e4ede3] transition-colors"
+            className="md:hidden p-2 rounded-lg text-[#5a7a9a] hover:text-[#0B2545] hover:bg-[#0B2545]/[0.04] transition-colors"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -89,16 +92,16 @@ export default function Navigation() {
 
         {/* Mobile nav */}
         {menuOpen && (
-          <div className="md:hidden pb-4 border-t border-[#c9d9e8] mt-2 pt-2">
+          <div className="md:hidden pb-4 border-t border-[#d0dde8]/60 mt-2 pt-2">
             {sections.map((s) => (
               <a
                 key={s.id}
                 href={`#${s.id}`}
                 onClick={() => setMenuOpen(false)}
-                className={`block px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`block px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
                   active === s.id
-                    ? "text-[#134074] bg-[#134074]/[0.08]"
-                    : "text-[#3d6285] hover:text-[#0B2545]"
+                    ? "text-[#0B2545] bg-[#0B2545]/[0.06]"
+                    : "text-[#5a7a9a] hover:text-[#0B2545]"
                 }`}
               >
                 {s.label}

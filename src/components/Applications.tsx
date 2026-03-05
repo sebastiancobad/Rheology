@@ -214,13 +214,15 @@ export default function Applications() {
       title="Industrial Applications"
       subtitle="Section 4 — Processing"
       accent="#8DA9C4"
+      number="04"
+      alternate
     >
       <AnimatedSection className="mb-16">
         <h3 className="text-2xl font-bold text-[#0B2545] mb-6">Processing Methods & Rheological Requirements</h3>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {processes.map((proc, i) => (
             <AnimatedCard key={i} delay={i * 0.06}
-              className="bg-white border border-[#c9d9e8] rounded-2xl p-5 hover:shadow-md transition-shadow">
+              className="bg-white border border-[#d0dde8] rounded-2xl p-5 hover:shadow-md transition-shadow">
               <div className="flex items-start gap-3 mb-3">
                 {proc.icon}
                 <div>
@@ -231,7 +233,7 @@ export default function Applications() {
               <div className="bg-[#EEF4ED] rounded-lg px-3 py-1.5 mb-3 inline-block">
                 <span className="text-xs font-semibold text-[#134074]">{proc.keyParam}</span>
               </div>
-              <p className="text-[#3d6285] text-xs leading-relaxed">{proc.details}</p>
+              <p className="text-[#2c4a6e] text-xs leading-relaxed">{proc.details}</p>
             </AnimatedCard>
           ))}
         </div>
@@ -240,17 +242,17 @@ export default function Applications() {
       {/* Shear Rate Map — Professional */}
       <AnimatedSection className="mb-16">
         <h3 className="text-2xl font-bold text-[#0B2545] mb-4">Shear Rate Map</h3>
-        <div className="bg-white border border-[#c9d9e8] rounded-2xl p-6 overflow-x-auto">
+        <div className="bg-white border border-[#d0dde8] rounded-2xl p-6 overflow-x-auto">
           <div className="min-w-[600px]">
             {/* Axis header */}
             <div className="flex items-center mb-1">
               <span className="w-32" />
               <div className="flex-1 relative h-6">
                 {["10⁻²", "10⁻¹", "10⁰", "10¹", "10²", "10³", "10⁴", "10⁵"].map((v, i) => (
-                  <span key={i} className="absolute text-[10px] text-[#3d6285] font-medium" style={{ left: `${(i / 7) * 100}%`, transform: "translateX(-50%)" }}>{v}</span>
+                  <span key={i} className="absolute text-[10px] text-[#2c4a6e] font-medium" style={{ left: `${(i / 7) * 100}%`, transform: "translateX(-50%)" }}>{v}</span>
                 ))}
               </div>
-              <span className="w-10 text-right text-[10px] text-[#3d6285] font-semibold">s⁻¹</span>
+              <span className="w-10 text-right text-[10px] text-[#2c4a6e] font-semibold">s⁻¹</span>
             </div>
 
             {/* Gradient axis bar */}
@@ -276,7 +278,7 @@ export default function Applications() {
               { name: "Fiber Spinning", start: 62, end: 88, color: "#0B2545" },
             ].map((proc, i) => (
               <div key={i} className="flex items-center mb-2 group">
-                <span className="w-32 text-xs text-[#3d6285] text-right pr-4 font-medium">{proc.name}</span>
+                <span className="w-32 text-xs text-[#2c4a6e] text-right pr-4 font-medium">{proc.name}</span>
                 <div className="flex-1 relative h-7">
                   {/* Bar background */}
                   <div className="absolute h-full rounded-lg transition-all group-hover:shadow-sm"
@@ -365,13 +367,13 @@ export default function Applications() {
             },
           ].map((proc, i) => (
             <AnimatedCard key={i} delay={i * 0.05}
-              className="bg-white border border-[#c9d9e8] rounded-2xl p-4">
+              className="bg-white border border-[#d0dde8] rounded-2xl p-4">
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-2 h-2 rounded-full" style={{ backgroundColor: proc.color }} />
                 <h4 className="font-bold text-[#0B2545] text-sm">{proc.name}</h4>
                 <span className="text-[10px] text-[#8DA9C4] ml-auto">{proc.shearRate}</span>
               </div>
-              <div className="text-xs text-[#3d6285] space-y-1">
+              <div className="text-xs text-[#2c4a6e] space-y-1">
                 <div><strong className="text-[#134074]">Flow type:</strong> {proc.flow}</div>
                 <div><strong className="text-[#13315C]">Key rheology:</strong> {proc.key}</div>
               </div>
@@ -384,9 +386,9 @@ export default function Applications() {
       <AnimatedSection className="mb-16">
         <h3 className="text-2xl font-bold text-[#0B2545] mb-4">Rheology in Simulation & CFD</h3>
         <div className="grid md:grid-cols-2 gap-5">
-          <AnimatedCard className="bg-white border border-[#c9d9e8] rounded-2xl p-5">
+          <AnimatedCard className="bg-white border border-[#d0dde8] rounded-2xl p-5">
             <h4 className="font-bold text-[#0B2545] mb-3">Flow Simulation Software</h4>
-            <div className="space-y-2 text-xs text-[#3d6285]">
+            <div className="space-y-2 text-xs text-[#2c4a6e]">
               {[
                 { sw: "Moldflow (Autodesk)", use: "Injection molding: fill, pack, warp analysis. Cross-WLF model." },
                 { sw: "Moldex3D", use: "Injection, compression, blow molding. True 3D mesh solver." },
@@ -402,9 +404,9 @@ export default function Applications() {
               ))}
             </div>
           </AnimatedCard>
-          <AnimatedCard delay={0.1} className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-5">
+          <AnimatedCard delay={0.1} className="bg-[#EEF4ED] border border-[#d0dde8] rounded-2xl p-5">
             <h4 className="font-bold text-[#0B2545] mb-3">Rheological Input Data Required</h4>
-            <div className="space-y-2 text-xs text-[#3d6285]">
+            <div className="space-y-2 text-xs text-[#2c4a6e]">
               {[
                 "Viscosity model parameters (Cross-WLF, Carreau-Yasuda, power-law n, K)",
                 "pvT data (specific volume vs pressure and temperature)",
@@ -438,7 +440,7 @@ export default function Applications() {
                 <th className="px-3 py-2 text-[#0B2545] font-semibold text-xs">Potential Solution</th>
               </tr>
             </thead>
-            <tbody className="text-[#3d6285] text-xs">
+            <tbody className="text-[#2c4a6e] text-xs">
               {[
                 ["Short shots (injection)", "η too high at fill γ̇", "Flow curve at process T", "↑ T, ↑ injection speed, lower Mw grade"],
                 ["Warpage / sink marks", "Uneven shrinkage from crystallization", "pvT + DSC + G' vs T", "Optimize cooling rate, gate location"],
@@ -451,7 +453,7 @@ export default function Applications() {
                 ["Foaming cell collapse", "Insufficient melt strength", "Rheotens, η_E(ε̇)", "↑ Mw, add LCB, use chain extender"],
                 ["Batch-to-batch variability", "MWD / degradation differences", "Full frequency sweep + η₀ comparison", "Inline rheometry for QC, blend batches"],
               ].map((row, i) => (
-                <tr key={i} className="border-b border-[#c9d9e8]/50 hover:bg-[#EEF4ED]/50 transition-colors">
+                <tr key={i} className="border-b border-[#d0dde8]/50 hover:bg-[#EEF4ED]/50 transition-colors">
                   <td className="px-3 py-2 font-semibold text-[#0B2545]">{row[0]}</td>
                   <td className="px-3 py-2">{row[1]}</td>
                   <td className="px-3 py-2">{row[2]}</td>
@@ -505,7 +507,7 @@ export default function Applications() {
             },
           ].map((inst, i) => (
             <AnimatedCard key={i} delay={i * 0.1}
-              className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-5">
+              className="bg-[#EEF4ED] border border-[#d0dde8] rounded-2xl p-5">
               <div className="flex items-center gap-3 mb-3">
                 {inst.icon}
                 <div>
@@ -513,7 +515,7 @@ export default function Applications() {
                   <div className="text-xs font-semibold text-[#134074]">{inst.trigger}</div>
                 </div>
               </div>
-              <p className="text-[#3d6285] text-xs">{inst.desc}</p>
+              <p className="text-[#2c4a6e] text-xs">{inst.desc}</p>
             </AnimatedCard>
           ))}
         </div>

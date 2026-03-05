@@ -164,6 +164,7 @@ export default function LiteratureGaps() {
       title="Literature & Research Frontiers"
       subtitle="Section 5 — Open Questions"
       accent="#134074"
+      number="05"
     >
       {/* Research Gaps */}
       <AnimatedSection className="mb-16">
@@ -171,14 +172,14 @@ export default function LiteratureGaps() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {researchAreas.map((area, i) => (
             <AnimatedCard key={i} delay={i * 0.06}
-              className="bg-white border border-[#c9d9e8] rounded-2xl p-5">
+              className="bg-white border border-[#d0dde8] rounded-2xl p-5">
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-3 h-3 rounded-full" style={{ backgroundColor: area.color }} />
                 <h4 className="font-bold text-[#0B2545] text-sm">{area.title}</h4>
               </div>
               <ul className="space-y-2">
                 {area.items.map((item, j) => (
-                  <li key={j} className="flex items-start gap-2 text-[#3d6285] text-xs">
+                  <li key={j} className="flex items-start gap-2 text-[#2c4a6e] text-xs">
                     <span className="w-1 h-1 rounded-full mt-1.5 shrink-0" style={{ backgroundColor: area.color }} />
                     {item}
                   </li>
@@ -198,12 +199,12 @@ export default function LiteratureGaps() {
               <tr className="border-b-2 border-[#134074]/20">
                 <th className="px-3 py-2 text-[#0B2545] font-semibold text-xs">Standard</th>
                 <th className="px-3 py-2 text-[#134074] font-semibold text-xs">Title</th>
-                <th className="px-3 py-2 text-[#3d6285] font-semibold text-xs">Description</th>
+                <th className="px-3 py-2 text-[#2c4a6e] font-semibold text-xs">Description</th>
               </tr>
             </thead>
-            <tbody className="text-[#3d6285] text-xs">
+            <tbody className="text-[#2c4a6e] text-xs">
               {standards.map((std, i) => (
-                <tr key={i} className="border-b border-[#c9d9e8]/50 hover:bg-[#EEF4ED]/50 transition-colors">
+                <tr key={i} className="border-b border-[#d0dde8]/50 hover:bg-[#EEF4ED]/50 transition-colors">
                   <td className="px-3 py-2 font-semibold text-[#0B2545] whitespace-nowrap">{std.id}</td>
                   <td className="px-3 py-2 font-medium text-[#134074]">{std.title}</td>
                   <td className="px-3 py-2">{std.desc}</td>
@@ -220,11 +221,11 @@ export default function LiteratureGaps() {
         <div className="grid md:grid-cols-2 gap-4">
           {seminalPapers.map((paper, i) => (
             <AnimatedCard key={i} delay={i * 0.04}
-              className="bg-white border border-[#c9d9e8] rounded-xl p-4">
+              className="bg-white border border-[#d0dde8] rounded-xl p-4">
               <div className="flex items-start justify-between gap-2">
                 <div className="flex-1">
                   <div className="text-xs font-semibold text-[#0B2545]">{paper.authors} ({paper.year})</div>
-                  <div className="text-xs text-[#3d6285] mt-0.5 italic">{paper.title}</div>
+                  <div className="text-xs text-[#2c4a6e] mt-0.5 italic">{paper.title}</div>
                   <div className="text-[10px] text-[#8DA9C4] mt-0.5">{paper.journal}</div>
                 </div>
                 <div className="shrink-0 bg-[#EEF4ED] rounded-lg px-2 py-1 text-[10px] font-medium text-[#134074]">
@@ -249,7 +250,7 @@ export default function LiteratureGaps() {
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex-1">
                       <span className="text-xs font-semibold text-[#0B2545]">{book.author}</span>
-                      <span className="text-xs text-[#3d6285] ml-1">— <em>{book.title}</em></span>
+                      <span className="text-xs text-[#2c4a6e] ml-1">— <em>{book.title}</em></span>
                     </div>
                     <span className="text-xs text-[#8DA9C4] shrink-0">{book.year}</span>
                   </div>
@@ -263,7 +264,7 @@ export default function LiteratureGaps() {
             <div className="space-y-2">
               {journals.map((j, i) => (
                 <AnimatedCard key={i} delay={i * 0.03}
-                  className="bg-white border border-[#c9d9e8] rounded-lg px-3 py-2 flex items-center justify-between">
+                  className="bg-white border border-[#d0dde8] rounded-lg px-3 py-2 flex items-center justify-between">
                   <div className="flex-1">
                     <span className="text-xs text-[#0B2545] font-medium">{j.name}</span>
                     <span className="text-[10px] text-[#8DA9C4] ml-2">{j.note}</span>
@@ -282,7 +283,7 @@ export default function LiteratureGaps() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {conferences.map((conf, i) => (
             <AnimatedCard key={i} delay={i * 0.06}
-              className="bg-white border border-[#c9d9e8] rounded-2xl p-4">
+              className="bg-white border border-[#d0dde8] rounded-2xl p-4">
               <h4 className="font-bold text-[#0B2545] text-sm mb-1">{conf.name}</h4>
               <div className="text-xs text-[#134074] font-medium mb-1">{conf.org} — {conf.freq}</div>
               <p className="text-[#8DA9C4] text-xs">{conf.note}</p>
@@ -297,14 +298,14 @@ export default function LiteratureGaps() {
         <div className="grid md:grid-cols-3 gap-4">
           {software.map((sw, i) => (
             <AnimatedCard key={i} delay={i * 0.04}
-              className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-xl p-4">
+              className="bg-[#EEF4ED] border border-[#d0dde8] rounded-xl p-4">
               <div className="flex items-center gap-2 mb-1">
                 <h4 className="font-bold text-[#0B2545] text-sm">{sw.name}</h4>
               </div>
               <div className="inline-flex px-2 py-0.5 rounded-full bg-[#134074]/10 text-[10px] text-[#134074] font-medium mb-1.5">
                 {sw.type}
               </div>
-              <p className="text-[#3d6285] text-xs">{sw.desc}</p>
+              <p className="text-[#2c4a6e] text-xs">{sw.desc}</p>
             </AnimatedCard>
           ))}
         </div>

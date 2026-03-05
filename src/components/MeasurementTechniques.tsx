@@ -43,11 +43,12 @@ export default function MeasurementTechniques() {
       title="Measurement Techniques"
       subtitle="Section 3 — Instrumentation"
       accent="#0B2545"
+      number="03"
     >
       {/* 3D Rheometer */}
       <AnimatedSection className="mb-16">
         <h3 className="text-2xl font-bold text-[#0B2545] mb-2">Interactive 3D Rheometer</h3>
-        <p className="text-[#3d6285] text-sm mb-6">
+        <p className="text-[#2c4a6e] text-sm mb-6">
           Select a geometry and adjust the rotation speed. Drag to rotate the 3D view.
         </p>
 
@@ -60,7 +61,7 @@ export default function MeasurementTechniques() {
                   className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                     geometry === key
                       ? "bg-[#0B2545] text-white shadow-md"
-                      : "bg-[#EEF4ED] text-[#3d6285] border border-[#c9d9e8] hover:bg-white"
+                      : "bg-[#EEF4ED] text-[#2c4a6e] border border-[#d0dde8] hover:bg-white"
                   }`}>
                   {val.title}
                 </button>
@@ -69,7 +70,7 @@ export default function MeasurementTechniques() {
 
             {/* RPM control */}
             <div className="flex items-center gap-3 mb-4">
-              <label className="text-sm text-[#3d6285]">RPM: <strong className="text-[#134074]">{rpm.toFixed(1)}</strong></label>
+              <label className="text-sm text-[#2c4a6e]">RPM: <strong className="text-[#134074]">{rpm.toFixed(1)}</strong></label>
               <input type="range" min="0" max="5" step="0.1" value={rpm}
                 onChange={(e) => setRpm(parseFloat(e.target.value))}
                 className="w-40 accent-[#134074]" />
@@ -80,16 +81,16 @@ export default function MeasurementTechniques() {
 
           {/* Info panel */}
           <div className="space-y-4">
-            <div className="bg-white border border-[#c9d9e8] rounded-2xl p-5">
+            <div className="bg-white border border-[#d0dde8] rounded-2xl p-5">
               <h4 className="font-bold text-[#0B2545] mb-1">{info.title}</h4>
-              <p className="text-[#3d6285] text-sm mb-3">{info.desc}</p>
+              <p className="text-[#2c4a6e] text-sm mb-3">{info.desc}</p>
               <div className="math-block !text-sm !py-2 !px-3 !my-2">{info.equation}</div>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              <div className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-xl p-4">
+              <div className="bg-[#EEF4ED] border border-[#d0dde8] rounded-xl p-4">
                 <h5 className="text-xs font-bold text-[#134074] mb-2 uppercase tracking-wide">Advantages</h5>
-                <ul className="text-[#3d6285] text-xs space-y-1">
+                <ul className="text-[#2c4a6e] text-xs space-y-1">
                   {info.pros.map((p, i) => (
                     <li key={i} className="flex items-start gap-1.5">
                       <span className="text-[#134074] mt-0.5">+</span> {p}
@@ -97,9 +98,9 @@ export default function MeasurementTechniques() {
                   ))}
                 </ul>
               </div>
-              <div className="bg-white border border-[#c9d9e8] rounded-xl p-4">
+              <div className="bg-white border border-[#d0dde8] rounded-xl p-4">
                 <h5 className="text-xs font-bold text-[#8DA9C4] mb-2 uppercase tracking-wide">Limitations</h5>
-                <ul className="text-[#3d6285] text-xs space-y-1">
+                <ul className="text-[#2c4a6e] text-xs space-y-1">
                   {info.cons.map((c, i) => (
                     <li key={i} className="flex items-start gap-1.5">
                       <span className="text-[#8DA9C4] mt-0.5">−</span> {c}
@@ -116,17 +117,17 @@ export default function MeasurementTechniques() {
       <AnimatedSection className="mb-16">
         <h3 className="text-2xl font-bold text-[#0B2545] mb-4">Capillary Rheometry Corrections</h3>
         <div className="grid md:grid-cols-2 gap-6">
-          <AnimatedCard className="bg-white border border-[#c9d9e8] rounded-2xl p-6">
+          <AnimatedCard className="bg-white border border-[#d0dde8] rounded-2xl p-6">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-10 h-10 rounded-full bg-[#134074] text-white flex items-center justify-center font-bold text-sm">B</div>
               <h4 className="font-bold text-[#0B2545]">Bagley Correction</h4>
             </div>
             <div className="math-block !text-sm">τ<sub>w</sub> = ΔP · R / [2(L/R + e<sub>B</sub>)]</div>
-            <p className="text-[#3d6285] text-xs mt-3">
+            <p className="text-[#2c4a6e] text-xs mt-3">
               Corrects entrance pressure drop. Plot ΔP vs L/D at constant γ̇,
               extrapolate to L/D = 0. For elastic melts, entrance effects can be 30–60% of total ΔP.
             </p>
-            <div className="mt-3 bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] rounded-xl p-4 border border-[#c9d9e8]/50">
+            <div className="mt-3 bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] rounded-xl p-4 border border-[#d0dde8]/50">
               <svg viewBox="0 0 220 120" className="w-full h-auto">
                 <defs>
                   <linearGradient id="bagley-fill" x1="0" y1="0" x2="0" y2="1">
@@ -135,17 +136,17 @@ export default function MeasurementTechniques() {
                   </linearGradient>
                 </defs>
                 {[20, 35, 50, 65, 80].map(y => (
-                  <line key={y} x1="40" y1={y} x2="195" y2={y} stroke="#c9d9e8" strokeWidth="0.5" strokeDasharray="2 3" />
+                  <line key={y} x1="40" y1={y} x2="195" y2={y} stroke="#d0dde8" strokeWidth="0.5" strokeDasharray="2 3" />
                 ))}
                 {[70, 100, 130, 160].map(x => (
-                  <line key={x} x1={x} y1="14" x2={x} y2="90" stroke="#c9d9e8" strokeWidth="0.5" strokeDasharray="2 3" />
+                  <line key={x} x1={x} y1="14" x2={x} y2="90" stroke="#d0dde8" strokeWidth="0.5" strokeDasharray="2 3" />
                 ))}
                 <line x1="40" y1="90" x2="200" y2="90" stroke="#0B2545" strokeWidth="1.2" />
                 <line x1="40" y1="90" x2="40" y2="10" stroke="#0B2545" strokeWidth="1.2" />
                 <polygon points="200,87 200,93 206,90" fill="#0B2545" />
                 <polygon points="37,10 43,10 40,4" fill="#0B2545" />
-                <text x="120" y="106" textAnchor="middle" fill="#3d6285" fontSize="8" fontFamily="Inter" fontWeight="500">L / D</text>
-                <text x="18" y="55" textAnchor="middle" fill="#3d6285" fontSize="8" fontFamily="Inter" fontWeight="500" transform="rotate(-90 18 55)">ΔP [MPa]</text>
+                <text x="120" y="106" textAnchor="middle" fill="#2c4a6e" fontSize="8" fontFamily="Inter" fontWeight="500">L / D</text>
+                <text x="18" y="55" textAnchor="middle" fill="#2c4a6e" fontSize="8" fontFamily="Inter" fontWeight="500" transform="rotate(-90 18 55)">ΔP [MPa]</text>
                 <path d="M 40,62 L 190,18 L 190,90 L 40,90 Z" fill="url(#bagley-fill)" />
                 <line x1="55" y1="65" x2="185" y2="22" stroke="#134074" strokeWidth="2" />
                 {[
@@ -165,17 +166,17 @@ export default function MeasurementTechniques() {
             </div>
           </AnimatedCard>
 
-          <AnimatedCard delay={0.1} className="bg-white border border-[#c9d9e8] rounded-2xl p-6">
+          <AnimatedCard delay={0.1} className="bg-white border border-[#d0dde8] rounded-2xl p-6">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-10 h-10 rounded-full bg-[#13315C] text-white flex items-center justify-center font-bold text-sm">R</div>
               <h4 className="font-bold text-[#0B2545]">Rabinowitsch Correction</h4>
             </div>
             <div className="math-block !text-sm">γ̇<sub>w,true</sub> = γ̇<sub>a</sub> · (3n&apos; + 1) / (4n&apos;)</div>
-            <p className="text-[#3d6285] text-xs mt-3">
+            <p className="text-[#2c4a6e] text-xs mt-3">
               Corrects for non-parabolic velocity profiles. For n&apos; ≈ 0.3 (typical polymer),
               the true wall shear rate is 58% higher than apparent.
             </p>
-            <div className="mt-3 bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] rounded-xl p-4 border border-[#c9d9e8]/50">
+            <div className="mt-3 bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] rounded-xl p-4 border border-[#d0dde8]/50">
               <svg viewBox="0 0 260 140" className="w-full h-auto">
                 <defs>
                   <linearGradient id="newt-fill" x1="0" y1="0" x2="1" y2="0">
@@ -201,7 +202,7 @@ export default function MeasurementTechniques() {
                 <rect x="25" y="108.5" width="180" height="1.5" fill="white" opacity="0.15" />
 
                 {/* Centerline */}
-                <line x1="30" y1="65" x2="200" y2="65" stroke="#c9d9e8" strokeWidth="0.5" strokeDasharray="3 4" />
+                <line x1="30" y1="65" x2="200" y2="65" stroke="#d0dde8" strokeWidth="0.5" strokeDasharray="3 4" />
 
                 {/* Newtonian profile — parabolic */}
                 <path d="M 35,65 Q 115,22 195,65 Q 115,108 35,65 Z" fill="url(#newt-fill)" />
@@ -301,15 +302,15 @@ export default function MeasurementTechniques() {
             },
           ].map((inst, i) => (
             <AnimatedCard key={i} delay={i * 0.08}
-              className="bg-white border border-[#c9d9e8] rounded-2xl p-5">
+              className="bg-white border border-[#d0dde8] rounded-2xl p-5">
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style={{ backgroundColor: inst.color }}>
                   {inst.title.split(' ')[0][0]}
                 </div>
                 <h4 className="font-bold text-[#0B2545] text-sm">{inst.title}</h4>
               </div>
-              <p className="text-[#3d6285] text-xs mb-3">{inst.desc}</p>
-              <ul className="space-y-1 text-xs text-[#3d6285]">
+              <p className="text-[#2c4a6e] text-xs mb-3">{inst.desc}</p>
+              <ul className="space-y-1 text-xs text-[#2c4a6e]">
                 {inst.specs.map((s, j) => (
                   <li key={j} className="flex items-start gap-2">
                     <span className="w-1 h-1 rounded-full mt-1.5 shrink-0" style={{ backgroundColor: inst.color }} />
@@ -392,12 +393,12 @@ export default function MeasurementTechniques() {
             },
           ].map((test, i) => (
             <AnimatedCard key={i} delay={i * 0.05}
-              className="bg-white border border-[#c9d9e8] rounded-2xl p-4">
+              className="bg-white border border-[#d0dde8] rounded-2xl p-4">
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-2 h-2 rounded-full" style={{ backgroundColor: test.color }} />
                 <h4 className="font-bold text-[#0B2545] text-sm">{test.test}</h4>
               </div>
-              <div className="text-xs text-[#3d6285] space-y-1">
+              <div className="text-xs text-[#2c4a6e] space-y-1">
                 <div><strong className="text-[#134074]">Purpose:</strong> {test.purpose}</div>
                 <div><strong className="text-[#13315C]">Parameters:</strong> {test.params}</div>
                 <div><strong className="text-[#0B2545]">Key result:</strong> {test.result}</div>
@@ -411,10 +412,10 @@ export default function MeasurementTechniques() {
       <AnimatedSection className="mb-16">
         <h3 className="text-2xl font-bold text-[#0B2545] mb-4">Slit Die & Online Rheometry</h3>
         <div className="grid md:grid-cols-2 gap-5">
-          <AnimatedCard className="bg-white border border-[#c9d9e8] rounded-2xl p-5">
+          <AnimatedCard className="bg-white border border-[#d0dde8] rounded-2xl p-5">
             <h4 className="font-bold text-[#0B2545] mb-2">Slit Die Rheometer</h4>
             <div className="math-block !text-sm !py-1.5 !px-3 !my-2">τ<sub>w</sub> = (h/2) · (dP/dz)</div>
-            <div className="space-y-2 text-xs text-[#3d6285]">
+            <div className="space-y-2 text-xs text-[#2c4a6e]">
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />Pressure transducers flush-mounted along slit length</div>
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />No entrance effects if sensors away from entry/exit</div>
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />γ̇ range: 10¹–10⁴ s⁻¹ (processing-relevant)</div>
@@ -422,9 +423,9 @@ export default function MeasurementTechniques() {
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />Ideal for online/inline process monitoring</div>
             </div>
           </AnimatedCard>
-          <AnimatedCard delay={0.1} className="bg-[#EEF4ED] border border-[#c9d9e8] rounded-2xl p-5">
+          <AnimatedCard delay={0.1} className="bg-[#EEF4ED] border border-[#d0dde8] rounded-2xl p-5">
             <h4 className="font-bold text-[#0B2545] mb-2">Online Process Rheometry</h4>
-            <div className="space-y-2 text-xs text-[#3d6285]">
+            <div className="space-y-2 text-xs text-[#2c4a6e]">
               {[
                 { type: "Inline", desc: "Sensor directly in melt flow (slit die, nozzle sensor). No sample bypass." },
                 { type: "Online", desc: "Side-stream diverted from process. Full shear rate range possible." },
@@ -446,18 +447,18 @@ export default function MeasurementTechniques() {
       <AnimatedSection>
         <h3 className="text-2xl font-bold text-[#0B2545] mb-4">MFI vs Full Rheological Characterization</h3>
         <div className="grid md:grid-cols-2 gap-6">
-          <AnimatedCard className="bg-white border border-[#c9d9e8] rounded-2xl p-6">
+          <AnimatedCard className="bg-white border border-[#d0dde8] rounded-2xl p-6">
             <div className="text-center mb-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8DA9C4]/10 text-[#8DA9C4] text-xs font-bold">
                 SIMPLE
               </div>
             </div>
             <h4 className="font-bold text-[#0B2545] text-center mb-3 text-lg">MFI</h4>
-            <div className="text-center text-[#3d6285] text-sm mb-4">Single-point, one shear rate</div>
-            <div className="space-y-2 text-xs text-[#3d6285]">
-              <div className="flex justify-between border-b border-[#c9d9e8]/50 pb-1"><span>Cost</span><span className="text-[#134074] font-semibold">$5k–15k</span></div>
-              <div className="flex justify-between border-b border-[#c9d9e8]/50 pb-1"><span>Shear rate</span><span>~1–10 s⁻¹</span></div>
-              <div className="flex justify-between border-b border-[#c9d9e8]/50 pb-1"><span>Info</span><span>Fluidity index</span></div>
+            <div className="text-center text-[#2c4a6e] text-sm mb-4">Single-point, one shear rate</div>
+            <div className="space-y-2 text-xs text-[#2c4a6e]">
+              <div className="flex justify-between border-b border-[#d0dde8]/50 pb-1"><span>Cost</span><span className="text-[#134074] font-semibold">$5k–15k</span></div>
+              <div className="flex justify-between border-b border-[#d0dde8]/50 pb-1"><span>Shear rate</span><span>~1–10 s⁻¹</span></div>
+              <div className="flex justify-between border-b border-[#d0dde8]/50 pb-1"><span>Info</span><span>Fluidity index</span></div>
               <div className="flex justify-between"><span>Sample</span><span>Pellets</span></div>
             </div>
             <div className="mt-4 text-xs text-center text-[#8DA9C4]">
@@ -472,11 +473,11 @@ export default function MeasurementTechniques() {
               </div>
             </div>
             <h4 className="font-bold text-[#0B2545] text-center mb-3 text-lg">Rotational Rheometer</h4>
-            <div className="text-center text-[#3d6285] text-sm mb-4">Full viscoelastic characterization</div>
-            <div className="space-y-2 text-xs text-[#3d6285]">
-              <div className="flex justify-between border-b border-[#c9d9e8]/50 pb-1"><span>Cost</span><span className="text-[#134074] font-semibold">$80k–250k</span></div>
-              <div className="flex justify-between border-b border-[#c9d9e8]/50 pb-1"><span>Frequency</span><span>0.01–628 rad/s</span></div>
-              <div className="flex justify-between border-b border-[#c9d9e8]/50 pb-1"><span>Info</span><span>G&apos;, G&apos;&apos;, η*, Tg, spectrum</span></div>
+            <div className="text-center text-[#2c4a6e] text-sm mb-4">Full viscoelastic characterization</div>
+            <div className="space-y-2 text-xs text-[#2c4a6e]">
+              <div className="flex justify-between border-b border-[#d0dde8]/50 pb-1"><span>Cost</span><span className="text-[#134074] font-semibold">$80k–250k</span></div>
+              <div className="flex justify-between border-b border-[#d0dde8]/50 pb-1"><span>Frequency</span><span>0.01–628 rad/s</span></div>
+              <div className="flex justify-between border-b border-[#d0dde8]/50 pb-1"><span>Info</span><span>G&apos;, G&apos;&apos;, η*, Tg, spectrum</span></div>
               <div className="flex justify-between"><span>Sample</span><span>Disk specimen</span></div>
             </div>
             <div className="mt-4 text-xs text-center text-[#134074] font-semibold">
