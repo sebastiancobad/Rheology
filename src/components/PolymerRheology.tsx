@@ -4,10 +4,12 @@ import { useState } from "react";
 import SectionWrapper from "./SectionWrapper";
 import FrequencySweepChart from "./charts/FrequencySweepChart";
 import TemperatureChart from "./charts/TemperatureChart";
+import ExtensionalViscosityChart from "./charts/ExtensionalViscosityChart";
+import RelaxationSpectrumChart from "./charts/RelaxationSpectrumChart";
 import AnimatedSection, { AnimatedCard } from "./AnimatedSection";
 
 export default function PolymerRheology() {
-  const [activeChart, setActiveChart] = useState<"frequency" | "temperature">("frequency");
+  const [activeChart, setActiveChart] = useState<"frequency" | "temperature" | "extensional" | "spectrum">("frequency");
 
   return (
     <SectionWrapper
@@ -164,7 +166,9 @@ export default function PolymerRheology() {
         <div className="flex flex-wrap gap-2 mb-6" role="tablist" aria-label="Viscoelastic analysis charts">
           {[
             { key: "frequency" as const, label: "Frequency Sweep (G', G'')" },
-            { key: "temperature" as const, label: "Temperature Dependence (WLF)" },
+            { key: "temperature" as const, label: "Temperature (WLF)" },
+            { key: "extensional" as const, label: "Extensional Viscosity" },
+            { key: "spectrum" as const, label: "Relaxation Spectrum" },
           ].map((tab) => (
             <button key={tab.key} type="button" role="tab" aria-selected={activeChart === tab.key}
               onClick={() => setActiveChart(tab.key)}
@@ -195,6 +199,26 @@ export default function PolymerRheology() {
                 WLF applies near T<sub>g</sub>, Arrhenius far above T<sub>g</sub>.
               </p>
               <TemperatureChart />
+            </div>
+          )}
+          {activeChart === "extensional" && (
+            <div>
+              <p className="text-[#2c4a6e] text-xs mb-4">
+                Transient extensional viscosity η<sub>E</sub><sup>+</sup>(t) reveals strain hardening in branched polymers (LDPE)
+                that is absent in linear chains (HDPE). The LVE envelope (3η₀) is the Trouton reference.
+                Adjust ε̇ and branching level to see how architecture controls extensional behavior.
+              </p>
+              <ExtensionalViscosityChart />
+            </div>
+          )}
+          {activeChart === "spectrum" && (
+            <div>
+              <p className="text-[#2c4a6e] text-xs mb-4">
+                The continuous relaxation spectrum H(λ) is the fundamental material function from which all linear
+                viscoelastic properties can be derived. Adjust the terminal time λ<sub>d</sub>, polydispersity (Mw/Mn),
+                and long-chain branching to see how molecular structure shapes the spectrum.
+              </p>
+              <RelaxationSpectrumChart />
             </div>
           )}
         </div>
