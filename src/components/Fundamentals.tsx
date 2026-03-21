@@ -391,20 +391,19 @@ export default function Fundamentals() {
       {/* Interactive Polymer Chain 3D */}
       <AnimatedSection className="mb-16">
         <h3 className="text-2xl font-bold text-[#0B2545] mb-3">3D Polymer Chain Under Shear</h3>
-        <p className="text-[#2c4a6e] text-sm mb-4">
-          Adjust the shear rate to see how polymer chains deform, orient, and disentangle.
-          This is the molecular origin of <strong className="text-[#0B2545]">shear-thinning</strong> behavior.
+        <p className="text-[#2c4a6e] text-sm mb-4 leading-[1.7]">
+          Drag the slider to apply shear. Watch how entangled polymer chains <strong className="text-[#0B2545]">orient</strong> toward
+          the flow direction, <strong className="text-[#0B2545]">stretch</strong> along their end-to-end vector, and
+          progressively <strong className="text-[#0B2545]">disentangle</strong> — the molecular origin of shear-thinning.
+          The translucent tube shows the <strong className="text-[#134074]">reptation constraint</strong> from surrounding chains.
         </p>
-        <div className="flex items-center gap-4 mb-4">
+        <div className="flex flex-wrap items-center gap-4 mb-4">
           <label htmlFor="shear-rate-slider" className="text-sm text-[#2c4a6e]">
-            Shear Rate: <strong className="text-[#134074]">{shearRate.toFixed(1)}</strong>
+            Shear Rate (Wi): <strong className="text-[#134074] text-base">{shearRate.toFixed(1)}</strong>
           </label>
-          <input id="shear-rate-slider" type="range" min="0" max="5" step="0.1" value={shearRate}
+          <input id="shear-rate-slider" type="range" min="0" max="5" step="0.05" value={shearRate}
             onChange={(e) => setShearRate(parseFloat(e.target.value))}
-            className="w-64 accent-[#134074]" />
-          <span className="text-xs text-[#8DA9C4]">
-            {shearRate < 1 ? "Low shear — random coils" : shearRate < 3 ? "Medium — orientation" : "High — aligned chains"}
-          </span>
+            className="flex-1 min-w-[200px] max-w-[400px] accent-[#134074] h-2" />
         </div>
         <PolymerChain3D shearRate={shearRate} />
       </AnimatedSection>
