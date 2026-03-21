@@ -45,6 +45,89 @@ export default function MeasurementTechniques() {
       accent="#0B2545"
       number="03"
     >
+      {/* Introduction */}
+      <AnimatedSection className="mb-16">
+        <div className="bg-white border border-[#d0dde8] rounded-2xl p-8">
+          <h3 className="text-2xl font-bold text-[#0B2545] mb-4" style={{ fontFamily: "var(--font-display)" }}>
+            The Art and Science of Rheological Measurement
+          </h3>
+          <div className="grid lg:grid-cols-2 gap-8">
+            <div className="space-y-4 text-sm text-[#2c4a6e] leading-[1.8]">
+              <p>
+                Rheological measurements are only as good as the <strong className="text-[#0B2545]">experimental protocol,
+                geometry selection, and data corrections</strong> applied. A rotational rheometer can produce
+                highly reproducible data — or completely misleading artifacts — depending on the operator&apos;s understanding
+                of sample loading, gap setting, thermal equilibration, and the limits of each measurement mode.
+              </p>
+              <p>
+                The choice of <strong className="text-[#134074]">geometry</strong> is the first critical decision:
+                cone-plate gives uniform shear rate but limits gap; parallel plate accommodates filled systems
+                but requires corrections; concentric cylinders handle low-viscosity fluids but need large
+                volumes. No single geometry is ideal for all materials — understanding the trade-offs is essential.
+              </p>
+              <p>
+                Beyond rotational rheometry, <strong className="text-[#0B2545]">capillary and extensional rheometers</strong> access
+                the high shear rates and extensional flows encountered in real processing. Capillary data require
+                Bagley and Rabinowitsch corrections; extensional data require careful control of strain rate uniformity.
+                Online rheometry is increasingly important for Industry 4.0 process control.
+              </p>
+            </div>
+            <div className="space-y-4">
+              <div className="bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] rounded-xl p-5 border border-[#d0dde8]/50">
+                <h5 className="text-xs font-bold text-[#0B2545] mb-3 uppercase tracking-wide">Shear Rate Coverage by Technique</h5>
+                <svg viewBox="0 0 280 110" className="w-full h-auto">
+                  <text x="140" y="15" textAnchor="middle" fill="#2c4a6e" fontSize="7" fontFamily="Inter">γ̇ [s⁻¹]</text>
+                  {/* Axis */}
+                  <line x1="30" y1="22" x2="270" y2="22" stroke="#0B2545" strokeWidth="0.8" />
+                  {[
+                    { x: 30, label: "10⁻⁴" }, { x: 70, label: "10⁻²" }, { x: 110, label: "10⁰" },
+                    { x: 150, label: "10²" }, { x: 190, label: "10⁴" }, { x: 230, label: "10⁶" },
+                  ].map((tick, i) => (
+                    <g key={i}>
+                      <line x1={tick.x} y1="20" x2={tick.x} y2="24" stroke="#0B2545" strokeWidth="0.8" />
+                      <text x={tick.x} y="30" textAnchor="middle" fill="#8DA9C4" fontSize="6" fontFamily="Inter">{tick.label}</text>
+                    </g>
+                  ))}
+                  {/* Technique bars */}
+                  {[
+                    { label: "Creep / Recovery", x1: 30, x2: 70, y: 42, color: "#8DA9C4" },
+                    { label: "Oscillatory (SAOS)", x1: 40, x2: 130, y: 54, color: "#134074" },
+                    { label: "Steady Shear (rotational)", x1: 60, x2: 160, y: 66, color: "#13315C" },
+                    { label: "Capillary", x1: 110, x2: 200, y: 78, color: "#0B2545" },
+                    { label: "Slit Die / Online", x1: 130, x2: 210, y: 90, color: "#134074" },
+                    { label: "MFI (single point)", x1: 100, x2: 120, y: 102, color: "#8DA9C4" },
+                  ].map((bar, i) => (
+                    <g key={i}>
+                      <rect x={bar.x1} y={bar.y - 4} width={bar.x2 - bar.x1} height="8" rx="4" fill={bar.color} opacity="0.2" />
+                      <rect x={bar.x1} y={bar.y - 4} width={bar.x2 - bar.x1} height="8" rx="4" stroke={bar.color} strokeWidth="1" fill="none" />
+                      <text x={bar.x2 + 4} y={bar.y + 3} fill={bar.color} fontSize="6" fontFamily="Inter" fontWeight="500">{bar.label}</text>
+                    </g>
+                  ))}
+                </svg>
+              </div>
+              <div className="bg-[#EEF4ED] rounded-xl p-5 border border-[#d0dde8]/50">
+                <h5 className="text-xs font-bold text-[#134074] mb-2 uppercase tracking-wide">Golden Rules of Rheological Measurement</h5>
+                <div className="space-y-1.5 text-xs text-[#2c4a6e]">
+                  {[
+                    "Always verify the LVR before running frequency sweeps",
+                    "Allow thermal equilibration (5–10 min) after loading",
+                    "Trim excess sample — overfill causes systematic errors",
+                    "Use fresh samples — avoid reuse (thermal history matters)",
+                    "Report geometry, gap, temperature, and atmosphere",
+                    "Repeat measurements — if G' drifts, the material is changing",
+                  ].map((rule, i) => (
+                    <div key={i} className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />
+                      <span>{rule}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </AnimatedSection>
+
       {/* 3D Rheometer */}
       <AnimatedSection className="mb-16">
         <h3 className="text-2xl font-bold text-[#0B2545] mb-2">Interactive 3D Rheometer</h3>
@@ -55,9 +138,10 @@ export default function MeasurementTechniques() {
         <div className="grid lg:grid-cols-2 gap-8">
           <div>
             {/* Geometry selector */}
-            <div className="flex gap-2 mb-4">
+            <div className="flex flex-wrap gap-2 mb-4" role="tablist" aria-label="Rheometer geometry">
               {Object.entries(geometryInfo).map(([key, val]) => (
-                <button key={key} onClick={() => setGeometry(key)}
+                <button key={key} type="button" role="tab" aria-selected={geometry === key}
+                  onClick={() => setGeometry(key)}
                   className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                     geometry === key
                       ? "bg-[#0B2545] text-white shadow-md"
@@ -70,8 +154,8 @@ export default function MeasurementTechniques() {
 
             {/* RPM control */}
             <div className="flex items-center gap-3 mb-4">
-              <label className="text-sm text-[#2c4a6e]">RPM: <strong className="text-[#134074]">{rpm.toFixed(1)}</strong></label>
-              <input type="range" min="0" max="5" step="0.1" value={rpm}
+              <label htmlFor="rpm-slider" className="text-sm text-[#2c4a6e]">RPM: <strong className="text-[#134074]">{rpm.toFixed(1)}</strong></label>
+              <input id="rpm-slider" type="range" min="0" max="5" step="0.1" value={rpm}
                 onChange={(e) => setRpm(parseFloat(e.target.value))}
                 className="w-40 accent-[#134074]" />
             </div>
@@ -440,6 +524,75 @@ export default function MeasurementTechniques() {
               ))}
             </div>
           </AnimatedCard>
+        </div>
+      </AnimatedSection>
+
+      {/* Common Measurement Pitfalls */}
+      <AnimatedSection className="mb-16">
+        <h3 className="text-2xl font-bold text-[#0B2545] mb-4">Common Measurement Pitfalls & Artifacts</h3>
+        <p className="text-[#2c4a6e] text-sm mb-6 leading-[1.7]">
+          Even experienced rheologists encounter artifacts. Recognizing them is essential for reliable data.
+        </p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[
+            {
+              title: "Wall Slip",
+              symptoms: "Apparent viscosity decreases with decreasing gap; flow curve depends on geometry size.",
+              causes: "Smooth surfaces + high-viscosity fluids, filled systems, yield-stress materials.",
+              fix: "Roughened/serrated plates, Mooney analysis (measure at multiple gaps), vane geometry.",
+              color: "#134074",
+            },
+            {
+              title: "Edge Fracture",
+              symptoms: "G' upturn at high γ₀ or high ω in cone-plate. Apparent strain hardening in SAOS.",
+              causes: "Elastic instability — secondary flow at free surface. Meniscus is pulled inward.",
+              fix: "Use parallel plate at smaller gap, reduce strain, apply edge-sealing (oil bath), cone-partitioned plate.",
+              color: "#13315C",
+            },
+            {
+              title: "Inertia Effects",
+              symptoms: "G' becomes negative or shows upturn at high ω. Raw phase angle > 180° or < 0°.",
+              causes: "Sample + geometry inertia dominates over elastic torque at high frequency.",
+              fix: "Use smaller geometry (lower inertia), reduce gap in PP, apply instrument inertia correction.",
+              color: "#0B2545",
+            },
+            {
+              title: "Thermal Degradation",
+              symptoms: "G', η drift downward over time at constant conditions. η₀ decreases between measurements.",
+              causes: "Oxidative chain scission (PP, PE), hydrolysis (PET, PA), depolymerization.",
+              fix: "Nitrogen atmosphere, minimize exposure time, time sweeps to quantify stability window.",
+              color: "#134074",
+            },
+            {
+              title: "Gap Errors (PP)",
+              symptoms: "Different G', G'' at different gaps (should be identical). Systematic offset in η.",
+              causes: "True gap ≠ set gap due to thermal expansion, plate deformation, zero-gap offset.",
+              fix: "Perform gap calibration at test temperature. Use gap-dependent correction: G'_true = G'_meas × (1 + Δh/h).",
+              color: "#13315C",
+            },
+            {
+              title: "Underfill / Overfill",
+              symptoms: "Overfill: G' too high (extra torque). Underfill: G' too low (reduced contact area).",
+              causes: "Improper sample loading or trimming. Thermal expansion after loading.",
+              fix: "Trim at measurement T after equilibration. Check edge visually. Target slight overfill then trim.",
+              color: "#0B2545",
+            },
+          ].map((pitfall, i) => (
+            <AnimatedCard key={i} delay={i * 0.06}
+              className="bg-white border border-[#d0dde8] rounded-2xl p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: pitfall.color }} />
+                <h4 className="font-bold text-[#0B2545] text-sm">{pitfall.title}</h4>
+              </div>
+              <div className="space-y-1.5 text-[11px] text-[#2c4a6e]">
+                <div><strong className="text-[#0B2545]">Symptoms:</strong> {pitfall.symptoms}</div>
+                <div><strong className="text-[#134074]">Causes:</strong> {pitfall.causes}</div>
+                <div className="bg-[#EEF4ED] rounded-lg p-2">
+                  <strong className="text-[#134074]">Fix:</strong> {pitfall.fix}
+                </div>
+              </div>
+            </AnimatedCard>
+          ))}
         </div>
       </AnimatedSection>
 

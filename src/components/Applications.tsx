@@ -217,6 +217,78 @@ export default function Applications() {
       number="04"
       alternate
     >
+      {/* Introduction */}
+      <AnimatedSection className="mb-16">
+        <div className="bg-white border border-[#d0dde8] rounded-2xl p-8">
+          <h3 className="text-2xl font-bold text-[#0B2545] mb-4" style={{ fontFamily: "var(--font-display)" }}>
+            Rheology Meets the Factory Floor
+          </h3>
+          <div className="grid lg:grid-cols-2 gap-8">
+            <div className="space-y-4 text-sm text-[#2c4a6e] leading-[1.8]">
+              <p>
+                Every polymer processing operation imposes a specific <strong className="text-[#0B2545]">deformation
+                history</strong> on the melt — a combination of shear rates, extensional rates, temperatures,
+                pressures, and residence times. The rheological properties of the polymer determine how it responds
+                to these conditions, and ultimately control the <strong className="text-[#134074]">processability,
+                dimensional accuracy, and final properties</strong> of the product.
+              </p>
+              <p>
+                The core principle is <strong className="text-[#0B2545]">matching the material to the process</strong>:
+                injection molding demands strong shear thinning (easy fill at high γ̇, dimensional stability at rest);
+                blow molding requires strain hardening in extension (uniform wall thickness); film blowing needs
+                a balance of melt strength and drawability. A polymer that excels in one process may fail completely
+                in another — and rheology is the tool that predicts this.
+              </p>
+              <p>
+                Modern simulation tools (Moldflow, Polyflow, OpenFOAM) make rheological data the
+                <strong className="text-[#134074]"> direct input for virtual process optimization</strong>.
+                Every simulation is only as good as its material model — garbage rheology in, garbage predictions out.
+                This section maps each processing method to its rheological requirements and common failure modes.
+              </p>
+            </div>
+            <div className="space-y-4">
+              <div className="bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] rounded-xl p-5 border border-[#d0dde8]/50">
+                <h5 className="text-xs font-bold text-[#0B2545] mb-3 uppercase tracking-wide">Process → Dominant Deformation Mode</h5>
+                <div className="space-y-2">
+                  {[
+                    { process: "Injection Molding", mode: "High-rate shear (10²–10⁴ s⁻¹)", param: "η(γ̇, T, P)" },
+                    { process: "Extrusion (die)", mode: "Moderate shear + extension at exit", param: "η(γ̇), N₁, die swell" },
+                    { process: "Blow Molding", mode: "Biaxial extension (low rate)", param: "η_E, strain hardening" },
+                    { process: "Film Blowing", mode: "Biaxial extension + drawdown", param: "Melt strength, η_E, BUR" },
+                    { process: "Fiber Spinning", mode: "Uniaxial extension (extreme rate)", param: "η_E(ε̇), FIC kinetics" },
+                    { process: "Thermoforming", mode: "Biaxial extension (heated sheet)", param: "η_E(T), sag resistance" },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3 text-xs text-[#2c4a6e] bg-white rounded-lg p-2 border border-[#d0dde8]/30">
+                      <span className="font-semibold text-[#134074] w-28 shrink-0">{item.process}</span>
+                      <span className="flex-1 text-[11px]">{item.mode}</span>
+                      <span className="text-[10px] text-[#8DA9C4] w-28 text-right shrink-0">{item.param}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-[#EEF4ED] rounded-xl p-5 border border-[#d0dde8]/50">
+                <h5 className="text-xs font-bold text-[#134074] mb-2 uppercase tracking-wide">The Rheologist&apos;s Processing Checklist</h5>
+                <div className="space-y-1.5 text-xs text-[#2c4a6e]">
+                  {[
+                    "What shear rate range does the process impose?",
+                    "Is extensional flow significant (contractions, free surfaces)?",
+                    "What is the processing temperature window?",
+                    "Is pressure-dependent viscosity relevant (>50 MPa)?",
+                    "Are there residence time / thermal stability constraints?",
+                    "What defects are typical and what rheological property controls them?",
+                  ].map((q, i) => (
+                    <div key={i} className="flex items-start gap-2">
+                      <span className="w-4 h-4 rounded-full bg-[#134074]/10 text-[#134074] text-[9px] font-bold flex items-center justify-center shrink-0 mt-0.5">{i + 1}</span>
+                      <span>{q}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </AnimatedSection>
+
       <AnimatedSection className="mb-16">
         <h3 className="text-2xl font-bold text-[#0B2545] mb-6">Processing Methods & Rheological Requirements</h3>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">

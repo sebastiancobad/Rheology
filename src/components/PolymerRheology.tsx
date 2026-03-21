@@ -18,6 +18,75 @@ export default function PolymerRheology() {
       number="02"
       alternate
     >
+      {/* Introduction */}
+      <AnimatedSection className="mb-16">
+        <div className="bg-white border border-[#d0dde8] rounded-2xl p-8">
+          <h3 className="text-2xl font-bold text-[#0B2545] mb-4" style={{ fontFamily: "var(--font-display)" }}>
+            From Molecules to Melt Behavior
+          </h3>
+          <div className="grid lg:grid-cols-2 gap-8">
+            <div className="space-y-4 text-sm text-[#2c4a6e] leading-[1.8]">
+              <p>
+                A polymer&apos;s rheological behavior is not an intrinsic material constant — it is the <strong className="text-[#0B2545]">macroscopic
+                manifestation of molecular-level dynamics</strong>. Molecular weight, its distribution, chain topology (linear,
+                branched, star, comb), backbone stiffness, and intermolecular interactions all leave distinct signatures in
+                the flow curve, the viscoelastic spectrum, and extensional behavior.
+              </p>
+              <p>
+                This section connects <strong className="text-[#134074]">molecular structure to processing-relevant properties</strong>.
+                Understanding these connections allows the rheologist to: (1) select the right polymer grade for a process,
+                (2) diagnose batch-to-batch variability, (3) detect degradation or contamination, and (4) design formulations
+                with targeted flow behavior. The tools presented here — frequency sweeps, master curves, blend models — are
+                the standard language of industrial polymer characterization.
+              </p>
+              <p>
+                A central theme is the <strong className="text-[#0B2545]">relaxation time spectrum</strong>. Every rheological
+                measurement probes this spectrum at different timescales: high-frequency oscillation excites fast segmental modes,
+                while low-frequency or long-time experiments (creep, terminal zone) reveal the slowest chain-level dynamics.
+                The full spectrum is the bridge between molecular physics and processing performance.
+              </p>
+            </div>
+            <div className="space-y-4">
+              <div className="bg-gradient-to-b from-[#f8faf8] to-[#EEF4ED] rounded-xl p-5 border border-[#d0dde8]/50">
+                <h5 className="text-xs font-bold text-[#0B2545] mb-3 uppercase tracking-wide">The Rheological Hierarchy</h5>
+                <div className="space-y-3">
+                  {[
+                    { level: "Monomer chemistry", arrow: "→", result: "Backbone stiffness, Me, G_N⁰", time: "ps–ns" },
+                    { level: "Chain length (Mw)", arrow: "→", result: "η₀, terminal relaxation λ_d", time: "ms–min" },
+                    { level: "MWD (Mw/Mn)", arrow: "→", result: "Breadth of shear-thinning transition", time: "Broad spectrum" },
+                    { level: "Long-chain branching", arrow: "→", result: "Strain hardening, ↑η₀, thermorheol. complexity", time: "Very slow modes" },
+                    { level: "Fillers / blending", arrow: "→", result: "Yield stress, percolation, morphology effects", time: "Structure-dependent" },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3 text-xs text-[#2c4a6e] bg-white rounded-lg p-2.5 border border-[#d0dde8]/30">
+                      <span className="font-semibold text-[#134074] w-36 shrink-0">{item.level}</span>
+                      <span className="text-[#8DA9C4]">{item.arrow}</span>
+                      <span className="flex-1">{item.result}</span>
+                      <span className="text-[10px] text-[#8DA9C4] w-20 text-right shrink-0">{item.time}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-[#EEF4ED] rounded-xl p-5 border border-[#d0dde8]/50">
+                <h5 className="text-xs font-bold text-[#134074] mb-2 uppercase tracking-wide">Key Scaling Laws</h5>
+                <div className="space-y-2">
+                  {[
+                    { eq: "η₀ ∝ Mw³·⁴", note: "Above Mc — universal for entangled linears" },
+                    { eq: "λ_d ∝ Mw³·⁴ / G_N⁰", note: "Terminal relaxation time" },
+                    { eq: "G_N⁰ = ρRT / Me", note: "Plateau modulus — chemistry-dependent" },
+                    { eq: "Je⁰ ∝ Mw / (G_N⁰ · η₀)", note: "Recoverable compliance — MWD-sensitive" },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-2 text-xs text-[#2c4a6e]">
+                      <div className="math-block !text-[11px] !py-1 !px-2 !my-0 shrink-0">{item.eq}</div>
+                      <span className="text-[#8DA9C4] mt-1">{item.note}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </AnimatedSection>
+
       {/* Molecular Weight & Architecture */}
       <AnimatedSection className="mb-16">
         <h3 className="text-2xl font-bold text-[#0B2545] mb-4">Molecular Architecture & Rheology</h3>
@@ -92,12 +161,13 @@ export default function PolymerRheology() {
           Explore frequency-dependent viscoelasticity and temperature dependence interactively.
         </p>
 
-        <div className="flex gap-2 mb-6">
+        <div className="flex flex-wrap gap-2 mb-6" role="tablist" aria-label="Viscoelastic analysis charts">
           {[
             { key: "frequency" as const, label: "Frequency Sweep (G', G'')" },
             { key: "temperature" as const, label: "Temperature Dependence (WLF)" },
           ].map((tab) => (
-            <button key={tab.key} onClick={() => setActiveChart(tab.key)}
+            <button key={tab.key} type="button" role="tab" aria-selected={activeChart === tab.key}
+              onClick={() => setActiveChart(tab.key)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 activeChart === tab.key
                   ? "bg-[#13315C] text-white shadow-md"
@@ -108,7 +178,7 @@ export default function PolymerRheology() {
           ))}
         </div>
 
-        <div className="bg-white border border-[#d0dde8] rounded-2xl p-6">
+        <div className="bg-white border border-[#d0dde8] rounded-2xl p-6" role="tabpanel">
           {activeChart === "frequency" && (
             <div>
               <p className="text-[#2c4a6e] text-xs mb-4">
