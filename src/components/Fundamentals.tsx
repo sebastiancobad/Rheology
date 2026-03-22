@@ -1030,7 +1030,7 @@ export default function Fundamentals() {
             },
             {
               name: "Pom-Pom / XPP",
-              eq: "Backbone orientation + arm retraction dynamics",
+              eq: `\\frac{\\partial \\mathbf{A}}{\\partial t} = \\boldsymbol{\\kappa}\\!\\cdot\\!\\mathbf{A} + \\mathbf{A}\\!\\cdot\\!\\boldsymbol{\\kappa}^T - \\frac{1}{\\lambda_b}\\left(\\mathbf{A} - \\frac{\\mathbf{I}}{3}\\right),\\quad \\boldsymbol{\\tau} = G_0 \\lambda^2 \\mathbf{S}`,
               color: "#13315C",
               physics: "Designed for long-chain branched polymers (LDPE). Molecule modeled as a backbone with q arms at each end. Backbone orients under flow; arms retract. Captures the physics of strain hardening in extension. XPP (eXtended Pom-Pom) is the differential version used in FEM.",
               keyFeatures: ["Predicts strain hardening via arm retraction", "q (number of arms) controls extensional behavior", "Multi-mode XPP for real LDPE fitting"],
@@ -1038,7 +1038,7 @@ export default function Fundamentals() {
             },
             {
               name: "GLaMM",
-              eq: "Contour variable s-dependent tube model",
+              eq: `\\frac{\\partial \\mathbf{f}(s,t)}{\\partial t} = \\boldsymbol{\\kappa}\\!\\cdot\\!\\mathbf{f} + D_\\text{rep}\\frac{\\partial^2 \\mathbf{f}}{\\partial s^2} + \\frac{\\partial}{\\partial s}\\!\\left(\\kappa_{ss}\\, \\mathbf{f}\\right) + f_\\text{CR}`,
               color: "#134074",
               physics: "Graham, Likhtman, McLeish, Milner model. The most complete molecular theory for linear entangled polymers. Includes reptation, contour-length fluctuations (CLF), thermal constraint release (CR), and convective constraint release (CCR) along the tube contour s.",
               keyFeatures: ["Predicts η₀ ∝ M³·⁴ (matches experiment)", "Full nonlinear transient predictions", "Parameters: Z, τ_e only (truly predictive)"],
@@ -1046,7 +1046,7 @@ export default function Fundamentals() {
             },
             {
               name: "Tube Model + Branch-on-Branch",
-              eq: "Hierarchical relaxation of branched architectures",
+              eq: `\\lambda_\\text{arm} \\sim \\tau_e\\, Z_\\text{arm}^2\\, e^{\\,\\nu\\, Z_\\text{arm}},\\quad \\lambda_\\text{bb} \\sim \\lambda_\\text{arm}\\!\\cdot\\! Z_\\text{bb}^{3.4}`,
               color: "#0B2545",
               physics: "For branched polymers (stars, H-polymers, combs, randomly branched). Inner segments cannot reptate until outer arms retract — hierarchical relaxation from the outside in. Predicts dramatic increase in terminal relaxation time with branching complexity.",
               keyFeatures: ["Star polymers: arm retraction ~ exp(−ν·M_arm/Me)", "Comb polymers: backbone dilated tube", "Connects topology to rheology quantitatively"],
@@ -1054,7 +1054,7 @@ export default function Fundamentals() {
             },
             {
               name: "Slip-Link / Stochastic",
-              eq: "Brownian dynamics of chains + entanglement events",
+              eq: `\\frac{d\\mathbf{R}_i}{dt} = -\\frac{\\partial U}{\\partial \\mathbf{R}_i} + \\boldsymbol{\\kappa}\\!\\cdot\\!\\mathbf{R}_i + \\sqrt{2k_BT/\\zeta}\\;\\mathbf{f}_i(t)`,
               color: "#13315C",
               physics: "Instead of a mean-field tube, entanglements are modeled as discrete slip-links that constrain the chain but can be created and destroyed. Simulates individual chain trajectories. Can naturally handle branching, polydispersity, and nonlinear flows.",
               keyFeatures: ["Masubuchi, Likhtman, Schieber variants", "No closure approximations needed", "Can handle arbitrary architectures"],
