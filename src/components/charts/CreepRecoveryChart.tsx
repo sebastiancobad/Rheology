@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { Tex } from "../Math";
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid,
   Tooltip, Legend, ResponsiveContainer, ReferenceLine, ReferenceArea,
@@ -121,11 +122,11 @@ export default function CreepRecoveryChart() {
 
       <div className="mt-3 grid grid-cols-3 gap-3 text-xs">
         <div className="bg-[#EEF4ED] rounded-xl p-3 text-center border border-[#d0dde8]">
-          <div className="font-semibold text-[#134074]">λ = η/G</div>
+          <div className="font-semibold text-[#134074]"><Tex>{`\\lambda = \\eta / G`}</Tex></div>
           <div className="text-[#0B2545] font-bold text-sm mt-0.5">{(eta / G).toFixed(1)} s</div>
         </div>
         <div className="bg-[#EEF4ED] rounded-xl p-3 text-center border border-[#d0dde8]">
-          <div className="font-semibold text-[#13315C]">J₀ = 1/G</div>
+          <div className="font-semibold text-[#13315C]"><Tex>{`J_0 = 1/G`}</Tex></div>
           <div className="text-[#0B2545] font-bold text-sm mt-0.5">{(1 / G * 1000).toFixed(2)} × 10⁻³ Pa⁻¹</div>
         </div>
         <div className="bg-[#EEF4ED] rounded-xl p-3 text-center border border-[#d0dde8]">

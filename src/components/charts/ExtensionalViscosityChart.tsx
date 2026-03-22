@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { Tex } from "../Math";
 import {
   LineChart,
   Line,
@@ -249,7 +250,7 @@ export default function ExtensionalViscosityChart() {
       <div className="mt-4 grid grid-cols-2 lg:grid-cols-4 gap-3">
         <div className="bg-[#EEF4ED] rounded-lg p-3 border border-[#d0dde8]/50">
           <div className="text-[10px] font-bold text-[#8DA9C4] uppercase tracking-wide mb-1">Trouton Ratio</div>
-          <div className="text-sm font-semibold text-[#0B2545]">η<sub>E</sub> / η = 3</div>
+          <div className="text-sm font-semibold text-[#0B2545]"><Tex>{`\\eta_E / \\eta = 3`}</Tex></div>
           <div className="text-[10px] text-[#2c4a6e]">Uniaxial, Newtonian limit</div>
         </div>
         <div className="bg-[#EEF4ED] rounded-lg p-3 border border-[#d0dde8]/50">
@@ -260,7 +261,7 @@ export default function ExtensionalViscosityChart() {
         <div className="bg-[#EEF4ED] rounded-lg p-3 border border-[#d0dde8]/50">
           <div className="text-[10px] font-bold text-[#0B2545] uppercase tracking-wide mb-1">LCB (LDPE)</div>
           <div className="text-sm font-semibold text-[#0B2545]">Strain hardening</div>
-          <div className="text-[10px] text-[#2c4a6e]">η<sub>E</sub><sup>+</sup> rises above LVE</div>
+          <div className="text-[10px] text-[#2c4a6e]"><Tex>{`\\eta_E^+`}</Tex> rises above LVE</div>
         </div>
         <div className="bg-[#EEF4ED] rounded-lg p-3 border border-[#d0dde8]/50">
           <div className="text-[10px] font-bold text-[#6B8CAE] uppercase tracking-wide mb-1">Processing</div>

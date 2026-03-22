@@ -8,6 +8,7 @@ import ViscosityModelsChart from "./charts/ViscosityModelsChart";
 import CreepRecoveryChart from "./charts/CreepRecoveryChart";
 import AnimatedSection, { AnimatedCard } from "./AnimatedSection";
 import FlowTypesDiagram from "./diagrams/FlowTypesDiagram";
+import { TexBlock } from "./Math";
 
 const StressTensor3D = dynamic(() => import("./3d/StressTensor3D"), { ssr: false });
 const PolymerChain3D = dynamic(() => import("./3d/PolymerChain3D"), { ssr: false });
@@ -151,7 +152,7 @@ export default function Fundamentals() {
               <text x="58" y="60" fill="#134074" fontSize="7" fontFamily="Inter" fontWeight="600">γ</text>
             </svg>
             <div className="space-y-2 text-xs text-[#2c4a6e]">
-              <div className="math-block !text-sm !py-1.5 !px-3 !my-1">γ̇ = dγ/dt = v/h &nbsp;&nbsp;[s⁻¹]</div>
+              <TexBlock>{`\\dot{\\gamma} = \\frac{d\\gamma}{dt} = \\frac{v}{h} \\quad [\\text{s}^{-1}]`}</TexBlock>
               <p>
                 Material layers slide over each other. The velocity profile is linear for Newtonian fluids between parallel plates.
                 The <strong className="text-[#0B2545]">shear stress</strong> τ is the force per unit area required to maintain this deformation.
@@ -183,7 +184,7 @@ export default function Fundamentals() {
               <text x="110" y="92" textAnchor="middle" fill="#2c4a6e" fontSize="7" fontFamily="Inter">ε̇ = dε/dt &nbsp; [s⁻¹]</text>
             </svg>
             <div className="space-y-2 text-xs text-[#2c4a6e]">
-              <div className="math-block !text-sm !py-1.5 !px-3 !my-1">η<sub>E</sub> = σ<sub>E</sub> / ε̇ &nbsp;&nbsp;[Pa·s]</div>
+              <TexBlock>{`\\eta_E = \\frac{\\sigma_E}{\\dot{\\varepsilon}} \\quad [\\text{Pa·s}]`}</TexBlock>
               <p>
                 Material is pulled apart along one axis while contracting in the perpendicular directions.
                 For a Newtonian fluid, the <strong className="text-[#0B2545]">Trouton ratio</strong> η<sub>E</sub>/η₀ = 3 exactly.
@@ -216,7 +217,7 @@ export default function Fundamentals() {
               once the stress is removed — like a spring. This is quantified by the <strong className="text-[#134074]">storage modulus G&apos;</strong>,
               which measures the in-phase (elastic) component of the stress response to oscillatory deformation.
             </p>
-            <div className="math-block !text-xs !py-1.5 !px-2 !my-1">G&apos; = (τ₀/γ₀) · cos δ</div>
+            <TexBlock>{`G' = \\frac{\\tau_0}{\\gamma_0} \\cdot \\cos \\delta`}</TexBlock>
             <p className="text-[#8DA9C4] text-xs mt-2">
               Molecular origin: chain stretching, entanglement network deformation, crosslinks.
             </p>
@@ -231,7 +232,7 @@ export default function Fundamentals() {
               This is quantified by the <strong className="text-[#134074]">loss modulus G&apos;&apos;</strong>,
               the out-of-phase (viscous) component.
             </p>
-            <div className="math-block !text-xs !py-1.5 !px-2 !my-1">G&apos;&apos; = (τ₀/γ₀) · sin δ</div>
+            <TexBlock>{`G'' = \\frac{\\tau_0}{\\gamma_0} \\cdot \\sin \\delta`}</TexBlock>
             <p className="text-[#8DA9C4] text-xs mt-2">
               Molecular origin: chain reptation, Rouse modes, monomeric friction, disentanglement.
             </p>
@@ -250,7 +251,7 @@ export default function Fundamentals() {
               <div className="flex justify-between border-b border-[#d0dde8]/50 pb-1"><span>tan δ = 1</span><span className="text-[#134074] font-semibold">Gel point / crossover</span></div>
               <div className="flex justify-between"><span>tan δ &gt; 1</span><span className="text-[#134074] font-semibold">Liquid-like (G&apos;&apos; &gt; G&apos;)</span></div>
             </div>
-            <div className="math-block !text-xs !py-1.5 !px-2 !my-2">η* = |G*|/ω = √(G&apos;² + G&apos;&apos;²) / ω</div>
+            <TexBlock>{`\\eta^* = \\frac{|G^*|}{\\omega} = \\frac{\\sqrt{G'^2 + G''^2}}{\\omega}`}</TexBlock>
             <p className="text-[#8DA9C4] text-xs">
               The complex viscosity η* is the oscillatory analog of steady shear viscosity. The Cox-Merz rule
               states η*(ω) ≈ η(γ̇) at ω = γ̇ — valid for most linear polymers.
@@ -314,12 +315,12 @@ export default function Fundamentals() {
               <div className="grid grid-cols-2 gap-3">
                 <div className="bg-white rounded-lg p-3 border border-[#d0dde8]/50">
                   <div className="text-xs font-semibold text-[#134074] mb-1">Below M<sub>c</sub></div>
-                  <div className="math-block !text-xs !py-1 !px-2 !my-1">η₀ ∝ Mw¹·⁰</div>
+                  <TexBlock>{`\\eta_0 \\propto M_w^{1.0}`}</TexBlock>
                   <p className="text-[#8DA9C4] text-[10px]">Rouse dynamics, no plateau</p>
                 </div>
                 <div className="bg-white rounded-lg p-3 border border-[#d0dde8]/50">
                   <div className="text-xs font-semibold text-[#0B2545] mb-1">Above M<sub>c</sub></div>
-                  <div className="math-block !text-xs !py-1 !px-2 !my-1">η₀ ∝ Mw³·⁴</div>
+                  <TexBlock>{`\\eta_0 \\propto M_w^{3.4}`}</TexBlock>
                   <p className="text-[#8DA9C4] text-[10px]">Reptation, entanglement plateau</p>
                 </div>
               </div>
@@ -345,7 +346,7 @@ export default function Fundamentals() {
                   <span><strong className="text-[#0B2545]">Slow modes</strong> (λ ~ 10⁰–10³ s): reptation, constraint release, arm retraction (branched)</span>
                 </div>
               </div>
-              <div className="math-block !text-xs !py-1.5 !px-2 !my-2">G(t) = ∫₀^∞ H(λ)/λ · e^(−t/λ) dλ</div>
+              <TexBlock>{`G(t) = \\int_0^{\\infty} \\frac{H(\\lambda)}{\\lambda} \\, e^{-t/\\lambda} \\, d\\lambda`}</TexBlock>
               <p className="text-[#8DA9C4] text-[10px]">
                 The discrete analog: G(t) = Σ gᵢ · exp(−t/λᵢ) — the generalized Maxwell model.
               </p>
@@ -368,18 +369,18 @@ export default function Fundamentals() {
           <h3 className="text-xl font-bold text-[#0B2545] mb-3">Core Definitions</h3>
           <div className="space-y-3">
             {[
-              { label: "Shear Stress", eq: "τ = F / A  [Pa]", desc: "Force per unit area in the flow direction" },
-              { label: "Shear Rate", eq: "γ̇ = dγ/dt = v/h  [s⁻¹]", desc: "Rate of deformation" },
-              { label: "Viscosity", eq: "η = τ / γ̇  [Pa·s]", desc: "Resistance to flow" },
-              { label: "Normal Stress Diff.", eq: "N₁ = σ₁₁ − σ₂₂", desc: "Elastic effect (Weissenberg, die swell)" },
-              { label: "Deborah Number", eq: "De = λ / t_obs", desc: "Solid-like (De≫1) vs liquid-like (De≪1)" },
-              { label: "Weissenberg Number", eq: "Wi = λ · γ̇", desc: "Elastic vs viscous effects ratio" },
+              { label: "Shear Stress", eq: `\\tau = \\frac{F}{A} \\quad [\\text{Pa}]`, desc: "Force per unit area in the flow direction" },
+              { label: "Shear Rate", eq: `\\dot{\\gamma} = \\frac{d\\gamma}{dt} = \\frac{v}{h} \\quad [\\text{s}^{-1}]`, desc: "Rate of deformation" },
+              { label: "Viscosity", eq: `\\eta = \\frac{\\tau}{\\dot{\\gamma}} \\quad [\\text{Pa·s}]`, desc: "Resistance to flow" },
+              { label: "Normal Stress Diff.", eq: `N_1 = \\sigma_{11} - \\sigma_{22}`, desc: "Elastic effect (Weissenberg, die swell)" },
+              { label: "Deborah Number", eq: `De = \\frac{\\lambda}{t_{\\text{obs}}}`, desc: "Solid-like (De≫1) vs liquid-like (De≪1)" },
+              { label: "Weissenberg Number", eq: `Wi = \\lambda \\cdot \\dot{\\gamma}`, desc: "Elastic vs viscous effects ratio" },
             ].map((item, i) => (
               <AnimatedCard key={i} delay={i * 0.05}
                 className="bg-white border border-[#d0dde8] rounded-xl p-3 flex items-start gap-3">
                 <div className="shrink-0 w-24 text-xs font-semibold text-[#134074]">{item.label}</div>
                 <div className="flex-1">
-                  <div className="math-block !text-sm !py-1.5 !px-3 !my-0">{item.eq}</div>
+                  <TexBlock>{item.eq}</TexBlock>
                   <p className="text-[#8DA9C4] text-xs mt-1">{item.desc}</p>
                 </div>
               </AnimatedCard>
@@ -418,14 +419,14 @@ export default function Fundamentals() {
         <FlowTypesDiagram />
         <div className="mt-6 grid md:grid-cols-3 gap-4">
           {[
-            { type: "Pseudoplastic", n: "n < 1", color: "#134074", examples: "Polymer melts, blood, paints" },
-            { type: "Newtonian", n: "n = 1", color: "#8DA9C4", examples: "Water, mineral oils, glycerol" },
-            { type: "Dilatant", n: "n > 1", color: "#13315C", examples: "Cornstarch suspensions, wet sand" },
+            { type: "Pseudoplastic", n: `n < 1`, color: "#134074", examples: "Polymer melts, blood, paints" },
+            { type: "Newtonian", n: `n = 1`, color: "#8DA9C4", examples: "Water, mineral oils, glycerol" },
+            { type: "Dilatant", n: `n > 1`, color: "#13315C", examples: "Cornstarch suspensions, wet sand" },
           ].map((item, i) => (
             <AnimatedCard key={i} delay={i * 0.1}
               className="bg-[#EEF4ED] border border-[#d0dde8] rounded-xl p-4 text-center">
               <div className="text-sm font-bold mb-1" style={{ color: item.color }}>{item.type}</div>
-              <div className="math-block !py-1 !px-2 !my-1 !text-sm inline-block">{item.n}</div>
+              <TexBlock>{item.n}</TexBlock>
               <p className="text-[#8DA9C4] text-xs mt-1">{item.examples}</p>
             </AnimatedCard>
           ))}
@@ -527,15 +528,15 @@ export default function Fundamentals() {
               <div className="grid md:grid-cols-2 gap-4 mb-4">
                 <div className="space-y-3">
                   {[
-                    { label: "Extensional Viscosity", eq: "η_E = σ_E / ε̇", desc: "Tensile stress / extension rate" },
-                    { label: "Trouton Ratio", eq: "Tr = η_E / η₀", desc: "Tr = 3 (Newtonian), Tr ≫ 3 (branched polymers)" },
-                    { label: "Hencky Strain", eq: "ε_H = ln(L/L₀)", desc: "True strain measure for large deformations" },
-                    { label: "Biaxial Extension", eq: "η_B = η_E / 6  (Newtonian)", desc: "Relevant for blow molding, thermoforming" },
-                    { label: "Planar Extension", eq: "η_P = η_E / 4  (Newtonian)", desc: "Relevant for film casting, coat-hanger dies" },
+                    { label: "Extensional Viscosity", eq: `\\eta_E = \\frac{\\sigma_E}{\\dot{\\varepsilon}}`, desc: "Tensile stress / extension rate" },
+                    { label: "Trouton Ratio", eq: `Tr = \\frac{\\eta_E}{\\eta_0}`, desc: "Tr = 3 (Newtonian), Tr ≫ 3 (branched polymers)" },
+                    { label: "Hencky Strain", eq: `\\varepsilon_H = \\ln\\!\\left(\\frac{L}{L_0}\\right)`, desc: "True strain measure for large deformations" },
+                    { label: "Biaxial Extension", eq: `\\eta_B = \\frac{\\eta_E}{6} \\;\\text{(Newtonian)}`, desc: "Relevant for blow molding, thermoforming" },
+                    { label: "Planar Extension", eq: `\\eta_P = \\frac{\\eta_E}{4} \\;\\text{(Newtonian)}`, desc: "Relevant for film casting, coat-hanger dies" },
                   ].map((item, i) => (
                     <div key={i} className="bg-[#EEF4ED] rounded-xl p-3">
                       <div className="text-xs font-semibold text-[#134074] mb-1">{item.label}</div>
-                      <div className="math-block !text-sm !py-1 !px-2 !my-1">{item.eq}</div>
+                      <TexBlock>{item.eq}</TexBlock>
                       <p className="text-[#8DA9C4] text-xs">{item.desc}</p>
                     </div>
                   ))}
@@ -600,13 +601,13 @@ export default function Fundamentals() {
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="space-y-3">
                   {[
-                    { name: "Bingham Plastic", eq: "τ = τ_y + η_p · γ̇", desc: "Simplest yield stress model. Linear above yield. Toothpaste, drilling mud." },
-                    { name: "Herschel-Bulkley", eq: "τ = τ_y + K · γ̇ⁿ", desc: "Yield stress + power-law. Most common for structured fluids. Combines yielding with shear-thinning." },
-                    { name: "Casson", eq: "√τ = √τ_y + √(η_∞ · γ̇)", desc: "Used for chocolate, blood, inks. Gives gentler transition than Bingham." },
+                    { name: "Bingham Plastic", eq: `\\tau = \\tau_y + \\eta_p \\cdot \\dot{\\gamma}`, desc: "Simplest yield stress model. Linear above yield. Toothpaste, drilling mud." },
+                    { name: "Herschel-Bulkley", eq: `\\tau = \\tau_y + K \\cdot \\dot{\\gamma}^n`, desc: "Yield stress + power-law. Most common for structured fluids. Combines yielding with shear-thinning." },
+                    { name: "Casson", eq: `\\sqrt{\\tau} = \\sqrt{\\tau_y} + \\sqrt{\\eta_\\infty \\cdot \\dot{\\gamma}}`, desc: "Used for chocolate, blood, inks. Gives gentler transition than Bingham." },
                   ].map((model, i) => (
                     <div key={i} className="bg-[#EEF4ED] rounded-xl p-4">
                       <h5 className="text-sm font-bold text-[#0B2545] mb-1">{model.name}</h5>
-                      <div className="math-block !text-sm !py-1.5 !px-3 !my-2">{model.eq}</div>
+                      <TexBlock>{model.eq}</TexBlock>
                       <p className="text-[#2c4a6e] text-xs">{model.desc}</p>
                     </div>
                   ))}
@@ -720,7 +721,7 @@ export default function Fundamentals() {
                   <div className="bg-white rounded-lg p-3 border border-[#d0dde8]/50">
                     <h5 className="text-xs font-bold text-[#0B2545] mb-1">Structural Kinetic Models</h5>
                     <div className="space-y-1 text-xs text-[#2c4a6e]">
-                      <div className="math-block !text-xs !py-1 !px-2 !my-1">dλ/dt = k₁(1−λ) − k₂·λ·γ̇ⁿ</div>
+                      <TexBlock>{`\\frac{d\\lambda}{dt} = k_1(1 - \\lambda) - k_2 \\cdot \\lambda \\cdot \\dot{\\gamma}^n`}</TexBlock>
                       <p>λ = structure parameter (0→1), k₁ = buildup rate, k₂ = breakdown rate</p>
                     </div>
                   </div>
@@ -771,10 +772,10 @@ export default function Fundamentals() {
         <h3 className="text-2xl font-bold text-[#0B2545] mb-6">Constitutive Laws at a Glance</h3>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { name: "Newton", eq: "τ = η · γ̇", type: "Viscous fluid", color: "#8DA9C4" },
-            { name: "Hooke", eq: "τ = G · γ", type: "Elastic solid", color: "#134074" },
-            { name: "Maxwell", eq: "τ + λ·dτ/dt = η·γ̇", type: "Viscoelastic liquid", color: "#13315C" },
-            { name: "Kelvin-Voigt", eq: "τ = G·γ + η·γ̇", type: "Viscoelastic solid", color: "#0B2545" },
+            { name: "Newton", eq: `\\tau = \\eta \\cdot \\dot{\\gamma}`, type: "Viscous fluid", color: "#8DA9C4" },
+            { name: "Hooke", eq: `\\tau = G \\cdot \\gamma`, type: "Elastic solid", color: "#134074" },
+            { name: "Maxwell", eq: `\\tau + \\lambda \\frac{d\\tau}{dt} = \\eta \\dot{\\gamma}`, type: "Viscoelastic liquid", color: "#13315C" },
+            { name: "Kelvin-Voigt", eq: `\\tau = G\\gamma + \\eta\\dot{\\gamma}`, type: "Viscoelastic solid", color: "#0B2545" },
           ].map((law, i) => (
             <AnimatedCard key={i} delay={i * 0.08}
               className="bg-white border border-[#d0dde8] rounded-2xl p-5 text-center">
@@ -783,7 +784,7 @@ export default function Fundamentals() {
                 {law.name[0]}
               </div>
               <h4 className="font-bold text-[#0B2545] text-sm mb-2">{law.name}</h4>
-              <div className="math-block !text-sm !py-1.5 !px-2 !my-2">{law.eq}</div>
+              <TexBlock>{law.eq}</TexBlock>
               <p className="text-[#8DA9C4] text-xs">{law.type}</p>
             </AnimatedCard>
           ))}
@@ -852,7 +853,7 @@ export default function Fundamentals() {
           {[
             {
               name: "Oldroyd-B",
-              eq: "τ + λ₁·∇τ = η₀(γ̇ + λ₂·∇γ̇)",
+              eq: `\\boldsymbol{\\tau} + \\lambda_1 \\overset{\\nabla}{\\boldsymbol{\\tau}} = \\eta_0\\!\\left(\\dot{\\boldsymbol{\\gamma}} + \\lambda_2 \\overset{\\nabla}{\\dot{\\boldsymbol{\\gamma}}}\\right)`,
               color: "#134074",
               physics: "Two-constant model: relaxation time λ₁ and retardation time λ₂. Equivalent to a dilute suspension of Hookean dumbbells in a Newtonian solvent.",
               predictions: [
@@ -866,7 +867,7 @@ export default function Fundamentals() {
             },
             {
               name: "Giesekus",
-              eq: "τ + λ·∇τ + α·λ/(η₀)·(τ·τ) = η₀·γ̇",
+              eq: `\\boldsymbol{\\tau} + \\lambda\\overset{\\nabla}{\\boldsymbol{\\tau}} + \\frac{\\alpha\\lambda}{\\eta_0}(\\boldsymbol{\\tau}\\!\\cdot\\!\\boldsymbol{\\tau}) = \\eta_0 \\dot{\\boldsymbol{\\gamma}}`,
               color: "#13315C",
               physics: "Adds an anisotropic drag term (mobility factor α ∈ [0, 1]) to the upper-convected Maxwell model. Physically represents anisotropic Brownian motion of dumbbells in a concentrated solution.",
               predictions: [
@@ -880,7 +881,7 @@ export default function Fundamentals() {
             },
             {
               name: "PTT (Phan-Thien–Tanner)",
-              eq: "f(tr τ)·τ + λ·∇τ = η₀·γ̇",
+              eq: `f(\\text{tr}\\,\\boldsymbol{\\tau})\\cdot\\boldsymbol{\\tau} + \\lambda\\overset{\\nabla}{\\boldsymbol{\\tau}} = \\eta_0 \\dot{\\boldsymbol{\\gamma}}`,
               color: "#0B2545",
               physics: "Introduces a stress-dependent function f(tr τ) that limits chain extensibility. Two forms: linear f = 1 + (ελ/η₀)tr(τ) and exponential f = exp[(ελ/η₀)tr(τ)]. Derived from network theory with junction creation/destruction.",
               predictions: [
@@ -894,7 +895,7 @@ export default function Fundamentals() {
             },
             {
               name: "FENE-P",
-              eq: "f(R)·⟨RR⟩ − δ = (λ/η₀)·τ",
+              eq: `f(R)\\langle\\mathbf{RR}\\rangle - \\boldsymbol{\\delta} = \\frac{\\lambda}{\\eta_0}\\boldsymbol{\\tau}`,
               color: "#134074",
               physics: "Finitely Extensible Nonlinear Elastic dumbbell with Peterlin closure approximation. The spring force diverges as chain extension R approaches the maximum extensibility L: f(R) = 1/(1 − R²/L²). Models finite chain extensibility.",
               predictions: [
@@ -916,7 +917,7 @@ export default function Fundamentals() {
                 </div>
                 <h5 className="font-bold text-[#0B2545] text-sm">{model.name}</h5>
               </div>
-              <div className="math-block !text-xs !py-1.5 !px-3 !my-2">{model.eq}</div>
+              <TexBlock>{model.eq}</TexBlock>
               <p className="text-[#2c4a6e] text-xs leading-relaxed mb-3">{model.physics}</p>
               <div className="mb-3">
                 <div className="text-[10px] font-semibold text-[#134074] uppercase tracking-wide mb-1">Predictions</div>
@@ -946,7 +947,7 @@ export default function Fundamentals() {
           {[
             {
               name: "K-BKZ (Kaye–Bernstein–Kearsley–Zapas)",
-              eq: "τ(t) = ∫₋∞ᵗ m(t−t&apos;) · h(I₁,I₂) · C⁻¹(t&apos;) dt&apos;",
+              eq: `\\boldsymbol{\\tau}(t) = \\int_{-\\infty}^{t} m(t-t') \\, h(I_1, I_2) \\, \\mathbf{C}^{-1}(t') \\, dt'`,
               color: "#13315C",
               physics: "General nonlinear integral model. The memory function m(t) = Σ gᵢ/λᵢ·exp(−t/λᵢ) encodes the relaxation spectrum. The damping function h(I₁,I₂) captures nonlinear strain softening — the fact that large deformations are less efficiently \"remembered\" than small ones.",
               predictions: [
@@ -961,7 +962,7 @@ export default function Fundamentals() {
             },
             {
               name: "Wagner Model",
-              eq: "τ(t) = ∫₋∞ᵗ m(t−t&apos;) · h(I₁,I₂) · B(t,t&apos;) dt&apos;",
+              eq: `\\boldsymbol{\\tau}(t) = \\int_{-\\infty}^{t} m(t-t') \\, h(I_1, I_2) \\, \\mathbf{B}(t,t') \\, dt'`,
               color: "#0B2545",
               physics: "Modification of K-BKZ that uses the Finger tensor B (instead of C⁻¹) and introduces an irreversibility condition: the damping function only decreases — once structure is destroyed by deformation, it cannot reform. This enables prediction of strain hardening in extension.",
               predictions: [
@@ -983,7 +984,7 @@ export default function Fundamentals() {
                 </div>
                 <h5 className="font-bold text-[#0B2545] text-sm">{model.name}</h5>
               </div>
-              <div className="math-block !text-xs !py-1.5 !px-3 !my-2">{model.eq}</div>
+              <TexBlock>{model.eq}</TexBlock>
               <p className="text-[#2c4a6e] text-xs leading-relaxed mb-3">{model.physics}</p>
               <div className="mb-3">
                 <div className="text-[10px] font-semibold text-[#134074] uppercase tracking-wide mb-1">Predictions</div>
@@ -1013,7 +1014,7 @@ export default function Fundamentals() {
           {[
             {
               name: "Doi-Edwards",
-              eq: "τ(t) = (G_N⁰/π²) Σ (1/p²)·exp(−p²t/λ_d)·S(E)",
+              eq: `\\boldsymbol{\\tau}(t) = \\frac{G_N^0}{\\pi^2} \\sum_p \\frac{1}{p^2} e^{-p^2 t/\\lambda_d} \\mathbf{S}(\\mathbf{E})`,
               color: "#134074",
               physics: "The foundational tube model. Entangled chains are confined in a tube of diameter a formed by surrounding chains. Stress relaxation occurs by reptation: the chain diffuses curvilinearly out of its tube. The orientation tensor S(E) captures the nonlinear response to deformation.",
               keyFeatures: ["Reptation time λ_d = Z³·τ_e", "Independent alignment approximation (IAA)", "Only parameter: Z = Mw/Me"],
@@ -1021,7 +1022,7 @@ export default function Fundamentals() {
             },
             {
               name: "Rolie-Poly",
-              eq: "∂τ/∂t = κ·τ + τ·κᵀ − (1/λ_d)(τ − I) − ...",
+              eq: `\\frac{\\partial\\boldsymbol{\\tau}}{\\partial t} = \\boldsymbol{\\kappa}\\!\\cdot\\!\\boldsymbol{\\tau} + \\boldsymbol{\\tau}\\!\\cdot\\!\\boldsymbol{\\kappa}^T - \\frac{1}{\\lambda_d}(\\boldsymbol{\\tau} - \\mathbf{I}) - \\cdots`,
               color: "#0B2545",
               physics: "ROuse LInear Entangled POLYmers. A single-mode differential approximation of the full Doi-Edwards theory including reptation, chain stretch, and convective constraint release (CCR). Designed for computational rheology of entangled linear polymers.",
               keyFeatures: ["Reptation + stretch + CCR in one equation", "Suitable for complex flow FEM", "Parameters from molecular data: Z, τ_e"],
@@ -1069,7 +1070,7 @@ export default function Fundamentals() {
                 </div>
                 <h5 className="font-bold text-[#0B2545] text-sm leading-tight">{model.name}</h5>
               </div>
-              <div className="math-block !text-[10px] !py-1 !px-2 !my-1.5">{model.eq}</div>
+              <TexBlock>{model.eq}</TexBlock>
               <p className="text-[#2c4a6e] text-[11px] leading-relaxed mb-2">{model.physics}</p>
               <div className="space-y-1 mb-2">
                 {model.keyFeatures.map((f, j) => (
@@ -1134,7 +1135,7 @@ export default function Fundamentals() {
               frame-invariant — it gives different results for the same physical deformation viewed from different
               reference frames. The <strong className="text-[#0B2545]">upper-convected (Oldroyd) derivative</strong> fixes this:
             </p>
-            <div className="math-block !text-xs !py-2 !px-3 !my-2">∇τ = ∂τ/∂t + v·∇τ − (∇v)ᵀ·τ − τ·(∇v)</div>
+            <TexBlock>{`\\overset{\\nabla}{\\boldsymbol{\\tau}} = \\frac{\\partial\\boldsymbol{\\tau}}{\\partial t} + \\mathbf{v}\\cdot\\nabla\\boldsymbol{\\tau} - (\\nabla\\mathbf{v})^T\\!\\cdot\\!\\boldsymbol{\\tau} - \\boldsymbol{\\tau}\\!\\cdot\\!(\\nabla\\mathbf{v})`}</TexBlock>
             <div className="space-y-1.5 text-[11px] text-[#2c4a6e]">
               <div className="flex items-start gap-1.5">
                 <span className="w-1 h-1 rounded-full bg-[#134074] mt-1.5 shrink-0" />
@@ -1158,7 +1159,7 @@ export default function Fundamentals() {
               A single-mode model cannot capture the full frequency-dependent behavior. The solution is to use N
               modes in parallel, each with its own relaxation time and modulus:
             </p>
-            <div className="math-block !text-xs !py-2 !px-3 !my-2">τ_total = Σᵢ₌₁ᴺ τᵢ &nbsp;&nbsp; where each τᵢ satisfies its own constitutive equation with (gᵢ, λᵢ)</div>
+            <TexBlock>{`\\boldsymbol{\\tau}_{\\text{total}} = \\sum_{i=1}^{N} \\boldsymbol{\\tau}_i \\quad \\text{where each } \\boldsymbol{\\tau}_i \\text{ satisfies its own constitutive equation with } (g_i, \\lambda_i)`}</TexBlock>
             <div className="space-y-1.5 text-[11px] text-[#2c4a6e]">
               <div className="flex items-start gap-1.5">
                 <span className="w-1 h-1 rounded-full bg-[#0B2545] mt-1.5 shrink-0" />

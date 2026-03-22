@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { Tex } from "../Math";
 import {
   LineChart,
   Line,
@@ -94,8 +95,8 @@ export default function FrequencySweepChart() {
       </div>
 
       <div className="text-xs text-[#2c4a6e] mb-3 bg-[#EEF4ED] rounded-lg px-3 py-2 inline-block">
-        Maxwell: <span className="font-semibold text-[#134074]">G&apos;(ω) = G<sub>N</sub><sup>0</sup>·(ωλ)²/[1+(ωλ)²]</span>,{" "}
-        <span className="font-semibold text-[#8DA9C4]">G&apos;&apos;(ω) = G<sub>N</sub><sup>0</sup>·ωλ/[1+(ωλ)²]</span>
+        Maxwell: <Tex className="font-semibold text-[#134074]">{`G'(\\omega) = G_N^0 \\cdot \\frac{(\\omega\\lambda)^2}{1+(\\omega\\lambda)^2}`}</Tex>,{" "}
+        <Tex className="font-semibold text-[#8DA9C4]">{`G''(\\omega) = G_N^0 \\cdot \\frac{\\omega\\lambda}{1+(\\omega\\lambda)^2}`}</Tex>
       </div>
 
       <ResponsiveContainer width="100%" height={420}>
@@ -156,16 +157,16 @@ export default function FrequencySweepChart() {
 
       <div className="mt-4 grid sm:grid-cols-3 gap-3 text-sm">
         <div className="bg-[#EEF4ED] rounded-xl p-4 border border-[#d0dde8]">
-          <div className="text-[#134074] font-semibold mb-1 text-xs">ω &lt; ω<sub>c</sub> — Terminal</div>
-          <p className="text-[#2c4a6e] text-xs">G&apos;&apos; &gt; G&apos;: Viscous behavior. Chains relax fully.</p>
+          <div className="text-[#134074] font-semibold mb-1 text-xs"><Tex>{`\\omega < \\omega_c`}</Tex> — Terminal</div>
+          <p className="text-[#2c4a6e] text-xs"><Tex>{`G'' > G'`}</Tex>: Viscous behavior. Chains relax fully.</p>
         </div>
         <div className="bg-white rounded-xl p-4 border-2 border-[#134074]/20">
-          <div className="text-[#0B2545] font-semibold mb-1 text-xs">ω = ω<sub>c</sub> — Crossover</div>
-          <p className="text-[#2c4a6e] text-xs">G&apos; = G&apos;&apos;, tan(δ)=1. λ = 1/ω<sub>c</sub>.</p>
+          <div className="text-[#0B2545] font-semibold mb-1 text-xs"><Tex>{`\\omega = \\omega_c`}</Tex> — Crossover</div>
+          <p className="text-[#2c4a6e] text-xs"><Tex>{`G' = G'',\\; \\tan(\\delta)=1.\\; \\lambda = 1/\\omega_c`}</Tex></p>
         </div>
         <div className="bg-[#EEF4ED] rounded-xl p-4 border border-[#d0dde8]">
-          <div className="text-[#134074] font-semibold mb-1 text-xs">ω &gt; ω<sub>c</sub> — Plateau</div>
-          <p className="text-[#2c4a6e] text-xs">G&apos; &gt; G&apos;&apos;: Elastic, entangled network.</p>
+          <div className="text-[#134074] font-semibold mb-1 text-xs"><Tex>{`\\omega > \\omega_c`}</Tex> — Plateau</div>
+          <p className="text-[#2c4a6e] text-xs"><Tex>{`G' > G''`}</Tex>: Elastic, entangled network.</p>
         </div>
       </div>
     </div>

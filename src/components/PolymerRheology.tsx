@@ -7,6 +7,7 @@ import TemperatureChart from "./charts/TemperatureChart";
 import ExtensionalViscosityChart from "./charts/ExtensionalViscosityChart";
 import RelaxationSpectrumChart from "./charts/RelaxationSpectrumChart";
 import AnimatedSection, { AnimatedCard } from "./AnimatedSection";
+import { Tex, TexBlock } from "./Math";
 
 export default function PolymerRheology() {
   const [activeChart, setActiveChart] = useState<"frequency" | "temperature" | "extensional" | "spectrum">("frequency");
@@ -72,13 +73,13 @@ export default function PolymerRheology() {
                 <h5 className="text-xs font-bold text-[#134074] mb-2 uppercase tracking-wide">Key Scaling Laws</h5>
                 <div className="space-y-2">
                   {[
-                    { eq: "η₀ ∝ Mw³·⁴", note: "Above Mc — universal for entangled linears" },
-                    { eq: "λ_d ∝ Mw³·⁴ / G_N⁰", note: "Terminal relaxation time" },
-                    { eq: "G_N⁰ = ρRT / Me", note: "Plateau modulus — chemistry-dependent" },
-                    { eq: "Je⁰ ∝ Mw / (G_N⁰ · η₀)", note: "Recoverable compliance — MWD-sensitive" },
+                    { eq: "\\eta_0 \\propto M_w^{3.4}", note: "Above Mc — universal for entangled linears" },
+                    { eq: "\\lambda_d \\propto M_w^{3.4} / G_N^0", note: "Terminal relaxation time" },
+                    { eq: "G_N^0 = \\rho R T / M_e", note: "Plateau modulus — chemistry-dependent" },
+                    { eq: "J_e^0 \\propto M_w / (G_N^0 \\cdot \\eta_0)", note: "Recoverable compliance — MWD-sensitive" },
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-2 text-xs text-[#2c4a6e]">
-                      <div className="math-block !text-[11px] !py-1 !px-2 !my-0 shrink-0">{item.eq}</div>
+                      <TexBlock>{item.eq}</TexBlock>
                       <span className="text-[#8DA9C4] mt-1">{item.note}</span>
                     </div>
                   ))}
@@ -96,7 +97,7 @@ export default function PolymerRheology() {
           {[
             {
               title: "Zero-Shear Viscosity",
-              eq: "η₀ = K · Mw³·⁴",
+              eq: "\\eta_0 = K \\cdot M_w^{3.4}",
               desc: "Above critical Mw, entanglements dominate. 3.4 power-law is universal for linear polymers.",
               icon: (
                 <svg viewBox="0 0 40 40" className="w-8 h-8"><path d="M5 35 Q15 5 35 20" stroke="#134074" strokeWidth="2.5" fill="none"/></svg>
@@ -104,7 +105,7 @@ export default function PolymerRheology() {
             },
             {
               title: "Relaxation Time",
-              eq: "λ = η₀ / G_N⁰",
+              eq: "\\lambda = \\eta_0 / G_N^0",
               desc: "Higher Mw → longer relaxation → more elastic at processing rates. Key for G'/G'' crossover.",
               icon: (
                 <svg viewBox="0 0 40 40" className="w-8 h-8"><circle cx="20" cy="20" r="12" stroke="#13315C" strokeWidth="2" fill="none" strokeDasharray="4 3"/></svg>
@@ -112,7 +113,7 @@ export default function PolymerRheology() {
             },
             {
               title: "Plateau Modulus",
-              eq: "G_N⁰ = ρRT / Me",
+              eq: "G_N^0 = \\rho R T / M_e",
               desc: "Entanglement density. Independent of Mw but depends on polymer chemistry (Me).",
               icon: (
                 <svg viewBox="0 0 40 40" className="w-8 h-8"><line x1="5" y1="20" x2="35" y2="20" stroke="#0B2545" strokeWidth="2.5"/></svg>
@@ -120,7 +121,7 @@ export default function PolymerRheology() {
             },
             {
               title: "Branching (LCB)",
-              eq: "↑ η₀, ↑ strain hardening",
+              eq: "\\uparrow \\eta_0, \\; \\uparrow \\text{strain hardening}",
               desc: "Long-chain branches increase η₀ disproportionately and cause strain hardening in extension.",
               icon: (
                 <svg viewBox="0 0 40 40" className="w-8 h-8"><path d="M10 30 L20 15 L30 5 M20 15 L30 25 M20 15 L10 10" stroke="#134074" strokeWidth="2" fill="none"/></svg>
@@ -128,7 +129,7 @@ export default function PolymerRheology() {
             },
             {
               title: "MWD Effects",
-              eq: "Broad MWD → broader transition",
+              eq: "\\text{Broad MWD} \\rightarrow \\text{broader transition}",
               desc: "Polydispersity broadens the shear-thinning transition and extends the terminal zone.",
               icon: (
                 <svg viewBox="0 0 40 40" className="w-8 h-8"><path d="M5 35 Q12 5 20 10 Q28 15 35 35" stroke="#8DA9C4" strokeWidth="2" fill="none"/></svg>
@@ -136,7 +137,7 @@ export default function PolymerRheology() {
             },
             {
               title: "Tube Model",
-              eq: "τ_d = L² / (π²·D_c)",
+              eq: "\\tau_d = \\frac{L^2}{\\pi^2 \\cdot D_c}",
               desc: "Reptation theory (de Gennes/Doi-Edwards): chains move along a tube formed by entanglements.",
               icon: (
                 <svg viewBox="0 0 40 40" className="w-8 h-8"><rect x="8" y="12" width="24" height="16" rx="4" stroke="#13315C" strokeWidth="2" fill="none"/><path d="M10 20 Q20 12 30 20" stroke="#134074" strokeWidth="2" fill="none"/></svg>
@@ -149,7 +150,7 @@ export default function PolymerRheology() {
                 {item.icon}
                 <h4 className="font-bold text-[#0B2545] text-sm">{item.title}</h4>
               </div>
-              <div className="math-block !text-sm !py-1.5 !px-3 !my-2">{item.eq}</div>
+              <TexBlock>{item.eq}</TexBlock>
               <p className="text-[#2c4a6e] text-xs">{item.desc}</p>
             </AnimatedCard>
           ))}
@@ -186,8 +187,8 @@ export default function PolymerRheology() {
           {activeChart === "frequency" && (
             <div>
               <p className="text-[#2c4a6e] text-xs mb-4">
-                Single Maxwell model: adjust crossover frequency (ω<sub>c</sub> = 1/λ) and plateau modulus.
-                G&apos; &gt; G&apos;&apos; = elastic; G&apos;&apos; &gt; G&apos; = viscous.
+                Single Maxwell model: adjust crossover frequency (<Tex>{"\\omega_c = 1/\\lambda"}</Tex>) and plateau modulus.
+                <Tex>{"G' > G''"}</Tex> = elastic; <Tex>{"G'' > G'"}</Tex> = viscous.
               </p>
               <FrequencySweepChart />
             </div>
@@ -195,8 +196,8 @@ export default function PolymerRheology() {
           {activeChart === "temperature" && (
             <div>
               <p className="text-[#2c4a6e] text-xs mb-4">
-                Compare WLF and Arrhenius models for the temperature shift factor a<sub>T</sub>.
-                WLF applies near T<sub>g</sub>, Arrhenius far above T<sub>g</sub>.
+                Compare WLF and Arrhenius models for the temperature shift factor <Tex>{"a_T"}</Tex>.
+                WLF applies near <Tex>{"T_g"}</Tex>, Arrhenius far above <Tex>{"T_g"}</Tex>.
               </p>
               <TemperatureChart />
             </div>
@@ -204,9 +205,9 @@ export default function PolymerRheology() {
           {activeChart === "extensional" && (
             <div>
               <p className="text-[#2c4a6e] text-xs mb-4">
-                Transient extensional viscosity η<sub>E</sub><sup>+</sup>(t) reveals strain hardening in branched polymers (LDPE)
-                that is absent in linear chains (HDPE). The LVE envelope (3η₀) is the Trouton reference.
-                Adjust ε̇ and branching level to see how architecture controls extensional behavior.
+                Transient extensional viscosity <Tex>{"\\eta_E^+(t)"}</Tex> reveals strain hardening in branched polymers (LDPE)
+                that is absent in linear chains (HDPE). The LVE envelope (<Tex>{"3\\eta_0"}</Tex>) is the Trouton reference.
+                Adjust <Tex>{"\\dot{\\varepsilon}"}</Tex> and branching level to see how architecture controls extensional behavior.
               </p>
               <ExtensionalViscosityChart />
             </div>
@@ -214,8 +215,8 @@ export default function PolymerRheology() {
           {activeChart === "spectrum" && (
             <div>
               <p className="text-[#2c4a6e] text-xs mb-4">
-                The continuous relaxation spectrum H(λ) is the fundamental material function from which all linear
-                viscoelastic properties can be derived. Adjust the terminal time λ<sub>d</sub>, polydispersity (Mw/Mn),
+                The continuous relaxation spectrum <Tex>{"H(\\lambda)"}</Tex> is the fundamental material function from which all linear
+                viscoelastic properties can be derived. Adjust the terminal time <Tex>{"\\lambda_d"}</Tex>, polydispersity (<Tex>{"M_w/M_n"}</Tex>),
                 and long-chain branching to see how molecular structure shapes the spectrum.
               </p>
               <RelaxationSpectrumChart />
@@ -232,10 +233,10 @@ export default function PolymerRheology() {
             <thead>
               <tr className="border-b-2 border-[#134074]/20">
                 <th className="px-3 py-2 text-[#0B2545] font-semibold">Polymer</th>
-                <th className="px-3 py-2 text-[#134074] font-semibold">η₀ [Pa·s]</th>
+                <th className="px-3 py-2 text-[#134074] font-semibold"><Tex>{"\\eta_0"}</Tex> [Pa·s]</th>
                 <th className="px-3 py-2 text-[#13315C] font-semibold">n (power-law)</th>
-                <th className="px-3 py-2 text-[#0B2545] font-semibold">G<sub>N</sub>⁰ [MPa]</th>
-                <th className="px-3 py-2 text-[#8DA9C4] font-semibold">M<sub>e</sub> [g/mol]</th>
+                <th className="px-3 py-2 text-[#0B2545] font-semibold"><Tex>{"G_N^0"}</Tex> [MPa]</th>
+                <th className="px-3 py-2 text-[#8DA9C4] font-semibold"><Tex>{"M_e"}</Tex> [g/mol]</th>
                 <th className="px-3 py-2 text-[#134074] font-semibold">Key feature</th>
               </tr>
             </thead>
@@ -278,8 +279,8 @@ export default function PolymerRheology() {
           <AnimatedCard className="bg-white border border-[#d0dde8] rounded-2xl p-5">
             <h4 className="font-bold text-[#0B2545] mb-2">Master Curve Construction</h4>
             <div className="space-y-2 text-xs text-[#2c4a6e]">
-              <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">Principle:</strong> G&apos;(ω, T) = G&apos;(ω·a<sub>T</sub>, T<sub>ref</sub>) — shift frequency axis by a<sub>T</sub></div>
-              <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">Vertical shift b<sub>T</sub>:</strong> b<sub>T</sub> = ρ<sub>ref</sub>T<sub>ref</sub> / ρT ≈ 1 for small ΔT</div>
+              <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">Principle:</strong> <Tex>{"G'(\\omega, T) = G'(\\omega \\cdot a_T, T_{ref})"}</Tex> — shift frequency axis by <Tex>{"a_T"}</Tex></div>
+              <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">Vertical shift <Tex>{"b_T"}</Tex>:</strong> <Tex>{"b_T = \\rho_{ref} T_{ref} / \\rho T \\approx 1"}</Tex> for small ΔT</div>
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">Extends data:</strong> 3-4 decades per T → 10+ decades on master curve</div>
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">Validation:</strong> All T data must overlap smoothly — failure means TTS invalid</div>
             </div>
@@ -289,7 +290,7 @@ export default function PolymerRheology() {
             <div className="space-y-2 text-xs text-[#2c4a6e]">
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#0B2545] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">LCB polymers:</strong> Different relaxation modes shift differently</div>
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#0B2545] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">Blends near phase separation:</strong> Morphology changes with T</div>
-              <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#0B2545] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">Semi-crystalline near T<sub>m</sub>:</strong> Crystal fraction changes</div>
+              <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#0B2545] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">Semi-crystalline near <Tex>{"T_m"}</Tex>:</strong> Crystal fraction changes</div>
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#0B2545] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">Filled systems:</strong> Filler network has different T-dependence</div>
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#0B2545] mt-1.5 shrink-0" /><strong className="text-[#0B2545]">Recycled polymers:</strong> Multiple chain populations with different Ea</div>
             </div>
@@ -358,17 +359,17 @@ export default function PolymerRheology() {
             <div>
               <h5 className="font-bold text-[#0B2545] mb-2">Key Equations</h5>
               <div className="space-y-1.5">
-                <div className="math-block !text-xs !py-1 !px-2 !my-1">Palierne: G* = G<sub>m</sub>* · (1 + 3φH*) / (1 − 2φH*)</div>
-                <div className="math-block !text-xs !py-1 !px-2 !my-1">H* = f(G<sub>d</sub>*, G<sub>m</sub>*, Γ/R, ω)</div>
+                <TexBlock>{"\\text{Palierne: } G^* = G_m^* \\cdot \\frac{1 + 3\\phi H^*}{1 - 2\\phi H^*}"}</TexBlock>
+                <TexBlock>{"H^* = f(G_d^*, G_m^*, \\Gamma/R, \\omega)"}</TexBlock>
                 <p>φ = dispersed phase volume fraction, Γ = interfacial tension, R = droplet radius</p>
               </div>
             </div>
             <div>
               <h5 className="font-bold text-[#0B2545] mb-2">Morphology-Rheology Link</h5>
               <div className="space-y-1">
-                <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />Droplet → matrix: extra shoulder in G&apos;&apos; at low ω</div>
-                <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />Co-continuous: G&apos; plateau at low ω (pseudo-solid)</div>
-                <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />Fiber/laminar: anisotropic viscosity, N₁ anomalies</div>
+                <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />Droplet → matrix: extra shoulder in <Tex>{"G''"}</Tex> at low <Tex>{"\\omega"}</Tex></div>
+                <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />Co-continuous: <Tex>{"G'"}</Tex> plateau at low <Tex>{"\\omega"}</Tex> (pseudo-solid)</div>
+                <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />Fiber/laminar: anisotropic viscosity, <Tex>{"N_1"}</Tex> anomalies</div>
               </div>
             </div>
           </div>
@@ -386,12 +387,12 @@ export default function PolymerRheology() {
             <h4 className="font-bold text-[#0B2545] mb-3">Concentration Effects</h4>
             <div className="space-y-2">
               {[
-                { eq: "Einstein: η_r = 1 + 2.5φ", range: "Dilute spheres, φ < 5%" },
-                { eq: "Krieger-Dougherty: η_r = (1 − φ/φ_m)^(−[η]φ_m)", range: "Concentrated, up to φ_m" },
-                { eq: "Maron-Pierce: η_r = (1 − φ/φ_m)^(−2)", range: "Simplified KD, practical" },
+                { eq: "\\text{Einstein: } \\eta_r = 1 + 2.5\\phi", range: "Dilute spheres, φ < 5%" },
+                { eq: "\\text{Krieger-Dougherty: } \\eta_r = \\left(1 - \\frac{\\phi}{\\phi_m}\\right)^{-[\\eta]\\phi_m}", range: "Concentrated, up to φ_m" },
+                { eq: "\\text{Maron-Pierce: } \\eta_r = \\left(1 - \\frac{\\phi}{\\phi_m}\\right)^{-2}", range: "Simplified KD, practical" },
               ].map((item, i) => (
                 <div key={i} className="bg-[#EEF4ED] rounded-lg p-3">
-                  <div className="math-block !text-xs !py-1 !px-2 !my-1">{item.eq}</div>
+                  <TexBlock>{item.eq}</TexBlock>
                   <p className="text-[#8DA9C4] text-xs mt-1">{item.range}</p>
                 </div>
               ))}

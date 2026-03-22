@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "katex/dist/katex.min.css";
 @import "tailwindcss";
 
 /*
@@ -105,15 +106,13 @@ html {
    TYPOGRAPHY
    ────────────────────────────────────── */
 
-/* Math notation */
+/* Math notation — KaTeX integration */
 .math {
-  font-family: "Times New Roman", "STIX Two Math", serif;
+  font-family: "KaTeX_Main", "Times New Roman", "STIX Two Math", serif;
   font-style: italic;
 }
 
 .math-block {
-  font-family: "Times New Roman", "STIX Two Math", serif;
-  font-size: 1.05rem;
   padding: 0.75rem 1.25rem;
   background: linear-gradient(135deg, #f4f8f5 0%, #EEF4ED 100%);
   border-left: 3px solid #134074;
@@ -123,6 +122,10 @@ html {
   color: #0B2545;
   box-shadow: inset 0 1px 2px rgba(19, 64, 116, 0.04);
 }
+
+.math-block .katex { font-size: 1.15em; }
+
+.tex-inline .katex { font-size: 1.0em; }
 
 /* ──────────────────────────────────────
    GRADIENT TEXT

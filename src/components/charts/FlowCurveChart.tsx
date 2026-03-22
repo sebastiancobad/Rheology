@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { Tex } from "../Math";
 import {
   LineChart,
   Line,
@@ -88,7 +89,7 @@ export default function FlowCurveChart() {
       </div>
 
       <div className="text-xs text-[#2c4a6e] mb-3 bg-[#EEF4ED] rounded-lg px-3 py-2 inline-block">
-        Power-law model: <span className="font-semibold text-[#134074]">η = K · γ̇<sup>(n−1)</sup></span>, K = 1000 Pa·s<sup>n</sup>
+        Power-law model: <Tex className="font-semibold text-[#134074]">{`\\eta = K \\cdot \\dot{\\gamma}^{\\,(n-1)}`}</Tex>, <Tex>{`K = 1000\\;\\text{Pa}\\cdot\\text{s}^n`}</Tex>
       </div>
 
       <ResponsiveContainer width="100%" height={400}>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { Tex } from "../Math";
 import {
   LineChart,
   Line,
@@ -261,7 +262,7 @@ export default function RelaxationSpectrumChart() {
       <div className="mt-4 grid grid-cols-2 lg:grid-cols-4 gap-3">
         <div className="bg-[#EEF4ED] rounded-lg p-3 border border-[#d0dde8]/50">
           <div className="text-[10px] font-bold text-[#0B2545] uppercase tracking-wide mb-1">Terminal Mode</div>
-          <div className="text-sm font-semibold text-[#134074]">λ<sub>d</sub> ∝ Mw<sup>3.4</sup></div>
+          <div className="text-sm font-semibold text-[#134074]"><Tex>{`\\lambda_d \\propto M_w^{3.4}`}</Tex></div>
           <div className="text-[10px] text-[#2c4a6e]">Longest relaxation time</div>
         </div>
         <div className="bg-[#EEF4ED] rounded-lg p-3 border border-[#d0dde8]/50">

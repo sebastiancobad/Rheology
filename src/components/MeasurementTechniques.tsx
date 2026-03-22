@@ -3,6 +3,7 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import SectionWrapper from "./SectionWrapper";
+import { TexBlock } from "./Math";
 import AnimatedSection, { AnimatedCard } from "./AnimatedSection";
 
 const RheometerGeometry3D = dynamic(() => import("./3d/RheometerGeometry3D"), { ssr: false });
@@ -14,21 +15,21 @@ export default function MeasurementTechniques() {
   const geometryInfo: Record<string, { title: string; equation: string; pros: string[]; cons: string[]; desc: string }> = {
     "cone-plate": {
       title: "Cone & Plate",
-      equation: "γ̇ = Ω / α  (uniform)",
+      equation: "\\dot{\\gamma} = \\frac{\\Omega}{\\alpha} \\quad \\text{(uniform)}",
       pros: ["Uniform shear rate", "Small sample (~0.5 mL)", "Direct N₁ measurement"],
       cons: ["Particle size ≪ gap", "Edge fracture at high γ̇", "Not for filled systems"],
       desc: "Gold standard for polymer melts. Cone angle 0.5–4°.",
     },
     "parallel-plate": {
       title: "Parallel Plate",
-      equation: "γ̇(r) = Ωr / h  (varies)",
+      equation: "\\dot{\\gamma}(r) = \\frac{\\Omega r}{h} \\quad \\text{(varies)}",
       pros: ["Adjustable gap", "Filled systems OK", "Temperature sweeps"],
       cons: ["Non-uniform γ̇", "Needs Mooney correction", "N₁ needs differentiation"],
       desc: "Versatile for recycled compounds with particles.",
     },
     couette: {
       title: "Concentric Cylinders",
-      equation: "γ̇ = 2ΩRᵢ² / (Rₒ²−Rᵢ²)",
+      equation: "\\dot{\\gamma} = \\frac{2\\Omega R_i^2}{R_o^2 - R_i^2}",
       pros: ["Low-viscosity fluids", "Large sample → stable", "Solvent evaporation control"],
       cons: ["Large sample needed", "Taylor vortices at high Ω", "End effects"],
       desc: "Ideal for solutions, suspensions, and low-η samples.",
@@ -168,7 +169,7 @@ export default function MeasurementTechniques() {
             <div className="bg-white border border-[#d0dde8] rounded-2xl p-5">
               <h4 className="font-bold text-[#0B2545] mb-1">{info.title}</h4>
               <p className="text-[#2c4a6e] text-sm mb-3">{info.desc}</p>
-              <div className="math-block !text-sm !py-2 !px-3 !my-2">{info.equation}</div>
+              <TexBlock>{info.equation}</TexBlock>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
@@ -206,7 +207,7 @@ export default function MeasurementTechniques() {
               <div className="w-10 h-10 rounded-full bg-[#134074] text-white flex items-center justify-center font-bold text-sm">B</div>
               <h4 className="font-bold text-[#0B2545]">Bagley Correction</h4>
             </div>
-            <div className="math-block !text-sm">τ<sub>w</sub> = ΔP · R / [2(L/R + e<sub>B</sub>)]</div>
+            <TexBlock>{"\\tau_w = \\frac{\\Delta P \\cdot R}{2(L/R + e_B)}"}</TexBlock>
             <p className="text-[#2c4a6e] text-xs mt-3">
               Corrects entrance pressure drop. Plot ΔP vs L/D at constant γ̇,
               extrapolate to L/D = 0. For elastic melts, entrance effects can be 30–60% of total ΔP.
@@ -255,7 +256,7 @@ export default function MeasurementTechniques() {
               <div className="w-10 h-10 rounded-full bg-[#13315C] text-white flex items-center justify-center font-bold text-sm">R</div>
               <h4 className="font-bold text-[#0B2545]">Rabinowitsch Correction</h4>
             </div>
-            <div className="math-block !text-sm">γ̇<sub>w,true</sub> = γ̇<sub>a</sub> · (3n&apos; + 1) / (4n&apos;)</div>
+            <TexBlock>{"\\dot{\\gamma}_{w,\\text{true}} = \\dot{\\gamma}_a \\cdot \\frac{3n' + 1}{4n'}"}</TexBlock>
             <p className="text-[#2c4a6e] text-xs mt-3">
               Corrects for non-parabolic velocity profiles. For n&apos; ≈ 0.3 (typical polymer),
               the true wall shear rate is 58% higher than apparent.
@@ -498,7 +499,7 @@ export default function MeasurementTechniques() {
         <div className="grid md:grid-cols-2 gap-5">
           <AnimatedCard className="bg-white border border-[#d0dde8] rounded-2xl p-5">
             <h4 className="font-bold text-[#0B2545] mb-2">Slit Die Rheometer</h4>
-            <div className="math-block !text-sm !py-1.5 !px-3 !my-2">τ<sub>w</sub> = (h/2) · (dP/dz)</div>
+            <TexBlock>{"\\tau_w = \\frac{h}{2} \\cdot \\frac{dP}{dz}"}</TexBlock>
             <div className="space-y-2 text-xs text-[#2c4a6e]">
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />Pressure transducers flush-mounted along slit length</div>
               <div className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#134074] mt-1.5 shrink-0" />No entrance effects if sensors away from entry/exit</div>
