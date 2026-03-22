@@ -1,39 +1,36 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const sections = [
-  { id: "hero", label: "Home" },
-  { id: "fundamentals", label: "Fundamentals" },
-  { id: "polymer-rheology", label: "Polymer Rheology" },
-  { id: "measurement", label: "Rheometry" },
-  { id: "applications", label: "Applications" },
-  { id: "literature", label: "Literature" },
+  { href: "/", label: "Home" },
+  { href: "/fundamentals", label: "Fundamentals" },
+  { href: "/polymer-rheology", label: "Polymer Rheology" },
+  { href: "/measurement", label: "Rheometry" },
+  { href: "/applications", label: "Applications" },
+  { href: "/literature", label: "Literature" },
 ];
 
 export default function Navigation() {
-  const [active, setActive] = useState("hero");
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-
-      const offsets = sections.map((s) => {
-        const el = document.getElementById(s.id);
-        return { id: s.id, top: el ? el.offsetTop - 120 : 0 };
-      });
-
-      const current = offsets
-        .filter((o) => window.scrollY >= o.top)
-        .pop();
-      if (current) setActive(current.id);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   return (
     <nav
@@ -45,7 +42,7 @@ export default function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <a href="#hero" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-3 group">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#0B2545] to-[#134074] flex items-center justify-center text-white font-bold text-xs tracking-wider shadow-[0_2px_8px_rgba(11,37,69,0.2)]">
               PR
             </div>
@@ -55,22 +52,22 @@ export default function Navigation() {
             >
               Polymer Rheology
             </span>
-          </a>
+          </Link>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-1">
             {sections.map((s) => (
-              <a
-                key={s.id}
-                href={`#${s.id}`}
+              <Link
+                key={s.href}
+                href={s.href}
                 className={`px-3.5 py-1.5 rounded-full text-[13px] font-medium transition-all duration-300 ${
-                  active === s.id
+                  pathname === s.href
                     ? "text-[#0B2545] bg-[#0B2545]/[0.07] shadow-[inset_0_0_0_1px_rgba(11,37,69,0.12)]"
                     : "text-[#5a7a9a] hover:text-[#0B2545] hover:bg-[#0B2545]/[0.04]"
                 }`}
               >
                 {s.label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -94,18 +91,17 @@ export default function Navigation() {
         {menuOpen && (
           <div className="md:hidden pb-4 border-t border-[#d0dde8]/60 mt-2 pt-2">
             {sections.map((s) => (
-              <a
-                key={s.id}
-                href={`#${s.id}`}
-                onClick={() => setMenuOpen(false)}
+              <Link
+                key={s.href}
+                href={s.href}
                 className={`block px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
-                  active === s.id
+                  pathname === s.href
                     ? "text-[#0B2545] bg-[#0B2545]/[0.06]"
                     : "text-[#5a7a9a] hover:text-[#0B2545]"
                 }`}
               >
                 {s.label}
-              </a>
+              </Link>
             ))}
           </div>
         )}

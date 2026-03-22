@@ -1,146 +1,152 @@
 # Polymer Rheology — Interactive Educational Platform
 
-Plataforma web interactiva para aprender **reología de polímeros**: desde los fundamentos de flujo y deformación hasta la caracterización viscoelástica avanzada y las aplicaciones industriales. Combina visualizaciones 3D, gráficos interactivos en tiempo real y ecuaciones renderizadas con LaTeX.
+An interactive web application for learning **polymer rheology**: from Newtonian flow fundamentals to advanced viscoelastic characterization and industrial processing applications. Features 3D visualizations, real-time interactive charts, and LaTeX-rendered equations.
 
-## Contenido de la aplicación
+## App Structure
 
-La web se estructura en **5 secciones principales**, cada una construida con visualizaciones interactivas y contenido científico riguroso:
+The application is organized into **5 separate pages**, each focused on a specific topic. Navigation between pages uses Next.js App Router for fast, code-split loading — only the current page's components are loaded.
 
-### 1. Fundamentos de Reología
+### 1. Fundamentals of Rheology (`/fundamentals`)
 
-- Definición de reología, número de Deborah e hipótesis del continuo.
-- **Tensor de esfuerzos 3D** — Cubo interactivo con flechas de componentes de esfuerzo (σ_xx, σ_yy, σ_zz, τ_xy...) que se puede rotar con el mouse.
-- **Cadena polimérica 3D** — Cadena tipo *worm-like chain* que se deforma en tiempo real al cambiar el número de Weissenberg (Wi) con un slider.
-- **Curvas de flujo** — Gráfico log-log interactivo comparando fluidos newtonianos, pseudoplásticos y dilatantes con exponentes ajustables.
-- **Modelos de viscosidad** — Comparación entre modelos Newtoniano, ley de potencia, Herschel-Bulkley y Cross-WLF.
-- **Creep & Recovery** — Respuesta temporal de la compliancia bajo esfuerzo constante.
+- Definition of rheology, Deborah number, and the continuum hypothesis.
+- **3D Stress Tensor** — Interactive rotating cube with stress component arrows (σ_xx, σ_yy, σ_zz, τ_xy...). Mouse-controlled rotation and zoom.
+- **3D Polymer Chain** — Physics-based worm-like chain that deforms in real time via a Weissenberg number (Wi) slider.
+- **Flow Curves** — Interactive log-log chart comparing Newtonian, pseudoplastic (shear-thinning), and dilatant fluids with adjustable power-law exponents.
+- **Viscosity Models** — Side-by-side comparison of Newtonian, power-law, Herschel-Bulkley, and Cross-WLF models.
+- **Creep & Recovery** — Time-dependent compliance response under constant stress with elastic recovery.
 
-### 2. Reología de Polímeros en Profundidad
+### 2. Deep Dive: Polymer Rheology (`/polymer-rheology`)
 
-- Relación entre estructura molecular y comportamiento reológico.
-- **Leyes de escalado** — η₀ ∝ Mw^3.4, módulo de plateau, tiempos de relajación terminal.
-- **Barrido de frecuencia** — Gráfico interactivo de G' (almacenamiento), G'' (pérdida) y tan δ vs frecuencia angular con sliders para frecuencia de crossover y módulo de plateau.
-- **Barrido de temperatura** — Evolución de G' y tan δ con la temperatura, transición vítrea Tg.
-- **Viscosidad extensional** — Comportamiento transitorio, endurecimiento por deformación (*strain hardening*).
-- **Espectro de relajación** — Distribución discreta de tiempos de relajación.
-- **Curvas maestras** — Superposición tiempo-temperatura (factores de desplazamiento WLF).
+- How molecular structure determines rheological behavior.
+- **Scaling Laws** — η₀ ∝ Mw^3.4, plateau modulus, terminal relaxation times.
+- **Frequency Sweep Chart** — Interactive G' (storage), G'' (loss modulus), and tan δ vs angular frequency with sliders for crossover frequency and plateau modulus.
+- **Temperature Sweep** — G' and tan δ vs temperature showing glass transition Tg.
+- **Extensional Viscosity Chart** — Transient extensional viscosity with strain hardening visualization.
+- **Relaxation Spectrum** — Discrete relaxation time spectrum.
+- **Master Curves** — Time-temperature superposition with WLF shift factors.
 
-### 3. Técnicas de Medición
+### 3. Measurement Techniques (`/measurement`)
 
-- **Selector 3D de geometrías de reómetro** — Modelos 3D interactivos con rotación en tiempo real:
-  - Cono-plato (shear rate uniforme)
-  - Placas paralelas (gap ajustable, corrección de Mooney)
-  - Cilindros concéntricos / Couette (para baja viscosidad)
-  - Control de RPM con slider animado.
-- **Correcciones de reometría capilar** — Gráficos interactivos con Recharts:
-  - **Corrección de Bagley** — ΔP vs L/D a múltiples tasas de corte con sliders para e_B y n'.
-  - **Corrección de Rabinowitsch** — Tasa de corte verdadera vs aparente en escala log-log con factor de corrección en tiempo real.
-- **Reómetros extensionales** — SER, CaBER, FiSER, Rheotens con especificaciones y rangos.
-- **Protocolos de ensayo estándar** — 9 ensayos: barrido de amplitud, frecuencia, temperatura, corte estacionario, creep, relajación, LAOS, 3ITT, start-up.
-- **Errores comunes de medición** — Wall slip, fractura de borde, inercia, degradación térmica, errores de gap.
-- **MFI vs caracterización completa** — Tabla comparativa costo/capacidad.
+- **3D Rheometer Geometry Selector** — Fully modeled interactive 3D rheometer with real-time rotation:
+  - Cone & Plate (uniform shear rate)
+  - Parallel Plate (adjustable gap, Mooney correction)
+  - Concentric Cylinders / Couette (low-viscosity fluids)
+  - RPM slider to animate rotation speed.
+- **Capillary Rheometry Corrections** — Interactive Recharts:
+  - **Bagley Correction** — ΔP vs L/D at 3 shear rates with sliders for e_B and n'.
+  - **Rabinowitsch Correction** — True vs apparent shear rate on log-log scale with live correction factor.
+- **Extensional Rheometers** — SER, CaBER, FiSER, Rheotens with specs and ranges.
+- **Standard Test Protocols** — 9 tests: amplitude sweep, frequency sweep, temperature sweep, steady shear, creep & recovery, step strain relaxation, LAOS, 3ITT, start-up of steady shear.
+- **Common Measurement Pitfalls** — Wall slip, edge fracture, inertia effects, thermal degradation, gap errors, underfill/overfill.
+- **MFI vs Full Characterization** — Cost/capability comparison table.
 
-### 4. Aplicaciones Industriales
+### 4. Industrial Applications (`/applications`)
 
-Tarjetas detalladas para cada proceso de transformación con rangos de γ̇, parámetros clave y desafíos:
+Detailed cards for each polymer processing method with shear rate ranges, key parameters, and process-specific challenges:
 
-| Proceso | Rango γ̇ (s⁻¹) | Aspectos clave |
+| Process | γ̇ Range (s⁻¹) | Key Aspects |
 |---|---|---|
-| Inyección | 10²–10⁴ | Efectos pvT, shear-thinning crítico |
-| Extrusión | 10¹–10³ | Die swell (B = 1.1–1.5), memoria elástica |
-| Soplado | 10⁰–10¹ | Extensión biaxial, strain hardening necesario |
-| Film casting | — | Extensión uniaxial, inestabilidad de draw resonance |
-| Impresión 3D (FDM) | 10²–10⁴ | Die swell, módulo de almacenamiento crítico |
+| Injection Molding | 10²–10⁴ | pvT effects, shear-thinning critical |
+| Extrusion | 10¹–10³ | Die swell (B = 1.1–1.5), elastic memory |
+| Blow Molding | 10⁰–10¹ | Biaxial extension, strain hardening required |
+| Film Casting | — | Uniaxial extension, draw resonance instability |
+| 3D Printing (FDM) | 10²–10⁴ | Die swell, storage modulus critical |
 
-- Sección especial sobre **procesamiento de polímeros reciclados**.
+- Special section on **recycled polymer processing** challenges.
 
-### 5. Brechas en la Literatura e Investigación
+### 5. Literature & Research Gaps (`/literature`)
 
-6 áreas de investigación abierta con listas detalladas de gaps:
+6 open research areas with detailed gap lists:
 
-1. Reología de polímeros reciclados
-2. Teoría molecular y modelado (tubos, LAOS, ML/AI)
-3. Procesamiento y gemelos digitales
-4. Innovación en medición (rheo-SAXS/SANS, alto rendimiento)
-5. Sostenibilidad y economía circular
-6. Campos avanzados (impresión 4D, auto-reparación, nanocompuestos)
+1. Recycled polymer rheology
+2. Molecular theory & modeling (tube models, LAOS, ML/AI)
+3. Processing & digital twins
+4. Measurement innovation (rheo-SAXS/SANS, high-throughput)
+5. Sustainability & circular economy
+6. Advanced fields (4D printing, self-healing, nanocomposites)
 
-Incluye **12 libros de texto seminales** y **publicaciones fundamentales** (de Gennes, Doi-Edwards, Cox-Merz, etc.).
+Includes **12 seminal textbooks** and **foundational publications** (de Gennes, Doi-Edwards, Cox-Merz, etc.).
 
 ---
 
 ## Tech Stack
 
-| Tecnología | Uso |
+| Technology | Purpose |
 |---|---|
-| **Next.js 16** + React 19 | Framework principal (App Router) |
-| **TypeScript** | Tipado estático |
-| **Tailwind CSS 4** | Estilos utility-first |
-| **Three.js** + React Three Fiber | Visualizaciones 3D (reómetro, tensor, cadena) |
-| **Recharts** | Gráficos 2D interactivos |
-| **KaTeX** | Renderizado de ecuaciones LaTeX |
-| **Framer Motion** | Animaciones de scroll y transiciones |
+| **Next.js 16** + React 19 | App Router with per-page code splitting |
+| **TypeScript** | Static typing |
+| **Tailwind CSS 4** | Utility-first styling |
+| **Three.js** + React Three Fiber | 3D visualizations (rheometer, tensor, polymer chain) |
+| **Recharts** | Interactive 2D charts |
+| **KaTeX** | LaTeX equation rendering |
+| **Framer Motion** | Scroll and transition animations |
 
-## Estructura del proyecto
+## Project Structure
 
 ```
 src/
 ├── app/
-│   ├── layout.tsx                # Layout raíz y metadatos
-│   ├── page.tsx                  # Página principal (orquesta secciones)
-│   └── globals.css               # Estilos globales
+│   ├── layout.tsx                # Root layout (Navigation + Footer)
+│   ├── page.tsx                  # Home / Hero
+│   ├── globals.css               # Global styles
+│   ├── fundamentals/page.tsx     # Section 1
+│   ├── polymer-rheology/page.tsx # Section 2
+│   ├── measurement/page.tsx      # Section 3
+│   ├── applications/page.tsx     # Section 4
+│   └── literature/page.tsx       # Section 5
 ├── components/
-│   ├── Navigation.tsx            # Navbar fija con detección de scroll
-│   ├── Hero.tsx                  # Sección hero con animaciones
-│   ├── Fundamentals.tsx          # Sección 1: fundamentos
-│   ├── PolymerRheology.tsx       # Sección 2: reología de polímeros
-│   ├── MeasurementTechniques.tsx # Sección 3: técnicas de medición
-│   ├── Applications.tsx          # Sección 4: aplicaciones industriales
-│   ├── LiteratureGaps.tsx        # Sección 5: literatura y gaps
-│   ├── Footer.tsx                # Pie de página
-│   ├── SectionWrapper.tsx        # Contenedor reutilizable de sección
-│   ├── AnimatedSection.tsx       # Wrapper de Framer Motion
-│   ├── Math.tsx                  # Componentes Tex y TexBlock (KaTeX)
+│   ├── Navigation.tsx            # Route-based navbar with active state
+│   ├── Hero.tsx                  # Landing page hero section
+│   ├── Fundamentals.tsx          # Fundamentals content
+│   ├── PolymerRheology.tsx       # Polymer rheology content
+│   ├── MeasurementTechniques.tsx # Measurement techniques content
+│   ├── Applications.tsx          # Industrial applications content
+│   ├── LiteratureGaps.tsx        # Literature & gaps content
+│   ├── Footer.tsx                # Footer with references
+│   ├── SectionWrapper.tsx        # Reusable section container
+│   ├── AnimatedSection.tsx       # Framer Motion scroll wrapper
+│   ├── Math.tsx                  # KaTeX Tex & TexBlock components
 │   ├── 3d/
-│   │   ├── RheometerGeometry3D.tsx  # Geometrías de reómetro 3D
-│   │   ├── PolymerChain3D.tsx       # Cadena polimérica deformable
-│   │   └── StressTensor3D.tsx       # Tensor de esfuerzos 3D
+│   │   ├── RheometerGeometry3D.tsx  # Interactive rheometer geometries
+│   │   ├── PolymerChain3D.tsx       # Deformable polymer chain
+│   │   └── StressTensor3D.tsx       # 3D stress tensor arrows
 │   ├── charts/
-│   │   ├── FlowCurveChart.tsx             # Curvas de flujo
-│   │   ├── FrequencySweepChart.tsx         # Barrido de frecuencia
-│   │   ├── ExtensionalViscosityChart.tsx   # Viscosidad extensional
-│   │   ├── TemperatureChart.tsx            # Barrido de temperatura
-│   │   ├── RelaxationSpectrumChart.tsx     # Espectro de relajación
+│   │   ├── FlowCurveChart.tsx             # Flow curves
+│   │   ├── FrequencySweepChart.tsx         # Frequency sweep
+│   │   ├── ExtensionalViscosityChart.tsx   # Extensional viscosity
+│   │   ├── TemperatureChart.tsx            # Temperature sweep
+│   │   ├── RelaxationSpectrumChart.tsx     # Relaxation spectrum
 │   │   ├── CreepRecoveryChart.tsx          # Creep & recovery
-│   │   ├── ViscosityModelsChart.tsx        # Modelos de viscosidad
-│   │   └── CapillaryCorrectionsCharts.tsx  # Correcciones Bagley & Rabinowitsch
+│   │   ├── ViscosityModelsChart.tsx        # Viscosity models
+│   │   └── CapillaryCorrectionsCharts.tsx  # Bagley & Rabinowitsch
 │   └── diagrams/
-│       └── FlowTypesDiagram.tsx   # Diagrama de tipos de flujo
+│       └── FlowTypesDiagram.tsx   # Flow types diagram
 ```
 
 ## Getting Started
 
 ```bash
-# Instalar dependencias
+# Install dependencies
 npm install
 
-# Servidor de desarrollo
+# Development server
 npm run dev
 
-# Build de producción
+# Production build
 npm run build
 
-# Iniciar producción
+# Start production
 npm start
 ```
 
-Abrir [http://localhost:3000](http://localhost:3000) en el navegador.
+Open [http://localhost:3000](http://localhost:3000) in the browser.
 
-## Características interactivas destacadas
+## Interactive Features
 
-- **Sliders en tiempo real** — Todos los gráficos responden instantáneamente a cambios de parámetros (n', Wi, ω_c, G_N⁰, e_B, RPM, etc.)
-- **Visualizaciones 3D rotables** — OrbitControls permite rotar, hacer zoom y explorar los modelos 3D con el mouse.
-- **Tooltips informativos** — Hover sobre cualquier punto de datos muestra valores exactos con unidades.
-- **Animaciones de scroll** — Las secciones y tarjetas aparecen con animaciones suaves al hacer scroll (Framer Motion).
-- **Diseño responsive** — Adaptado para desktop, tablet y móvil con navegación colapsable.
-- **Ecuaciones LaTeX** — Todas las ecuaciones reológicas renderizadas con KaTeX para máxima claridad tipográfica.
+- **Real-time sliders** — All charts respond instantly to parameter changes (n', Wi, ω_c, G_N⁰, e_B, RPM, etc.)
+- **Rotatable 3D models** — OrbitControls for mouse-driven rotation, zoom, and pan on all 3D scenes.
+- **Informative tooltips** — Hover over any data point to see exact values with units.
+- **Per-page code splitting** — Each section loads only its own components, keeping initial load fast.
+- **Scroll animations** — Sections and cards appear with smooth fade-in animations (Framer Motion).
+- **Responsive design** — Adapted for desktop, tablet, and mobile with collapsible navigation.
+- **LaTeX equations** — All rheological equations rendered with KaTeX.

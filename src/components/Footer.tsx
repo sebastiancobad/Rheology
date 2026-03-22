@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="relative py-20 px-4 sm:px-6 lg:px-8 bg-[#0B2545] text-white overflow-hidden">
@@ -38,20 +40,20 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-sm">
               {[
-                { href: "#fundamentals", label: "Fundamentals of Rheology" },
-                { href: "#polymer-rheology", label: "Deep Dive: Polymer Rheology" },
-                { href: "#measurement", label: "Measurement Techniques" },
-                { href: "#applications", label: "Industrial Applications" },
-                { href: "#literature", label: "Literature & Research Gaps" },
+                { href: "/fundamentals", label: "Fundamentals of Rheology" },
+                { href: "/polymer-rheology", label: "Deep Dive: Polymer Rheology" },
+                { href: "/measurement", label: "Measurement Techniques" },
+                { href: "/applications", label: "Industrial Applications" },
+                { href: "/literature", label: "Literature & Research Gaps" },
               ].map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-[#8DA9C4]/80 hover:text-white transition-colors duration-300 inline-flex items-center gap-2 group"
                   >
                     <span className="w-1 h-1 rounded-full bg-[#8DA9C4]/40 group-hover:bg-white/60 transition-colors" />
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

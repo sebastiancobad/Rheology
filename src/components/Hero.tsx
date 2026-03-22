@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -79,25 +80,25 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.7 }}
           className="flex flex-col sm:flex-row gap-3 justify-center"
         >
-          <a
-            href="#fundamentals"
+          <Link
+            href="/fundamentals"
             className="group relative px-8 py-3.5 rounded-full bg-[#0B2545] text-white text-sm font-medium hover:bg-[#134074] transition-all duration-400 shadow-[0_2px_8px_rgba(11,37,69,0.25)] hover:shadow-[0_4px_16px_rgba(11,37,69,0.3)]"
           >
             Start Learning
             <span className="inline-block ml-2 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
-          </a>
-          <a
-            href="#measurement"
+          </Link>
+          <Link
+            href="/measurement"
             className="px-8 py-3.5 rounded-full bg-white/80 backdrop-blur-sm border border-[#8DA9C4] text-[#0B2545] text-sm font-medium hover:bg-white hover:border-[#134074] transition-all duration-300 shadow-sm"
           >
             3D Rheometer
-          </a>
-          <a
-            href="#polymer-rheology"
+          </Link>
+          <Link
+            href="/polymer-rheology"
             className="px-8 py-3.5 rounded-full bg-white/60 backdrop-blur-sm border border-[#d0dde8] text-[#2c4a6e] text-sm font-medium hover:bg-white hover:border-[#8DA9C4] transition-all duration-300"
           >
             Interactive Charts
-          </a>
+          </Link>
         </motion.div>
 
         {/* Scroll indicator */}
